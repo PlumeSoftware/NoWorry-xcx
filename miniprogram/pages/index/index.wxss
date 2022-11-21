@@ -1,0 +1,21 @@
+/**index.wxss**/
+
+.show{
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+}
+
+van-sticky{
+  display: none;
+}
+
+.tar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tar-item>view {
+  padding-top: 10rpx;
+}
