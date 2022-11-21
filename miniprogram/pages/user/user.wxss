@@ -1,0 +1,63 @@
+.page {
+    height: 90vh;
+    background-color: #F8F6EE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile {
+    padding-top: 6vh;
+}
+
+.profile .avatar {
+    display: flex;
+    justify-content: center;
+}
+
+.profile .user .user-name {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #2E2C2C;
+}
+
+.profile .user .user-email {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 17px;
+    color: rgba(46, 44, 44, 0.7);
+}
+
+.profile .order-profile {
+    width: 70vw;
+    height: 12vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile .order-profile .order-text {
+    color: #2E2C2C
+}
+
+.profile .order-profile .order-text {
+    color: #2E2C2CB2
+}
+
+.opea-list {}
+
+.opea-list .opea-item {
+    margin: 1.9vh 0;
+    padding: 0 2.7vw;
+    width: 78.6vw;
+    height: 6.4vh;
+    background-color: #FEFFFB;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #A29B2F;
+    box-shadow: #E1DAD2 35%;
+}

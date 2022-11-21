@@ -1,0 +1,47 @@
+<view class="page">
+  <view class="profile">
+    <view class="avatar">
+      <van-image round width="20vw" height="20vw" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+    </view>
+    <view class="user">
+      <view class="user-name">你好，Mengfan He</view>
+      <view class="user-email">mengfanhe@gmail.com</view>
+    </view>
+    <view class="order-profile">
+      <view>
+        <view class="order-number">0</view>
+        <view class="order-text">待支付</view>
+      </view>
+      <view>
+        <view class="order-number">2</view>
+        <view class="order-text">进行中</view>
+      </view>
+      <view>
+        <view class="order-number">1</view>
+        <view class="order-text">已完成</view>
+      </view>
+    </view>
+  </view>
+  <view class="opea-list">
+    <view class="opea-item" bind:tap="toOrder">
+        <van-icon size="32px" name="/static/profile/order.png" />
+      <view>我的订单</view>
+      <van-icon size="15px" name="/static/profile/return.png" />
+    </view>
+    <view class="opea-item">
+        <van-icon size="32px" name="/static/profile/cuser.png" />
+      <view>联系客服</view>
+      <van-icon size="15px" name="/static/profile/return.png" />
+    </view>
+    <view class="opea-item">
+        <van-icon size="32px" name="/static/profile/cop.png" />
+      <view>商务合作</view>
+      <van-icon size="15px" name="/static/profile/return.png" />
+    </view>
+    <view class="opea-item">
+        <van-icon size="32px" name="/static/profile/setting.png" />
+      <view>设置</view>
+      <van-icon size="15px" name="/static/profile/return.png" />
+    </view>
+  </view>
+</view>
