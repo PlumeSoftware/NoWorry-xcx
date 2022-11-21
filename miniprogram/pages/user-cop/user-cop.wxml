@@ -1,0 +1,73 @@
+<view class="page">
+  <scroll-view>
+    <view class="cover">
+      <view class="cover-image">
+        <van-image width="76vw" height="100vw" src="/static/profile/cop-cover.png" />
+      </view>
+      <view class="cover-text">
+        <view>您是大学学联，需要资助？或者您有客户，需要我们的刷位系统的帮助？您的旅游团的客户缺少申根签证？合作才是共赢。</view>
+        <view style="margin:3vh 0">请在下方表单填写有效信息以便我们更快联系您。</view>
+      </view>
+    </view>
+    <view class="form">
+      <label>
+        <view>公司名称 *</view>
+        <view class="tip">（必填）</view>
+      </label>
+      <input placeholder="请输入" style="width:80vw" />
+      <label>
+        <view>业务说明 *</view>
+        <view class="tip">（必填）</view>
+      </label>
+      <textarea placeholder="请输入" style="width:80vw" />
+      <label>
+        <view>联系人 *</view>
+        <view class="tip">（必填）</view>
+      </label>
+      <input placeholder="请输入" style="width:80vw" />
+      <label>
+        <view>联系电话 *</view>
+        <view class="tip">（必填）</view>
+      </label>
+      <input placeholder="请输入" style="width:80vw" />
+      <label>
+        <view>微信号 *</view>
+        <view class="tip">（必填）</view>
+      </label>
+      <input placeholder="请输入" style="width:80vw" />
+      <label>
+        <view>邮箱</view>
+      </label>
+      <input placeholder="请输入" style="width:80vw" />
+      <button bind:tap="commit">提交</button>
+    </view>
+    <view class="contact">
+      <van-divider customStyle="border-color:#F2843B73;"></van-divider>
+      <view class="contact-text">联系我们</view>
+      <view class="cuslist">
+        <view class="cus-qr">
+          <van-image width="120px" height="120px" src="/static/profile/cus1.png" />
+        </view>
+        <view class="cus-qr">
+          <van-image width="120px" height="120px" src="/static/profile/cus2.png" />
+        </view>
+      </view>
+      <view class="contact-tip">
+        <view class="tip-start">长按二维码添加客服微信或输入下方微信号手动添加</view>
+        <view class="tip-item">
+          <view>客服1号微信：</view>
+          <view>Noworry1011</view>
+        </view>
+        <view class="tip-item">
+          <view>客服2号微信：</view>
+          <view>Noworry1011-2</view>
+        </view>
+        <view class="tip-item">
+          <view>联系邮箱:</view>
+          <view>noworry.official@outlook.com</view>
+        </view>
+      </view>
+    </view>
+    <view class="copyright">©copyright for NoWorry 2022</view>
+  </scroll-view>
+</view>

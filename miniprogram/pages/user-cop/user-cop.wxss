@@ -1,0 +1,165 @@
+.page {
+    background-color: #F8F6EE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 5vh;
+}
+
+.cover {
+    background-color: #F8F6EE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.cover .cover-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 4vw;
+    padding: 3vw;
+    background-color: #FFF;
+    width: 76vw;
+}
+
+.cover .cover-text {
+    width: 80vw;
+    font-size: 10px;
+    font-weight: 200;
+    line-height: 14px;
+    text-align: left;
+    color: #797532;
+}
+
+.form {
+    margin: 0 auto;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.form label {
+    display: flex;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    margin: 2vh 0 1vh 0;
+    color: #161415
+}
+
+.form label .tip {
+    font-size: 12px;
+    font-weight: 200;
+    line-height: 17px;
+    color: #797532;
+}
+
+.form input,
+textarea {
+    box-sizing: border-box;
+    background-color: #FFF;
+    border: 2px solid #D9D9D9;
+    border-radius: 5px;
+    margin: 0 auto;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.form input {
+    height: 35px;
+    width: 307px;
+    padding: 0 8px;
+}
+
+.form textarea {
+    height: 136px;
+    width: 307px;
+    padding: 6px 8px;
+}
+
+.form button {
+    width: 286px;
+    height: 47px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F2843B;
+    box-shadow: 0px 4px 4px rgba(242, 132, 59, 0.25);
+    border-radius: 7px;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 24px;
+    /* identical to box height */
+    color: #FEFFFB;
+    margin: 140rpx auto 70rpx auto;
+}
+
+.contact {
+    width: 80vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact .contact-text {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: center;
+    margin: 100rpx auto;
+}
+
+.contact .cuslist {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.contact .cuslist .cus-qr {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #FFF;
+    border-radius: 12px;
+}
+
+.contact .contact-tip {
+    width: 80vw;
+    font-weight: 200;
+    line-height: 14px;
+    text-align: center;
+    color: #797532;
+    font-size: 12px;
+    margin-bottom: 120rpx;
+}
+
+.contact .contact-tip .tip-start {
+    margin: 3vh auto;
+    font-size: 10px;
+}
+
+.contact .contact-tip .tip-item {
+    width: 416rpx;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.copyright {
+    font-size: 10px;
+    font-weight: 100;
+    line-height: 14px;
+    text-align: left;
+    color: #797532;
+    margin: 2.9vw 9.1vw
+}
