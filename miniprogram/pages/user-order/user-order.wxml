@@ -1,0 +1,32 @@
+<view class="page">
+  <van-tabs color="#797532" title-inactive-color="#79753270" title-active-color="#797532" class="order-group" active="{{ active }}">
+    <van-tab wx:for="{{orderNameGroup}}" wx:for-index="typeindex" title="{{item}}" wx:key="typeindex">
+      <view class="order-list">
+        <scroll-view wx:if="{{orderGroup[typeindex].length>0}}">
+          <view class="order-item" wx:for="{{orderGroup[typeindex]}}" wx:for-index="groupindex" wx:key="groupindex">
+            <view class="item-image">
+              <van-image width="90px" height="90px" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+            </view>
+            <view>
+              <view class="item-info">
+                <view>{{item.title}}</view>
+                <view>{{item.describe}}</view>
+              </view>
+              <view class="item-link" bind:tap="toProcess">查看进度</view>
+            </view>
+          </view>
+        </scroll-view>
+        <view class="empty" wx:else>
+          <van-image width="198" height="222" src="/static/profile/Frame.png" />
+          <view>
+            <view class="empty-text">您还没有相关的订单</view>
+            <view class="empty-describe">
+              可以去看看有哪些想办理的
+              <span>签证</span>
+            </view>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>
