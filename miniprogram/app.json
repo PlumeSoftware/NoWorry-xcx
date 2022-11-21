@@ -3,7 +3,10 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/user-order/user-order",
-    "pages/user-order-detail/user-order-detail"
+    "pages/user-order-detail/user-order-detail",
+    "pages/user-cop/user-cop",
+    "pages/user-cop-commit/user-cop-commit"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -20,6 +23,7 @@
     "van-icon": "@vant/weapp/icon/index",
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
-    "van-image": "@vant/weapp/image/index"
+    "van-image": "@vant/weapp/image/index",
+    "van-divider": "@vant/weapp/divider/index"
   }
 }
