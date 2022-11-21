@@ -54,6 +54,7 @@
     padding: 0 2.7vw;
     width: 78.6vw;
     height: 6.4vh;
+    border-radius: 5px;
     background-color: #FEFFFB;
     display: flex;
     justify-content: space-between;

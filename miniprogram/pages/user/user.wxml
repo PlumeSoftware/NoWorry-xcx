@@ -33,7 +33,7 @@
       <view>联系客服</view>
       <van-icon size="15px" name="/static/profile/return.png" />
     </view>
-    <view class="opea-item">
+    <view class="opea-item" bind:tap="toCop">
         <van-icon size="32px" name="/static/profile/cop.png" />
       <view>商务合作</view>
       <van-icon size="15px" name="/static/profile/return.png" />

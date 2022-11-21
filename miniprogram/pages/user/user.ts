@@ -6,7 +6,9 @@
 
 Page({
     toOrder() {
-        console.log("aaa")
         wx.navigateTo({ url: "/pages/user-order/user-order" })
+    },
+    toCop() {
+        wx.navigateTo({ url: "/pages/user-cop/user-cop" })
     }
 });
