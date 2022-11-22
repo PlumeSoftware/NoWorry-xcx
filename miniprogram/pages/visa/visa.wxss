@@ -1,0 +1,95 @@
+.page {
+    height: 100vh;
+    background-color: #F8F6EE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+.input {
+    box-sizing: border-box;
+    height: 40px;
+    width: 327px;
+    font-size: 12px;
+    border: 0.5px solid #A29B2F;
+    background-color: #FFF;
+    text-align: left;
+    border-radius: 5px;
+    color: #A29B2F;
+    margin: 40rpx auto 22rpx auto;
+    padding: 0 10px;
+}
+
+.visa-group-list {
+    background-color: #F8F6EE;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+}
+
+.visa-group-list van-sticky {
+    display: block;
+    background-color: #F8F6EE;
+}
+
+scroll-view {
+    background-color: #F8F6EE;
+}
+
+scroll-view {
+    background-color: #F8F6EE;
+}
+
+scroll-view view {
+    background-color: #F8F6EE;
+}
+
+nav-class {
+    background-color: #F8F6EE;
+}
+
+.visa-group-list .visa-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: #F8F6EE;
+    margin: 0rpx 24rpx;
+}
+
+.visa-group-list .visa-list .visa-item {
+    display: block;
+    height: 59.2vw;
+    width: 42.8vw;
+    margin-top: 40rpx;
+    background-color: #FFF;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.visa-group-list .visa-list .visa-item .item-image {
+    height: 40.5vw;
+    width: 100%;
+    overflow: hidden;
+}
+
+.visa-group-list .visa-list .visa-item .info {
+    margin: 18rpx 28rpx;
+}
+
+.visa-group-list .visa-list .visa-item .info .title {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 25px;
+    text-align: left;
+}
+
+.visa-group-list .visa-list .visa-item .info .price {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: right;
+    color: #F2843B;
+}

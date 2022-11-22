@@ -1,0 +1,49 @@
+<view class="page">
+  <input class="input" bindfocus="focus" bindblur="blur" />
+  <van-tabs class="visa-group-list" wx:if="{{show}}" custom-class="background-color:red" color="#797532" title-inactive-color="#79753270" title-active-color="#797532" active="{{activeVisa}}">
+    <van-tab title="热门">
+      <view class="visa-list">
+        <view class="visa-item">
+          <view class="item-image">
+            <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="60vw" src="/static/visa/visa-fra.png" />
+          </view>
+          <view class="info">
+            <view class="title">法国签证刷签代办</view>
+            <view class="price">£128</view>
+          </view>
+        </view>
+        <view class="visa-item">
+          <view class="item-image">
+            <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="60vw" src="/static/visa/visa-fra.png" />
+          </view>
+          <view class="info">
+            <view class="title">法国签证刷签代办</view>
+            <view class="price">£128</view>
+          </view>
+        </view>
+        <view class="visa-item">
+          <view class="item-image">
+            <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="60vw" src="/static/visa/visa-fra.png" />
+          </view>
+          <view class="info">
+            <view class="title">法国签证刷签代办</view>
+            <view class="price">£128</view>
+          </view>
+        </view>
+        <view class="visa-item">
+          <view class="item-image">
+            <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="60vw" src="/static/visa/visa-fra.png" />
+          </view>
+          <view class="info">
+            <view class="title">法国签证刷签代办</view>
+            <view class="price">£128</view>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="申根">aaa</van-tab>
+    <van-tab title="北欧">aaa</van-tab>
+    <van-tab title="美国">aaa</van-tab>
+    <van-tab title="亚洲">aaa</van-tab>
+  </van-tabs>
+</view>
