@@ -44,7 +44,7 @@
     align-items: flex-start;
 }
 
-.form label {
+.form .label {
     display: flex;
     font-size: 14px;
     font-weight: 500;
@@ -53,15 +53,15 @@
     color: #161415
 }
 
-.form label .tip {
+.form .label .tip {
     font-size: 12px;
     font-weight: 200;
     line-height: 17px;
     color: #797532;
 }
 
-.form input,
-textarea {
+.form .input,
+.form .textarea {
     box-sizing: border-box;
     background-color: #FFF;
     border: 2px solid #D9D9D9;
@@ -70,21 +70,22 @@ textarea {
     font-size: 12px;
     font-weight: 400;
     text-align: left;
+    width:80vw
 }
 
-.form input {
+.form .input {
     height: 35px;
     width: 307px;
     padding: 0 8px;
 }
 
-.form textarea {
+.form .textarea {
     height: 136px;
     width: 307px;
     padding: 6px 8px;
 }
 
-.form button {
+.form .button {
     width: 286px;
     height: 47px;
     display: flex;
@@ -161,5 +162,5 @@ textarea {
     line-height: 14px;
     text-align: left;
     color: #797532;
-    margin: 2.9vw 9.1vw
+    margin: 1.9vw 9.1vw
 }

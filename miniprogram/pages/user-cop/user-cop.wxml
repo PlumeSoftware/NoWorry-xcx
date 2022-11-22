@@ -10,36 +10,36 @@
       </view>
     </view>
     <view class="form">
-      <label>
+      <label class="label">
         <view>公司名称 *</view>
         <view class="tip">（必填）</view>
       </label>
-      <input placeholder="请输入" style="width:80vw" />
-      <label>
+      <input class="input" placeholder="请输入" />
+      <label class="label">
         <view>业务说明 *</view>
         <view class="tip">（必填）</view>
       </label>
-      <textarea placeholder="请输入" style="width:80vw" />
-      <label>
+      <textarea class="textarea" placeholder="请输入" />
+      <label class="label">
         <view>联系人 *</view>
         <view class="tip">（必填）</view>
       </label>
-      <input placeholder="请输入" style="width:80vw" />
-      <label>
+      <input class="input" placeholder="请输入" />
+      <label class="label">
         <view>联系电话 *</view>
         <view class="tip">（必填）</view>
       </label>
-      <input placeholder="请输入" style="width:80vw" />
-      <label>
+      <input class="input" placeholder="请输入" />
+      <label class="label">
         <view>微信号 *</view>
         <view class="tip">（必填）</view>
       </label>
-      <input placeholder="请输入" style="width:80vw" />
-      <label>
+      <input class="input" placeholder="请输入" />
+      <label class="label">
         <view>邮箱</view>
       </label>
-      <input placeholder="请输入" style="width:80vw" />
-      <button bind:tap="commit">提交</button>
+      <input class="input" class="input" placeholder="请输入" />
+      <button class="button" bind:tap="commit">提交</button>
     </view>
     <view class="contact">
       <van-divider customStyle="border-color:#F2843B73;"></van-divider>
@@ -71,3 +71,4 @@
     <view class="copyright">©copyright for NoWorry 2022</view>
   </scroll-view>
 </view>
+x
