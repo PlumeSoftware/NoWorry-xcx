@@ -8,6 +8,9 @@ Page({
     toOrder() {
         wx.navigateTo({ url: "/pages/user-order/user-order" })
     },
+    toCus() {
+        wx.navigateTo({ url: "/pages/user-qaa/user-qaa" })
+    },
     toCop() {
         wx.navigateTo({ url: "/pages/user-cop/user-cop" })
     }

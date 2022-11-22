@@ -2,7 +2,9 @@
 <view class="container">
   <van-tabs class="show" active="{{ active }}" animated>
     <van-tab>内容 1</van-tab>
-    <van-tab>内容 2</van-tab>
+    <van-tab>
+      <visa></visa>
+    </van-tab>
     <van-tab>内容 3</van-tab>
     <van-tab>
       <user></user>
