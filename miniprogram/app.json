@@ -1,12 +1,15 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/user/user",
+    "pages/visa/visa",
     "pages/logs/logs",
     "pages/user-order/user-order",
     "pages/user-order-detail/user-order-detail",
     "pages/user-cop/user-cop",
-    "pages/user-cop-commit/user-cop-commit"
-
+    "pages/user-cop-commit/user-cop-commit",
+    "pages/user-qaa/user-qaa",
+    "pages/visa-detail/visa-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

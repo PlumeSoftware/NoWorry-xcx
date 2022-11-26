@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "user":"../user/user",
-    "visa":"../visa/visa"
+    "visa":"../visa/visa",
+    "cart":"../cart/cart"
   }
 }

@@ -5,7 +5,9 @@
     <van-tab>
       <visa></visa>
     </van-tab>
-    <van-tab>内容 3</van-tab>
+    <van-tab>
+      <cart></cart>
+    </van-tab>
     <van-tab>
       <user></user>
     </van-tab>
