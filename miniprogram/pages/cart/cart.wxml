@@ -1,0 +1,67 @@
+<view class="page">
+  <view class="cart-title">签证</view>
+  <view class="cart-list">
+    <view class="cart-item">
+      <view>
+        <van-icon size="20px" name="/static/cart/select-cart.png" />
+      </view>
+      <view class="item-image">
+        <van-image width="90px" height="90px" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+      </view>
+      <view>
+        <view class="item-info">
+          <view>美国11月签证刷位</view>
+          <view>本月刷位预约，包含递签材料</view>
+        </view>
+        <view class="item-pm">
+          <view class="item-number">
+            <van-icon size="16px" name="/static/cart/minus.png" />
+            <view>1</view>
+            <van-icon size="16px" name="/static/cart/add.png" />
+          </view>
+          <view class="item-price">£68</view>
+        </view>
+      </view>
+    </view>
+    <view class="cart-item">
+      <view>
+        <van-icon size="20px" name="/static/cart/select-cart-none.png" />
+      </view>
+      <view class="item-image">
+        <van-image width="90px" height="90px" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+      </view>
+      <view>
+        <view class="item-info">
+          <view>美国11月签证刷位</view>
+          <view>本月刷位预约，包含递签材料</view>
+        </view>
+        <view class="item-pm">
+          <view class="item-number">
+            <van-icon size="16px" name="/static/cart/minus.png" />
+            <view>1</view>
+            <van-icon size="16px" name="/static/cart/add.png" />
+          </view>
+          <view class="item-price">£68</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="subtotal">
+    <view class="select-all">
+      <van-icon size="20px" name="/static/cart/select-cart.png" />
+      <view>全选</view>
+    </view>
+    <view class="subtotal-number">
+      <view class="price-all">
+        <view class="price-origin">
+          <span>合计：</span>
+          <span>£218</span>
+        </view>
+        <view class="price-conver">GBP 218=CNY 1809.4</view>
+      </view>
+      <view class="settle">
+        <button class="button">结算</button>
+      </view>
+    </view>
+  </view>
+</view>
