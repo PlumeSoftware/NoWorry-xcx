@@ -162,5 +162,5 @@
     line-height: 14px;
     text-align: left;
     color: #797532;
-    margin: 1.9vw 9.1vw
+    padding: 1.9vw 9.1vw
 }
