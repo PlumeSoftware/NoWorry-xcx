@@ -9,11 +9,17 @@ Component({
         activeVisa: 0,
         show: false
     },
+
+    methods: {
+        toDetail() {
+            wx.navigateTo({ url: '/pages/visa-detail/visa-detail' })
+        },
+    },
     lifetimes: {
         ready() {
             //修复vant-tab渲染延时错误
             // @ts-ignore
-            setTimeout(()=>{this.setData({ show: true })},2500)
+            setTimeout(() => { this.setData({ show: true }) }, 2500)
         }
     }
 });

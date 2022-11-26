@@ -1,9 +1,9 @@
 <view class="page">
   <input class="input" bindfocus="focus" bindblur="blur" />
-  <van-tabs class="visa-group-list" wx:if="{{show}}" custom-class="background-color:red" color="#797532" title-inactive-color="#79753270" title-active-color="#797532" active="{{activeVisa}}">
+  <van-tabs class="visa-group-list" wx:if="{{show}}" color="#797532" title-inactive-color="#79753270" title-active-color="#797532" active="{{activeVisa}}">
     <van-tab title="热门">
       <view class="visa-list">
-        <view class="visa-item">
+        <view class="visa-item" bind:tap="toDetail">
           <view class="item-image">
             <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="60vw" src="/static/visa/visa-fra.png" />
           </view>
