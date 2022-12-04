@@ -1,11 +1,13 @@
 <view class="page">
-  <view class="profile">
-    <view class="avatar">
-      <van-image round width="20vw" height="20vw" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-    </view>
-    <view class="user">
-      <view class="user-name">你好，Mengfan He</view>
-      <view class="user-email">mengfanhe@gmail.com</view>
+  <view class="profile" wx:if="{{token}}">
+    <view>
+      <view class="avatar">
+        <van-image round width="20vw" height="20vw" src="{{userInfo.avatarUrl||'https://img.yzcdn.cn/vant/cat.jpeg'}}" />
+      </view>
+      <view class="user">
+        <view class="user-name">你好，{{userInfo.userName}}</view>
+        <view class="user-email">{{userInfo.email}}</view>
+      </view>
     </view>
     <view class="order-profile">
       <view>
@@ -22,24 +24,32 @@
       </view>
     </view>
   </view>
+  <view class="profile" wx:else>
+    <view class="avatar">
+      <van-image round width="20vw" height="20vw" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbpic.51yuansu.com%2Fpic3%2Fcover%2F01%2F69%2F80%2F595f67c042c1b_610.jpg&refer=http%3A%2F%2Fbpic.51yuansu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672721328&t=982d14f8b46441129cb52b00cfcb3158" />
+    </view>
+    <view class="user">
+      <view class="button" bind:tap="login">登录</view>
+    </view>
+  </view>
   <view class="opea-list">
     <view class="opea-item" bind:tap="toOrder">
-        <van-icon size="32px" name="/static/profile/order.png" />
+      <van-icon size="32px" name="/static/profile/order.png" />
       <view>我的订单</view>
       <van-icon size="15px" name="/static/profile/return.png" />
     </view>
     <view class="opea-item" bind:tap="toCus">
-        <van-icon size="32px" name="/static/profile/cuser.png" />
+      <van-icon size="32px" name="/static/profile/cuser.png" />
       <view>联系客服</view>
       <van-icon size="15px" name="/static/profile/return.png" />
     </view>
     <view class="opea-item" bind:tap="toCop">
-        <van-icon size="32px" name="/static/profile/cop.png" />
+      <van-icon size="32px" name="/static/profile/cop.png" />
       <view>商务合作</view>
       <van-icon size="15px" name="/static/profile/return.png" />
     </view>
-    <view class="opea-item">
-        <van-icon size="32px" name="/static/profile/setting.png" />
+    <view class="opea-item" bind:tap="toSet">
+      <van-icon size="32px" name="/static/profile/setting.png" />
       <view>设置</view>
       <van-icon size="15px" name="/static/profile/return.png" />
     </view>

@@ -4,7 +4,48 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
+
 Page({
+    data: {
+        userInfo: {
+            userName: '',
+            phone: '',
+            email: '',
+            handSignCity: ''
+        },
+        token: ''
+    },
+
+    onShow() {
+        this.setData({
+            userInfo: {
+                userName: wx.getStorageSync("userInfo").userName,
+                phone: wx.getStorageSync("userInfo").phone,
+                email: wx.getStorageSync("userInfo").email,
+                handSignCity: wx.getStorageSync("userInfo").handSignCity
+            }
+        })
+    },
+
+    login() {
+        const _this = this;
+        wx.login().then(res => {
+            wx.request({
+                url: "http://127.0.0.1:3000/v1/mp" + `/user/login/${res.code}`,
+                success(re) {
+                    _this.setData({ userInfo: re.data.userInfo, token: re.data.token })
+
+                    wx.setStorageSync('userInfo', re.data.userInfo)
+                    wx.setStorageSync('token', re.data.token)
+
+                    if (re.data.userInfo.userName == null) {
+                        wx.navigateTo({ url: "/pages/user-set/user-set" })
+                    }
+                }
+            })
+        })
+    },
+
     toOrder() {
         wx.navigateTo({ url: "/pages/user-order/user-order" })
     },
@@ -13,5 +54,8 @@ Page({
     },
     toCop() {
         wx.navigateTo({ url: "/pages/user-cop/user-cop" })
+    },
+    toSet() {
+        wx.navigateTo({ url: "/pages/user-set/user-set" })
     }
 });

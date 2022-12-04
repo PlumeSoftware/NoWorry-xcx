@@ -47,6 +47,18 @@
     color: #2E2C2CB2
 }
 
+.button{
+    margin: 2vh auto;
+    width: 40vw;
+    height: 9vw;
+    line-height: 9vw;
+    border-radius: 2vw;
+    text-align: center;
+    color: #FEFFFB;
+    background-color: #07C160;
+    font-weight: 600;
+}
+
 .opea-list {}
 
 .opea-list .opea-item {
