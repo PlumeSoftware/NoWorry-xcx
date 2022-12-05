@@ -6,12 +6,20 @@
 
 Page({
     data: {
+        //page 参数
         activeVisa: 0,
         moveY: 0,
         show: true,
         showToast: false,
         citiesArray: ['伦敦', '贝尔法斯特', '伯明翰'],
-        cityIndex: 0
+        cityIndex: 0,
+
+        //商品详细参数
+        commodityId: 1,
+        commoditySkuId: 13,
+        commodityName: "美国签证顺位",
+        commodityBrief: "顺位预约，包含材料",
+        price: 46,
     },
 
     initValue: 0,
@@ -24,6 +32,25 @@ Page({
     },
     addCart() {
         this.setData({ showToast: true })
+        const carts = wx.getStorageSync('carts') || [];
+
+        const targerIndex = carts.findIndex((item: any) => item.commoditySkuId == this.data.commoditySkuId)
+        if (targerIndex != -1) {
+            carts[targerIndex].quantity++;
+        } else {
+            carts.push({
+                commodityId: this.data.commodityId,
+                commoditySkuId: this.data.commoditySkuId,
+                commodityName: this.data.commodityName,
+                commodityBrief: this.data.commodityBrief,
+                price: this.data.price,
+                quantity: 1,
+                select: false
+            })
+        }
+
+        wx.setStorageSync('carts',carts)
+
         setTimeout(() => {
             this.setData({ showToast: false })
         }, 1500)
