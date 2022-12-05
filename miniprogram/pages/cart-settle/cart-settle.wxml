@@ -1,0 +1,18 @@
+<view class="page">
+  <view class="commodity-list">
+    <view class="commodity-item" wx:for="{{carts}}" wx:key="index">
+      <view class="item-image">
+        <van-image width="70px" height="70px" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+      </view>
+      <view>
+        <view class="item-info">
+          <view>{{item.commodityName}}</view>
+          <view>{{item.commodityBrief}}</view>
+        </view>
+        <view class="item-pm">
+          <view class="item-price">£{{item.price}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
