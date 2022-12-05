@@ -9,7 +9,7 @@ Page({
         carts: [] as any,
         allselect: false,
         totalPrice: 0,
-        totalPrice2: 8.6231
+        totalPrice2: 0
     },
 
 
@@ -42,8 +42,8 @@ Page({
         const add = e.currentTarget.dataset.add
         const carts = this.data.carts;
         carts[index].quantity = carts[index].quantity + add
-        carts[index].quantity = carts[index].quantity ? carts[index].quantity : 1;
-        carts[index].quantity = carts[index].quantity < 9 ? carts[index].quantity : 9
+        // carts[index].quantity = carts[index].quantity ? carts[index].quantity : 1;
+        carts[index].quantity = 1
         this.setData({ carts: carts })
         this.culTotal()
     },
@@ -56,9 +56,20 @@ Page({
         carts.forEach((item: any) => {
             total += item.select ? item.price * item.quantity : 0
         })
-        const total2 = 8.6231;
+        const total2 = Number((8.6231 * total).toFixed(2));
         this.setData({ totalPrice: total, totalPrice2: total2 })
         wx.setStorageSync('carts', carts)
-    }
+    },
 
+    async settle() {
+        wx.showToast({
+            title: 'loading',
+            icon: 'loading',
+            duration: 700
+        })
+        setTimeout(() => {
+            wx.navigateTo({ url: "/pages/cart-settle/cart-settle" })
+
+        }, 750)
+    }
 });
