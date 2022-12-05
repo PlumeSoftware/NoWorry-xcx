@@ -9,7 +9,7 @@
       <cart id="cart"></cart>
     </van-tab>
     <van-tab>
-      <user></user>
+      <user id="user"></user>
     </van-tab>
   </van-tabs>
   <van-tabbar active="{{ active }}" active-color="#F2843B" bind:change="onChange">
