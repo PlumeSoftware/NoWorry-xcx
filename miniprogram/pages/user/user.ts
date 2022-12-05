@@ -16,7 +16,7 @@ Page({
         token: ''
     },
 
-    onShow() {
+    setByLocal() {
         this.setData({
             userInfo: {
                 userName: wx.getStorageSync("userInfo").userName,
@@ -28,6 +28,17 @@ Page({
     },
 
     login() {
+        if (!this.data.userInfo.userName) {
+            setTimeout(() => {
+                wx.showToast({
+                    title: '登录中',
+                    icon: 'loading',
+                    mask: true,
+                    duration: 1000
+                })
+            }, 300)
+        }
+
         const _this = this;
         wx.login().then(res => {
             wx.request({

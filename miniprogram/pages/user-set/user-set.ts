@@ -12,14 +12,7 @@ Page({
         handSignCity: wx.getStorageSync("userInfo").handSignCity
     },
 
-    onShow() {
-        this.setData({
-            userName: wx.getStorageSync("userInfo").userName,
-            phone: wx.getStorageSync("userInfo").phone,
-            email: wx.getStorageSync("userInfo").email,
-            handSignCity: wx.getStorageSync("userInfo").handSignCity
-        })
-    },
+
 
     save() {
         const _this = this

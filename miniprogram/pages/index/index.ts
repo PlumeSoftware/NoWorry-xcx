@@ -23,6 +23,11 @@ Page({
       this.selectComponent('#cart').setAllSelect()
       this.selectComponent('#cart').culTotal()
     }
+
+    if(event.detail==3){
+      this.selectComponent('#user').login()
+    }
+
     wx.setNavigationBarTitle({
       title: this.data.tarbar[this.data.active].item
     })
