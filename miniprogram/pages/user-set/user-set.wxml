@@ -1,6 +1,9 @@
 <view class="page">
   <view>
-    <view class="list-title">账号信息</view>
+    <view class="title">
+      <van-icon  class="title-img" size="20px" name="/static/profile/line.png" />
+      <view class="title-word">账号信息</view>
+    </view>
     <view class="info-list">
       <!-- <view class="info-item">
         <view>头像</view>
@@ -33,4 +36,24 @@
     </view>
   </view>
   <view class="save-btn" bind:tap="save">保存修改</view>
+  <view>
+    <view class="title">
+      <van-icon  class="title-img" size="20px" name="/static/profile/line.png" />
+      <view class="title-word">系统</view>
+    </view>
+      <view class="info-list" bind:tap:>
+        <view class="info-item">
+          <view>用户须知</view>
+          <view>
+            <van-icon size="15px" name="/static/profile/return.png" />
+          </view>
+        </view>
+        <view class="info-item">
+          <view>隐私协议</view>
+          <view>
+            <van-icon size="15px" name="/static/profile/return.png" />
+          </view>
+        </view>
+      </view>
+  </view>
 </view>
