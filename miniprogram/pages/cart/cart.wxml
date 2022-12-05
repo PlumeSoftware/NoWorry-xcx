@@ -13,8 +13,8 @@
       </view>
       <view>
         <view class="item-info">
-          <view>{{item.title}}</view>
-          <view>{{item.describe}}</view>
+          <view>{{item.commodityName}}</view>
+          <view>{{item.commodityBrief}}</view>
         </view>
         <view class="item-pm">
           <view class="item-number">
@@ -37,9 +37,9 @@
       <view class="price-all">
         <view class="price-origin">
           <span>合计：</span>
-          <span>{{totalPrice}}</span>
+          <span>£{{totalPrice}}</span>
         </view>
-        <view class="price-conver">GBP 218=CNY {{totalPrice2}}</view>
+        <view class="price-conver">GBP 218≈CNY {{totalPrice2}}</view>
       </view>
       <view class="settle">
         <button class="button">结算</button>
