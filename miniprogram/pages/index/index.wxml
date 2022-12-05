@@ -6,7 +6,7 @@
       <visa></visa>
     </van-tab>
     <van-tab>
-      <cart></cart>
+      <cart id="cart"></cart>
     </van-tab>
     <van-tab>
       <user></user>

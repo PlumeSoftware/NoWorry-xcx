@@ -11,12 +11,18 @@ Page({
       { item: "购物车", icon: "cart" },
       { item: "我的", icon: "user" },
     ],
-    page: [true, true,true,true]
+    page: [false, false, false, false]
   },
 
   onChange(event: any) {
     // event.detail 的值为当前选中项的索引
     this.setData({ active: event.detail });
+
+    if(event.detail==2){
+      this.selectComponent('#cart').updateCart()
+      this.selectComponent('#cart').setAllSelect()
+      this.selectComponent('#cart').culTotal()
+    }
     wx.setNavigationBarTitle({
       title: this.data.tarbar[this.data.active].item
     })
