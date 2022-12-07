@@ -12,7 +12,6 @@ Page({
         totalPrice2: 8.6231
     },
     updateCart() {
-        console.log("assa")
         this.setData({ carts: wx.getStorageSync('carts') })
     },
 
