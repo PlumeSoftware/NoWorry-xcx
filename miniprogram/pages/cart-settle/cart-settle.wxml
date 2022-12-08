@@ -1,4 +1,64 @@
 <view class="page">
+  <view>
+    <view class="title">
+      <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
+      <view class="title-word">联系方式</view>
+    </view>
+    <view class="info-list">
+      <!-- <view class="info-item">
+        <view>头像</view>
+        <view></view>
+      </view> -->
+      <view class="info-item">
+        <view>姓名</view>
+        <view>
+          <input model:value="{{userName}}" />
+        </view>
+      </view>
+      <view class="info-item">
+        <view>手机号</view>
+        <view>
+          <input model:value="{{phone}}" />
+        </view>
+      </view>
+      <view class="info-item">
+        <view>邮箱号</view>
+        <view>
+          <input model:value="{{email}}" />
+        </view>
+      </view>
+      <view class="info-item">
+        <view>所在城市</view>
+        <view>
+          <input model:value="{{handSignCity}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view>
+    <view class="title">
+      <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
+      <view class="title-word">支付方式</view>
+    </view>
+    <view class="opea-list">
+      <view class="opea-item" bind:tap="toOrder">
+        <view>客服辅助支付</view>
+        <van-icon size="15px" name="/static/profile/return.png" />
+      </view>
+    </view>
+  </view>
+    <view>
+    <view class="title">
+      <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
+      <view class="title-word">支付方式</view>
+    </view>
+    <view class="opea-list">
+      <view class="opea-item" bind:tap="toOrder">
+        <view>客服辅助支付</view>
+        <van-icon size="15px" name="/static/profile/return.png" />
+      </view>
+    </view>
+  </view>
   <view class="commodity-list">
     <view class="commodity-item" wx:for="{{carts}}" wx:key="index">
       <view class="item-image">
