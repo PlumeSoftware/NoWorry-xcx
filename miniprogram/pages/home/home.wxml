@@ -1,3 +1,61 @@
 <view class="page">
-  div -> view
+  <view>
+    <van-image width="100vw" height="279px" src="{{coverUrlList[coverIndex]}}" />
+  </view>
+  <view class="body">
+    <view class="visum">
+      <view class="title">热门推荐</view>
+      <view class="photo">
+        <van-image width="20vw" height="100px" src="/static/home/French.png"/>
+        <van-image  src="/static/home/Spain.png"/>
+        <van-image  src="/static/home/unknown.png"/>
+      </view>
+    </view>
+    <view class="about">
+      <view class="title">关于我们</view>
+      <view class="info">
+        NoWorry 是全英国第一家本地中介签证服务平台，有着一流的程序员团队和服务团队。NoWorry研发的专属签证加急刷位系统的安全性和效率绝对一流，领跑所有程序……
+      </view>
+      <view class="detail">
+        <view class="info">查看详情</view>
+        <van-icon class="return" name="/static/home/return.png"/>
+      </view>
+      <van-image class="banner" src="/static/home/banner.png"/>
+    </view>
+    <view class="service">
+      <view class="title">服务流程</view>
+      <view class="process">
+        <van-image class="img" src="/static/home/process.png"/>
+      </view>
+    </view>
+    <view class="about">
+      <view class="title">联系我们</view>
+      <view class="tip-start">长按二维码添加客服微信或输入下方微信号手动添加</view>
+    </view>
+    <view class="contact">
+      <view class="cuslist">
+        <view class="cus-qr">
+          <van-image width="120px" height="120px" src="/static/profile/cus1.png" />
+        </view>
+        <view class="cus-qr">
+          <van-image width="120px" height="120px" src="/static/home/cus3.png" />
+        </view>
+      </view>
+      <view class="contact-tip">
+        <view class="tip-item">
+          <view>客服1号微信：</view>
+          <view>Noworry1011</view>
+        </view>
+        <view class="tip-item">
+          <view>客服2号微信：</view>
+          <view>Noworry1011-2</view>
+        </view>
+        <view class="tip-item">
+          <view>联系邮箱:</view>
+          <view>noworry.official@outlook.com</view>
+        </view>
+      </view>
+    </view>
+    <view class="copyright">©copyright for NoWorry 2022</view>
+  </view>
 </view>
