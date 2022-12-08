@@ -1,7 +1,9 @@
 <!-- index.wxml -->
 <view class="container">
   <van-tabs class="show" active="{{ active }}" animated>
-    <van-tab>内容 1</van-tab>
+    <van-tab>
+      <home id="home"></home>
+    </van-tab>
     <van-tab>
       <visa></visa>
     </van-tab>

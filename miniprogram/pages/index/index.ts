@@ -14,9 +14,17 @@ Page({
     page: [false, false, false, false]
   },
 
+  onLoad(){
+    this.selectComponent('#home').start()
+  },
   onChange(event: any) {
     // event.detail 的值为当前选中项的索引
     this.setData({ active: event.detail });
+
+    if(event.detail==0){
+      this.selectComponent('#cart').setAllSelect()
+      this.selectComponent('#cart').culTotal()
+    }
 
     if(event.detail==2){
       this.selectComponent('#cart').updateCart()

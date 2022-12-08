@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "home":"../home/home",
     "user":"../user/user",
     "visa":"../visa/visa",
     "cart":"../cart/cart"
