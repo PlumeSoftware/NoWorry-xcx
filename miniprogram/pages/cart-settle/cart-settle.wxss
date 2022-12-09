@@ -1,17 +1,17 @@
 .page {
-    height: 100vh;
+    min-height: 100vh;
     background-color: #F8F6EE;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-bottom: 5vh;
+    padding-bottom: 30vw;
 }
 
 .title {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 90vw;
     margin: 3vh 1vw 1.5vh 0;
 }
 
@@ -66,7 +66,7 @@
     margin: 1.9vh 0;
     padding: 6rpx 44rpx;
     width: 80vw;
-    height: 6.4vh;
+    height: 6vh;
     border-radius: 5px;
     background-color: #FFFFFF;
     display: flex;
@@ -80,7 +80,6 @@
     line-height: 20px;
     letter-spacing: 0em;
     text-align: center;
-
 }
 
 .commodity-list {
@@ -120,11 +119,11 @@
 
 .commodity-list .commodity-item {
     background-color: #fff;
-    width: 80vw;
+    width: 90vw;
     height: 21.4vw;
     margin: 0 auto;
     margin-bottom: 2.5vw;
-    padding: 6px 1px;
+    padding: 6px 2px;
     border-radius: 6px;
     display: flex;
     justify-content: space-around;
@@ -178,4 +177,98 @@
     font-weight: 500;
     line-height: 24px;
     text-align: right;
+}
+
+.slider {
+    width: 85vw;
+    margin: 0 auto;
+    border-top: 1rpx dashed #9C9A9A;
+}
+
+.protocol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4vh;
+}
+
+.protocol .protocol-text {
+    padding-left: 20rpx;
+    font-size: 12px;
+    font-weight: 100;
+    line-height: 14px;
+    text-align: left;
+}
+
+.subtotal {
+    position: fixed;
+    bottom: 0vh;
+    background-color: #F9F9F9;
+    height: 24.5vw;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.subtotal .subtotal-number {
+    display: flex;
+    width: 80vw;
+    margin: 0 auto;
+    padding: 0 3vw;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.price-all {
+    text-align: left;
+}
+
+.subtotal .subtotal-number .price-origin {
+    width: 100px;
+}
+
+.subtotal .subtotal-number .price-origin span:nth-child(1) {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+
+.subtotal .subtotal-number .price-origin span:nth-child(2) {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 31px;
+}
+
+.subtotal .subtotal-number .price-conver {
+    font-size: 10px;
+    font-weight: 300;
+    width: 120px;
+    line-height: 14px;
+    text-align: left;
+    color: #1614158A;
+}
+
+.subtotal .settle .button {
+    height: 41px;
+    width: 132px;
+    border: none;
+    border-radius: 7px;
+
+
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 24px;
+    line-height: 41px;
+    color: #FFF;
+}
+
+.allow{
+    background-color: #F2843B;
+    box-shadow: 0px 4px 4px 0px #F2843B40;
+}
+.unallow{
+    background-color: #D3D3D3;
 }
