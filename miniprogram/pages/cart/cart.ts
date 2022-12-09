@@ -70,6 +70,6 @@ Page({
         setTimeout(() => {
             wx.navigateTo({ url: "/pages/cart-settle/cart-settle" })
 
-        }, 750)
+        }, 800)
     }
 });

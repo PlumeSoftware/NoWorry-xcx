@@ -30,7 +30,7 @@
       <view class="info-item">
         <view>所在城市</view>
         <view>
-          <input model:value="{{handSignCity}}" />
+          <input model:value="{{liveCity}}" />
         </view>
       </view>
     </view>
@@ -41,22 +41,16 @@
       <view class="title-word">支付方式</view>
     </view>
     <view class="opea-list">
-      <view class="opea-item" bind:tap="toOrder">
+      <view class="opea-item">
         <view>客服辅助支付</view>
         <van-icon size="15px" name="/static/profile/return.png" />
       </view>
     </view>
   </view>
-    <view>
+  <view>
     <view class="title">
       <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
-      <view class="title-word">支付方式</view>
-    </view>
-    <view class="opea-list">
-      <view class="opea-item" bind:tap="toOrder">
-        <view>客服辅助支付</view>
-        <van-icon size="15px" name="/static/profile/return.png" />
-      </view>
+      <view class="title-word">订单详情</view>
     </view>
   </view>
   <view class="commodity-list">
@@ -72,6 +66,26 @@
         <view class="item-pm">
           <view class="item-price">£{{item.price}}</view>
         </view>
+      </view>
+    </view>
+  </view>
+  <view class="slider"></view>
+  <view class="protocol">
+    <van-icon bind:tap="agreeChange" wx:if="{{agree}}" size="16" name="/static/cart/agree-protocol.png"></van-icon>
+    <van-icon bind:tap="agreeChange" wx:else size="16" name="/static/cart/disagree-protocol.png"></van-icon>
+    <view class="protocol-text">已同意《No Worry用户协议条款》和《隐私条款》</view>
+  </view>
+  <view class="subtotal">
+    <view class="subtotal-number">
+      <view class="price-all">
+        <view class="price-origin">
+          <span>合计：</span>
+          <span>£{{totalPrice}}</span>
+        </view>
+        <view class="price-conver">GBP {{totalPrice}}≈CNY {{totalPrice2}}</view>
+      </view>
+      <view class="settle">
+        <button class="button {{agree&&userName&&phone&&email&&liveCity?'':'un'}}allow" bind:tap="submitOrder">提交订单</button>
       </view>
     </view>
   </view>
