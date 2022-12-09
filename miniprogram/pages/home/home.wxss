@@ -1,4 +1,4 @@
-.page {
+.page-home {
     background-color: #F8F6EE;
     display: flex;
     flex-direction: column;

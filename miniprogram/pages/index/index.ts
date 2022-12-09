@@ -14,27 +14,32 @@ Page({
     page: [false, false, false, false]
   },
 
-  onLoad(){
-    this.selectComponent('#home').start()
+  onLoad() {
+    this.selectComponent('#home').start();
   },
   onChange(event: any) {
     // event.detail 的值为当前选中项的索引
     this.setData({ active: event.detail });
 
-    if(event.detail==0){
-      this.selectComponent('#cart').setAllSelect()
-      this.selectComponent('#cart').culTotal()
+    switch (event.detail) {
+      case 0: {
+        this.selectComponent('#cart').setAllSelect();
+        this.selectComponent('#cart').culTotal();
+        break;
+      }
+      case 2: {
+        this.selectComponent('#cart').updateCart();
+        this.selectComponent('#cart').setAllSelect();
+        this.selectComponent('#cart').culTotal();
+        break;
+      }
+      case 3: {
+        this.selectComponent('#user').login();
+        this.selectComponent('#user').setByLocal()
+        break;
+      }
     }
 
-    if(event.detail==2){
-      this.selectComponent('#cart').updateCart()
-      this.selectComponent('#cart').setAllSelect()
-      this.selectComponent('#cart').culTotal()
-    }
-
-    if(event.detail==3){
-      this.selectComponent('#user').login()
-    }
 
     wx.setNavigationBarTitle({
       title: this.data.tarbar[this.data.active].item
