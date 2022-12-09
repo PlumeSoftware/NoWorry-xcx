@@ -32,15 +32,16 @@ Page({
     },
     addCart() {
         this.setData({ showToast: true })
+        this.setData({ commodityId: Number((Math.random()*100).toFixed(0)) })
+
         const carts = wx.getStorageSync('carts') || [];
 
-        const targerIndex = carts.findIndex((item: any) => item.commoditySkuId == this.data.commoditySkuId)
+        const targerIndex = carts.findIndex((item: any) => item.commodityId == this.data.commodityId)
         if (targerIndex != -1) {
             carts[targerIndex].quantity++;
         } else {
             carts.push({
                 commodityId: this.data.commodityId,
-                commoditySkuId: this.data.commoditySkuId,
                 commodityName: this.data.commodityName,
                 commodityBrief: this.data.commodityBrief,
                 price: this.data.price,
