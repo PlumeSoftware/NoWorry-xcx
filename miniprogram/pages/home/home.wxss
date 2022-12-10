@@ -5,27 +5,137 @@
     align-items: center;
     text-align: center;
     height: auto;
+    padding-bottom: 10vh;
 }
-.title {
-    font-size: 17px;
+
+.page-home .title {
+    font-size: 14px;
     font-weight: 600;
     line-height: 24px;
     text-align: left;
-    margin: 15px 0;
 }
 
-.body{
-    margin: 0px 5.33vw;
+.page-home .body {
+    margin: 34px 5.33vw;
 }
 
-.contact {
+.page-home .move {
+    height: 71vw;
+    width: 89vw;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    margin-top: 3.7vw;
+}
+
+.page-home .move::-webkit-scrollbar {
+    display: none;
+}
+
+.page-home .visa-list {
+    display: flex;
+    width: 180vw;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    background-color: #F8F6EE;
+}
+
+.page-home .visa-list .visa-item {
+    display: block;
+    height: 51vw;
+    width: 34vw;
+    margin: 0 10vw 0 0;
+    background-color: #FFF;
+    border-radius: 6px;
+    overflow: hidden;
+    filter: drop-shadow(3px 4px 10px rgba(111, 87, 71, 0.1));
+}
+
+.page-home .visa-list .visa-item:nth-last-child(1) {
+    margin-right: 0;
+}
+
+.page-home .visa-list .visa-item .item-image {
+    height: 35vw;
+    overflow: hidden;
+}
+
+.page-home .visa-list .visa-item .info {
+    margin: 6rpx 15rpx;
+}
+
+.page-home .visa-list .visa-item .info .title {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 25px;
+    text-align: left;
+}
+
+.page-home .visa-list .visa-item .info .price {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: right;
+    color: #F2843B;
+}
+
+.page-home .about {
+    margin-bottom: 18.9vw;
+}
+
+.page-home .about .info {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    color: #161415;
+    margin-top: 3.7vw;
+    margin-bottom: 3.2vw;
+    text-align: left;
+}
+
+.page-home .about .detail {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2.6vw;
+    justify-content: flex-end;
+}
+
+.page-home .about .detail .detail-info {
+    color: #F2843B;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    margin-right: 6px;
+}
+
+.page-home .background {
+    background-color: #FEFFFB;
+    border-radius: 6px;
+    height: 117px;
+    width: 335px;
+    margin-top: -100px;
+    margin-bottom: 14.4vw;
+}
+
+.page-home .tip-start {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    text-align: left;
+    color: #161415;
+    margin-bottom: 7.7vw;
+    margin-top: 15px;
+}
+
+.page-home .contact {
     width: 80vw;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
 }
 
-.contact .contact-text {
+.page-home .contact .contact-text {
     font-size: 17px;
     font-weight: 600;
     line-height: 24px;
@@ -33,13 +143,13 @@
     margin: 100rpx auto;
 }
 
-.contact .cuslist {
+.page-home .contact .cuslist {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-.contact .cuslist .cus-qr {
+.page-home .contact .cuslist .cus-qr {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -49,34 +159,29 @@
     border-radius: 12px;
 }
 
-.contact .contact-tip {
-    width: 80vw;
-    font-weight: 200;
-    line-height: 14px;
+.page-home .contact .contact-tip {
+    font-weight: 400;
+    line-height: 17px;
     text-align: center;
-    color: #797532;
+    color: #161415;
     font-size: 12px;
-    margin-bottom: 120rpx;
+    margin: 4.5vw 0 0 0;
 }
 
-.contact .contact-tip .tip-start {
-    margin: 3vh auto;
-    font-size: 10px;
-}
-
-.contact .contact-tip .tip-item {
-    width: 70vw;
+.page-home .contact .contact-tip .tip-item {
+    width: 60vw;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.copyright {
+.page-home .copyright {
     font-size: 10px;
     font-weight: 100;
     line-height: 14px;
     text-align: left;
     color: #797532;
-    padding: 1.9vw 9.1vw
+    padding: 1.9vw 3.73vw;
+    margin-top: 20px;
 }

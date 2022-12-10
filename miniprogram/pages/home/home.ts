@@ -11,7 +11,25 @@ Page({
             "/static/home/account3.png",
             "/static/home/account4.png"
         ],
-        coverIndex: 0
+        coverIndex: 0,
+
+        VisaList:[
+            {
+                commodityName:"法国签证刷签代办",
+                commodityPrice:128,
+                commodityCover:"/static/home/French.png"
+            },
+            {
+                commodityName:"西班牙签证刷签代办",
+                commodityPrice:128,
+                commodityCover:"/static/home/Spain.png"
+            },
+            {
+                commodityName:"美国签证刷签代办",
+                commodityPrice:88,
+                commodityCover:"/static/home/USA.png"
+            },
+        ]
     },
     //事件 显示时触发
 
