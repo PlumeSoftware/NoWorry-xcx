@@ -4,6 +4,7 @@
     "pages/user/user",
     "pages/visa/visa",
     "pages/cart-settle/cart-settle",
+    "pages/cart-settle-success/cart-settle-success",
     "pages/user-order/user-order",
     "pages/user-order-detail/user-order-detail",
     "pages/user-cop/user-cop",
