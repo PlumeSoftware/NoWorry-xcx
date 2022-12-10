@@ -20,24 +20,14 @@
         <view style="background: #F8F6EE;">
           <view class="sup-text">Support</view>
           <view class="sup-detail">
-            <view class="sup-detail-item">
-              <view class="item-title">办理须知</view>
-              <view class="item-rule">请务必告知我们您的专业或工作领域，特别是计算机相关专业。</view>
-              <view class="item-rule">请务必告知我们您的专业或工作领域，特别是计算机相关专业。</view>
-              <view class="item-rule">请务必告知我们您的专业或工作领域，特别是计算机相关专业。</view>
-              <view class="item-rule">请务必告知我们您的专业或工作领域，特别是计算机相关专业。</view>
-            </view>
-            <view class="sup-detail-item">
-              <view class="item-title">所需材料</view>
-              <view class="item-rule">请务必告知我们您的专业或工作领域，特别是计算机相关专业。</view>
-              <view class="item-rule">请务必告知我们您的专业或工作领域，特别是计算机相关专业。</view>
-              <view class="item-rule">请务必告知我们您的专业或工作领域，特别是计算机相关专业。</view>
-              <view class="item-rule">请务必告知我们您的专业或工作领域，特别是计算机相关专业。</view>
-              <view class="item-rule">请务必告知我们您的专业或工作领域，特别是计算机相关专业。</view>
-            </view>
-            <view class="sup-detail-item">
-              <view class="item-title">办理须知</view>
-              <view class="item-rule">请务必告知我们您的专业或工作领域，特别是计算机相关专业。</view>
+            <view class="sup-detail-item" wx:for="{{tips}}">
+              <view class="item-title">
+                <van-icon class="title-img" size="11px" name="/static/profile/line.png" />
+                {{item.title}}
+              </view>
+              <view class="item-rule" wx:for="{{item.children}}" wx:key="index" wx:for-item="icontext" wx:for-index="i">
+                {{i+1}}.{{icontext}}
+              </view>
             </view>
           </view>
         </view>

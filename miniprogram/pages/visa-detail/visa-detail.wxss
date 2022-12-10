@@ -73,10 +73,13 @@
     text-align: left;
     margin: 10vw 10vw 16rpx 10vw;
     color: #797532;
+    padding-bottom:15vh ;
 }
 
-
 .item-title {
+    display: flex;
+    flex-direction: row;
+    margin: 2.5vw 0 1vw -3vw;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
