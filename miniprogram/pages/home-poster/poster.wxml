@@ -1,0 +1,12 @@
+<view class="page-poster">
+  <view class="body">
+    <view class="title">
+      <van-icon  class="title-img" size="11px" name="/static/home/line.png" />
+      <view class"info">申根签优惠活动详情</view>
+    </view>
+    <view class="info">
+      NoWorry 于11月推出申根签优惠，在此期间和小伙伴组队5人以上办理申根签，即可每人优惠5磅，组队刷签更是每人优惠10磅！
+    </view>
+  </view>
+  <van-image width="100vw" height="673px" src="/static/home/poster1.png"/>
+</view>
