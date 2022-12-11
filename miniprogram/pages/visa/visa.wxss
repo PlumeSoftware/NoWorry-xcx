@@ -1,4 +1,4 @@
-.page {
+.page-visa {
     min-height: 100vh;
     background-color: #F8F6EE;
     display: flex;
