@@ -4,6 +4,9 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
+import { Visa } from "miniprogram/entity/visa";
+import * as http from "../../utils/http"
+
 Page({
     data: {
         carts: [] as any,
@@ -13,9 +16,25 @@ Page({
     },
 
 
-    updateCart() {
-        console.log("assa")
-        this.setData({ carts: wx.getStorageSync('carts') })
+    async updateCart() {
+        const carts = wx.getStorageSync('carts')
+        console.log(carts)
+        for (let i = 0; i < carts.length; i++) {
+            await new Promise<void>((r) => {
+                wx.request({
+                    url: http.BASE_URL + `/visa/detail/${carts[i].commodityId}`,
+                    success: (res) => {
+                        const visa = res.data as Visa
+                        carts[i].picLink = visa.picLink
+                        carts[i].currentPrice = visa.currentPrice
+                        r()
+                    },
+                    fail: () => r()
+                })
+            })
+        }
+        this.setData({ carts: carts })
+        this.culTotal()
     },
 
     checkBtn(e: any) {
@@ -54,8 +73,9 @@ Page({
         let total = 0;
         const carts = this.data.carts;
         carts.forEach((item: any) => {
-            total += item.select ? item.price * item.quantity : 0
+            total += item.select ? item.currentPrice * item.quantity : 0
         })
+        console.log("cul", carts)
         const total2 = Number((8.6231 * total).toFixed(2));
         this.setData({ totalPrice: total, totalPrice2: total2 })
         wx.setStorageSync('carts', carts)
@@ -69,7 +89,6 @@ Page({
         })
         setTimeout(() => {
             wx.navigateTo({ url: "/pages/cart-settle/cart-settle" })
-
         }, 800)
     }
 });
