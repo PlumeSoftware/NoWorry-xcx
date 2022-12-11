@@ -1,12 +1,12 @@
 <view class="page">
-  <view class="bg" style="background-image: url('/static/visa/visa-usa.png');background-position-y:{{moveY}}rpx">
+  <view class="bg" style="background-image: url('{{commodity.picLink}}');background-position-y:{{moveY}}rpx">
     <movable-area style="min-height:100vh;width:100vw;margin-top:200rpx">
       <movable-view class="mova" y="290" direction="vertical" bindchange="move">
         <view>
           <view>
             <view class="title">
-              <view>美国签证顺位</view>
-              <view>£88</view>
+              <view>{{commodity.commodityName}}</view>
+              <view>£{{commodity.currentPrice}}</view>
             </view>
             <view class="describe">顺位预约，包含材料</view>
           </view>
@@ -20,7 +20,7 @@
         <view style="background: #F8F6EE;">
           <view class="sup-text">Support</view>
           <view class="sup-detail">
-            <view class="sup-detail-item" wx:for="{{tips}}">
+            <view class="sup-detail-item" wx:for="{{commodity.tips}}">
               <view class="item-title">
                 <van-icon class="title-img" size="11px" name="/static/profile/line.png" />
                 {{item.title}}
