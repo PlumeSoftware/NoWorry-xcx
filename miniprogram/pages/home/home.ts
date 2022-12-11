@@ -29,12 +29,23 @@ Page({
                 commodityPrice:88,
                 commodityCover:"/static/home/USA.png"
             },
+            {
+                commodityName:"美国签证刷签代办",
+                commodityPrice:88,
+                commodityCover:"/static/home/USA.png"
+            },
+            {
+                commodityName:"美国签证刷签代办",
+                commodityPrice:88,
+                commodityCover:"/static/home/USA.png"
+            },
         ]
     },
     //事件 显示时触发
 
     //页面渲染完毕
     start() {
+        wx.pageScrollTo({})
         console.log("aaa")
         setInterval(() => {
             this.setData({ coverIndex: (this.data.coverIndex + 1) % this.data.coverUrlList.length })
