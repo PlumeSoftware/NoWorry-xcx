@@ -1,10 +1,13 @@
-export class Visa {
+export interface Visa {
     commodityId: number
-    commoditySkuId: number
+    commodityBrief: string
     commodityName: string
-    constructor(commodityId: number, commoditySkuId: number, commodityName: string) {
-        this.commodityId = commodityId
-        this.commoditySkuId = commoditySkuId
-        this.commodityName = commodityName
-    }
+    commodityStatus: number
+    commodityType: number
+    currentPrice: number
+    initialQuantity: number
+    originPrice: number
+    picLink: string
+    remainQuantity: number
+    tips: Array<Array<string>>
 }

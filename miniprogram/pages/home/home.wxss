@@ -16,7 +16,7 @@
 }
 
 .page-home .body {
-    margin: 34px 5.33vw;
+    margin: 3px 5.33vw;
 }
 
 .page-home .move {
@@ -33,7 +33,6 @@
 
 .page-home .visa-list {
     display: flex;
-    width: 180vw;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
@@ -43,7 +42,7 @@
 .page-home .visa-list .visa-item {
     display: block;
     height: 51vw;
-    width: 34vw;
+    width: 35.9vw;
     margin: 0 10vw 0 0;
     background-color: #FFF;
     border-radius: 6px;

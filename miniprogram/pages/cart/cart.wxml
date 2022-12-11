@@ -9,9 +9,9 @@
         <van-icon size="20px" name="/static/cart/select-cart-none.png" />
       </view>
       <view class="item-image">
-        <van-image width="90px" height="90px" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+        <van-image width="90px" height="90px" src="{{item.picLink}}" />
       </view>
-      <view>
+      <view >
         <view class="item-info">
           <view>{{item.commodityName}}</view>
           <view>{{item.commodityBrief}}</view>
@@ -22,7 +22,7 @@
             <view>{{item.quantity}}</view>
             <van-icon size="16px" bind:tap="add" data-index="{{index}}" data-add="{{1}}" name="/static/cart/add.png" />
           </view>
-          <view class="item-price">£{{item.price}}</view>
+          <view class="item-price">£{{item.currentPrice}}</view>
         </view>
       </view>
     </view>

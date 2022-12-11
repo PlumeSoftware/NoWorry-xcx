@@ -72,7 +72,8 @@
     overflow: hidden;
 }
 
-.cart-list .cart-item .item-info {
+.cart-list .cart-item .item-info{
+    width: 40vw;
     margin-bottom: 20px;
 }
 
