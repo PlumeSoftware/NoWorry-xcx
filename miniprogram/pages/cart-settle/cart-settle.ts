@@ -25,7 +25,7 @@ Page({
         const carts = wx.getStorageSync('carts');
         for (let i = 0; i < carts.length; i++) {
             if (carts[i].select) {
-                total += carts[i].price * carts[i].quantity
+                total += carts[i].currentPrice * carts[i].quantity
             } else {
                 carts.splice(i--, 1)
             }

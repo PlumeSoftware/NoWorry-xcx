@@ -64,7 +64,7 @@
           <view>{{item.commodityBrief}}</view>
         </view>
         <view class="item-pm">
-          <view class="item-price">£{{item.price}}</view>
+          <view class="item-price">£{{item.currentPrice}}</view>
         </view>
       </view>
     </view>
