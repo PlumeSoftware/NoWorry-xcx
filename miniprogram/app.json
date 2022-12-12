@@ -12,7 +12,7 @@
     "pages/user-qaa/user-qaa",
     "pages/user-set/user-set",
     "pages/visa-detail/visa-detail",
-    "pages/home-poster/poster",
+    "pages/home-poster/poster"
   ],
   "window": {
     "backgroundTextStyle": "light",
