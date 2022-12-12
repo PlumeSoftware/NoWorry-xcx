@@ -10,40 +10,59 @@ Component({
         activeVisa: 0,
         show: false,
         visaList: [
-            // {
-            //     commodityName: "法国签证刷签",
-            //     currentPrice: 88,
-            //     commodityCover: "http://122.9.107.17/static/visa/visa-fra.png"
-            // },
-            // {
-            //     commodityName: "法国签证刷签代办",
-            //     currentPrice: 128,
-            //     commodityCover: "http://122.9.107.17/static/visa/visa-fra.png"
-            // },
-            // {
-            //     commodityName: "美国签证刷签",
-            //     currentPrice: 88,
-            //     picLink: "http://122.9.107.17/static/visa/visa-usa.png"
-            // },
+            [
+                // {
+                //     commodityName: "法国签证刷签",
+                //     currentPrice: 88,
+                //     commodityCover: "http://122.9.107.17/static/visa/visa-fra.png"
+                // },
+                // {
+                //     commodityName: "法国签证刷签代办",
+                //     currentPrice: 128,
+                //     commodityCover: "http://122.9.107.17/static/visa/visa-fra.png"
+                // },
+                // {
+                //     commodityName: "美国签证刷签",
+                //     currentPrice: 88,
+                //     picLink: "http://122.9.107.17/static/visa/visa-usa.png"
+                // },
+            ]
         ]
     },
 
     methods: {
-        toDetail(e:any) {
+        toDetail(e: any) {
             const commodityId = e.currentTarget.dataset.commodityid
-            console.log( e.currentTarget)
+            console.log(e.currentTarget)
             wx.navigateTo({ url: '/pages/visa-detail/visa-detail' + `?commodityId=${commodityId}` })
         },
+        async getData(id: number | 'hot') {
+            return new Promise((resolve) => {
+                wx.request({
+                    url: http.BASE_URL + `/visa/group/${id}`,
+                    success: (res) => {
+                        console.log(res.data)
+                        resolve(res.data)
+                    },
+                    fail: () => {
+                        resolve([])
+                    }
+                })
+            })
+
+        }
 
     },
     lifetimes: {
-        ready() {
-            wx.request({
-                url: http.BASE_URL + `/visa/group/11`,
-                success: (res) => {
-                    this.setData({ visaList: res.data })
-                }
-            })
+        async ready() {
+            const visaList = []
+            visaList.push(await this.getData('hot'))
+            visaList.push(await this.getData(11))
+            visaList.push(await this.getData(12))
+            visaList.push(await this.getData(13))
+            visaList.push(await this.getData(14))
+
+            this.setData({ visaList: visaList })
             //修复vant-tab渲染延时错误
             // @ts-ignore
             setTimeout(() => { this.setData({ show: true }) }, 2500)

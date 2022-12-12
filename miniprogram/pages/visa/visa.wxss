@@ -56,6 +56,7 @@ nav-class {
     flex-wrap: wrap;
     background-color: #F8F6EE;
     margin: 0rpx 24rpx;
+    padding-bottom: 15vh;
 }
 
 .visa-group-list .visa-list .visa-item {

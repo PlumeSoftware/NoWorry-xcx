@@ -3,7 +3,7 @@
   <van-tabs class="visa-group-list" wx:if="{{show}}" color="#797532" title-inactive-color="#79753270" title-active-color="#797532" active="{{activeVisa}}">
     <van-tab title="热门">
       <view class="visa-list">
-        <view class="visa-item" wx:for="{{visaList}}" wx:key="index" bind:tap="toDetail" data-commodityid="{{item.commodityId}}">
+        <view class="visa-item" wx:for="{{visaList[0]}}" wx:key="index" bind:tap="toDetail" data-commodityid="{{item.commodityId}}">
           <view class="item-image">
             <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="60vw" src="{{item.picLink}}" />
           </view>
@@ -14,9 +14,57 @@
         </view>
       </view>
     </van-tab>
-    <van-tab title="申根">aaa</van-tab>
-    <van-tab title="北欧">aaa</van-tab>
-    <van-tab title="美国">aaa</van-tab>
-    <van-tab title="亚洲">aaa</van-tab>
+    <van-tab title="申根">
+      <view class="visa-list">
+        <view class="visa-item" wx:for="{{visaList[1]}}" wx:key="index" bind:tap="toDetail" data-commodityid="{{item.commodityId}}">
+          <view class="item-image">
+            <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="60vw" src="{{item.picLink}}" />
+          </view>
+          <view class="info">
+            <view class="title">{{item.commodityName}}</view>
+            <view class="price">£{{item.currentPrice}}</view>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="北欧">
+      <view class="visa-list">
+        <view class="visa-item" wx:for="{{visaList[2]}}" wx:key="index" bind:tap="toDetail" data-commodityid="{{item.commodityId}}">
+          <view class="item-image">
+            <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="60vw" src="{{item.picLink}}" />
+          </view>
+          <view class="info">
+            <view class="title">{{item.commodityName}}</view>
+            <view class="price">£{{item.currentPrice}}</view>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="美国">
+      <view class="visa-list">
+        <view class="visa-item" wx:for="{{visaList[3]}}" wx:key="index" bind:tap="toDetail" data-commodityid="{{item.commodityId}}">
+          <view class="item-image">
+            <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="60vw" src="{{item.picLink}}" />
+          </view>
+          <view class="info">
+            <view class="title">{{item.commodityName}}</view>
+            <view class="price">£{{item.currentPrice}}</view>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="亚洲">
+      <view class="visa-list">
+        <view class="visa-item" wx:for="{{visaList[4]}}" wx:key="index" bind:tap="toDetail" data-commodityid="{{item.commodityId}}">
+          <view class="item-image">
+            <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="60vw" src="{{item.picLink}}" />
+          </view>
+          <view class="info">
+            <view class="title">{{item.commodityName}}</view>
+            <view class="price">£{{item.currentPrice}}</view>
+          </view>
+        </view>
+      </view>
+    </van-tab>
   </van-tabs>
 </view>
