@@ -5,5 +5,38 @@
     align-items: center;
     text-align: center;
     height: auto;
-    padding-bottom: 10vh;
+    padding-top: 8vw;
+}
+
+.page-poster .body {
+    width: 90vw;
+    height: auto;
+    margin-bottom: 5.33vw;
+}
+
+.page-poster .title {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2.4vw;
+}
+
+.page-poster .title .title-img {
+    margin-left: -5px;
+}
+
+.page-poster .title .title-info {
+    text-align: left;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #161415;
+}
+
+.page-poster .info {
+    text-align: left;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    color: #161415;
+    padding-left: 8px;
 }
