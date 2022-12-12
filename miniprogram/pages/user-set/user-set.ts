@@ -12,7 +12,17 @@ Page({
         handSignCity: wx.getStorageSync("userInfo").handSignCity
     },
 
+    toWrite() {
+        wx.navigateTo({url:'/pages/info-reg/info-reg'})
+    },
 
+    toPrivacy() {
+        wx.navigateTo({url:'/pages/user-set-privacy/privacy'})
+    },
+
+    toNotice() {
+        wx.navigateTo({url:'/pages/user-set-notice/notice'})
+    },
 
     save() {
         const _this = this
