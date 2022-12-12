@@ -10,21 +10,21 @@ Component({
         activeVisa: 0,
         show: false,
         visaList: [
-            {
-                commodityName: "法国签证刷签",
-                currentPrice: 88,
-                commodityCover: "/static/visa/visa-fra.png"
-            },
-            {
-                commodityName: "法国签证刷签代办",
-                currentPrice: 128,
-                commodityCover: "/static/visa/visa-fra.png"
-            },
-            {
-                commodityName: "美国签证刷签",
-                currentPrice: 88,
-                picLink: "/static/visa/visa-usa.png"
-            },
+            // {
+            //     commodityName: "法国签证刷签",
+            //     currentPrice: 88,
+            //     commodityCover: "http://122.9.107.17/static/visa/visa-fra.png"
+            // },
+            // {
+            //     commodityName: "法国签证刷签代办",
+            //     currentPrice: 128,
+            //     commodityCover: "http://122.9.107.17/static/visa/visa-fra.png"
+            // },
+            // {
+            //     commodityName: "美国签证刷签",
+            //     currentPrice: 88,
+            //     picLink: "http://122.9.107.17/static/visa/visa-usa.png"
+            // },
         ]
     },
 

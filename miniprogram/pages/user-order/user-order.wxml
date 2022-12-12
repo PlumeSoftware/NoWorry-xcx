@@ -17,7 +17,7 @@
           </view>
         </scroll-view>
         <view class="empty" wx:else>
-          <van-image width="198" height="222" src="/static/profile/Frame.png" />
+          <van-image width="198" height="222" src="http://122.9.107.17/static/profile/Frame.png" />
           <view>
             <view class="empty-text">您还没有相关的订单</view>
             <view class="empty-describe">

@@ -7,10 +7,10 @@ import * as http from "../../utils/http"
 Page({
     data: {
         coverUrlList: [
-            "/static/home/account1.png",
-            "/static/home/account2.png",
-            "/static/home/account3.png",
-            "/static/home/account4.png"
+            "http://122.9.107.17/static/home/account1.png",
+            "http://122.9.107.17/static/home/account2.png",
+            "http://122.9.107.17/static/home/account3.png",
+            "http://122.9.107.17/static/home/account4.png"
         ],
         coverIndex: 0,
 
@@ -19,31 +19,31 @@ Page({
                 commodityId:1,
                 commodityName:"法国签证刷签代办",
                 commodityPrice:128,
-                commodityCover:"/static/home/French.png"
+                commodityCover:"http://122.9.107.17/static/home/French.png"
             },
             {
                 commodityId:1,
                 commodityName:"西班牙签证刷签代办",
                 commodityPrice:128,
-                commodityCover:"/static/home/Spain.png"
+                commodityCover:"http://122.9.107.17/static/home/spain.png"
             },
             {
                 commodityId:1,
                 commodityName:"美国签证刷签代办",
                 commodityPrice:88,
-                commodityCover:"/static/home/USA.png"
+                commodityCover:"http://122.9.107.17/static/home/USA.png"
             },
             {
                 commodityId:1,
                 commodityName:"美国签证刷签代办",
                 commodityPrice:88,
-                commodityCover:"/static/home/USA.png"
+                commodityCover:"http://122.9.107.17/static/home/USA.png"
             },
             {
                 commodityId:1,
                 commodityName:"美国签证刷签代办",
                 commodityPrice:88,
-                commodityCover:"/static/home/USA.png"
+                commodityCover:"http://122.9.107.17/static/home/USA.png"
             },
         ]
 
