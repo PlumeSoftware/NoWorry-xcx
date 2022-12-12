@@ -6,20 +6,17 @@
 
 
 Page({
-    checkBtn(e: any) {
-        const index = e.currentTarget.dataset.index
-        const carts = this.data.carts;
-        carts[index].select = !carts[index].select
+    data: {
+        pageIndex: 0
+    },
 
-        this.setAllSelect()
-    },
-    setAllSelect() {
-        const carts = this.data.carts;
-        if (carts.findIndex((item: any) => !item.select) == -1) {
-            this.setData({ allselect: true })
-        } else {
-            this.setData({ allselect: false })
+    change() {
+        console.log("eee")
+        if (this.data.pageIndex < 4) {
+            this.setData({
+                pageIndex: this.data.pageIndex + 1
+            })
         }
-        this.setData({ carts: carts })
-    },
+    }
+
 });
