@@ -42,13 +42,13 @@
       <view class="title-word">系统</view>
     </view>
       <view class="info-list" bind:tap:>
-        <view class="info-item">
+        <view class="info-item" bind:tap="toNotice">
           <view>用户须知</view>
           <view>
             <van-icon size="15px" name="/static/profile/return.png" />
           </view>
         </view>
-        <view class="info-item">
+        <view class="info-item" bind:tap="toPrivacy">
           <view>隐私协议</view>
           <view>
             <van-icon size="15px" name="/static/profile/return.png" />
@@ -56,4 +56,7 @@
         </view>
       </view>
   </view>
+
+  <view class="save-btn" bind:tap="toWrite">表单填写</view>
+
 </view>
