@@ -1,0 +1,61 @@
+<view class="page-info-reg">
+  <view class="body">
+    <view class="registration">
+      <view class="title">申请人申根签信息登记表</view>
+      <van-image width="53px" height="52px" src="/static/profile/noworry.png"/>
+      <view class="info">所有信息数据仅保存在NoWorry内网，在您出签之后将自动删除；请您务必认真填写核对相关信息，基础资料有误概不负责</view>
+    </view>
+    <view class="form">
+      <view class="rate">
+        <van-image width="81.86vw" height="2vw"  src="/static/profile/rate0.png" />
+        <view class="rate-info">0%</view>
+      </view>
+      <view class="title">
+        <view class="question">1.递签国家 *</view>
+        <view class="tip">（必填）</view>
+      </view>
+      <input class="input" placeholder="请输入" />
+
+      <view class="title">
+        <view class="question">2.办签城市 *</view>
+        <view class="tip">（必填）</view>
+      </view>
+      <input class="input" placeholder="请输入" />
+
+      <view class="title">
+        <view class="question">3.近五年内是否办理过申根签证 *</view>
+        <view class="tip">（必填）</view>
+      </view>
+      <view class="choice">
+        <view wx:if="{{item.select}}" bind:tap="checkBtn" data-index="{{index}}">
+        <van-icon size="20px" name="/static//profile/option.png" />
+        <view class="option">是</view>
+        <view class="op-tips">（请填写问题4）</view>
+        </view>
+      </view>
+      <view class="choice">
+        <view wx:if="{{item.select}}" bind:tap="checkBtn" data-index="{{index}}">
+        <van-icon size="20px" name="/static/profile/option.png" />
+        <view class="option">否</view>
+        <view class="op-tips">（请填写问题5）</view>
+        </view>
+      </view>
+
+      <view class="title">
+        <view class="question">4.上次申根签证办理信息</view>
+      </view>
+
+      <view class="sub-question">4.1.递签日期（以现场录入指纹的日期为准）</view>
+      <input class="input" placeholder="请输入" />
+
+      <view class="sub-question">4.2.递签国家</view>
+      <input class="input" placeholder="请输入" />
+
+      <view class="sub-question">4.3.签证存续时间</view>
+      <input class="input" placeholder="请输入" />
+      
+      <view class="sub-question">4.4.签证号码（三位字母+右上角号码）</view>
+      <input class="input" placeholder="请输入" />
+    </view>
+  </view>
+</view>

@@ -1,0 +1,107 @@
+.page-info-reg {
+    height: 100vh;
+    background-color: #F8F6EE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.page-info-reg .body {
+    width: 82vw;
+}
+
+.page-info-reg .registration {
+    align-items: center;
+    text-align: center;
+}
+
+.page-info-reg .registration .title{
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 24px;
+    text-align: center;
+    color: #161415;
+}
+
+.page-info-reg .registration .info{
+    font-weight: 200;
+    font-size: 10px;
+    line-height: 14px;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #000000;
+}
+
+.page-info-reg .form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border-top: 0.5px dashed #9C9A9A;
+    border-bottom: 0.5px dashed #9C9A9A;
+}
+
+.page-info-reg .form .title {
+    display: flex;
+    flex-direction: row;
+    margin-top: 4.3vw;
+}
+
+.page-info-reg .rate-info {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+    text-align: left;
+    color: #000000;
+}
+
+.page-info-reg .label {
+    width: 82vw;
+    height: 5.3vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.page-info-reg .question {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #161415;
+}
+
+.page-info-reg .choice {
+    width: 100%;
+    height: auto;
+}
+
+.page-info-reg .sub-question {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    color: #161415;
+    margin-top: 2.67vw;
+    margin-bottom: -3px;
+}
+
+.page-info-reg .tip {
+    font-size: 12px;
+    font-weight: 200;
+    line-height: 17px;
+    color: #797532;
+}
+
+.page-info-reg .input {
+    box-sizing: border-box;
+    background-color: #FFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 5px;
+    margin-top: 7px;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: left;
+    height: 35px;
+    width: 307px;
+    padding: 0 8px;
+}
+
