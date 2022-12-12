@@ -42,7 +42,7 @@ Page({
         const _this = this;
         wx.login().then(res => {
             wx.request({
-                url: "http://127.0.0.1:3000/v1/mp" + `/user/login/${res.code}`,
+                url: "http://122.9.107.17:3000/v1/mp" + `/user/login/${res.code}`,
                 success(re) {
                     re.data = re.data as {}
                     _this.setData({ userInfo: re.data.userInfo, token: re.data.token })
