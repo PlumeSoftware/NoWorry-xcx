@@ -1,0 +1,50 @@
+.page-privacy {
+    min-height: 100vh;
+    background-color: #F8F6EE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.page-privacy .body {
+    width: 82vw;
+}
+
+.page-privacy .body .head {
+    align-items: center;
+    text-align: center;
+}
+
+.page-privacy .body .head .title {
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 24px;
+    text-align: center;
+    color: #161415;
+    margin-top: 8vw;
+    margin-bottom: 2.4vw;
+}
+
+.page-privacy .body .head .info {
+    font-weight: 200;
+    font-size: 10px;
+    line-height: 14px;
+    letter-spacing: 1px;
+    color: #161415;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.page-privacy .text{
+    margin-top: 12px;
+}
+
+.page-privacy .text .paragraph {
+    text-align: left;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: 1px;
+    color: #000000;
+}
