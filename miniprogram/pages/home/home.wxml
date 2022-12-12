@@ -1,13 +1,13 @@
 <view class="page-home">
-  <view>
-    <van-image width="100vw" height="279px" src="{{coverUrlList[coverIndex]}}" />
+  <view bind:touchstart="drag" bind:touchend="drag">
+    <van-image width="100vw" height="279px" src="{{coverUrlList[coverIndex]}}" bind:tap="toPoster" data-id="{{coverIndex}}"/>
   </view>
   <view class="body">
     <view class="visum">
       <view class="title">热门推荐</view>
       <view class="move">
         <view class="visa-list" style="width:{{VisaList.length*46}}vw">
-          <view class="visa-item" wx:for="{{VisaList}}" wx:key="index" bind:tap="toDetail">
+          <view class="visa-item" wx:for="{{VisaList}}" wx:key="index" bind:tap="toDetail" data-commodityid="{{item.commodityId}}">
             <view class="item-image">
               <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="50vw" src="{{item.commodityCover}}" />
             </view>
