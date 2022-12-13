@@ -5,12 +5,12 @@
         <scroll-view wx:if="{{orderGroup[typeindex].length>0}}">
           <view class="order-item" wx:for="{{orderGroup[typeindex]}}" wx:for-index="groupindex" wx:key="groupindex">
             <view class="item-image">
-              <van-image width="90px" height="90px" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+              <van-image width="90px" height="90px" src="{{item.picLink}}" />
             </view>
-            <view>
+            <view class="item-right">
               <view class="item-info">
-                <view>{{item.title}}</view>
-                <view>{{item.describe}}</view>
+                <view>{{item.commodityName}}</view>
+                <view>{{item.commodityBrief}}</view>
               </view>
               <view class="item-link" bind:tap="toProcess">查看进度</view>
             </view>
