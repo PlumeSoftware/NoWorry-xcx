@@ -12,7 +12,7 @@ Page({
 
     change() {
         console.log("eee")
-        if (this.data.pageIndex < 4) {
+        if (this.data.pageIndex <=4) {
             this.setData({
                 pageIndex: this.data.pageIndex + 1
             })
