@@ -43,13 +43,18 @@
     justify-content: center;
     align-items: flex-start;
     text-align: center;
-    border-top: 0.5px dashed #9C9A9A;
+}
+
+.page-info-reg .form .edging {
+    width: 100%;
+    height: 1px;
     border-bottom: 0.5px dashed #9C9A9A;
 }
 
 .page-info-reg .form .rate {
+    width: 100%;
     margin-bottom: 2.1vw;
-    margin-top: 2vw;
+    margin-top: 4.3vw;
 }
 
 .page-info-reg .form .title {
@@ -59,7 +64,7 @@
 }
 
 .page-info-reg .rate-info {
-    font-weight: 400;
+    font-weight: 200;
     font-size: 10px;
     line-height: 14px;
     color: #000000;
@@ -73,7 +78,7 @@
     color: #161415;
 }
 
-.page-info-reg .choiceYes {
+.page-info-reg .choiceFirst {
     display: flex;
     flex-direction: row;
     text-align: left;
@@ -81,7 +86,7 @@
     margin-top: 7px;
 }
 
-.page-info-reg .choiceNo {
+.page-info-reg .choice {
     display: flex;
     flex-direction: row;
     text-align: left;
@@ -118,6 +123,13 @@
     color: #797532;
 }
 
+.page-info-reg .sub-tip {
+    font-weight: 200;
+    font-size: 10px;
+    line-height: 14px;
+    color: #000000;
+}
+
 .page-info-reg .input {
     box-sizing: border-box;
     background-color: #FFF;
@@ -143,6 +155,70 @@
     color: #9C9A9A;
 }
 
+.page-info-reg .over {
+    width: 82vw;
+}
+
+.page-info-reg .over .item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.page-info-reg .over .item .title {
+    margin-top: 0;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    color: #161415;
+}
+
+.page-info-reg .over .item .content {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    color: #161415;
+}
+
+.page-info-reg .over .sub-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.page-info-reg .over .sub-item .title {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-top: 0;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+    color: #161415;
+}
+
+.page-info-reg .over .sub-item .content {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    color: #161415;
+}
+
+.page-info-reg .over .edit {
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 14px;
+    text-decoration-line: underline;
+    color: #F2843B;
+    text-align: right;
+    margin-top: 8vw;
+    margin-bottom: 4.3vw;
+}
+
 .page-info-reg .save-btn {
     height: 48px;
     line-height: 48px;
@@ -154,4 +230,23 @@
     font-weight: 600;
     text-align: center;
     color: #FFFFEE;
+}
+
+.page-info-reg .body .over-btn {
+    width: 82vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.page-info-reg .body .over-btn .copyright {
+    font-size: 10px;
+    font-weight: 100;
+    line-height: 14px;
+    text-align: left;
+    color: #797532;
+    padding: 1.9vw 3.73vw;
+    margin-top: 20px;
 }
