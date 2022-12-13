@@ -72,8 +72,15 @@
     overflow: hidden;
 }
 
+.order-group .order-list .order-item .item-right{
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .order-group .order-list .order-item .item-info {
-    margin-bottom: 20px;
+    width: 50vw;
 }
 
 .order-group .order-list .order-item .item-info view:nth-child(1) {

@@ -1,3 +1,53 @@
 <view class="page">
-  aaaa
+  <view class="order-info">
+    <view class="user-info">
+      <view>你好，{{userName}}</view>
+      <view>感谢您的下单，下面是您的订单号</view>
+      <view>EC2022071502</view>
+    </view>
+    <view class="commodity-info">
+      <view>
+        <view>商品总价：</view>
+        <view>£218</view>
+      </view>
+      <view>
+        <view>活动优惠：</view>
+        <view>£5</view>
+      </view>
+      <view>
+        <view>实际支付：</view>
+        <view>£213</view>
+      </view>
+      <view>
+        <view>付款方式：</view>
+        <view>客服辅助支付</view>
+      </view>
+    </view>
+  </view>
+  <view class="do">
+    <view class="process">
+      <image style="width: 17px;height: 85px;" src="/static/order/top.png" />
+      <image style="width: 17px;height: 26px;" src="/static/order/a-line.png" />
+      <image style="width: 17px;height: 17px;" src="/static/order/h-point.png" />
+      <image style="width: 17px;height: 24px;" src="/static/order/h-line.png" />
+      <image style="width: 17px;height: 9px;" src="/static/order/h-pot.png" />
+      <image style="width: 17px;height: 27px;" src="/static/order/h-line.png" />
+      <image style="width: 17px;height: 9px;" src="/static/order/h-pot.png" />
+      <image style="width: 17px;height: 28px;" src="/static/order/h-line.png" />
+      <image style="width: 17px;height: 9px;" src="/static/order/h-pot.png" />
+      <image style="width: 17px;height: 25.5px;" src="/static/order/h-line.png" />
+      <image style="width: 17px;height: 17px;" src="/static/order/h-point.png" />
+    </view>
+    <view class="process-text">
+      <view class="process-text-item title active">在线下单</view>
+      <view class="process-text-item active">选择预约/刷签时间，并成功下单</view>
+      <view class="process-text-item active">联系客服并提供订单号</view>
+      <view class="process-text-item title holded">核对行程</view>
+      <view class="process-text-item holder">联系客服并提供订单号</view>
+      <view class="process-text-item holder">注册账户</view>
+      <view class="process-text-item holder">填写《NoWorry申请人信息登记表》</view>
+      <view class="process-text-item title holded">递签成功</view>
+
+    </view>
+  </view>
 </view>

@@ -6,5 +6,6 @@
 
 Page({
     data: {
+        userName:wx.getStorageSync('userInfo').userName
     }
 });
