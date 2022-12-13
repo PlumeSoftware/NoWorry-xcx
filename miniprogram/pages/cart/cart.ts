@@ -61,8 +61,8 @@ Page({
         const add = e.currentTarget.dataset.add
         const carts = this.data.carts;
         carts[index].quantity = carts[index].quantity + add
-        // carts[index].quantity = carts[index].quantity ? carts[index].quantity : 1;
-        carts[index].quantity = 1
+        carts[index].quantity = carts[index].quantity ? carts[index].quantity : 1;
+        // carts[index].quantity = 1
         this.setData({ carts: carts })
         this.culTotal()
     },

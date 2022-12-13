@@ -1,6 +1,6 @@
 <view class="page-cart">
   <view class="cart-title">签证</view>
-  <view class="cart-list">
+  <view class="cart-list" wx:if="{{carts.length}}">
     <view class="cart-item" wx:for="{{carts}}" wx:key="index">
       <view wx:if="{{item.select}}" bind:tap="checkBtn" data-index="{{index}}">
         <van-icon size="20px" name="/static/cart/select-cart.png" />
@@ -9,9 +9,9 @@
         <van-icon size="20px" name="/static/cart/select-cart-none.png" />
       </view>
       <view class="item-image">
-        <van-image width="90px" height="90px" src="{{item.picLink}}" />
+        <van-image width="100%" height="40vw" src="{{item.picLink}}" />
       </view>
-      <view >
+      <view>
         <view class="item-info">
           <view>{{item.commodityName}}</view>
           <view>{{item.commodityBrief}}</view>
@@ -27,22 +27,31 @@
       </view>
     </view>
   </view>
-  <view class="subtotal">
-    <view class="select-all">
-      <van-icon wx:if="{{allselect}}" size="20px" name="/static/cart/select-cart.png" />
-      <van-icon wx:else size="20px" name="/static/cart/select-cart-none.png" />
-      <view>全选</view>
+  <view class="empty" wx:else>
+    <van-image fit="cover" width="198" height="222" src="http://122.9.107.17/static/profile/Frame.png" />
+    <view>
+      <view class="empty-text">购物车为空~</view>
     </view>
-    <view class="subtotal-number">
-      <view class="price-all">
-        <view class="price-origin">
-          <span>合计：</span>
-          <span>£{{totalPrice}}</span>
-        </view>
-        <view class="price-conver">GBP {{totalPrice}}≈CNY {{totalPrice2}}</view>
+  </view>
+  <view class="sub">
+    <view class="subtotal">
+      <view class="select-all">
+        <van-icon wx:if="{{allselect}}" size="20px" name="/static/cart/select-cart.png" />
+        <van-icon wx:else size="20px" name="/static/cart/select-cart-none.png" />
+        <view>全选</view>
       </view>
-      <view class="settle">
-        <button class="button" bind:tap="settle">结算</button>
+      <view class="subtotal-number">
+        <view class="price-all">
+          <view class="price-origin">
+            <span>合计：</span>
+            <span>£{{totalPrice}}</span>
+          </view>
+          <view class="price-conver">GBP {{totalPrice}}≈CNY {{totalPrice2}}</view>
+        </view>
+        <view class="settle">
+          <button class="button" wx:if="{{totalPrice}}" bind:tap="settle">结算</button>
+          <button class="button" wx:else>结算</button>
+        </view>
       </view>
     </view>
   </view>

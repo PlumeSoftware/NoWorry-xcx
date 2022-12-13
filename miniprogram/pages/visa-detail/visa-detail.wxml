@@ -1,6 +1,6 @@
 <view class="page">
   <view class="bg" style="background-image: url('{{commodity.picLink}}');background-position-y:{{moveY}}rpx">
-    <movable-area style="min-height:100vh;width:100vw;margin-top:200rpx">
+    <movable-area class="mova-e">
       <movable-view class="mova" y="290" direction="vertical" bindchange="move">
         <view>
           <view>
@@ -8,7 +8,7 @@
               <view>{{commodity.commodityName}}</view>
               <view>£{{commodity.currentPrice}}</view>
             </view>
-            <view class="describe">顺位预约，包含材料</view>
+            <view class="describe">{{commodity.commodityBrief}}</view>
           </view>
           <view class="select-city">
             <picker bindchange="bindPickerChange" value="{{cityIndex}}" range="{{citiesArray}}">
