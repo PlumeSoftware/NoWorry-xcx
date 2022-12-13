@@ -4,7 +4,7 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-import { Order, OrderDetailInfo } from "miniprogram/entity/order";
+import { Order, OrderDetailInfo } from "../../../miniprogram/entity/order";
 
 Page({
     data: {
@@ -34,6 +34,10 @@ Page({
         result.forEach((item: Order) => {
             if (item.orderStatus == 0 || item.orderStatus == 3) {
                 orderGroup[0].push(...(item.orderDetailInfoGroup!))
+            } else if (item.orderStatus == 1) {
+                orderGroup[1].push(...(item.orderDetailInfoGroup!))
+            } else if (item.orderStatus == 2) {
+                orderGroup[2].push(...(item.orderDetailInfoGroup!))
             }
         })
 

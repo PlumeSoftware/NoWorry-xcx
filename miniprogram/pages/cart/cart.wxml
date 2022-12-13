@@ -11,7 +11,7 @@
       <view class="item-image">
         <van-image width="100%" height="40vw" src="{{item.picLink}}" />
       </view>
-      <view>
+      <view class="item-right">
         <view class="item-info">
           <view>{{item.commodityName}}</view>
           <view>{{item.commodityBrief}}</view>
