@@ -438,13 +438,13 @@
     <view class="over-btn" wx:if="{{pageIndex==5}}">
       <view class="agreement">
         <van-icon size="16px" name="/static/profile/option.png" />
-        <view >已同意《No Worry用户协议条款》和《隐私条款》</view>
+        <view class="content">已同意《No Worry用户协议条款》和《隐私条款》</view>
       </view>
       <view class="container">
         <view class="edit">编辑</view>
         <view class="push">提交</view>
       </view>
-      <view class="copyright">©copyright for NoWorry 2022</view>
     </view>
+    <view class="copyright">©copyright for NoWorry 2022</view>
   </view>
 </view>
