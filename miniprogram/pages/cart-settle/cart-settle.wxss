@@ -51,8 +51,12 @@
     font-size: 12px;
     font-weight: 300;
     line-height: 17px;
-    text-align: center;
     color: #161415;
+}
+
+.info-list .info-item view{
+    width: 30vw;
+    text-align: left;
 }
 
 .info-list .info-item input {

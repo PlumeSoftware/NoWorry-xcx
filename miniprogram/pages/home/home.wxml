@@ -1,5 +1,5 @@
 <view class="page-home">
-  <view bind:touchstart="drag" bind:touchend="drag">
+  <view>
     <van-image width="100vw" height="279px" src="{{coverUrlList[coverIndex]}}" bind:tap="toPoster" data-id="{{coverIndex}}"/>
   </view>
   <view class="body">

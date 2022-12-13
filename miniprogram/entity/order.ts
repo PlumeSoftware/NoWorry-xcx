@@ -21,7 +21,7 @@ export interface OrderDetailInfo {
 }
 
 export interface SubmitCart {
-    orderDetail: OrderDetail[];
+    orderDetail: CartDetail[];
     orderTotalPrice: number;
     /**
      * 支付方式

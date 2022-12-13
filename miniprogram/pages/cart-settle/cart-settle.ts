@@ -4,8 +4,8 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-import { Cart } from "miniprogram/entity/cart";
-import { CartDetail} from "miniprogram/entity/order";
+import { Cart } from "../../../miniprogram/entity/cart";
+import { CartDetail} from "../../../miniprogram/entity/order";
 
 Page({
     data: {

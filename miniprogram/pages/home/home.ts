@@ -57,10 +57,6 @@ Page({
         console.log( e.currentTarget)
         wx.navigateTo({ url: '/pages/visa-detail/visa-detail' + `?commodityId=${commodityId}` })
     },
-
-    drag(e){
-        console.log(e)
-    },
     //事件 显示时触发
 
     //页面渲染完毕

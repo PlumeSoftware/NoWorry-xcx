@@ -72,9 +72,15 @@
     overflow: hidden;
 }
 
+.cart-list .cart-item .item-right{
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .cart-list .cart-item .item-info {
     width: 40vw;
-    margin-bottom: 20px;
 }
 
 .cart-list .cart-item .item-info view:nth-child(1) {
