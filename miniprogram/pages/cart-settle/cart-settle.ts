@@ -5,7 +5,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 import { Cart } from "../../../miniprogram/entity/cart";
-import { CartDetail} from "../../../miniprogram/entity/order";
+import { CartDetail } from "../../../miniprogram/entity/order";
 
 Page({
     data: {
@@ -13,6 +13,10 @@ Page({
         phone: '',
         email: '',
         liveCity: '',
+
+
+        payArray: ["微信支付", "客服辅助支付"],
+        payIndex: 0,
 
         carts: [] as any,
         allselect: false,
@@ -53,15 +57,8 @@ Page({
             wx.hideLoading()
         }, 2000)
 
-        setTimeout(() => {
-            wx.navigateTo({
-                url: "/pages/cart-settle-success/cart-settle-success"
-            })
-        }, 2400)
-
-        const orderDetail:CartDetail[] = []
+        const orderDetail: CartDetail[] = []
         const paid = this.data.carts;
-        console.log("paid", paid)
         paid.forEach((cart: Cart) => {
             if (cart.select) {
                 orderDetail.push({
@@ -71,17 +68,71 @@ Page({
                 })
             }
         })
-        wx.request({
-            url: "http://127.0.0.1:3000/v1/mp/order/submit",
-            method: "POST",
-            data:
-            {
-                token: wx.getStorageSync('token'),
-                orderTotalPrice: this.data.totalPrice,
-                payWay: 1,
-                orderDetail: orderDetail
-            }
-        })
+
+        if (this.data.payIndex == 0) {
+            wx.request({
+                url: "http://122.9.107.17:3000/v1/mp/pay",
+                method: 'POST',
+                data: {
+                    openid: wx.getStorageSync('userInfo').openid,
+                    describe: paid[0].commodityName,
+                    // amount: this.data.totalPrice2 * 100
+                    amount: 1
+                },
+                success: (res) => {
+                    const data = res.data as any
+                    wx.requestPayment({
+                        appId: data['appId'],
+                        timeStamp: data['timeStamp'],
+                        nonceStr: data['nonceStr'],
+                        package: data['package'],
+                        signType: data['signType'],
+                        paySign: data['paySign'],
+                        success: () => {
+                            wx.request({
+                                url: "http://122.9.107.17:3000/v1/mp/order/submit",
+                                method: "POST",
+                                data:
+                                {
+                                    token: wx.getStorageSync('token'),
+                                    orderTotalPrice: this.data.totalPrice,
+                                    payWay: 1,
+                                    orderDetail: orderDetail
+                                },
+                                success: () => {
+                                    setTimeout(() => {
+                                        wx.navigateTo({
+                                            url: "/pages/cart-settle-success/cart-settle-success"
+                                        })
+                                    }, 500)
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+        } else if (this.data.payIndex == 1) {
+            wx.request({
+                url: "http://122.9.107.17:3000/v1/mp/order/submit",
+                method: "POST",
+                data:
+                {
+                    token: wx.getStorageSync('token'),
+                    orderTotalPrice: this.data.totalPrice,
+                    payWay: 1,
+                    orderDetail: orderDetail
+                },
+                success: () => {
+                    setTimeout(() => {
+                        wx.navigateTo({
+                            url: "/pages/cart-settle-success/cart-settle-success"
+                        })
+                    }, 2400)
+                }
+            })
+        }
+
+
 
 
         //删除购物车已支付商品
