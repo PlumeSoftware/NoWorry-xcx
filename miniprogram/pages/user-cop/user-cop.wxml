@@ -14,31 +14,31 @@
         <view>公司名称 *</view>
         <view class="tip">（必填）</view>
       </label>
-      <input class="input" placeholder="请输入" />
+      <input class="input" model:value="{{companyName}}" placeholder="请输入" />
       <label class="label">
         <view>业务说明 *</view>
         <view class="tip">（必填）</view>
       </label>
-      <textarea class="textarea" placeholder="请输入" />
+      <textarea class="textarea" model:value="{{businessDescribe}}" placeholder="请输入" />
       <label class="label">
         <view>联系人 *</view>
         <view class="tip">（必填）</view>
       </label>
-      <input class="input" placeholder="请输入" />
+      <input class="input" model:value="{{contactName}}" placeholder="请输入" />
       <label class="label">
         <view>联系电话 *</view>
         <view class="tip">（必填）</view>
       </label>
-      <input class="input" placeholder="请输入" />
+      <input class="input" model:value="{{contactPhone}}" placeholder="请输入" />
       <label class="label">
         <view>微信号 *</view>
         <view class="tip">（必填）</view>
       </label>
-      <input class="input" placeholder="请输入" />
+      <input class="input" model:value="{{wechatId}}" placeholder="请输入" />
       <label class="label">
         <view>邮箱</view>
       </label>
-      <input class="input" class="input" placeholder="请输入" />
+      <input class="input" model:value="{{email}}" class="input" placeholder="请输入" />
       <button class="button" bind:tap="commit">提交</button>
     </view>
     <view class="contact">
