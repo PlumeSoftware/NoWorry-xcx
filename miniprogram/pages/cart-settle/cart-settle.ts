@@ -71,7 +71,7 @@ Page({
 
         if (this.data.payIndex == 0) {
             wx.request({
-                url: "http://127.0.0.1:3000/v1/mp/pay",
+                url: "http://122.9.107.17:3000/v1/mp/pay",
                 method: 'POST',
                 data: {
                     openid: wx.getStorageSync('userInfo').openid,
@@ -90,7 +90,7 @@ Page({
                         paySign: data['paySign'],
                         success: () => {
                             wx.request({
-                                url: "http://127.0.0.1:3000/v1/mp/order/submit",
+                                url: "http://122.9.107.17:3000/v1/mp/order/submit",
                                 method: "POST",
                                 data:
                                 {
@@ -113,7 +113,7 @@ Page({
             })
         } else if (this.data.payIndex == 1) {
             wx.request({
-                url: "http://127.0.0.1:3000/v1/mp/order/submit",
+                url: "http://122.9.107.17:3000/v1/mp/order/submit",
                 method: "POST",
                 data:
                 {
