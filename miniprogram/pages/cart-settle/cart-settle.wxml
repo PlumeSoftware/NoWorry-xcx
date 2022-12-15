@@ -42,7 +42,9 @@
     </view>
     <view class="opea-list">
       <view class="opea-item">
-        <view>客服辅助支付</view>
+        <picker bindchange="bindPickerChange" value="{{cityIndex}}" range="{{citiesArray}}">
+          <view>{{payArray[payIndex]}}</view>
+        </picker>
         <van-icon size="15px" name="/static/profile/return.png" />
       </view>
     </view>
