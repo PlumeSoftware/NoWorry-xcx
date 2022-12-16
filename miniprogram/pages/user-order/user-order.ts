@@ -4,7 +4,7 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-import { webGet } from "miniprogram/utils/http";
+import { webGet } from "../../utils/http";
 import { Order, OrderDetailInfo } from "../../../miniprogram/entity/order";
 
 Page({

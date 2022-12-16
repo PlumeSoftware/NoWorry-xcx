@@ -4,7 +4,7 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-import { webGet } from "miniprogram/utils/http";
+import { webGet } from "../../utils/http";
 
 
 Page({
@@ -52,7 +52,6 @@ Page({
                     wx.navigateTo({ url: "/pages/user-set/user-set" })
                 }
             }
-
         })
     },
 
