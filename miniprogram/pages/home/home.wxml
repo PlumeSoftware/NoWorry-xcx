@@ -6,7 +6,7 @@
     <view class="visum">
       <view class="title">热门推荐</view>
       <view class="move">
-        <view class="visa-list" style="width:{{VisaList.length*46}}vw">
+        <view class="visa-list" style="width:{{VisaList.length*44}}vw">
           <view class="visa-item" wx:for="{{VisaList}}" wx:key="index" bind:tap="toDetail" data-commodityid="{{item.commodityId}}">
             <view class="item-image">
               <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="50vw" src="{{item.picLink}}" />
@@ -44,10 +44,10 @@
     <view class="contact">
       <view class="cuslist">
         <view class="cus-qr">
-          <van-image width="20.6vw" height="20.6vw" src="http://122.9.107.17/static/profile/cus1.png" />
+          <van-image show-menu-by-longpress width="20.6vw" height="20.6vw" src="http://122.9.107.17/static/profile/cus1.png" />
         </view>
         <view class="cus-qr">
-          <van-image width="20.6vw" height="20.6vw" src="http://122.9.107.17/static/home/cus3.png" />
+          <van-image show-menu-by-longpress width="20.6vw" height="20.6vw" src="http://122.9.107.17/static/home/cus3.png" />
         </view>
       </view>
       <view class="contact-tip">

@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/comma-dangle */
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as http from "../../utils/http"
+import {webGet} from "../../utils/http"
 Page({
     data: {
         coverUrlList: [
@@ -29,14 +29,9 @@ Page({
     //事件 显示时触发
 
     //页面渲染完毕
-    start() {
-        wx.request({
-            url: http.BASE_URL + `/visa/group/hot`,
-            success: (res) => {
-                console.log('home',res.data)
-                this.setData({ VisaList: res.data })
-            }
-        })
+    async start() {
+        this.setData({ VisaList: await webGet(`/visa/group/hot`) })
+        
         wx.pageScrollTo({})
         console.log("aaa")
         setInterval(() => {
