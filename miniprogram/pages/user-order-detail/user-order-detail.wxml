@@ -3,7 +3,7 @@
     <view class="user-info">
       <view>你好，{{userName}}</view>
       <view>感谢您的下单，下面是您的订单号</view>
-      <view>EC2022071502</view>
+      <view>{{orderDetailId}}</view>
     </view>
     <view class="commodity-info">
       <view>

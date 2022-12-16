@@ -22,7 +22,7 @@ Page({
     async onShow() {
         const result: Order[] = await new Promise(re => {
             wx.request({
-                url: `http://127.0.0.1:3000/v1/mp/order/${wx.getStorageSync('token')}`,
+                url: `http://122.9.107.17:3000/v1/mp/order/${wx.getStorageSync('token')}`,
                 success: (res) => {
                     re(res.data as Order[])
                 },
@@ -43,9 +43,9 @@ Page({
 
         this.setData({ orderGroup: orderGroup })
     },
-    toProcess() {
+    toProcess(e: { currentTarget: { dataset: { orderdetailid: number }}}) {
         wx.navigateTo({
-            url: '/pages/user-order-detail/user-order-detail?orderId=1'
+            url: '/pages/user-order-detail/user-order-detail?orderDetailId=' + e.currentTarget.dataset.orderdetailid
         })
     }
 });

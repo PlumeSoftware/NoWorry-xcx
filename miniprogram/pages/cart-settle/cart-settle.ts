@@ -42,6 +42,10 @@ Page({
         this.setData({ totalPrice: total, totalPrice2: total2, carts: carts })
     },
 
+    bindPickerChange(e: { detail: { value: number } }) {
+        this.setData({ payIndex: e.detail.value })
+    },
+
     agreeChange() {
         this.setData({
             agree: !this.data.agree
@@ -69,7 +73,7 @@ Page({
             }
         })
 
-        if (this.data.payIndex == 0) {
+        if (this.data.payIndex == 0) {//微信支付
             wx.request({
                 url: "http://122.9.107.17:3000/v1/mp/pay",
                 method: 'POST',
@@ -111,7 +115,7 @@ Page({
                     })
                 }
             })
-        } else if (this.data.payIndex == 1) {
+        } else if (this.data.payIndex == 1) {//客服辅助支付
             wx.request({
                 url: "http://122.9.107.17:3000/v1/mp/order/submit",
                 method: "POST",
@@ -119,7 +123,7 @@ Page({
                 {
                     token: wx.getStorageSync('token'),
                     orderTotalPrice: this.data.totalPrice,
-                    payWay: 1,
+                    payWay: 0,
                     orderDetail: orderDetail
                 },
                 success: () => {

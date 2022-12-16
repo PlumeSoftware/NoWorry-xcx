@@ -60,10 +60,31 @@
       </view>
     </view>
   </scroll-view>
-  <scroll-view class="qa-list qa-list-sift" style="display:{{input?'block':'none'}}">
+  <scroll-view wx:if="{{keywordIndex%3==0}}" class="qa-list qa-list-sift" style="display:{{input?'block':'none'}}">
+    <view class="qa-item" style="display:{{keywordIndex>-1?'block':'none'}}">
+      <view class="question">Q：关于资金证明的要求是怎样的？</view>
+      <view class="answer">
+        A：1.英国本人本地卡（中国卡/美国卡/卓隽卡等等不行）2.不满3个月的银行流水，开具银行的开户证明即可（递签前流水最少要有1个月），没有足够的流水可以多去超市消费/网购消费/和朋友相互转帐，都可以。
+      </view>
+    </view>
+  </scroll-view>
+  <scroll-view wx:if="{{keywordIndex%3==1}}" class="qa-list qa-list-sift" style="display:{{input?'block':'none'}}">
+    <view class="qa-item">
+      <view class="question">Q: 我们可以为您做什么？</view>
+      <view class="answer">
+        A：Noworry可以为您提供保姆级申根签代办服务，给您全包申根签材料，包括机票酒店行程单，您只需要准备自己的brp护照学生证明银行流水这些简单的材料。
+        同时，如果您需要我们为您刷法签slot（在理想的时间内递签），我们也可以为您提供法签加急服务。
+      </view>
+    </view>
     <view class="qa-item" style="display:{{keywordIndex>-1?'block':'none'}}">
       <view class="question">Q: 几天可以拿到签证？</view>
       <view class="answer">A：递签后一般在10天-20天可以拿到护照，建议您预留充足的签证时间。</view>
+    </view>
+  </scroll-view>
+  <scroll-view wx:if="{{keywordIndex%3==2}}" class="qa-list qa-list-sift" style="display:{{input?'block':'none'}}">
+    <view class="qa-item">
+      <view class="question">Q:  我办了法国签证，就一定要从法国入境吗？</view>
+      <view class="answer">A：不是的。法国是第一入境国，或者法国是几个出行国家中停留时间最久的国家，二选一即可。（其他国家也一致）</view>
     </view>
   </scroll-view>
   <view class="keyword" style="position:absolute;bottom:5vh;display:{{input?'block':'none'}}" bind:tap="init">

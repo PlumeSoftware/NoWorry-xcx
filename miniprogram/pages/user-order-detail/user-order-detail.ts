@@ -6,6 +6,13 @@
 
 Page({
     data: {
-        userName:wx.getStorageSync('userInfo').userName
+        userName: wx.getStorageSync('userInfo').userName,
+        orderDetailId: ''
+    },
+
+    onShow() {
+        const pages = getCurrentPages()
+        const orderDetailId= pages[pages.length - 1].options['orderDetailId']
+        this.setData({ orderDetailId: 'EC' + orderDetailId })
     }
 });

@@ -12,7 +12,7 @@
                 <view>{{item.commodityName}}</view>
                 <view>{{item.commodityBrief}}</view>
               </view>
-              <view class="item-link" bind:tap="toProcess">查看进度</view>
+              <view class="item-link" bind:tap="toProcess" data-orderdetailid="{{item.orderDetailId}}">查看进度</view>
             </view>
           </view>
         </scroll-view>
