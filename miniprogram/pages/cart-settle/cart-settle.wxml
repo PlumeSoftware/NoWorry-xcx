@@ -42,7 +42,7 @@
     </view>
     <view class="opea-list">
       <view class="opea-item">
-        <picker bindchange="bindPickerChange" value="{{cityIndex}}" range="{{citiesArray}}">
+        <picker bindchange="bindPickerChange" value="{{payIndex}}" range="{{payArray}}">
           <view>{{payArray[payIndex]}}</view>
         </picker>
         <van-icon size="15px" name="/static/profile/return.png" />
