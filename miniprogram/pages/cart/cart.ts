@@ -5,7 +5,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 import { Visa } from "miniprogram/entity/visa";
-import * as http from "../../utils/http"
+import { webGet } from "../../utils/http"
 
 Page({
     data: {
@@ -20,18 +20,9 @@ Page({
         const carts = wx.getStorageSync('carts')
         console.log(carts)
         for (let i = 0; i < carts.length; i++) {
-            await new Promise<void>((r) => {
-                wx.request({
-                    url: http.BASE_URL + `/visa/detail/${carts[i].commodityId}`,
-                    success: (res) => {
-                        const visa = res.data as Visa
-                        carts[i].picLink = visa.picLink
-                        carts[i].currentPrice = visa.currentPrice
-                        r()
-                    },
-                    fail: () => r()
-                })
-            })
+            const visa = await webGet<Visa>(`/visa/detail/${carts[i].commodityId}`, {})
+            carts[i].picLink = visa?.picLink
+            carts[i].currentPrice = visa?.currentPrice
         }
         this.setData({ carts: carts })
         this.culTotal()

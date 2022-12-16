@@ -4,6 +4,8 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
+import { webPost } from "../../../miniprogram/utils/http";
+
 Page({
 
     data: {

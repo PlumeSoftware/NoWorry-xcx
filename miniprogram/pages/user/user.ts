@@ -4,6 +4,8 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
+import { webGet } from "../../utils/http";
+
 
 Page({
     data: {
@@ -39,22 +41,17 @@ Page({
             }, 300)
         }
 
-        const _this = this;
-        wx.login().then(res => {
-            wx.request({
-                url: "http://122.9.107.17:3000/v1/mp" + `/user/login/${res.code}`,
-                success(re) {
-                    re.data = re.data as {}
-                    _this.setData({ userInfo: re.data.userInfo, token: re.data.token })
+        wx.login().then(async res => {
+            const data = await webGet<{ userInfo: { userName: string, phone: string, email: string, handSignCity: string }, token: string }>(`/user/login/${res.code}`)
+            if (data) {
+                this.setData({ userInfo: data.userInfo, token: data.token })
+                wx.setStorageSync('userInfo', data.userInfo)
+                wx.setStorageSync('token', data.token)
 
-                    wx.setStorageSync('userInfo', re.data.userInfo)
-                    wx.setStorageSync('token', re.data.token)
-
-                    if (re.data.userInfo.userName == null) {
-                        wx.navigateTo({ url: "/pages/user-set/user-set" })
-                    }
+                if (data.userInfo.userName == null) {
+                    wx.navigateTo({ url: "/pages/user-set/user-set" })
                 }
-            })
+            }
         })
     },
 
