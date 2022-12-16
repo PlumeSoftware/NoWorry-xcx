@@ -39,6 +39,7 @@ Page({
                 handSignCity: this.data.handSignCity,
             },
             success(res) {
+                //@ts-ignore
                 if (res.data.status) {
                     wx.showToast({
                         title: '修改成功',
@@ -59,6 +60,7 @@ Page({
                 } else {
                     wx.showToast({
                         title: '修改失败',
+                        //@ts-ignore
                         icon: 'error',
                         duration: 2000
                     })

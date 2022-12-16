@@ -4,7 +4,7 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-import * as http from "../../utils/http"
+import { webGet } from "../../utils/http"
 Component({
     data: {
         activeVisa: 0,
@@ -36,32 +36,18 @@ Component({
             console.log(e.currentTarget)
             wx.navigateTo({ url: '/pages/visa-detail/visa-detail' + `?commodityId=${commodityId}` })
         },
-        async getData(id: number | 'hot') {
-            return new Promise((resolve) => {
-                wx.request({
-                    url: http.BASE_URL + `/visa/group/${id}`,
-                    success: (res) => {
-                        console.log(res.data)
-                        resolve(res.data)
-                    },
-                    fail: () => {
-                        resolve([])
-                    }
-                })
-            })
-
-        }
 
     },
     lifetimes: {
         async ready() {
             const visaList = []
-            visaList.push(await this.getData('hot'))
-            visaList.push(await this.getData(11))
-            visaList.push(await this.getData(12))
-            visaList.push(await this.getData(13))
-            visaList.push(await this.getData(14))
+            visaList.push(await webGet(`/visa/group/hot`))
+            visaList.push(await webGet(`/visa/group/11`))
+            visaList.push(await webGet(`/visa/group/12`))
+            visaList.push(await webGet(`/visa/group/13`))
+            visaList.push(await webGet(`/visa/group/14`))
 
+            // @ts-ignore
             this.setData({ visaList: visaList })
             //修复vant-tab渲染延时错误
             // @ts-ignore
