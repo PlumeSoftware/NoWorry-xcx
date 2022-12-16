@@ -46,10 +46,10 @@
       <view class="contact-text">联系我们</view>
       <view class="cuslist">
         <view class="cus-qr">
-          <van-image width="120px" height="120px" src="http://122.9.107.17/static/profile/cus1.png" />
+          <van-image show-menu-by-longpress width="120px" height="120px" src="http://122.9.107.17/static/profile/cus1.png" />
         </view>
         <view class="cus-qr">
-          <van-image width="120px" height="120px" src="http://122.9.107.17/static/profile/cus2.png" />
+          <van-image show-menu-by-longpress width="120px" height="120px" src="http://122.9.107.17/static/profile/cus2.png" />
         </view>
       </view>
       <view class="contact-tip">
