@@ -24,7 +24,6 @@
     font-weight: 600;
     line-height: 24px;
     text-align: left;
-
 }
 
 .info-list {
@@ -34,7 +33,9 @@
     flex-direction: column;
     align-items: center;
 
-    padding: 20rpx 44rpx;
+    padding: 10rpx 44rpx;
+
+    margin-bottom: 10rpx;
 
     border-radius: 12rpx;
 }
@@ -52,6 +53,10 @@
     font-weight: 300;
     line-height: 17px;
     color: #161415;
+}
+
+.info-list .info-item:nth-last-child(1) {
+    border-bottom: none;
 }
 
 .info-list .info-item view{
@@ -230,7 +235,7 @@
 }
 
 .subtotal .subtotal-number .price-origin {
-    width: 100px;
+    width: 30vw;
 }
 
 .subtotal .subtotal-number .price-origin span:nth-child(1) {

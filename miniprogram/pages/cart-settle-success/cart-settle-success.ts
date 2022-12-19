@@ -6,7 +6,11 @@
 
 Page({
 
-    toHome(){
-        wx.reLaunch({url:"/pages/index/index"})
+    toOrderList() {
+        wx.reLaunch({ url: "/pages/user-order/user-order" })
+    },
+
+    toHome() {
+        wx.reLaunch({ url: "/pages/index/index" })
     }
 });
