@@ -5,7 +5,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 import { webGet } from "../../utils/http";
-import { Order, OrderDetailInfo } from "../../../miniprogram/entity/order";
+import { Order, OrderDetailInfo } from "../../entity/order";
 
 Page({
     data: {

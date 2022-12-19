@@ -39,6 +39,8 @@ Page({
     },
 
     toWrite() {
-        wx.navigateTo({ url: '/pages/info-reg/info-reg' })
+        const pages = getCurrentPages()
+        const orderDetailId = pages[pages.length - 1].options['orderDetailId']
+        wx.navigateTo({ url: `/pages/info-reg/info-reg?orderDetailId=${orderDetailId}` })
     },
 });

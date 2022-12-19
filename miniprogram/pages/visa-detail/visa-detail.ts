@@ -4,7 +4,7 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { webGet } from "../../utils/http"
-import { Visa } from "miniprogram/entity/visa";
+import { Visa } from "../../entity/visa";
 
 Page({
     data: {
