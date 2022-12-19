@@ -16,7 +16,7 @@
         </view>
       </view>
       <view class="info-item">
-        <view>手机号码</view>
+        <view>手机</view>
         <view>
           <input model:value="{{phone}}" />
         </view>
@@ -28,7 +28,7 @@
         </view>
       </view>
       <view class="info-item">
-        <view>递签城市</view>
+        <view>城市</view>
         <view>
           <input model:value="{{handSignCity}}" />
         </view>
@@ -56,7 +56,4 @@
         </view>
       </view>
   </view>
-
-  <view class="save-btn" bind:tap="toWrite">表单填写</view>
-
 </view>
