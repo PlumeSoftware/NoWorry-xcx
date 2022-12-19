@@ -11,15 +11,15 @@
     </view>
     <view class="order-profile">
       <view>
-        <view class="order-number">0</view>
+        <view class="order-number">{{orderOutline[0]}}</view>
         <view class="order-text">待支付</view>
       </view>
       <view>
-        <view class="order-number">2</view>
+        <view class="order-number">{{orderOutline[1]}}</view>
         <view class="order-text">进行中</view>
       </view>
       <view>
-        <view class="order-number">1</view>
+        <view class="order-number">{{orderOutline[2]}}</view>
         <view class="order-text">已完成</view>
       </view>
     </view>
