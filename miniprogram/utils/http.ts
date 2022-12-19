@@ -1,4 +1,4 @@
-export const BASE_URL = "http://122.9.107.17:3000/v1/mp"
+export const BASE_URL = "http://127.0.0.1:3000/v1/mp"
 
 export const webGet = async function <T>(url: string, params: any = new Object()): Promise<T | null> {
     const keys: string[] = Object.keys(params);
@@ -9,7 +9,6 @@ export const webGet = async function <T>(url: string, params: any = new Object()
     if (keys.length > 0) {
         url = url.slice(0, -1)
     }
-    console.log(url, 'aaa')
     return await new Promise<T | null>((r) => {
         wx.request({
             url: url,
@@ -24,4 +23,22 @@ export const webGet = async function <T>(url: string, params: any = new Object()
     })
 }
 
-export const webPost = async function () {}
+export const webPost = async function <T>(url: string, body: any = new Object()): Promise<T | null> {
+    url = BASE_URL + url
+    return await new Promise<T | null>((r) => {
+        wx.request({
+            url: url,
+            header: {
+                cookie: wx.getStorageSync("token")
+            },
+            method: 'POST',
+            data: body,
+            success: (res) => {
+                r(res.data as T)
+            },
+            fail: () => {
+                r(null)
+            }
+        })
+    })
+}

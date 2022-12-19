@@ -12,7 +12,7 @@
     height: 60vw;
     width: 82vw;
     border-radius: 8px;
-    margin: 8vw auto;
+    margin: 8vw auto 0 auto;
 }
 
 .order-info .user-info {
@@ -100,4 +100,37 @@
 .title {
     font-size: 15px;
     font-weight: 600;
+}
+
+.write-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 80vw;
+}
+
+.write-btns .write-btn {
+    height: 38px;
+    line-height: 38px;
+    width: 30vw;
+    border-radius: 7px;
+    margin: 2vh auto;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: #FFFFEE;
+}
+
+.empty-btn{
+    height: 38px;
+    width: 1vw;
+    margin: 2vh auto;
+}
+
+.write-btns .write-btn:nth-child(1){
+    background: #F2843B;
+}
+
+.write-btns .write-btn:nth-child(2){
+    background: #8BC34A;
 }

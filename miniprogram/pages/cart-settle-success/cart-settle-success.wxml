@@ -3,7 +3,7 @@
     <van-image height="300px" width="300px" src="/static/cart/success.png"></van-image>
   </view>
   <view class="btns">
-    <view>查看订单</view>
+    <view bind:tap="toOrderList">查看订单</view>
     <view bind:tap="toHome">返回首页</view>
   </view>
 </view>

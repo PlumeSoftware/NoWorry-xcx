@@ -71,6 +71,21 @@
       </view>
     </view>
   </view>
+  <view wx:if="{{favourableTotal>0}}">
+    <view class="title">
+      <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
+      <view class="title-word">活动优惠</view>
+      <view style="margin-left:60vw;line-height: 24px;"></view>
+    </view>
+    <view class="info-list">
+      <view class="info-item" wx:for="{{favourable}}">
+        <view>{{item.title}}</view>
+        <view>
+          <input model:value="- £{{item.amount}}" disabled="{{true}}" />
+        </view>
+      </view>
+    </view>
+  </view>
   <view class="slider"></view>
   <view class="protocol">
     <van-icon bind:tap="agreeChange" wx:if="{{agree}}" size="16" name="/static/cart/agree-protocol.png"></van-icon>
@@ -82,9 +97,9 @@
       <view class="price-all">
         <view class="price-origin">
           <span>合计：</span>
-          <span>£{{totalPrice}}</span>
+          <span>£{{totalPriceShow}}</span>
         </view>
-        <view class="price-conver">GBP {{totalPrice}}≈CNY {{totalPrice2}}</view>
+        <view class="price-conver">GBP {{totalPriceShow}}≈CNY {{totolPriceCNY}}</view>
       </view>
       <view class="settle">
         <button class="button {{agree&&userName&&phone&&email&&liveCity?'':'un'}}allow" bind:tap="submitOrder">

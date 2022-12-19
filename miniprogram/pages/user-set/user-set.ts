@@ -4,6 +4,8 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
+import { webPost } from "../../utils/http";
+
 Page({
     data: {
         userName: wx.getStorageSync("userInfo").userName,
@@ -12,60 +14,44 @@ Page({
         handSignCity: wx.getStorageSync("userInfo").handSignCity
     },
 
-    toWrite() {
-        wx.navigateTo({url:'/pages/info-reg/info-reg'})
-    },
-
     toPrivacy() {
-        wx.navigateTo({url:'/pages/user-set-privacy/privacy'})
+        wx.navigateTo({ url: '/pages/user-set-privacy/privacy' })
     },
 
     toNotice() {
-        wx.navigateTo({url:'/pages/user-set-notice/notice'})
+        wx.navigateTo({ url: '/pages/user-set-notice/notice' })
     },
 
-    save() {
-        const _this = this
-        wx.request({
-            url: "http://122.9.107.17:3000/v1/mp" + `/user/updateUserInfo`,
-            method: "POST",
-            header: {
-                cookie: wx.getStorageSync("token")
-            },
-            data: {
+    async save() {
+        const result = await webPost<{ status: 0 | 1 }>("/user/updateUserInfo", {
+            userName: this.data.userName,
+            phone: this.data.phone,
+            email: this.data.email,
+            handSignCity: this.data.handSignCity,
+        })
+
+        if (result?.status) {
+            wx.showToast({
+                title: '修改成功',
+                icon: 'success',
+                duration: 2000
+            })
+            wx.setStorageSync('userInfo', {
                 userName: this.data.userName,
                 phone: this.data.phone,
                 email: this.data.email,
                 handSignCity: this.data.handSignCity,
-            },
-            success(res) {
+            })
+            setTimeout(() => {
+                wx.navigateBack()
+            }, 2200)
+        } else {
+            wx.showToast({
+                title: '修改失败',
                 //@ts-ignore
-                if (res.data.status) {
-                    wx.showToast({
-                        title: '修改成功',
-                        icon: 'success',
-                        duration: 2000
-                    })
-
-                    wx.setStorageSync('userInfo', {
-                        userName: _this.data.userName,
-                        phone: _this.data.phone,
-                        email: _this.data.email,
-                        handSignCity: _this.data.handSignCity,
-                    })
-
-                    setTimeout(() => {
-                        wx.navigateBack()
-                    }, 2200)
-                } else {
-                    wx.showToast({
-                        title: '修改失败',
-                        //@ts-ignore
-                        icon: 'error',
-                        duration: 2000
-                    })
-                }
-            }
-        })
+                icon: 'error',
+                duration: 2000
+            })
+        }
     }
 });
