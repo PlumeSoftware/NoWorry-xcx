@@ -24,9 +24,6 @@ Page({
         //获取详单
         const detail = (await webGet<OrderDetailInfo>(`/order/detail/${orderDetailId}`))!
         const order = (await webGet<Order>(`/order/info/${detail.orderId}`))
-        console.log(detail, order)
-
-
         this.setData({
             orderDetailId: 'EC' + orderDetailId,
             total: order?.orderTotalPrice,

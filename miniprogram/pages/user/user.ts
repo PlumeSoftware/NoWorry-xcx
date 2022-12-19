@@ -4,6 +4,7 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
+import { Order } from "../../entity/order";
 import { webGet } from "../../utils/http";
 
 
@@ -15,7 +16,8 @@ Page({
             email: '',
             handSignCity: ''
         },
-        token: ''
+        token: '',
+        orderOutline: [0, 0, 0]
     },
 
     setByLocal() {
@@ -51,6 +53,19 @@ Page({
                 if (data.userInfo.userName == null) {
                     wx.navigateTo({ url: "/pages/user-set/user-set" })
                 }
+            }
+
+            const result: Array<Order> | null = await webGet<Array<Order>>(`/order/${wx.getStorageSync('token')}`)
+            const orderOutline: Array<number> = [0, 0, 0]
+            if (result) {
+                result.forEach((item: Order) => {
+                    if (item.orderStatus == 3) {
+                        orderOutline[0]++
+                    } else {
+                        orderOutline[item.orderStatus!]++
+                    }
+                })
+                this.setData({ orderOutline: orderOutline })
             }
         })
     },
