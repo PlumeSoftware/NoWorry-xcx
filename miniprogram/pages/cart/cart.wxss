@@ -162,11 +162,11 @@
 }
 
 .price-all {
-    text-align: right;
+    text-align: center;
 }
 
 .subtotal .subtotal-number .price-origin {
-    width: 100px;
+    width: 30vw;
 }
 
 .subtotal .subtotal-number .price-origin span:nth-child(1) {
