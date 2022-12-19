@@ -17,7 +17,7 @@
     text-align: center;
 }
 
-.page-info-reg .registration .title{
+.page-info-reg .registration .title {
     font-weight: 600;
     font-size: 17px;
     line-height: 24px;
@@ -26,7 +26,7 @@
     margin-bottom: 2.4vw;
 }
 
-.page-info-reg .registration .info{
+.page-info-reg .registration .info {
     font-weight: 200;
     font-size: 10px;
     line-height: 14px;
@@ -258,8 +258,8 @@
 
 .page-info-reg .body .over-btn .container {
     display: flex;
-    flex-direction: row;  
-    width: 315px;  
+    flex-direction: row;
+    width: 315px;
 }
 
 .page-info-reg .body .over-btn .container .edit {
@@ -278,7 +278,6 @@
 }
 
 .page-info-reg .body .over-btn .container .push {
-    background: #D3D3D3;
     box-shadow: 3px 4px 4px rgba(242, 132, 59, 0.1);
     border-radius: 7px;
     color: #FEFFFB;
@@ -288,6 +287,18 @@
     font-size: 17px;
     line-height: 94rpx;
 }
+
+.ban-push {
+    background: #D3D3D3;
+}
+
+.allow-push {
+    background: #F2843B;
+}
+
+
+
+
 
 .page-info-reg .body .copyright {
     font-size: 10px;

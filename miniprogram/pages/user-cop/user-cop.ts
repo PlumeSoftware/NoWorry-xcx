@@ -4,7 +4,7 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-import { webPost } from "../../../miniprogram/utils/http";
+import { webPost } from "../../utils/http";
 
 Page({
 
@@ -19,18 +19,12 @@ Page({
     },
 
     commit() {
-        wx.request({
-            url: "http://122.9.107.17:3000/v1/mp/user/cooperate",
-            method: 'POST',
-            data: this.data,
-            success: () => {
-                this.setData({})
+        webPost("/user/cooperate", this.data)
+            .then(() => {
                 wx.navigateTo({ url: "/pages/user-cop-commit/user-cop-commit" })
-            },
-            fail: function () {
+            })
+            .catch(() => {
                 wx.navigateTo({ url: "/pages/user-cop-commit/user-cop-commit" })
-            }
-        })
-        //提交成功的回调
+            })
     }
 });

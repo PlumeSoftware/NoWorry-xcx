@@ -4,6 +4,7 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
+import { webPost } from "../../utils/http";
 import { Cart } from "../../../miniprogram/entity/cart";
 import { CartDetail } from "../../../miniprogram/entity/order";
 
@@ -52,7 +53,7 @@ Page({
         })
     },
 
-    submitOrder() {
+    async submitOrder() {
         wx.showLoading({
             title: '加载中',
         })
@@ -74,70 +75,56 @@ Page({
         })
 
         if (this.data.payIndex == 0) {//微信支付
-            wx.request({
-                url: "http://122.9.107.17:3000/v1/mp/pay",
-                method: 'POST',
-                data: {
-                    openid: wx.getStorageSync('userInfo').openid,
-                    describe: paid[0].commodityName,
-                    // amount: this.data.totalPrice2 * 100
-                    amount: 1
-                },
-                success: (res) => {
-                    const data = res.data as any
-                    wx.requestPayment({
-                        appId: data['appId'],
-                        timeStamp: data['timeStamp'],
-                        nonceStr: data['nonceStr'],
-                        package: data['package'],
-                        signType: data['signType'],
-                        paySign: data['paySign'],
-                        success: () => {
-                            wx.request({
-                                url: "http://122.9.107.17:3000/v1/mp/order/submit",
-                                method: "POST",
-                                data:
-                                {
-                                    token: wx.getStorageSync('token'),
-                                    orderTotalPrice: this.data.totalPrice,
-                                    payWay: 1,
-                                    orderDetail: orderDetail
-                                },
-                                success: () => {
-                                    setTimeout(() => {
-                                        wx.navigateTo({
-                                            url: "/pages/cart-settle-success/cart-settle-success"
-                                        })
-                                    }, 500)
-                                }
-                            })
-                        }
-                    })
-                }
+            const data = (await webPost<{
+                appId: string,
+                timeStamp: string,
+                nonceStr: string,
+                package: string,
+                signType: "MD5" | "HMAC-SHA256" | undefined,
+                paySign: string
+            }>('/pay', {
+                openid: wx.getStorageSync('userInfo').openid,
+                describe: paid[0].commodityName,
+                // amount: this.data.totalPrice2 * 100
+                amount: 1
+            }))!
+
+            await new Promise<void>(r => {
+                wx.requestPayment({
+                    appId: data['appId'],
+                    timeStamp: data['timeStamp'],
+                    nonceStr: data['nonceStr'],
+                    package: data['package'],
+                    signType: data['signType'],
+                    paySign: data['paySign'],
+                    success: () => r()
+                })
             })
+
+            await webPost('/order/submit', {
+                token: wx.getStorageSync('token'),
+                orderTotalPrice: this.data.totalPrice,
+                payWay: 1,
+                orderDetail: orderDetail,
+                contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.liveCity}`,
+            })
+
         } else if (this.data.payIndex == 1) {//客服辅助支付
-            wx.request({
-                url: "http://122.9.107.17:3000/v1/mp/order/submit",
-                method: "POST",
-                data:
-                {
-                    token: wx.getStorageSync('token'),
-                    orderTotalPrice: this.data.totalPrice,
-                    payWay: 0,
-                    orderDetail: orderDetail
-                },
-                success: () => {
-                    setTimeout(() => {
-                        wx.navigateTo({
-                            url: "/pages/cart-settle-success/cart-settle-success"
-                        })
-                    }, 2400)
-                }
+            webPost('/order/submit', {
+                token: wx.getStorageSync('token'),
+                orderTotalPrice: this.data.totalPrice,
+                payWay: 0,
+                orderDetail: orderDetail,
+                contact: this.data.userName + this.data.phone + this.data.email + this.data.liveCity,
             })
         }
 
-
-
+        //付款结束，跳转到成功界面
+        setTimeout(() => {
+            wx.navigateTo({
+                url: "/pages/cart-settle-success/cart-settle-success"
+            })
+        }, 500)
 
         //删除购物车已支付商品
         const carts = wx.getStorageSync('carts');
