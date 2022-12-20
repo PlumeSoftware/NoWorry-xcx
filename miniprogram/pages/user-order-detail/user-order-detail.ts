@@ -6,6 +6,7 @@
 
 import { webGet } from "../../utils/http";
 import { OrderDetailInfo, Order } from "../../entity/order"
+import { Visa } from "../../entity/visa"
 
 Page({
     data: {
@@ -14,7 +15,10 @@ Page({
         total: 0,
         paid: 0,
         invPrice: 0,
-        status: -1
+        status: -1,
+        commodityId: 0,
+        orderDetailName: '',
+        commodityType: 11,
     },
 
     async onShow() {
@@ -28,16 +32,50 @@ Page({
             orderDetailId: 'EC' + orderDetailId,
             total: order?.orderTotalPrice,
             paid: order?.orderPaymentPrice,
+            orderDetailName: detail.commodityName,
             invPrice: detail.invPrice,
-            status: detail.status
+            status: detail.status,
+            commodityId: detail.commodityId
         })
-
-
     },
 
-    toWrite() {
+    async toWrite() {
         const pages = getCurrentPages()
         const orderDetailId = pages[pages.length - 1].options['orderDetailId']
-        wx.navigateTo({ url: `/pages/info-reg/info-reg?orderDetailId=${orderDetailId}` })
+        const commodity = await webGet<Visa>(`/visa/detail/${this.data.commodityId}`)
+        this.setData({ commodityType: commodity!.commodityType || 11 })
+        if (this.data.commodityType == 13) {
+            wx.navigateTo({ url: `/pages/info-reg-A/info-reg-A?orderDetailId=${orderDetailId}` })
+        } else {
+            wx.navigateTo({ url: `/pages/info-reg/info-reg?orderDetailId=${orderDetailId}` })
+        }
     },
+
+    toContact(){
+        wx.showModal({
+            title:"提示",
+            content:"请长按扫描首页下方二维码以联系客服",
+            showCancel:false
+        })
+    },
+
+    toShare() {
+        wx.showShareMenu({
+            withShareTicket: true,
+            menus: ['shareAppMessage']
+        })
+    },
+    onShareAppMessage() {
+        let url = ''
+        if (this.data.commodityType == 13) {
+            url = url + `/pages/info-reg-A/info-reg-A?`
+        } else {
+            url = url + `/pages/info-reg/info-reg?`
+        }
+        url = url + `orderDetailId = ${this.data.orderDetailId}&s=1`
+
+        return {
+            path: url
+        }
+    }
 });

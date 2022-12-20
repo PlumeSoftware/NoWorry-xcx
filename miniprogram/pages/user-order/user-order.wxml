@@ -12,12 +12,17 @@
                 <view>{{item.commodityName}}</view>
                 <view>{{item.commodityBrief}}</view>
               </view>
-              <view class="item-link" bind:tap="toProcess" data-orderdetailid="{{item.orderDetailId}}">查看进度</view>
+              <view class="item-link" bind:tap="toProcess" data-orderdetailid="{{item.orderDetailId}}">
+                <view>
+                  {{item.orderDetailId}}-{{item.status==0?"等待支付":item.status==1?"需要填表":"等待操作"}}
+                </view>
+                <view>查看进度</view>
+              </view>
             </view>
           </view>
         </scroll-view>
         <view class="empty" wx:else>
-          <van-image width="198" height="222" src="http://122.9.107.17/static/profile/Frame.png" />
+          <van-image width="198" height="222" src="https://noworry.cloud/static/profile/Frame.png" />
           <view>
             <view class="empty-text">您还没有相关的订单</view>
             <view class="empty-describe">

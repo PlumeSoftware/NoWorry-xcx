@@ -98,9 +98,11 @@
 }
 
 .order-group .order-list .order-item .item-link {
+    display: flex;
+    width: 50vw;
+    justify-content: space-between;
     font-size: 12px;
     font-weight: 300;
     line-height: 17px;
-    text-align: right;
     color: #797532;
 }

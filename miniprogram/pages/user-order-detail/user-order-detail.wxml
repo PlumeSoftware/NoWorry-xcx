@@ -14,6 +14,10 @@
         <view>实际支付：</view>
         <view>£{{paid}}</view>
       </view>
+       <view>
+        <view>项目名称：</view>
+        <view>{{orderDetailName}}</view>
+      </view>
       <view>
         <view>单项价格：</view>
         <view>£{{invPrice}}</view>
@@ -21,11 +25,11 @@
     </view>
   </view>
   <view class="write-btns" wx:if="{{status==0}}">
-    <view class="write-btn" bind:tap="toContact">联系客服</view>
+    <view class="write-btn write-btn-write" bind:tap="toContact"><button>联系客服</button></view>
   </view>
   <view class="write-btns" wx:elif="{{status==1}}">
-    <view class="write-btn" bind:tap="toWrite">表单填写</view>
-    <view class="write-btn" bind:tap="toWrite">邀请好友</view>
+    <view class="write-btn" bind:tap="toWrite"><button>表单填写</button></view>
+    <view class="write-btn " bind:tap="toShare"><button open-type="share" class="write-btn-share">邀请好友</button></view>
   </view>
   <!-- 空白占位 -->
   <view wx:else>
@@ -35,12 +39,14 @@
     <view class="process">
       <image style="width: 17px;height: 85px;" src="/static/order/top.png" />
       <image style="width: 17px;height: 26px;" src="/static/order/a-line.png" />
-      <image style="width: 17px;height: 15px;" src="{{status==0?'/static/order/h-point.png':'/static/order/a-point.png'}}" />
-      <image style="width: 17px;height: 25px;" src="{{status==0?'/static/order/h-line.png':'/static/order/a-line.png'}}" />
-      <image style="width: 17px;height: 9px;" src="{{status==0?'/static/order/h-pot.png':'/static/order/a-pot.png'}}" />
-      <image style="width: 17px;height: 27px;" src="/static/order/h-line.png" />
-      <image style="width: 17px;height: 9px;" src="/static/order/h-pot.png" />
+      <image style="width: 17px;height: 15px;" src="{{status>0?'/static/order/a-point.png':'/static/order/h-point.png'}}" />
+      <image style="width: 17px;height: 25px;" src="{{status>0?'/static/order/a-line.png':'/static/order/h-line.png'}}" />
+      <image style="width: 17px;height: 9px;" src="{{status>0?'/static/order/a-pot.png':'/static/order/h-pot.png'}}" />
+      <image style="width: 17px;height: 27px;" src="{{status>1?'/static/order/a-line.png':'/static/order/h-line.png'}}" />
+      <image style="width: 17px;height: 9px;" src="{{status>1?'/static/order/a-pot.png':'/static/order/h-pot.png'}}" />
       <image style="width: 17px;height: 28px;" src="/static/order/h-line.png" />
+      <image style="width: 17px;height: 9px;" src="/static/order/h-pot.png" />
+      <image style="width: 17px;height: 25.5px;" src="/static/order/h-line.png" />
       <image style="width: 17px;height: 9px;" src="/static/order/h-pot.png" />
       <image style="width: 17px;height: 25.5px;" src="/static/order/h-line.png" />
       <image style="width: 17px;height: 17px;" src="/static/order/h-point.png" />
@@ -49,10 +55,11 @@
       <view class="process-text-item title active">下单刷签</view>
       <view class="process-text-item active">填写个人信息并成功下单</view>
       <view class="process-text-item active">微信支付或联系客服辅助支付</view>
-      <view class="process-text-item title {{status==0?'holded':'active'}}">核对行程</view>
-      <view class="process-text-item {{status==0?'holded':'active'}}">填写《NoWorry申请人信息登记表》</view>
-      <view class="process-text-item {{status==0?'holded':'active'}}">刷签系统后台操作</view>
-      <view class="process-text-item {{status==0?'holded':'active'}}">等待邮件确认递签进度</view>
+      <view class="process-text-item title {{status>0?'active':'holded'}}">核对行程</view>
+      <view class="process-text-item {{status>0?'active':'holded'}}">填写《NoWorry申请人信息登记表》</view>
+      <view class="process-text-item {{status>1?'active':'holded'}}">客服审核</view>
+      <view class="process-text-item holded">刷签系统后台操作</view>
+      <view class="process-text-item holded">等待邮件确认递签进度</view>
       <view class="process-text-item title holded">递签成功</view>
     </view>
   </view>
