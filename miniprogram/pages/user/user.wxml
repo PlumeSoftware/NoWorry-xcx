@@ -40,7 +40,7 @@
     </view>
     <view class="opea-item" bind:tap="toCus">
       <van-icon size="32px" name="/static/profile/cuser.png" />
-      <view>联系客服</view>
+      <view>常见问题</view>
       <van-icon size="15px" name="/static/profile/return.png" />
     </view>
     <view class="opea-item" bind:tap="toCop">
