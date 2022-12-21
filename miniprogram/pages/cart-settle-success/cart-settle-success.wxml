@@ -6,4 +6,5 @@
     <view bind:tap="toOrderList">查看订单</view>
     <view bind:tap="toHome">返回首页</view>
   </view>
+  <view class="tit">客服将在工作时间与您联系</view>
 </view>
