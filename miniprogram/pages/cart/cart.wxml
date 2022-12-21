@@ -28,7 +28,7 @@
     </view>
   </view>
   <view class="empty" wx:else>
-    <van-image fit="cover" width="198" height="222" src="http://122.9.107.17/static/profile/Frame.png" />
+    <van-image fit="cover" width="198" height="222" src="https://noworry.cloud/static/profile/Frame.png" />
     <view>
       <view class="empty-text">购物车为空~</view>
     </view>
