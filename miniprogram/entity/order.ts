@@ -38,4 +38,5 @@ export interface CartDetail {
     boughtQuantity?: number;
     commodityId?: number;
     invPrice?: number;
+    remark?:string
 }

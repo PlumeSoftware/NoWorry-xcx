@@ -4,6 +4,7 @@ export interface Cart {
     commodityBrief: string
     currentPrice: number
     quantity: number
+    remark:string
     select: boolean
 }
 
