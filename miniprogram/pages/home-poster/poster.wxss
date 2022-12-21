@@ -5,13 +5,13 @@
     align-items: center;
     text-align: center;
     height: auto;
-    padding-top: 8vw;
 }
 
 .page-poster .body {
     width: 90vw;
     height: auto;
     margin-bottom: 5.33vw;
+    margin-top: 8vw;
 }
 
 .page-poster .title {
