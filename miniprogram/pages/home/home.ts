@@ -7,10 +7,10 @@ import {webGet} from "../../utils/http"
 Page({
     data: {
         coverUrlList: [
-            "http://122.9.107.17/static/home/account1.png",
-            "http://122.9.107.17/static/home/account2.png",
-            "http://122.9.107.17/static/home/account3.png",
-            "http://122.9.107.17/static/home/account4.png"
+            "https://noworry.cloud/static/home/account1.png",
+            "https://noworry.cloud/static/home/account2.png",
+            "https://noworry.cloud/static/home/account3.png",
+            "https://noworry.cloud/static/home/account4.png"
         ],
         coverIndex: 0,
 
