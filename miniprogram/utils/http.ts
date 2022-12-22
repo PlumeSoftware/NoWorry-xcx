@@ -1,4 +1,4 @@
-export const BASE_URL = "http://127.0.0.1:3000/v1/mp"
+export const BASE_URL = "https://mobile.51fubaba.cn:8443/v1/mp"
 
 export const webGet = async function <T>(url: string, params: any = new Object()): Promise<T | null> {
     const keys: string[] = Object.keys(params);
