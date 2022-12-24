@@ -1,5 +1,5 @@
 <view class="page-poster">
-  <view class="body">
+  <view class="body" wx:if="{{posterIndex<3}}">
     <view class="title">
       <van-icon class="title-img" size="14px" name="/static/home/Line.png" />
       <view class="title-info">{{posterList[posterIndex].posterTitle}}</view>
