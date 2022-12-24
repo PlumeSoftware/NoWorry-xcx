@@ -109,13 +109,12 @@
     width: 80vw;
 }
 
-.write-btns .write-btn {
+.write-btn {
     height: 38px;
     line-height: 38px;
     width: 30vw;
     border-radius: 7px;
     margin: 2vh auto;
-    font-size: 14px;
     font-weight: 600;
     text-align: center;
     color: #FFFFEE;
@@ -127,10 +126,14 @@
     margin: 2vh auto;
 }
 
-.write-btns .write-btn:nth-child(1){
+button{
+    font-size: 14px;
     background: #F2843B;
+    border: none;
+    color: #F8F6EE;
+    border: 1px solid #F8F6EE;
 }
 
-.write-btns .write-btn:nth-child(2){
+.write-btn-share{
     background: #8BC34A;
 }

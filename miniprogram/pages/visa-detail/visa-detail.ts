@@ -49,6 +49,7 @@ Page({
                 commodityName: this.data.commodity.commodityName,
                 commodityBrief: this.data.commodity.commodityBrief,
                 currentPrice: this.data.commodity.currentPrice,
+                remark: this.data.citiesArray[this.data.cityIndex],
                 quantity: 1,
                 select: false
             })

@@ -97,7 +97,8 @@ Page({
                 orderDetail.push({
                     boughtQuantity: cart.quantity,
                     invPrice: cart.quantity * cart.currentPrice,
-                    commodityId: cart.commodityId
+                    commodityId: cart.commodityId,
+                    remark:cart.remark
                 })
             }
         })

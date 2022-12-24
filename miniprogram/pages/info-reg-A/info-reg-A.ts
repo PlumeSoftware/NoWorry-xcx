@@ -9,62 +9,48 @@ import { webGet, webPost } from "../../utils/http";
 
 Page({
     data: {
-        pageIndex: 0,
+        orderDetailId: "",
 
-        orderDetailId: '',
+        chineseName: "",
+        firstName: "",
+        lastName: "",
 
-        handSignCountry: '',
-        handSignCity: '',
-        handHistoryExist: 0,
-        handHistoryDate: '',
-        handHistoryCountry: '',
-        handHistoryValidity: '',
-        handHistoryCode: '',
-
-        chineseName: '',
-        firstName: '',
-        lastName: '',
-
-        birthday: '',
-        sex: 2,
+        birthday: "",
+        sex: 0,
         marriedStatus: 0,
-        birthplace: '',
-        nationality: '',
-        nationalityPre: '',
+        birthplace: "",
+        nationality: "",
+        nationalityPre: "",
 
-        phoneEngland: '',
-        email: '',
-        addressEngland: '',
+        phoneEngland: "",
+        email: "",
+        passportCode: "",
 
-        addressEngland1: '',
-        addressEngland2: '',
-        addressEngland3: '',
-        addressEngland4: '',
-        addressEngland5: '',
+        handSignCity: "",
 
-        passportCode: '',
-        passportIssue: '',
-        passportValidity: '',
+        tableDLS: 0,
 
-        BRPNumber: '',
-        BRPIssue: '',
-        BRPValidity: '',
-        collegeName: '',
-        collegeAddress: '',
+        DLS_number: "",
 
-        collegeAddress1: '',
-        collegeAddress2: '',
-        collegeAddress3: '',
-        collegeAddress4: '',
+        visaType: 0,
 
+        handHistoryExist: 0,
 
-        collegePhone: '',
-        collegeEmail: '',
-        subjectName: '',
+        handHistoryValidity: "",
 
-        estDepartureTime: '',
-        estReturnTime: '',
-        wechatId: '',
+        estInterviewTime: "",
+
+        wechatId: "",
+
+        mailAddress: "",
+
+        mailAddress1: '',
+        mailAddress2: '',
+        mailAddress3: '',
+        mailAddress4: '',
+        mailAddress5: '',
+
+        pageIndex: 0,
 
         //允许提交
         allow: 0
@@ -80,8 +66,12 @@ Page({
         if(pages[pages.length - 1].options['s']){
             wx.showModal({
                 title:"隐私信息提醒",
-                content:"您的信息将用于Noworry刷签登记，如您不清楚该链接来源请勿填写~"
+                content:"您的信息将用于刷签登记，如您不清楚该链接来源请勿填写"
             })
+        }
+
+        if (!wx.getStorageSync('token')) {
+            wx.showModal({ title: "您还未登录" })
         }
 
         if (!wx.getStorageSync('token')) {
@@ -98,7 +88,7 @@ Page({
             this.setData({
                 pageIndex: e.currentTarget.dataset.pageindex
             })
-        } else if (this.data.pageIndex <= 4) {
+        } else if (this.data.pageIndex <= 2) {
             this.setData({
                 pageIndex: this.data.pageIndex + 1
             })
@@ -111,35 +101,28 @@ Page({
     },
 
     choose(e: { currentTarget: { dataset: { keyname: string, value: number | string } } }) {
+        console.log(e.currentTarget)
         const { keyname, value } = e.currentTarget.dataset;
         const kv = JSON.parse(`{"${keyname}":"${value}"}`)
         this.setData(kv)
     },
 
     submit() {
-        const collegeAddress =
+        const mailAddress =
             [
-                this.data.collegeAddress1,
-                this.data.collegeAddress2,
-                this.data.collegeAddress3,
-                this.data.collegeAddress4
-            ].join(',')
-
-        const addressEngland =
-            [
-                this.data.addressEngland1,
-                this.data.addressEngland2,
-                this.data.addressEngland3,
-                this.data.addressEngland4,
-                this.data.addressEngland5
+                this.data.mailAddress1,
+                this.data.mailAddress2,
+                this.data.mailAddress3,
+                this.data.mailAddress4,
+                this.data.mailAddress5
             ].join(',')
 
         this.setData({
-            collegeAddress: collegeAddress,
-            addressEngland: addressEngland
+            mailAddress: mailAddress,
+            // addressEngland: addressEngland
         })
 
-        webPost('/order/schengen', { token: wx.getStorageSync('token'), sheet: this.data })
+        webPost('/order/usvisa', { token: wx.getStorageSync('token'), sheet: this.data })
             .then(() => {
                 wx.reLaunch({ url: "/pages/user-cop-commit/user-cop-commit" })
             })

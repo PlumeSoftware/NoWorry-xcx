@@ -8,9 +8,11 @@
 
     align-items: center;
 }
-.img{
+
+.img {
     margin: 7vh auto;
 }
+
 .btns view {
     height: 12.5vw;
     width: 75vw;
@@ -30,4 +32,11 @@
 
 .btns view:nth-child(2) {
     color: #F2843B;
+}
+
+.tit {
+    margin-top: 5vh;
+    font-size: 12px;
+    line-height: 17px;
+    color: #797532;
 }
