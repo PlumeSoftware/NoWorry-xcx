@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/comma-dangle */
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import {webGet} from "../../utils/http"
+import { webGet } from "../../utils/http"
 Page({
     data: {
         coverUrlList: [
@@ -14,16 +14,16 @@ Page({
         ],
         coverIndex: 0,
 
-        VisaList:[] as any
+        VisaList: [] as any
 
     },
-    toPoster(e:any) {
+    toPoster(e: any) {
         console.log(e)
-        wx.navigateTo({url:'/pages/home-poster/poster'+"?posterId="+e.currentTarget.dataset["id"]})
+        wx.navigateTo({ url: '/pages/home-poster/poster' + "?posterId=" + e.currentTarget.dataset["id"] })
     },
-    toDetail(e:any) {
+    toDetail(e: any) {
         const commodityId = e.currentTarget.dataset.commodityid
-        console.log( e.currentTarget)
+        console.log(e.currentTarget)
         wx.navigateTo({ url: '/pages/visa-detail/visa-detail' + `?commodityId=${commodityId}` })
     },
     //事件 显示时触发
@@ -31,11 +31,8 @@ Page({
     //页面渲染完毕
     async start() {
         this.setData({ VisaList: await webGet(`/visa/group/hot`) })
-        
-        wx.pageScrollTo({})
-        console.log("aaa")
         setInterval(() => {
             this.setData({ coverIndex: (this.data.coverIndex + 1) % this.data.coverUrlList.length })
-        }, 3000)
+        }, 5000)
     }
 });

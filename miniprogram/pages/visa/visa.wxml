@@ -5,7 +5,7 @@
       <view class="visa-list">
         <view class="visa-item" wx:for="{{visaList[0]}}" wx:key="index" bind:tap="toDetail" data-commodityid="{{item.commodityId}}">
           <view class="item-image">
-            <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="60vw" src="{{item.picLink}}" />
+            <van-image show-loading="{{false}}"  class="image" style="display:{{!input?'block':'none'}}" width="100%" height="70vw" src="{{item.picLink}}" />
           </view>
           <view class="info">
             <view class="title">{{item.commodityName}}</view>
@@ -18,7 +18,7 @@
       <view class="visa-list">
         <view class="visa-item" wx:for="{{visaList[1]}}" wx:key="index" bind:tap="toDetail" data-commodityid="{{item.commodityId}}">
           <view class="item-image">
-            <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="60vw" src="{{item.picLink}}" />
+            <van-image show-loading="{{false}}"  class="image" style="display:{{!input?'block':'none'}}" width="100%" height="70vw" src="{{item.picLink}}" />
           </view>
           <view class="info">
             <view class="title">{{item.commodityName}}</view>
@@ -31,7 +31,7 @@
       <view class="visa-list">
         <view class="visa-item" wx:for="{{visaList[2]}}" wx:key="index" bind:tap="toDetail" data-commodityid="{{item.commodityId}}">
           <view class="item-image">
-            <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="60vw" src="{{item.picLink}}" />
+            <van-image show-loading="{{false}}"  class="image" style="display:{{!input?'block':'none'}}" width="100%" height="70vw" src="{{item.picLink}}" />
           </view>
           <view class="info">
             <view class="title">{{item.commodityName}}</view>
@@ -44,7 +44,7 @@
       <view class="visa-list">
         <view class="visa-item" wx:for="{{visaList[3]}}" wx:key="index" bind:tap="toDetail" data-commodityid="{{item.commodityId}}">
           <view class="item-image">
-            <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="60vw" src="{{item.picLink}}" />
+            <van-image show-loading="{{false}}"  class="image" style="display:{{!input?'block':'none'}}" width="100%" height="70vw" src="{{item.picLink}}" />
           </view>
           <view class="info">
             <view class="title">{{item.commodityName}}</view>
@@ -57,7 +57,7 @@
       <view class="visa-list">
         <view class="visa-item" wx:for="{{visaList[4]}}" wx:key="index" bind:tap="toDetail" data-commodityid="{{item.commodityId}}">
           <view class="item-image">
-            <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="60vw" src="{{item.picLink}}" />
+            <van-image show-loading="{{false}}"  class="image" style="display:{{!input?'block':'none'}}" width="100%" height="70vw" src="{{item.picLink}}" />
           </view>
           <view class="info">
             <view class="title">{{item.commodityName}}</view>

@@ -58,7 +58,7 @@
   <view class="commodity-list">
     <view class="commodity-item" wx:for="{{carts}}" wx:key="index">
       <view class="item-image">
-        <van-image width="100%" height="30vw" src="{{item.picLink}}" />
+        <van-image show-loading="{{false}}"  width="100%" height="30vw" src="{{item.picLink}}" />
       </view>
       <view>
         <view class="item-info">

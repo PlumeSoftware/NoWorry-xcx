@@ -14,7 +14,7 @@
     height: 100vh;
     background-repeat: no-repeat;
     transition: 0.1s;
-    background-size: 100vw 100vh;
+    background-size: 100vw 90vh;
 }
 
 .mova-e {
@@ -26,6 +26,8 @@
 .mova {
     border-radius: 44px 44px 0px 0px;
     height: 60vh;
+    padding-top: 20rpx;
+    margin-top:60vh ;
     width: 100vw;
     background: #F8F6EE;
 }

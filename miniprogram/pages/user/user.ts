@@ -32,17 +32,16 @@ Page({
     },
 
     login() {
-        if (!this.data.userInfo.userName) {
-            setTimeout(() => {
-                wx.showToast({
-                    title: '登录中',
-                    icon: 'loading',
-                    mask: true,
-                    duration: 1000
-                })
-            }, 300)
-        }
-
+        // if (!this.data.userInfo.userName) {
+        //     setTimeout(() => {
+        //         wx.showToast({
+        //             title: '登录中',
+        //             icon: 'loading',
+        //             mask: true,
+        //             duration: 1000
+        //         })
+        //     }, 300)
+        // }
         wx.login().then(async res => {
             const data = await webGet<{ userInfo: { userName: string, phone: string, email: string, handSignCity: string }, token: string }>(`/user/login/${res.code}`)
             if (data) {
@@ -60,9 +59,9 @@ Page({
             if (result) {
                 result.forEach((item: Order) => {
                     if (item.orderStatus == 3) {
-                        orderOutline[0]++
+                        orderOutline[0] += item.orderDetailInfoGroup!.length
                     } else {
-                        orderOutline[item.orderStatus!]++
+                        orderOutline[item.orderStatus!] += item.orderDetailInfoGroup!.length
                     }
                 })
                 this.setData({ orderOutline: orderOutline })

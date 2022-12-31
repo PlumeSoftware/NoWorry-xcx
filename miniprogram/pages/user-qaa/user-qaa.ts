@@ -16,7 +16,8 @@ Page({
             "面签城市",
             "NoWorry",
             "有效期",
-        ]
+        ],
+        qaList: []
     },
     focus() {
         this.setData({ input: true })

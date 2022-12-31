@@ -67,7 +67,7 @@ Page({
             total += item.select ? item.currentPrice * item.quantity : 0
         })
         console.log("cul", carts)
-        const total2 = Number((8.6231 * total).toFixed(2));
+        const total2 = Number((8.43 * total).toFixed(2));
         this.setData({ totalPrice: total, totalPrice2: total2 })
         wx.setStorageSync('carts', carts)
     },

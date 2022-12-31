@@ -1,7 +1,11 @@
 <view class="page">
   <view>
     <view class="title">
-      <van-icon  class="title-img" size="20px" name="/static/profile/line.png" />
+      <van-icon
+        class="title-img"
+        size="20px"
+        name="/static/profile/line.png"
+      />
       <view class="title-word">账号信息</view>
     </view>
     <view class="info-list">
@@ -12,25 +16,41 @@
       <view class="info-item">
         <view>姓名</view>
         <view>
-          <input model:value="{{userName}}" />
+          <input
+            bindinput="get"
+            placeholder="请输入"
+            model:value="{{userName}}"
+          />
         </view>
       </view>
       <view class="info-item">
         <view>手机</view>
         <view>
-          <input model:value="{{phone}}" />
+          <input
+            bindinput="get"
+            placeholder="请输入"
+            model:value="{{phone}}"
+          />
         </view>
       </view>
       <view class="info-item">
         <view>邮箱</view>
         <view>
-          <input model:value="{{email}}" />
+          <input
+            bindinput="get"
+            placeholder="请输入"
+            model:value="{{email}}"
+          />
         </view>
       </view>
       <view class="info-item">
         <view>城市</view>
         <view>
-          <input model:value="{{handSignCity}}" />
+          <input
+            bindinput="get"
+            placeholder="请输入"
+            model:value="{{handSignCity}}"
+          />
         </view>
       </view>
     </view>
@@ -38,22 +58,27 @@
   <view class="save-btn" bind:tap="save">保存修改</view>
   <view>
     <view class="title">
-      <van-icon  class="title-img" size="20px" name="/static/profile/line.png" />
+      <van-icon
+        class="title-img"
+        size="20px"
+        name="/static/profile/line.png"
+      />
       <view class="title-word">系统</view>
     </view>
-      <view class="info-list" bind:tap:>
-        <view class="info-item" bind:tap="toNotice">
-          <view>用户须知</view>
-          <view>
-            <van-icon size="15px" name="/static/profile/return.png" />
-          </view>
-        </view>
-        <view class="info-item" bind:tap="toPrivacy">
-          <view>隐私协议</view>
-          <view>
-            <van-icon size="15px" name="/static/profile/return.png" />
-          </view>
+    <view class="info-list" bind:tap:>
+      <view class="info-item" bind:tap="toNotice">
+        <view>用户须知</view>
+        <view>
+          <van-icon size="15px" name="/static/profile/return.png" />
         </view>
       </view>
+      <view class="info-item" bind:tap="toPrivacy">
+        <view>隐私协议</view>
+        <view>
+          <van-icon size="15px" name="/static/profile/return.png" />
+        </view>
+      </view>
+    </view>
   </view>
 </view>
+
