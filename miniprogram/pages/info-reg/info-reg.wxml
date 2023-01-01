@@ -37,7 +37,7 @@
           model:value="{{handSignCountry}}"
           placeholder="请输入"
           id="handSignCountry"
-          focus="{{focusId=='handSignCountry}}"
+          focus="{{focusId=='handSignCountry'}}"
         />
         <view class="title">
           <view class="question">2.办签城市 *</view>
