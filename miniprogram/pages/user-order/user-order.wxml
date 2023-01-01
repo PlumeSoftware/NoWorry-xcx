@@ -5,7 +5,7 @@
         <scroll-view wx:if="{{orderGroup[typeindex].length>0}}">
           <view class="order-item" wx:for="{{orderGroup[typeindex]}}" wx:for-index="groupindex" wx:key="groupindex">
             <view class="item-image">
-              <van-image width="100%" height="42vw" src="{{item.picLink}}" />
+              <van-image show-loading="{{false}}"  width="100%" height="42vw" src="{{item.picLink}}" />
             </view>
             <view class="item-right">
               <view class="item-info">
@@ -22,7 +22,7 @@
           </view>
         </scroll-view>
         <view class="empty" wx:else>
-          <van-image width="198" height="222" src="https://noworry.cloud/static/profile/Frame.png" />
+          <van-image show-loading="{{false}}"  width="198" height="222" src="https://noworry.cloud/static/profile/Frame.png" />
           <view>
             <view class="empty-text">您还没有相关的订单</view>
             <view class="empty-describe">

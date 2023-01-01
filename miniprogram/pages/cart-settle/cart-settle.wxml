@@ -1,7 +1,11 @@
 <view class="page">
   <view>
     <view class="title">
-      <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
+      <van-icon
+        class="title-img"
+        size="20px"
+        name="/static/profile/line.png"
+      />
       <view class="title-word">联系方式</view>
     </view>
     <view class="info-list">
@@ -12,53 +16,95 @@
       <view class="info-item">
         <view>姓名</view>
         <view>
-          <input model:value="{{userName}}" />
+          <input
+            bind:tap="inp"
+            model:value="{{userName}}"
+            id="name"
+            focus="{{focusId=='name'}}"
+          />
         </view>
       </view>
       <view class="info-item">
         <view>手机号</view>
         <view>
-          <input model:value="{{phone}}" />
+          <input
+            bind:tap="inp"
+            model:value="{{phone}}"
+            id="phone"
+            focus="{{focusId=='phone'}}"
+          />
         </view>
       </view>
       <view class="info-item">
         <view>邮箱号</view>
         <view>
-          <input model:value="{{email}}" />
+          <input
+            bind:tap="inp"
+            model:value="{{email}}"
+            id="email"
+            focus="{{focusId=='email'}}"
+          />
         </view>
       </view>
       <view class="info-item">
         <view>所在城市</view>
         <view>
-          <input model:value="{{liveCity}}" />
+          <input
+            bind:tap="inp"
+            model:value="{{liveCity}}"
+            id="liveCity"
+            focus="{{focusId=='liveCity'}}"
+          />
         </view>
       </view>
     </view>
   </view>
   <view>
     <view class="title">
-      <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
+      <van-icon
+        class="title-img"
+        size="20px"
+        name="/static/profile/line.png"
+      />
       <view class="title-word">支付方式</view>
     </view>
     <view class="opea-list">
-      <view class="opea-item">
-        <picker bindchange="bindPickerChange" value="{{payIndex}}" range="{{payArray}}">
+      <picker
+        bindchange="bindPickerChange"
+        value="{{payIndex}}"
+        range="{{payArray}}"
+      >
+        <view class="opea-item">
           <view>{{payArray[payIndex]}}</view>
-        </picker>
-        <van-icon size="15px" name="/static/profile/return.png" />
-      </view>
+          <van-icon size="15px" name="/static/profile/return.png" />
+        </view>
+      </picker>
+
     </view>
   </view>
   <view>
     <view class="title">
-      <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
+      <van-icon
+        class="title-img"
+        size="20px"
+        name="/static/profile/line.png"
+      />
       <view class="title-word">订单详情</view>
     </view>
   </view>
   <view class="commodity-list">
-    <view class="commodity-item" wx:for="{{carts}}" wx:key="index">
+    <view
+      class="commodity-item"
+      wx:for="{{carts}}"
+      wx:key="index"
+    >
       <view class="item-image">
-        <van-image width="100%" height="30vw" src="{{item.picLink}}" />
+        <van-image
+          show-loading="{{false}}"
+          width="100%"
+          height="30vw"
+          src="{{item.picLink}}"
+        />
       </view>
       <view>
         <view class="item-info">
@@ -66,6 +112,7 @@
           <view>{{item.commodityBrief}}</view>
         </view>
         <view class="item-pm">
+          <view class="item-quantity">x{{item.quantity}}</view>
           <view class="item-price">£{{item.currentPrice}}</view>
         </view>
       </view>
@@ -73,7 +120,11 @@
   </view>
   <view wx:if="{{favourableTotal>0}}">
     <view class="title">
-      <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
+      <van-icon
+        class="title-img"
+        size="20px"
+        name="/static/profile/line.png"
+      />
       <view class="title-word">活动优惠</view>
       <view style="margin-left:60vw;line-height: 24px;"></view>
     </view>
@@ -81,16 +132,37 @@
       <view class="info-item" wx:for="{{favourable}}">
         <view>{{item.title}}</view>
         <view>
-          <input model:value="- £{{item.amount}}" disabled="{{true}}" />
+          <input
+            bindtap="inp"
+            bindblur="inp"
+            bindconfirm="inp"
+            bindfocus="inp"
+            model:value="- £{{item.amount}}"
+            disabled="{{true}}"
+          />
         </view>
       </view>
     </view>
   </view>
   <view class="slider"></view>
   <view class="protocol">
-    <van-icon bind:tap="agreeChange" wx:if="{{agree}}" size="16" name="/static/cart/agree-protocol.png"></van-icon>
-    <van-icon bind:tap="agreeChange" wx:else size="16" name="/static/cart/disagree-protocol.png"></van-icon>
-    <view class="protocol-text">已同意《No Worry用户协议条款》和《隐私条款》</view>
+    <van-icon
+      bind:tap="agreeChange"
+      wx:if="{{agree}}"
+      size="16"
+      name="/static/cart/agree-protocol.png"
+    ></van-icon>
+    <van-icon
+      bind:tap="agreeChange"
+      wx:else
+      size="16"
+      name="/static/cart/disagree-protocol.png"
+    ></van-icon>
+    <view class="protocol-text">已同意
+      <span bind:tap="toNotice" class="span">《No Worry用户协议条款》</span>
+      和
+      <span bind:tap="toPrivacy" class="span">《隐私条款》</span>
+    </view>
   </view>
   <view class="subtotal">
     <view class="subtotal-number">
@@ -109,3 +181,4 @@
     </view>
   </view>
 </view>
+

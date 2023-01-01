@@ -18,7 +18,6 @@ Page({
 
     async updateCart() {
         const carts = wx.getStorageSync('carts')
-        console.log(carts)
         for (let i = 0; i < carts.length; i++) {
             const visa = await webGet<Visa>(`/visa/detail/${carts[i].commodityId}`, {})
             carts[i].picLink = visa?.picLink
@@ -39,7 +38,7 @@ Page({
 
     setAllSelect() {
         const carts = this.data.carts;
-        if (carts.findIndex((item: any) => !item.select) == -1) {
+        if (carts && carts.findIndex((item: any) => !item.select) == -1) {
             this.setData({ allselect: true })
         } else {
             this.setData({ allselect: false })
@@ -63,11 +62,12 @@ Page({
     culTotal() {
         let total = 0;
         const carts = this.data.carts;
-        carts.forEach((item: any) => {
-            total += item.select ? item.currentPrice * item.quantity : 0
-        })
-        console.log("cul", carts)
-        const total2 = Number((8.6231 * total).toFixed(2));
+        if (carts)
+            carts.forEach((item: any) => {
+                total += item.select ? item.currentPrice * item.quantity : 0
+            })
+
+        const total2 = Number((8.43 * total).toFixed(2));
         this.setData({ totalPrice: total, totalPrice2: total2 })
         wx.setStorageSync('carts', carts)
     },

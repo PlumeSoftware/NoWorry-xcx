@@ -23,12 +23,7 @@ Page({
         allselect: false,
         totalPrice: 0,
         totalPriceShow: 0,
-        favourable: wx.getStorageSync('token') == "oJth05Jx9ITN9s85MnT5odUbPlAg43" ? [
-            {
-                title: "开发人员",
-                amount: 127.9
-            },
-        ] : [],
+        favourable: [] as Array<{ title: string, amount: number }>,
         favourableTotal: 0,
 
         totolPriceCNY: 0,
@@ -37,13 +32,98 @@ Page({
 
         allowSubmit: false
     },
+    inp(e: { currentTarget: { id: string } }) {
+        wx.hideKeyboard()
+        setTimeout(() => {
+            this.setData({
+                focusId: e.currentTarget.id
+            })
+        }, 300)
+    },
     updateCart() {
         let total = 0;
         let totalCNY = 0;
         let favourableTotal = 0;
 
-        //计算商品总价
         const carts = wx.getStorageSync('carts');
+        let usVisaNum = 0;//美签数量
+        let sgVisaNum = 0;//申根签数量
+
+        let pr88Num = 0;//88元签证数量
+        let pr68Num = 0//68元签证数量
+        console.log("carts",)
+        //计算商品总价,统计签证类型和价格
+        for (let i = 0; i < carts.length; i++) {
+            if (carts[i].select) {
+                total += carts[i].currentPrice * carts[i].quantity
+
+                switch (carts[i].commodityName[0]) {
+                    case "美":
+                        usVisaNum += carts[i].quantity; break;
+                    default:
+                        sgVisaNum += carts[i].quantity; break;
+                }
+
+                if (carts[i].currentPrice >= 88) {
+                    pr88Num += carts[i].quantity
+                } else if (carts[i].currentPrice >= 68 && carts[i].currentPrice < 88) {
+                    pr68Num += carts[i].quantity;
+                }
+
+            } else {
+                carts.splice(i--, 1)
+            }
+        }
+
+        /**
+         * 优惠
+            1.美签+申根自动优惠 10英镑
+            2.5位以上88磅的，自动-人数*10英镑，5位以上68磅的，和88磅的，自动-5*人数英镑
+            3.美签2位，-10*2英镑，3位-10*3英镑，4位也是-10*3英镑
+         */
+
+        //生成优惠方案
+        if (sgVisaNum + usVisaNum < 5 && sgVisaNum && usVisaNum) {
+            const favourable = this.data.favourable;
+            const amount = Math.min(sgVisaNum, usVisaNum) * 10 <= 40 ? Math.min(sgVisaNum, usVisaNum) * 10 : 40
+            favourable.push({ title: "美签+申根联合优惠", amount: amount })
+            this.setData({ favourable: favourable })
+        }
+
+        if (pr88Num >= 5) {
+            const favourable = this.data.favourable;
+            const amount = pr88Num * 10 < 40 ? pr88Num * 10 : 40
+            favourable.push({ title: "组队刷签优惠", amount: amount })
+            this.setData({ favourable: favourable })
+        }
+
+        if (pr68Num >= 5) {
+            const favourable = this.data.favourable;
+            const amount = pr68Num * 10 < 40 ? pr68Num * 10 : 40
+            favourable.push({ title: "组队刷签优惠", amount: amount })
+            this.setData({ favourable: favourable })
+        }
+
+        if (usVisaNum && pr68Num + pr88Num < 5) {
+            const favourable = this.data.favourable;
+            switch (usVisaNum) {
+                case 2:
+                    favourable.push({ title: "美签组队优惠", amount: 20 })
+                    break;
+                case 3:
+                    favourable.push({ title: "美签组队优惠", amount: 20 })
+                    break;
+                case 4:
+                    favourable.push({ title: "美签组队优惠", amount: 30 })
+                    break;
+                default:
+                    break;
+            }
+            this.setData({ favourable: favourable })
+        }
+
+        console.log(sgVisaNum, usVisaNum, pr88Num, pr68Num)
+
         for (let i = 0; i < carts.length; i++) {
             if (carts[i].select) {
                 total += carts[i].currentPrice * carts[i].quantity
@@ -52,6 +132,8 @@ Page({
             }
         }
 
+
+        //计算优惠价格
         this.data.favourable.forEach(i => {
             favourableTotal += i.amount
         })
@@ -73,6 +155,14 @@ Page({
 
     bindPickerChange(e: { detail: { value: number } }) {
         this.setData({ payIndex: e.detail.value })
+    },
+
+    toPrivacy() {
+        wx.navigateTo({ url: '/pages/user-set-privacy/privacy' })
+    },
+
+    toNotice() {
+        wx.navigateTo({ url: '/pages/user-set-notice/notice' })
     },
 
     agreeChange() {
@@ -98,7 +188,7 @@ Page({
                     boughtQuantity: cart.quantity,
                     invPrice: cart.quantity * cart.currentPrice,
                     commodityId: cart.commodityId,
-                    remark:cart.remark
+                    remark: cart.remark
                 })
             }
         })

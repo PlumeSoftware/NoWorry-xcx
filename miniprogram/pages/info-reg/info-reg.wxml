@@ -2,7 +2,7 @@
   <view class="body">
     <view class="registration">
       <view class="title">申请人申根签信息登记表</view>
-      <van-image width="53px" height="52px" src="https://noworry.cloud/static/profile/noworry.png" />
+      <van-image show-loading="{{false}}"  width="53px" height="52px" src="https://noworry.cloud/static/profile/noworry.png" />
       <view class="info">所有信息数据仅保存在NoWorry内网，在您出签之后将自动删除；请您务必认真填写核对相关信息，基础资料有误概不负责</view>
     </view>
     <view class="form">
@@ -18,12 +18,14 @@
           <view class="question">1.递签国家 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{handSignCountry}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{handSignCountry}}" placeholder="请输入" />
         <view class="title">
           <view class="question">2.办签城市 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{handSignCity}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{handSignCity}}" placeholder="请输入" />
         <view class="title">
           <view class="question">3.近五年内是否办理过申根签证 *</view>
           <view class="tip">（必填）</view>
@@ -48,13 +50,17 @@
         </view>
         <view wx:if="{{handHistoryExist==1}}">
           <view class="sub-question">4.1.递签日期（以现场录入指纹的日期为准）</view>
-          <input class="input" model:value="{{handHistoryDate}}" placeholder="请输入" />
+          <input
+            bind:tap="inp" class="input" model:value="{{handHistoryDate}}" placeholder="请输入" />
           <view class="sub-question">4.2.递签国家</view>
-          <input class="input" model:value="{{handHistoryCountry}}" placeholder="请输入" />
+          <input
+            bind:tap="inp" class="input" model:value="{{handHistoryCountry}}" placeholder="请输入" />
           <view class="sub-question">4.3.签证存续时间</view>
-          <input class="input" model:value="{{handHistoryValidity}}" placeholder="例：2019.03.10-2019.06.07" />
+          <input
+            bind:tap="inp" class="input" model:value="{{handHistoryValidity}}" placeholder="例：2019.03.10-2019.06.07" />
           <view class="sub-question">4.4.签证号码（三位字母+右上角号码）</view>
-          <input class="input" model:value="{{handHistoryCode}}" placeholder="例：ESP020406888" />
+          <input
+            bind:tap="inp" class="input" model:value="{{handHistoryCode}}" placeholder="例：ESP020406888" />
         </view>
       </view>
       <view wx:elif="{{pageIndex==1}}">
@@ -62,22 +68,26 @@
           <view class="question">5.中文姓名 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{chineseName}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{chineseName}}" placeholder="请输入" />
         <view class="title">
           <view class="question">6.名拼音 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{firstName}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{firstName}}" placeholder="请输入" />
         <view class="title">
           <view class="question">7.姓拼音 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{lastName}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{lastName}}" placeholder="请输入" />
         <view class="title">
           <view class="question">8.出生日期 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{birthday}}" placeholder="YYYY-MM-DD" />
+        <input
+            bind:tap="inp" class="input" model:value="{{birthday}}" placeholder="YYYY-MM-DD" />
         <view class="title">
           <view class="question">9.性别 *</view>
           <view class="tip">（必填）</view>
@@ -120,128 +130,155 @@
           <view class="question">11.出生地 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{birthplace}}" placeholder="例：中国-湖北" />
+        <input
+            bind:tap="inp" class="input" model:value="{{birthplace}}" placeholder="例：中国-湖北" />
         <view class="title">
           <view class="question">12.现国籍 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{nationality}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{nationality}}" placeholder="请输入" />
         <view class="title">
           <view class="question">13.曾国籍</view>
         </view>
-        <input class="input" model:value="{{nationalityPre}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{nationalityPre}}" placeholder="请输入" />
       </view>
       <view wx:elif="{{pageIndex==2}}">
         <view class="title">
           <view class="question">14.英国手机号 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{phoneEngland}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{phoneEngland}}" placeholder="请输入" />
         <view class="title">
           <view class="question">15.电子邮箱 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{email}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{email}}" placeholder="请输入" />
         <view class="title">
           <view class="question">16.英国地址*</view>
           <view class="tip">（必填）</view>
         </view>
         <view class="sub-question">16.1. Adress1</view>
-        <input class="input" model:value="{{addressEngland1}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{addressEngland1}}" placeholder="请输入" />
         <view class="sub-question">16.2. Adress2</view>
-        <input class="input" model:value="{{addressEngland2}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{addressEngland2}}" placeholder="请输入" />
         <view class="sub-question">16.3. City</view>
-        <input class="input" model:value="{{addressEngland3}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{addressEngland3}}" placeholder="请输入" />
         <view class="sub-question">16.4. Country</view>
-        <input class="input" model:value="{{addressEngland4}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{addressEngland4}}" placeholder="请输入" />
         <view class="sub-question">16.5. Post Code</view>
-        <input class="input" model:value="{{addressEngland5}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{addressEngland5}}" placeholder="请输入" />
         <view class="title">
           <view class="question">17.护照号码 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{passportCode}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{passportCode}}" placeholder="请输入" />
         <view class="title">
           <view class="question">18.护照签发日期 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{passportIssue}}" placeholder="YYYY-MM-DD" />
+        <input
+            bind:tap="inp" class="input" model:value="{{passportIssue}}" placeholder="YYYY-MM-DD" />
         <view class="title">
           <view class="question">19.护照有效日期 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{passportValidity}}" placeholder="YYYY-MM-DD" />
+        <input
+            bind:tap="inp" class="input" model:value="{{passportValidity}}" placeholder="YYYY-MM-DD" />
       </view>
       <view wx:elif="{{pageIndex==3}}">
         <view class="title">
           <view class="question">20.BRP number *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{BRPNumber}}" placeholder="提示：BRP右上角R开头" />
+        <input
+            bind:tap="inp" class="input" model:value="{{BRPNumber}}" placeholder="提示：BRP右上角R开头" />
         <view class="title">
           <view class="question">21.BRP签发日期 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{BRPIssue}}" placeholder="YYYY-MM-DD" />
+        <input
+            bind:tap="inp" class="input" model:value="{{BRPIssue}}" placeholder="YYYY-MM-DD" />
         <view class="title">
           <view class="question">22.BRP有效日期 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{BRPValidity}}" placeholder="YYYY-MM-DD" />
+        <input
+            bind:tap="inp" class="input" model:value="{{BRPValidity}}" placeholder="YYYY-MM-DD" />
         <view class="title">
           <view class="question">23.学校名称 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{collegeName}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{collegeName}}" placeholder="请输入" />
         <view class="title">
           <view class="question">24.学校地址 *</view>
           <view class="tip">（必填）</view>
         </view>
         <view class="sub-tip">Google map查询，请务必完整填写</view>
         <view class="sub-question">24.1. Adress</view>
-        <input class="input" model:value="{{collegeAddress1}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{collegeAddress1}}" placeholder="请输入" />
         <view class="sub-question">24.2. City</view>
-        <input class="input" model:value="{{collegeAddress2}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{collegeAddress2}}" placeholder="请输入" />
         <view class="sub-question">24.3. Country</view>
-        <input class="input" model:value="{{collegeAddress3}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{collegeAddress3}}" placeholder="请输入" />
         <view class="sub-question">24.4. Post Code</view>
-        <input class="input" model:value="{{collegeAddress4}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{collegeAddress4}}" placeholder="请输入" />
         <view class="title">
           <view class="question">23.学校电话 *</view>
           <view class="tip">（必填）</view>
         </view>
         <view class="sub-tip">Google map查询，请务必完整填写</view>
-        <input class="input" model:value="{{collegePhone}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{collegePhone}}" placeholder="请输入" />
         <view class="title">
           <view class="question">23.学校邮箱 *</view>
           <view class="tip">（必填）</view>
         </view>
         <view class="sub-tip">学校或学院官网查询，注意：是学校的邮箱，不是学生邮箱。</view>
-        <input class="input" model:value="{{collegeEmail}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{collegeEmail}}" placeholder="请输入" />
       </view>
       <view wx:elif="{{pageIndex==4}}">
         <view class="title">
           <view class="question">27.专业英文名称 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{subjectName}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{subjectName}}" placeholder="请输入" />
         <view class="title">
           <view class="question">28.预计出发日期 *</view>
           <view class="tip">（必填）</view>
         </view>
         <view class="sub-tip">可适当进行调整，以约签时间为主</view>
-        <input class="input" model:value="{{estDepartureTime}}" placeholder="YYYY-MM-DD" />
+        <input
+            bind:tap="inp" class="input" model:value="{{estDepartureTime}}" placeholder="YYYY-MM-DD" />
         <view class="title">
           <view class="question">29.预计结束日期 *</view>
           <view class="tip">（必填）</view>
         </view>
         <view class="sub-tip">注意：行程天数7-10天，价格会据行程单天数的增加上调</view>
-        <input class="input" model:value="{{estReturnTime}}" placeholder="YYYY-MM-DD" />
+        <input
+            bind:tap="inp" class="input" model:value="{{estReturnTime}}" placeholder="YYYY-MM-DD" />
         <view class="title">
           <view class="question">30.Wechat ID *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{wechatId}}" placeholder="请输入" />
+        <input
+            bind:tap="inp" class="input" model:value="{{wechatId}}" placeholder="请输入" />
       </view>
       <view wx:elif="{{pageIndex==5}}">
         <view class="over">

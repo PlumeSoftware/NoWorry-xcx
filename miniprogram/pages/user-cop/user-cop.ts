@@ -18,6 +18,8 @@ Page({
         email: ''
     },
 
+    inp(){},
+
     commit() {
         webPost("/user/cooperate", this.data)
             .then(() => {

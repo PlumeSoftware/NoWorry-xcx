@@ -6,5 +6,5 @@
     </view>
     <view class="info">{{posterList[posterIndex].posterInfo}}</view>
   </view>
-  <van-image width="100vw" height="673px" src="{{posterList[posterIndex].posterImg}}" />
+  <van-image show-loading="{{false}}"  width="100vw" height="673px" src="{{posterList[posterIndex].posterImg}}" />
 </view>

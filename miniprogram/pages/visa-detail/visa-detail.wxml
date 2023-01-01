@@ -1,7 +1,7 @@
 <view class="page">
   <view class="bg" style="background-image: url('{{commodity.picLink}}');background-position-y:{{moveY}}rpx">
-    <movable-area class="mova-e">
-      <movable-view class="mova" y="290" direction="vertical" bindchange="move">
+    <view class="mova-e">
+      <view class="mova" direction="vertical">
         <view>
           <view>
             <view class="title">
@@ -31,8 +31,8 @@
             </view>
           </view>
         </view>
-      </movable-view>
-    </movable-area>
+      </view>
+    </view>
     <view class="add">
       <view class="add-btn" bind:tap="addCart">加入购物车</view>
     </view>

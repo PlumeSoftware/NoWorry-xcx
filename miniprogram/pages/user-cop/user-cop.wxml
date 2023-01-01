@@ -2,7 +2,7 @@
   <scroll-view>
     <view class="cover">
       <view class="cover-image">
-        <van-image width="76vw" height="100vw" src="https://noworry.cloud/static/profile/cop-cover.png" />
+        <van-image show-loading="{{false}}"  width="76vw" height="100vw" src="https://noworry.cloud/static/profile/cop-cover.png" />
       </view>
       <view class="cover-text">
         <view>您是大学学联，需要资助？或者您有客户，需要我们的刷位系统的帮助？您的旅游团的客户缺少申根签证？合作才是共赢。</view>
@@ -14,7 +14,8 @@
         <view>公司名称 *</view>
         <view class="tip">（必填）</view>
       </label>
-      <input class="input" model:value="{{companyName}}" placeholder="请输入" />
+      <input
+            bind:tap="inp" class="input" model:value="{{companyName}}" placeholder="请输入" />
       <label class="label">
         <view>业务说明 *</view>
         <view class="tip">（必填）</view>
@@ -24,21 +25,25 @@
         <view>联系人 *</view>
         <view class="tip">（必填）</view>
       </label>
-      <input class="input" model:value="{{contactName}}" placeholder="请输入" />
+      <input
+            bind:tap="inp" class="input" model:value="{{contactName}}" placeholder="请输入" />
       <label class="label">
         <view>联系电话 *</view>
         <view class="tip">（必填）</view>
       </label>
-      <input class="input" model:value="{{contactPhone}}" placeholder="请输入" />
+      <input
+            bind:tap="inp" class="input" model:value="{{contactPhone}}" placeholder="请输入" />
       <label class="label">
         <view>微信号 *</view>
         <view class="tip">（必填）</view>
       </label>
-      <input class="input" model:value="{{wechatId}}" placeholder="请输入" />
+      <input
+            bind:tap="inp" class="input" model:value="{{wechatId}}" placeholder="请输入" />
       <label class="label">
         <view>邮箱</view>
       </label>
-      <input class="input" model:value="{{email}}" class="input" placeholder="请输入" />
+      <input
+            bind:tap="inp" class="input" model:value="{{email}}" class="input" placeholder="请输入" />
       <button class="button" bind:tap="commit">提交</button>
     </view>
     <view class="contact">
@@ -46,10 +51,10 @@
       <view class="contact-text">联系我们</view>
       <view class="cuslist">
         <view class="cus-qr">
-          <van-image show-menu-by-longpress width="120px" height="120px" src="https://noworry.cloud/static/profile/cus1.png" />
+          <van-image show-loading="{{false}}"  show-menu-by-longpress width="120px" height="120px" src="https://noworry.cloud/static/profile/cus1.png" />
         </view>
         <view class="cus-qr">
-          <van-image show-menu-by-longpress width="120px" height="120px" src="https://noworry.cloud/static/profile/cus2.png" />
+          <van-image show-loading="{{false}}"  show-menu-by-longpress width="120px" height="120px" src="https://noworry.cloud/static/profile/cus2.png" />
         </view>
       </view>
       <view class="contact-tip">

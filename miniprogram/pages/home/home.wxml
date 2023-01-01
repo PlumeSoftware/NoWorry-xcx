@@ -1,15 +1,39 @@
 <view class="page-home">
-  <view>
-    <van-image width="100vw" height="279px" src="{{coverUrlList[coverIndex]}}" bind:tap="toPoster" data-id="{{coverIndex}}"/>
+  <view
+    wx:for="{{[0,1,2,3]}}"
+    style="display:{{coverIndex==index?'block':'none'}}"
+    wx:key="index"
+  >
+    <van-image
+      show-loading="{{false}}"
+      width="100vw"
+      height="279px"
+      src="{{coverUrlList[index]}}"
+      bind:tap="toPoster"
+      data-id="{{index}}"
+    />
   </view>
   <view class="body">
     <view class="visum">
       <view class="title">热门推荐</view>
       <view class="move">
         <view class="visa-list" style="width:{{VisaList.length*44}}vw">
-          <view class="visa-item" wx:for="{{VisaList}}" wx:key="index" bind:tap="toDetail" data-commodityid="{{item.commodityId}}">
+          <view
+            class="visa-item"
+            wx:for="{{VisaList}}"
+            wx:key="index"
+            bind:tap="toDetail"
+            data-commodityid="{{item.commodityId}}"
+          >
             <view class="item-image">
-              <van-image class="image" style="display:{{!input?'block':'none'}}" width="100%" height="50vw" src="{{item.picLink}}" />
+              <van-image
+                show-loading="{{false}}"
+                class="image"
+                style="display:{{!input?'block':'none'}}"
+                width="100%"
+                height="60vw"
+                src="{{item.picLink}}"
+              />
             </view>
             <view class="info">
               <view class="title">{{item.commodityName}}</view>
@@ -24,16 +48,26 @@
       <view class="info">
         NoWorry 是全英国第一家本地中介签证服务平台，有着一流的程序员团队和服务团队。NoWorry研发的专属签证加急刷位系统的安全性和效率绝对一流，领跑所有程序……
       </view>
-      <view class="detail">
+      <view class="detail" bind:tap="toIntroduce">
         <view class="detail-info">查看详情</view>
         <van-icon size="9px" name="/static/home/return.png" />
       </view>
-      <van-image width="335px" height="150px" src="https://noworry.cloud/static/home/banner.png" />
+      <van-image
+        show-loading="{{false}}"
+        width="335px"
+        height="150px"
+        src="https://noworry.cloud/static/home/banner.png"
+      />
     </view>
     <view class="service">
       <view class="title">服务流程</view>
       <view class="process">
-        <van-image width="335px" height="121px" src="https://noworry.cloud/static/home/process.png" />
+        <van-image
+          show-loading="{{false}}"
+          width="335px"
+          height="121px"
+          src="https://noworry.cloud/static/home/process.png"
+        />
         <view class="background"></view>
       </view>
     </view>
@@ -44,10 +78,22 @@
     <view class="contact">
       <view class="cuslist">
         <view class="cus-qr">
-          <van-image show-menu-by-longpress width="20.6vw" height="20.6vw" src="https://noworry.cloud/static/profile/cus1.png" />
+          <van-image
+            show-loading="{{false}}"
+            show-menu-by-longpress
+            width="20.6vw"
+            height="20.6vw"
+            src="https://noworry.cloud/static/profile/cus1.png"
+          />
         </view>
         <view class="cus-qr">
-          <van-image show-menu-by-longpress width="20.6vw" height="20.6vw" src="https://noworry.cloud/static/home/cus3.png" />
+          <van-image
+            show-loading="{{false}}"
+            show-menu-by-longpress
+            width="20.6vw"
+            height="20.6vw"
+            src="https://noworry.cloud/static/home/cus3.png"
+          />
         </view>
       </view>
       <view class="contact-tip">
@@ -68,3 +114,4 @@
     <view class="copyright">©copyright for NoWorry 2022</view>
   </view>
 </view>
+

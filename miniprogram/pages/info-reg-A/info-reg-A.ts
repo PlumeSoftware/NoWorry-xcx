@@ -56,6 +56,7 @@ Page({
         allow: 0
     },
 
+    inp(){},
     onShow() {
         const pages = getCurrentPages();
         const orderDetailId = pages[pages.length - 1].options.orderDetailId!
@@ -101,7 +102,6 @@ Page({
     },
 
     choose(e: { currentTarget: { dataset: { keyname: string, value: number | string } } }) {
-        console.log(e.currentTarget)
         const { keyname, value } = e.currentTarget.dataset;
         const kv = JSON.parse(`{"${keyname}":"${value}"}`)
         this.setData(kv)
