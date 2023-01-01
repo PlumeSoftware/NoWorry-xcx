@@ -56,7 +56,14 @@ Page({
         allow: 0
     },
 
-    inp(){},
+    inp(e: { currentTarget: { id: string } }) {
+        wx.hideKeyboard()
+        setTimeout(() => {
+            this.setData({
+                focusId: e.currentTarget.id
+            })
+        }, 300)
+    },
     onShow() {
         const pages = getCurrentPages();
         const orderDetailId = pages[pages.length - 1].options.orderDetailId!

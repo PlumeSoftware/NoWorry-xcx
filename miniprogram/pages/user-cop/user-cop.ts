@@ -18,7 +18,14 @@ Page({
         email: ''
     },
 
-    inp(){},
+    inp(e: { currentTarget: { id: string } }) {
+        wx.hideKeyboard()
+        setTimeout(() => {
+            this.setData({
+                focusId: e.currentTarget.id
+            })
+        }, 300)
+    },
 
     commit() {
         webPost("/user/cooperate", this.data)

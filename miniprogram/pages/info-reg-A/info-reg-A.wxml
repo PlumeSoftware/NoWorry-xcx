@@ -34,6 +34,8 @@
           class="input"
           model:value="{{chineseName}}"
           placeholder="请输入"
+          id="chineseName"
+          focus="{{focusId=='chineseName'}}"
         />
         <view class="title">
           <view class="question">2.名拼音 *</view>
@@ -44,6 +46,8 @@
           class="input"
           model:value="{{firstName}}"
           placeholder="请输入"
+          id="firstName"
+          focus="{{focusId=='firstName'}}"
         />
         <view class="title">
           <view class="question">3.姓拼音 *</view>
@@ -54,6 +58,8 @@
           class="input"
           model:value="{{lastName}}"
           placeholder="请输入"
+          id="lastName"
+          focus="{{focusId=='lastName'}}"
         />
         <view class="title">
           <view class="question">4.性别 *</view>
@@ -180,6 +186,8 @@
           class="input"
           model:value="{{birthplace}}"
           placeholder="例：中国-湖北"
+          id="birthplace"
+          focus="{{focusId=='birthplace'}}"
         />
         <view class="title">
           <view class="question">7.现国籍 *</view>
@@ -190,6 +198,8 @@
           class="input"
           model:value="{{nationality}}"
           placeholder="请输入"
+          id="nationality"
+          focus="{{focusId=='nationality'}}"
         />
         <view class="title">
           <view class="question">8.曾国籍</view>
@@ -199,6 +209,8 @@
           class="input"
           model:value="{{nationalityPre}}"
           placeholder="请输入"
+          id="nationalityPre"
+          focus="{{focusId=='nationalityPre'}}"
         />
       </view>
       <view wx:elif="{{pageIndex==1}}">
@@ -211,6 +223,8 @@
           class="input"
           model:value="{{phoneEngland}}"
           placeholder="请输入"
+          id="phoneEngland"
+          focus="{{focusId=='phoneEngland'}}"
         />
         <view class="title">
           <view class="question">10.电子邮箱 *</view>
@@ -221,6 +235,8 @@
           class="input"
           model:value="{{email}}"
           placeholder="请输入"
+          id="email"
+          focus="{{focusId=='email'}}"
         />
         <view class="title">
           <view class="question">11.护照号码 *</view>
@@ -231,6 +247,8 @@
           class="input"
           model:value="{{passportCode}}"
           placeholder="请输入"
+          id="passportCode"
+          focus="{{focusId=='passportCode'}}"
         />
         <view class="title">
           <view class="question">12.办签城市 *</view>
@@ -324,6 +342,8 @@
           wx:if="{{tableDLS==1}}"
           model:value="{{DLS_numberr}}"
           placeholder="请输入"
+          id="DLS_numberr"
+          focus="{{focusId=='DLS_numberr'}}"
         />
         <view class="title" wx:if="{{tableDLS==0}}">
           <view class="question">14.DLS-160 Number（不可用）</view>
@@ -395,6 +415,8 @@
           class="input"
           model:value="{{birthday}}"
           placeholder="YYYY-MM-DD"
+          id="birthday"
+          focus="{{focusId=='birthday'}}"
         />
       </view>
       <view wx:elif="{{pageIndex==2}}">
@@ -451,6 +473,8 @@
           wx:if="{{handHistoryExist==1}}"
           model:value="{{handHistoryValidity}}"
           placeholder="例如20210425 - 20220425"
+          id="handHistoryValidity"
+          focus="{{focusId=='handHistoryValidity'}}"
         />
         <view class="title">
           <view class="question">19.期望约到的面签时间 *</view>
@@ -461,6 +485,8 @@
           class="input"
           model:value="{{estInterviewTime}}"
           placeholder="YYYY-MM-DD"
+          id="estInterviewTime"
+          focus="{{focusId=='estInterviewTime'}}"
         />
         <view class="title">
           <view class="question">20.Wechat ID *</view>
@@ -471,6 +497,8 @@
           class="input"
           model:value="{{wechatId}}"
           placeholder="请输入"
+          id="wechatId"
+          focus="{{focusId=='wechatId'}}"
         />
         <view class="title">
           <view class="question">21.如需要邮寄护照，请填（官方快递费20镑）</view>
@@ -481,6 +509,8 @@
           class="input"
           model:value="{{mailAddress1}}"
           placeholder="请输入"
+          id="mailAddress1"
+          focus="{{focusId=='mailAddress1'}}"
         />
         <view class="sub-question">21.2. Adress2</view>
         <input
@@ -488,6 +518,8 @@
           class="input"
           model:value="{{mailAddress2}}"
           placeholder="请输入"
+          id="mailAddress2"
+          focus="{{focusId=='mailAddress2'}}"
         />
         <view class="sub-question">21.3. City</view>
         <input
@@ -495,6 +527,8 @@
           class="input"
           model:value="{{mailAddress3}}"
           placeholder="请输入"
+          id="mailAddress3"
+          focus="{{focusId=='mailAddress3'}}"
         />
         <view class="sub-question">21.4. Country</view>
         <input
@@ -502,6 +536,8 @@
           class="input"
           model:value="{{mailAddress4}}"
           placeholder="请输入"
+          id="mailAddress4"
+          focus="{{focusId=='mailAddress4'}}"
         />
         <view class="sub-question">21.5. Post Code</view>
         <input
@@ -509,6 +545,8 @@
           class="input"
           model:value="{{mailAddress5}}"
           placeholder="请输入"
+          id="mailAddress5"
+          focus="{{focusId=='mailAddress5'}}"
         />
       </view>
       <view wx:elif="{{pageIndex==3}}">

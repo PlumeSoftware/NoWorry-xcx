@@ -15,7 +15,12 @@
         <view class="tip">（必填）</view>
       </label>
       <input
-            bind:tap="inp" class="input" model:value="{{companyName}}" placeholder="请输入" />
+        bind:tap="inp" class="input" 
+        model:value="{{companyName}}" 
+        placeholder="请输入" 
+        id="companyName"
+        focus="{{focusId=='companyName'}}"
+      />
       <label class="label">
         <view>业务说明 *</view>
         <view class="tip">（必填）</view>
@@ -26,24 +31,49 @@
         <view class="tip">（必填）</view>
       </label>
       <input
-            bind:tap="inp" class="input" model:value="{{contactName}}" placeholder="请输入" />
+        bind:tap="inp" 
+        class="input" 
+        model:value="{{contactName}}" 
+        placeholder="请输入" 
+        id="contactName"
+        focus="{{focusId=='contactName'}}"
+      />
       <label class="label">
         <view>联系电话 *</view>
         <view class="tip">（必填）</view>
       </label>
       <input
-            bind:tap="inp" class="input" model:value="{{contactPhone}}" placeholder="请输入" />
+        bind:tap="inp" 
+        class="input" 
+        model:value="{{contactPhone}}" 
+        placeholder="请输入" 
+        id="contactPhone"
+        focus="{{focusId=='contactPhone'}}"
+      />
       <label class="label">
         <view>微信号 *</view>
         <view class="tip">（必填）</view>
       </label>
       <input
-            bind:tap="inp" class="input" model:value="{{wechatId}}" placeholder="请输入" />
+        bind:tap="inp" 
+        class="input" 
+        model:value="{{wechatId}}" 
+        placeholder="请输入" 
+        id="wechatId"
+        focus="{{focusId=='wechatId'}}"
+      />
       <label class="label">
         <view>邮箱</view>
       </label>
       <input
-            bind:tap="inp" class="input" model:value="{{email}}" class="input" placeholder="请输入" />
+        bind:tap="inp" 
+        class="input" 
+        model:value="{{email}}" 
+        class="input" 
+        placeholder="请输入" 
+        id="email"
+        focus="{{focusId=='email'}}"
+      />
       <button class="button" bind:tap="commit">提交</button>
     </view>
     <view class="contact">
