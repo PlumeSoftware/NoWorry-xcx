@@ -129,10 +129,10 @@
 .commodity-list .commodity-item {
     background-color: #fff;
     width: 90vw;
-    height: 21.4vw;
+    height: 22vw;
     margin: 0 auto;
     margin-bottom: 2.5vw;
-    padding: 6px 2px;
+    padding: 14px 2px;
     border-radius: 6px;
     display: flex;
     justify-content: space-around;
@@ -161,14 +161,15 @@
     text-align: left;
     font-weight: 300;
     font-size: 12px;
-    line-height: 25px;
+    height: 36px;
+    line-height: 18px;
 }
 
 
 .commodity-list .commodity-item .item-pm {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -180,6 +181,13 @@
     align-items: center;
 }
 
+.commodity-list .commodity-item .item-pm .item-quantity {
+    font-size: 16px;
+    color: #9C9A9A;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: right;
+}
 
 .commodity-list .commodity-item .item-pm .item-price {
     font-size: 17px;
@@ -272,6 +280,10 @@
     line-height: 24px;
     line-height: 41px;
     color: #FFF;
+}
+
+.span{
+    color: #F2843B;
 }
 
 .allow{

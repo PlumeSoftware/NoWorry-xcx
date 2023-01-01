@@ -1,5 +1,6 @@
 <view class="page-visa">
-  <input class="input" bindfocus="focus" bindblur="blur" />
+  <input
+            bind:tap="inp" class="input" bindfocus="focus" bindblur="blur" />
   <van-tabs class="visa-group-list" wx:if="{{show}}" color="#797532" title-inactive-color="#79753270" title-active-color="#797532" active="{{activeVisa}}">
     <van-tab title="热门">
       <view class="visa-list">

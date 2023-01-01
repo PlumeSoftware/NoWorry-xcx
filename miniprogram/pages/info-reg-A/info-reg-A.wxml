@@ -2,13 +2,26 @@
   <view class="body">
     <view class="registration">
       <view class="title">申请人美签信息登记表</view>
-      <van-image show-loading="{{false}}"  width="53px" height="52px" src="https://noworry.cloud/static/profile/noworry.png" />
+      <van-image
+        show-loading="{{false}}"
+        width="53px"
+        height="52px"
+        src="https://noworry.cloud/static/profile/noworry.png"
+      />
       <view class="info">所有信息数据仅保存在NoWorry内网，在您出签之后将自动删除；请您务必认真填写核对相关信息，基础资料有误概不负责</view>
     </view>
     <view class="form">
       <view class="edging"></view>
       <view class="rate">
-        <progress stroke-width="8" border-radius="10px" background-color="rgba(217, 217, 217, 0.54);" active-color="#F2843B" percent="{{pageIndex*100/3}}" active="{{true}}" active-mode="forwards" />
+        <progress
+          stroke-width="8"
+          border-radius="10px"
+          background-color="rgba(217, 217, 217, 0.54);"
+          active-color="#F2843B"
+          percent="{{pageIndex*100/3}}"
+          active="{{true}}"
+          active-mode="forwards"
+        />
         <view class="rate-info" style="text-align: right">{{pageIndex*99/3+(pageIndex%2)}}%</view>
       </view>
       <view wx:if="{{pageIndex==0}}">
@@ -16,99 +29,248 @@
           <view class="question">1.中文姓名 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{chineseName}}" placeholder="请输入" />
+        <input
+          bind:tap="inp"
+          class="input"
+          model:value="{{chineseName}}"
+          placeholder="请输入"
+        />
         <view class="title">
           <view class="question">2.名拼音 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{firstName}}" placeholder="请输入" />
+        <input
+          bind:tap="inp"
+          class="input"
+          model:value="{{firstName}}"
+          placeholder="请输入"
+        />
         <view class="title">
           <view class="question">3.姓拼音 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{lastName}}" placeholder="请输入" />
+        <input
+          bind:tap="inp"
+          class="input"
+          model:value="{{lastName}}"
+          placeholder="请输入"
+        />
         <view class="title">
           <view class="question">4.性别 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <view class="choiceFirst" bind:tap="choose" data-keyname="sex" data-value="{{0}}">
-          <van-icon wx:if="{{sex==0}}" size="15px" name="/static/profile/option-s.png" />
-          <van-icon wx:else size="15px" name="/static/profile/option.png" />
+        <view
+          class="choiceFirst"
+          bind:tap="choose"
+          data-keyname="sex"
+          data-value="{{0}}"
+        >
+          <van-icon
+            wx:if="{{sex==0}}"
+            size="15px"
+            name="/static/profile/option-s.png"
+          />
+          <van-icon
+            wx:else
+            size="15px"
+            name="/static/profile/option.png"
+          />
           <view class="option">男</view>
         </view>
-        <view class="choice" bind:tap="choose" data-keyname="sex" data-value="{{1}}">
-          <van-icon wx:if="{{sex==1}}" size="15px" name="/static/profile/option-s.png" />
-          <van-icon wx:else size="15px" name="/static/profile/option.png" />
+        <view
+          class="choice"
+          bind:tap="choose"
+          data-keyname="sex"
+          data-value="{{1}}"
+        >
+          <van-icon
+            wx:if="{{sex==1}}"
+            size="15px"
+            name="/static/profile/option-s.png"
+          />
+          <van-icon
+            wx:else
+            size="15px"
+            name="/static/profile/option.png"
+          />
           <view class="option">女</view>
         </view>
-        <view class="choice" bind:tap="choose" data-keyname="sex" data-value="{{2}}">
-          <van-icon wx:if="{{sex==2}}" size="15px" name="/static/profile/option-s.png" />
-          <van-icon wx:else size="15px" name="/static/profile/option.png" />
+        <view
+          class="choice"
+          bind:tap="choose"
+          data-keyname="sex"
+          data-value="{{2}}"
+        >
+          <van-icon
+            wx:if="{{sex==2}}"
+            size="15px"
+            name="/static/profile/option-s.png"
+          />
+          <van-icon
+            wx:else
+            size="15px"
+            name="/static/profile/option.png"
+          />
           <view class="option">保密</view>
         </view>
         <view class="title">
           <view class="question">5.婚姻状态 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <view class="choiceFirst" bind:tap="choose" data-keyname="marriedStatus" data-value="{{0}}">
-          <van-icon wx:if="{{marriedStatus==0}}" size="15px" name="/static/profile/option-s.png" />
-          <van-icon wx:else size="15px" name="/static/profile/option.png" />
+        <view
+          class="choiceFirst"
+          bind:tap="choose"
+          data-keyname="marriedStatus"
+          data-value="{{0}}"
+        >
+          <van-icon
+            wx:if="{{marriedStatus==0}}"
+            size="15px"
+            name="/static/profile/option-s.png"
+          />
+          <van-icon
+            wx:else
+            size="15px"
+            name="/static/profile/option.png"
+          />
           <view class="option">未婚</view>
         </view>
-        <view class="choice" bind:tap="choose" data-keyname="marriedStatus" data-value="{{1}}">
-          <van-icon wx:if="{{marriedStatus==1}}" size="15px" name="/static/profile/option-s.png" />
-          <van-icon wx:else size="15px" name="/static/profile/option.png" />
+        <view
+          class="choice"
+          bind:tap="choose"
+          data-keyname="marriedStatus"
+          data-value="{{1}}"
+        >
+          <van-icon
+            wx:if="{{marriedStatus==1}}"
+            size="15px"
+            name="/static/profile/option-s.png"
+          />
+          <van-icon
+            wx:else
+            size="15px"
+            name="/static/profile/option.png"
+          />
           <view class="option">已婚</view>
         </view>
-        <view class="choice" bind:tap="choose" data-keyname="marriedStatus" data-value="{{2}}">
-          <van-icon wx:if="{{marriedStatus==2}}" size="15px" name="/static/profile/option-s.png" />
-          <van-icon wx:else size="15px" name="/static/profile/option.png" />
+        <view
+          class="choice"
+          bind:tap="choose"
+          data-keyname="marriedStatus"
+          data-value="{{2}}"
+        >
+          <van-icon
+            wx:if="{{marriedStatus==2}}"
+            size="15px"
+            name="/static/profile/option-s.png"
+          />
+          <van-icon
+            wx:else
+            size="15px"
+            name="/static/profile/option.png"
+          />
           <view class="option">离异</view>
         </view>
         <view class="title">
           <view class="question">6.出生地 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{birthplace}}" placeholder="例：中国-湖北" />
+        <input
+          bind:tap="inp"
+          class="input"
+          model:value="{{birthplace}}"
+          placeholder="例：中国-湖北"
+        />
         <view class="title">
           <view class="question">7.现国籍 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{nationality}}" placeholder="请输入" />
+        <input
+          bind:tap="inp"
+          class="input"
+          model:value="{{nationality}}"
+          placeholder="请输入"
+        />
         <view class="title">
           <view class="question">8.曾国籍</view>
         </view>
-        <input class="input" model:value="{{nationalityPre}}" placeholder="请输入" />
+        <input
+          bind:tap="inp"
+          class="input"
+          model:value="{{nationalityPre}}"
+          placeholder="请输入"
+        />
       </view>
       <view wx:elif="{{pageIndex==1}}">
         <view class="title">
           <view class="question">9.英国手机号 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{phoneEngland}}" placeholder="请输入" />
+        <input
+          bind:tap="inp"
+          class="input"
+          model:value="{{phoneEngland}}"
+          placeholder="请输入"
+        />
         <view class="title">
           <view class="question">10.电子邮箱 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{email}}" placeholder="请输入" />
+        <input
+          bind:tap="inp"
+          class="input"
+          model:value="{{email}}"
+          placeholder="请输入"
+        />
         <view class="title">
           <view class="question">11.护照号码 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{passportCode}}" placeholder="请输入" />
+        <input
+          bind:tap="inp"
+          class="input"
+          model:value="{{passportCode}}"
+          placeholder="请输入"
+        />
         <view class="title">
           <view class="question">12.办签城市 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <view class="choiceFirst" bind:tap="choose" data-keyname="handSignCity" data-value="{{'伦敦'}}">
-          <van-icon wx:if="{{handSignCity=='伦敦'}}" size="15px" name="/static/profile/option-s.png" />
-          <van-icon wx:else size="15px" name="/static/profile/option.png" />
+        <view
+          class="choiceFirst"
+          bind:tap="choose"
+          data-keyname="handSignCity"
+          data-value="{{'伦敦'}}"
+        >
+          <van-icon
+            wx:if="{{handSignCity=='伦敦'}}"
+            size="15px"
+            name="/static/profile/option-s.png"
+          />
+          <van-icon
+            wx:else
+            size="15px"
+            name="/static/profile/option.png"
+          />
           <view class="option">伦敦</view>
           <view class="op-tips">（英国本土均为伦敦）</view>
         </view>
-        <view class="choice" bind:tap="choose" data-keyname="handSignCity" data-value="{{'贝尔法斯特'}}">
-          <van-icon wx:if="{{handSignCity=='贝尔法斯特'}}" size="15px" name="/static/profile/option-s.png" />
-          <van-icon wx:else size="15px" name="/static/profile/option.png" />
+        <view
+          class="choice"
+          bind:tap="choose"
+          data-keyname="handSignCity"
+          data-value="{{'贝尔法斯特'}}"
+        >
+          <van-icon
+            wx:if="{{handSignCity=='贝尔法斯特'}}"
+            size="15px"
+            name="/static/profile/option-s.png"
+          />
+          <van-icon
+            wx:else
+            size="15px"
+            name="/static/profile/option.png"
+          />
           <view class="option">贝尔法斯特</view>
           <view class="op-tips">（北爱尔兰选择贝尔法斯特）</view>
         </view>
@@ -116,21 +278,53 @@
           <view class="question">13.是否已经填写DLS-160表 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <view class="choiceFirst" bind:tap="choose" data-keyname="tableDLS" data-value="{{1}}">
-          <van-icon wx:if="{{tableDLS==1}}" size="15px" name="/static/profile/option-s.png" />
-          <van-icon wx:else size="15px" name="/static/profile/option.png" />
+        <view
+          class="choiceFirst"
+          bind:tap="choose"
+          data-keyname="tableDLS"
+          data-value="{{1}}"
+        >
+          <van-icon
+            wx:if="{{tableDLS==1}}"
+            size="15px"
+            name="/static/profile/option-s.png"
+          />
+          <van-icon
+            wx:else
+            size="15px"
+            name="/static/profile/option.png"
+          />
           <view class="option">是，已经填写完毕</view>
         </view>
-        <view class="choice" bind:tap="choose" data-keyname="tableDLS" data-value="{{0}}">
-          <van-icon wx:if="{{tableDLS==0}}" size="15px" name="/static/profile/option-s.png" />
-          <van-icon wx:else size="15px" name="/static/profile/option.png" />
+        <view
+          class="choice"
+          bind:tap="choose"
+          data-keyname="tableDLS"
+          data-value="{{0}}"
+        >
+          <van-icon
+            wx:if="{{tableDLS==0}}"
+            size="15px"
+            name="/static/profile/option-s.png"
+          />
+          <van-icon
+            wx:else
+            size="15px"
+            name="/static/profile/option.png"
+          />
           <view class="option">否，等待后续填写</view>
         </view>
         <view class="title" wx:if="{{tableDLS==1}}">
           <view class="question">14.DLS-160 Number *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" wx:if="{{tableDLS==1}}" model:value="{{DLS_numberr}}" placeholder="请输入" />
+        <input
+          bind:tap="inp"
+          class="input"
+          wx:if="{{tableDLS==1}}"
+          model:value="{{DLS_numberr}}"
+          placeholder="请输入"
+        />
         <view class="title" wx:if="{{tableDLS==0}}">
           <view class="question">14.DLS-160 Number（不可用）</view>
         </view>
@@ -138,73 +332,184 @@
           <view class="question">15.签证类型 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <view class="choiceFirst" bind:tap="choose" data-keyname="visaType" data-value="{{1}}">
-          <van-icon wx:if="{{visaType==1}}" size="15px" name="/static/profile/option-s.png" />
-          <van-icon wx:else size="15px" name="/static/profile/option.png" />
+        <view
+          class="choiceFirst"
+          bind:tap="choose"
+          data-keyname="visaType"
+          data-value="{{1}}"
+        >
+          <van-icon
+            wx:if="{{visaType==1}}"
+            size="15px"
+            name="/static/profile/option-s.png"
+          />
+          <van-icon
+            wx:else
+            size="15px"
+            name="/static/profile/option.png"
+          />
           <view class="option">B1</view>
         </view>
-        <view class="choice" bind:tap="choose" data-keyname="visaType" data-value="{{2}}">
-          <van-icon wx:if="{{visaType==2}}" size="15px" name="/static/profile/option-s.png" />
-          <van-icon wx:else size="15px" name="/static/profile/option.png" />
+        <view
+          class="choice"
+          bind:tap="choose"
+          data-keyname="visaType"
+          data-value="{{2}}"
+        >
+          <van-icon
+            wx:if="{{visaType==2}}"
+            size="15px"
+            name="/static/profile/option-s.png"
+          />
+          <van-icon
+            wx:else
+            size="15px"
+            name="/static/profile/option.png"
+          />
           <view class="option">B2</view>
         </view>
-        <view class="choice" bind:tap="choose" data-keyname="visaType" data-value="{{3}}">
-          <van-icon wx:if="{{visaType==3}}" size="15px" name="/static/profile/option-s.png" />
-          <van-icon wx:else size="15px" name="/static/profile/option.png" />
+        <view
+          class="choice"
+          bind:tap="choose"
+          data-keyname="visaType"
+          data-value="{{3}}"
+        >
+          <van-icon
+            wx:if="{{visaType==3}}"
+            size="15px"
+            name="/static/profile/option-s.png"
+          />
+          <van-icon
+            wx:else
+            size="15px"
+            name="/static/profile/option.png"
+          />
           <view class="option">B1/B2</view>
         </view>
         <view class="title">
           <view class="question">16.出生日期 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{birthday}}" placeholder="YYYY-MM-DD" />
+        <input
+          bind:tap="inp"
+          class="input"
+          model:value="{{birthday}}"
+          placeholder="YYYY-MM-DD"
+        />
       </view>
       <view wx:elif="{{pageIndex==2}}">
         <view class="title">
           <view class="question">17.您之前是否有过美国签证 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <view class="choiceFirst" bind:tap="choose" data-keyname="handHistoryExist" data-value="{{1}}">
-          <van-icon wx:if="{{handHistoryExist==1}}" size="15px" name="/static/profile/option-s.png" />
-          <van-icon wx:else size="15px" name="/static/profile/option.png" />
+        <view
+          class="choiceFirst"
+          bind:tap="choose"
+          data-keyname="handHistoryExist"
+          data-value="{{1}}"
+        >
+          <van-icon
+            wx:if="{{handHistoryExist==1}}"
+            size="15px"
+            name="/static/profile/option-s.png"
+          />
+          <van-icon
+            wx:else
+            size="15px"
+            name="/static/profile/option.png"
+          />
           <view class="option">是</view>
         </view>
-        <view class="choice" bind:tap="choose" data-keyname="handHistoryExist" data-value="{{0}}">
-          <van-icon wx:if="{{handHistoryExist==0}}" size="15px" name="/static/profile/option-s.png" />
-          <van-icon wx:else size="15px" name="/static/profile/option.png" />
+        <view
+          class="choice"
+          bind:tap="choose"
+          data-keyname="handHistoryExist"
+          data-value="{{0}}"
+        >
+          <van-icon
+            wx:if="{{handHistoryExist==0}}"
+            size="15px"
+            name="/static/profile/option-s.png"
+          />
+          <van-icon
+            wx:else
+            size="15px"
+            name="/static/profile/option.png"
+          />
           <view class="option">否</view>
         </view>
-         <view class="title" wx:if="{{handHistoryExist==0}}">
+        <view class="title" wx:if="{{handHistoryExist==0}}">
           <view class="question">18.上一次签证有效期（不可用）</view>
         </view>
         <view class="title" wx:if="{{handHistoryExist==1}}">
           <view class="question">18.上一次签证有效期 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" wx:if="{{handHistoryExist==1}}" model:value="{{handHistoryValidity}}" placeholder="例如20210425 - 20220425" />
+        <input
+          bind:tap="inp"
+          class="input"
+          wx:if="{{handHistoryExist==1}}"
+          model:value="{{handHistoryValidity}}"
+          placeholder="例如20210425 - 20220425"
+        />
         <view class="title">
           <view class="question">19.期望约到的面签时间 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{estInterviewTime}}" placeholder="YYYY-MM-DD" />
+        <input
+          bind:tap="inp"
+          class="input"
+          model:value="{{estInterviewTime}}"
+          placeholder="YYYY-MM-DD"
+        />
         <view class="title">
           <view class="question">20.Wechat ID *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input class="input" model:value="{{wechatId}}" placeholder="请输入" />
+        <input
+          bind:tap="inp"
+          class="input"
+          model:value="{{wechatId}}"
+          placeholder="请输入"
+        />
         <view class="title">
           <view class="question">21.如需要邮寄护照，请填（官方快递费20镑）</view>
         </view>
         <view class="sub-question">21.1. Adress1</view>
-        <input class="input" model:value="{{mailAddress1}}" placeholder="请输入" />
+        <input
+          bind:tap="inp"
+          class="input"
+          model:value="{{mailAddress1}}"
+          placeholder="请输入"
+        />
         <view class="sub-question">21.2. Adress2</view>
-        <input class="input" model:value="{{mailAddress2}}" placeholder="请输入" />
+        <input
+          bind:tap="inp"
+          class="input"
+          model:value="{{mailAddress2}}"
+          placeholder="请输入"
+        />
         <view class="sub-question">21.3. City</view>
-        <input class="input" model:value="{{mailAddress3}}" placeholder="请输入" />
+        <input
+          bind:tap="inp"
+          class="input"
+          model:value="{{mailAddress3}}"
+          placeholder="请输入"
+        />
         <view class="sub-question">21.4. Country</view>
-        <input class="input" model:value="{{mailAddress4}}" placeholder="请输入" />
+        <input
+          bind:tap="inp"
+          class="input"
+          model:value="{{mailAddress4}}"
+          placeholder="请输入"
+        />
         <view class="sub-question">21.5. Post Code</view>
-        <input class="input" model:value="{{mailAddress5}}" placeholder="请输入" />
+        <input
+          bind:tap="inp"
+          class="input"
+          model:value="{{mailAddress5}}"
+          placeholder="请输入"
+        />
       </view>
       <view wx:elif="{{pageIndex==3}}">
         <view class="over">
@@ -240,7 +545,12 @@
             <view class="title">8.曾国籍</view>
             <view class="content">{{nationalityPre}}</view>
           </view>
-          <view class="edit" bind:tap="change" data-pageIndex="{{0}}">编辑</view>
+          <view
+            class="edit"
+            bind:tap="change"
+            data-pageIndex="{{0}}"
+          >编辑
+          </view>
           <view class="edging"></view>
         </view>
         <view class="over">
@@ -278,7 +588,12 @@
             <view class="title">16.出生日期 *</view>
             <view class="content">{{birthday}}</view>
           </view>
-          <view class="edit" bind:tap="change" data-pageIndex="{{1}}">编辑</view>
+          <view
+            class="edit"
+            bind:tap="change"
+            data-pageIndex="{{1}}"
+          >编辑
+          </view>
           <view class="edging"></view>
         </view>
         <view class="over">
@@ -286,7 +601,7 @@
             <view class="title">17.您之前是否有过美国签证 *</view>
             <view class="content">{{handHistoryExist}}</view>
           </view>
-            <view class="item">
+          <view class="item">
             <view class="title">18.上一次签证有效期 *</view>
             <view class="content">{{handHistoryValidity}}</view>
           </view>
@@ -321,26 +636,61 @@
             <view class="title">21.5. Post Code</view>
             <view class="content">{{mailAddress5}}</view>
           </view>
-          <view class="edit" bind:tap="change" data-pageIndex="{{2}}">编辑</view>
+          <view
+            class="edit"
+            bind:tap="change"
+            data-pageIndex="{{2}}"
+          >编辑
+          </view>
           <view class="edging"></view>
         </view>
       </view>
       <view class="item-page" wx:if="{{pageIndex!==3}}">{{pageIndex+1}}/3</view>
       <view class="edging"></view>
     </view>
-    <view class="save-btn" bind:tap="change" wx:if="{{pageIndex!==3}}">保存并继续</view>
+    <view
+      class="save-btn"
+      bind:tap="change"
+      wx:if="{{pageIndex!==3}}"
+    >保存并继续
+    </view>
     <view class="over-btn" wx:if="{{pageIndex==3}}">
       <view class="agreement">
-        <van-icon bind:tap="choose" data-keyname="allow" data-value="{{0}}" wx:if="{{allow==1}}" size="15px" name="/static/profile/option-s.png" />
-        <van-icon bind:tap="choose" data-keyname="allow" data-value="{{1}}" wx:else size="15px" name="/static/profile/option.png" />
+        <van-icon
+          bind:tap="choose"
+          data-keyname="allow"
+          data-value="{{0}}"
+          wx:if="{{allow==1}}"
+          size="15px"
+          name="/static/profile/option-s.png"
+        />
+        <van-icon
+          bind:tap="choose"
+          data-keyname="allow"
+          data-value="{{1}}"
+          wx:else
+          size="15px"
+          name="/static/profile/option.png"
+        />
         <view class="content">已同意《No Worry用户协议条款》和《隐私条款》</view>
       </view>
       <view class="container">
-        <view class="edit" bind:tap="change" data-pageindex="{{0}}">编辑</view>
+        <view
+          class="edit"
+          bind:tap="change"
+          data-pageindex="{{0}}"
+        >编辑
+        </view>
         <view class="push ban-push" wx:if="{{allow==0}}">提交</view>
-        <view class="push allow-push" wx:else bind:tap="submit">提交</view>
+        <view
+          class="push allow-push"
+          wx:else
+          bind:tap="submit"
+        >提交
+        </view>
       </view>
     </view>
     <view class="copyright">©copyright for NoWorry 2022</view>
   </view>
 </view>
+

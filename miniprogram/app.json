@@ -13,6 +13,7 @@
     "pages/user-set/user-set",
     "pages/visa-detail/visa-detail",
     "pages/home-poster/poster",
+    "pages/home-introduce/home-introduce",
     "pages/info-reg/info-reg",
     "pages/info-reg-A/info-reg-A",
     "pages/user-set-notice/notice",
@@ -34,6 +35,7 @@
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
     "van-image": "@vant/weapp/image/index",
-    "van-divider": "@vant/weapp/divider/index"
+    "van-divider": "@vant/weapp/divider/index",
+    "van-field": "@vant/weapp/field/index"
   }
 }

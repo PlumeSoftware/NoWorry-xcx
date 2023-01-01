@@ -15,10 +15,11 @@ Component({
         ]
     },
 
+    
     methods: {
+        inp(){},
         toDetail(e: any) {
             const commodityId = e.currentTarget.dataset.commodityid
-            console.log(e.currentTarget)
             wx.navigateTo({ url: '/pages/visa-detail/visa-detail' + `?commodityId=${commodityId}` })
         },
 

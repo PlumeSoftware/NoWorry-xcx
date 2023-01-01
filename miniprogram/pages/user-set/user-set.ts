@@ -14,7 +14,8 @@ Page({
         handSignCity: wx.getStorageSync("userInfo").handSignCity
     },
 
-    get(){},
+    inp(){},
+
     toPrivacy() {
         wx.navigateTo({ url: '/pages/user-set-privacy/privacy' })
     },

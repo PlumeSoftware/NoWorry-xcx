@@ -17,7 +17,7 @@
         <view>姓名</view>
         <view>
           <input
-            bindinput="get"
+            bind:tap="inp"
             placeholder="请输入"
             model:value="{{userName}}"
           />
@@ -27,7 +27,7 @@
         <view>手机</view>
         <view>
           <input
-            bindinput="get"
+            bind:tap="inp"
             placeholder="请输入"
             model:value="{{phone}}"
           />
@@ -37,7 +37,7 @@
         <view>邮箱</view>
         <view>
           <input
-            bindinput="get"
+            bind:tap="inp"
             placeholder="请输入"
             model:value="{{email}}"
           />
@@ -47,7 +47,7 @@
         <view>城市</view>
         <view>
           <input
-            bindinput="get"
+            bind:tap="inp"
             placeholder="请输入"
             model:value="{{handSignCity}}"
           />
