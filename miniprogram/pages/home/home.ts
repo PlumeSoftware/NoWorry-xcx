@@ -18,12 +18,13 @@ Page({
 
     },
     toPoster(e: any) {
-        console.log(e)
         wx.navigateTo({ url: '/pages/home-poster/poster' + "?posterId=" + e.currentTarget.dataset["id"] })
+    },
+    toIntroduce() {
+        wx.navigateTo({ url: "/pages/home-introduce/home-introduce" })
     },
     toDetail(e: any) {
         const commodityId = e.currentTarget.dataset.commodityid
-        console.log(e.currentTarget)
         wx.navigateTo({ url: '/pages/visa-detail/visa-detail' + `?commodityId=${commodityId}` })
     },
     //事件 显示时触发

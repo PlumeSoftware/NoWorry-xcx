@@ -1,6 +1,7 @@
 <view class="page">
   <view class="page-top">
     <input
+            bind:tap="inp"
       class="input"
       placeholder="点击这里根据关键词检索"
       bindfocus="focus"
@@ -27,11 +28,20 @@
     </view>
   </view>
   <scroll-view class="qa-list" style="display:{{!input?'block':'none'}}">
-    <view class="qa-item" wx:for="{{qaList}}">
-      <view class="question">Q: 我们可以为您做什么？</view>
-      <view class="answer">
-        A：Noworry可以为您提供保姆级申根签代办服务，给您全包申根签材料，包括机票酒店行程单，您只需要准备自己的brp护照学生证明银行流水这些简单的材料。
-        同时，如果您需要我们为您刷法签slot（在理想的时间内递签），我们也可以为您提供法签加急服务。
+    <view
+      class="qa-item"
+      wx:for="{{qaList}}"
+      wx:key="index"
+    >
+      <view class="question">{{item[0]}}</view>
+      <view class="answer" wx:if="{{item[1].length>10}}">{{item[1]}}</view>
+      <view class="answer" wx:else>
+        <view
+          style="margin-bottom:1vh"
+          wx:for="{{item[1]}}"
+          wx:for-item="content"
+        >{{content}}
+        </view>
       </view>
     </view>
   </scroll-view>
