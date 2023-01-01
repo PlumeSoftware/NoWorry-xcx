@@ -17,8 +17,23 @@ Page({
   onLoad() {
     this.selectComponent('#home').start();
   },
-  onChange(event: any) {
+  async onChange(event: any) {
     // event.detail 的值为当前选中项的索引
+    if (!wx.getStorageSync('token') && (event.detail != 0 && event.detail != 3)) {
+      await new Promise<void>(r => {
+        wx.showModal({
+          title: '提示',
+          content: '您还未设置个人资料',
+          showCancel:false,
+          confirmText:"前往设置",
+          success: () => {
+            event.detail = 3
+            r()
+          }
+        })
+      })
+    }
+
     this.setData({ active: event.detail });
 
     switch (event.detail) {
@@ -34,7 +49,7 @@ Page({
         break;
       }
       case 3: {
-        this.selectComponent('#user').login();
+        await this.selectComponent('#user').login();
         this.selectComponent('#user').setByLocal()
         break;
       }

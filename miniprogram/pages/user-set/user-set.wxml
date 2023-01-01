@@ -20,6 +20,8 @@
             bind:tap="inp"
             placeholder="请输入"
             model:value="{{userName}}"
+            id="name"
+            focus="{{focusId=='name'}}"
           />
         </view>
       </view>
@@ -30,6 +32,8 @@
             bind:tap="inp"
             placeholder="请输入"
             model:value="{{phone}}"
+            id="phone"
+            focus="{{focusId=='phone'}}"
           />
         </view>
       </view>
@@ -40,6 +44,8 @@
             bind:tap="inp"
             placeholder="请输入"
             model:value="{{email}}"
+            id="email"
+            focus="{{focusId=='email'}}"
           />
         </view>
       </view>
@@ -50,6 +56,8 @@
             bind:tap="inp"
             placeholder="请输入"
             model:value="{{handSignCity}}"
+            id="handSignCity"
+            focus="{{focusId=='handSignCity'}}"
           />
         </view>
       </view>

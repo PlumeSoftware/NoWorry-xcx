@@ -122,17 +122,6 @@ Page({
             this.setData({ favourable: favourable })
         }
 
-        console.log(sgVisaNum, usVisaNum, pr88Num, pr68Num)
-
-        for (let i = 0; i < carts.length; i++) {
-            if (carts[i].select) {
-                total += carts[i].currentPrice * carts[i].quantity
-            } else {
-                carts.splice(i--, 1)
-            }
-        }
-
-
         //计算优惠价格
         this.data.favourable.forEach(i => {
             favourableTotal += i.amount

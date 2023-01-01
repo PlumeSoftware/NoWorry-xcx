@@ -1,6 +1,6 @@
 <view class="page">
-  <view class="profile" wx:if="{{token}}">
-    <view>
+  <view class="profile">
+    <view style="height:32vw">
       <view class="avatar">
         <van-image
           show-loading="{{false}}"
@@ -11,7 +11,10 @@
         />
       </view>
       <view class="user">
-        <view class="user-name">你好，{{userInfo.userName}}</view>
+        <view class="user-name">
+          <span wx:if="{{userInfo.userName}}">你好，</span>
+          {{userInfo.userName}}
+        </view>
         <view class="user-email" wx:if="{{userInfo.email!=null}}">{{userInfo.email}}</view>
         <view class="user-email" wx:else>--</view>
       </view>
@@ -31,11 +34,7 @@
       </view>
     </view>
   </view>
-  <view class="profile" wx:else>
-    <view class="user">
-      <button class="button" bind:tap="getUserInfo">登录</button>
-    </view>
-  </view>
+
   <view class="opea-list">
     <view class="opea-item" bind:tap="toOrder">
       <van-icon size="32px" name="/static/profile/order.png" />

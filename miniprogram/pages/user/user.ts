@@ -32,16 +32,17 @@ Page({
     },
 
     login() {
-        // if (!this.data.userInfo.userName) {
-        //     setTimeout(() => {
-        //         wx.showToast({
-        //             title: '登录中',
-        //             icon: 'loading',
-        //             mask: true,
-        //             duration: 1000
-        //         })
-        //     }, 300)
-        // }
+        if (!wx.getStorageSync('token')) {
+            setTimeout(function () {
+                wx.showLoading({
+                    title: '登录中',
+                })
+            }, 250)
+
+            setTimeout(function () {
+                wx.hideLoading()
+            }, 1000)
+        }
         wx.login().then(async res => {
             const data = await webGet<{ userInfo: { userName: string, phone: string, email: string, handSignCity: string }, token: string }>(`/user/login/${res.code}`)
             if (data) {
