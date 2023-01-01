@@ -16,7 +16,7 @@
       <view class="info-item">
         <view>姓名</view>
         <view>
-          <input
+          <inputa
             bind:tap="inp"
             model:value="{{userName}}"
             id="name"

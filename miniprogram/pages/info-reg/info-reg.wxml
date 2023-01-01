@@ -48,6 +48,8 @@
           class="input"
           model:value="{{handSignCity}}"
           placeholder="请输入"
+          id="handSignCity"
+          focus="{{focusId=='handSignCity'}}"
         />
         <view class="title">
           <view class="question">3.近五年内是否办理过申根签证 *</view>
@@ -104,6 +106,8 @@
             class="input"
             model:value="{{handHistoryDate}}"
             placeholder="请输入"
+            id="handHistoryDate"
+            focus="{{focusId=='handHistoryDate'}}"
           />
           <view class="sub-question">4.2.递签国家</view>
           <input
@@ -111,6 +115,8 @@
             class="input"
             model:value="{{handHistoryCountry}}"
             placeholder="请输入"
+            id="handHistoryCountry"
+            focus="{{focusId=='handHistoryCountry'}}"
           />
           <view class="sub-question">4.3.签证存续时间</view>
           <input
@@ -118,6 +124,8 @@
             class="input"
             model:value="{{handHistoryValidity}}"
             placeholder="例：2019.03.10-2019.06.07"
+            id="handHistoryValidity"
+            focus="{{focusId=='handHistoryValidity'}}"
           />
           <view class="sub-question">4.4.签证号码（三位字母+右上角号码）</view>
           <input
@@ -125,6 +133,8 @@
             class="input"
             model:value="{{handHistoryCode}}"
             placeholder="例：ESP020406888"
+            id="handHistoryCode"
+            focus="{{focusId=='handHistoryCode'}}"
           />
         </view>
       </view>
@@ -138,6 +148,8 @@
           class="input"
           model:value="{{chineseName}}"
           placeholder="请输入"
+          id="chineseName"
+          focus="{{focusId=='chineseName'}}"
         />
         <view class="title">
           <view class="question">6.名拼音 *</view>
@@ -148,6 +160,8 @@
           class="input"
           model:value="{{firstName}}"
           placeholder="请输入"
+          id="firstName"
+          focus="{{focusId=='firstName'}}"
         />
         <view class="title">
           <view class="question">7.姓拼音 *</view>
@@ -158,6 +172,8 @@
           class="input"
           model:value="{{lastName}}"
           placeholder="请输入"
+          id="lastName"
+          focus="{{focusId=='lastName'}}"
         />
         <view class="title">
           <view class="question">8.出生日期 *</view>
@@ -168,6 +184,8 @@
           class="input"
           model:value="{{birthday}}"
           placeholder="YYYY-MM-DD"
+          id="birthday"
+          focus="{{focusId=='birthday'}}"
         />
         <view class="title">
           <view class="question">9.性别 *</view>
@@ -294,6 +312,8 @@
           class="input"
           model:value="{{birthplace}}"
           placeholder="例：中国-湖北"
+          id="birthplace"
+          focus="{{focusId=='birthplace'}}"
         />
         <view class="title">
           <view class="question">12.现国籍 *</view>
@@ -304,6 +324,8 @@
           class="input"
           model:value="{{nationality}}"
           placeholder="请输入"
+          id="nationality"
+          focus="{{focusId=='nationality'}}"
         />
         <view class="title">
           <view class="question">13.曾国籍</view>
@@ -313,6 +335,8 @@
           class="input"
           model:value="{{nationalityPre}}"
           placeholder="请输入"
+          id="nationalityPre"
+          focus="{{focusId=='nationalityPre'}}"
         />
       </view>
       <view wx:elif="{{pageIndex==2}}">
@@ -325,6 +349,8 @@
           class="input"
           model:value="{{phoneEngland}}"
           placeholder="请输入"
+          id="phoneEngland"
+          focus="{{focusId=='phoneEngland'}}"
         />
         <view class="title">
           <view class="question">15.电子邮箱 *</view>
@@ -335,6 +361,8 @@
           class="input"
           model:value="{{email}}"
           placeholder="请输入"
+          id="email"
+          focus="{{focusId=='email'}}"
         />
         <view class="title">
           <view class="question">16.英国地址*</view>
@@ -346,6 +374,8 @@
           class="input"
           model:value="{{addressEngland1}}"
           placeholder="请输入"
+          id="addressEngland1"
+          focus="{{focusId=='addressEngland1'}}"
         />
         <view class="sub-question">16.2. Adress2</view>
         <input
@@ -353,6 +383,8 @@
           class="input"
           model:value="{{addressEngland2}}"
           placeholder="请输入"
+          id="addressEngland2"
+          focus="{{focusId=='addressEngland2'}}"
         />
         <view class="sub-question">16.3. City</view>
         <input
@@ -360,6 +392,8 @@
           class="input"
           model:value="{{addressEngland3}}"
           placeholder="请输入"
+          id="addressEngland3"
+          focus="{{focusId=='addressEngland3'}}"
         />
         <view class="sub-question">16.4. Country</view>
         <input
@@ -367,6 +401,8 @@
           class="input"
           model:value="{{addressEngland4}}"
           placeholder="请输入"
+          id="addressEngland4"
+          focus="{{focusId=='addressEngland4'}}"
         />
         <view class="sub-question">16.5. Post Code</view>
         <input
@@ -374,6 +410,8 @@
           class="input"
           model:value="{{addressEngland5}}"
           placeholder="请输入"
+          id="addressEngland5"
+          focus="{{focusId=='addressEngland5'}}"
         />
         <view class="title">
           <view class="question">17.护照号码 *</view>
@@ -384,6 +422,8 @@
           class="input"
           model:value="{{passportCode}}"
           placeholder="请输入"
+          id="passportCode"
+          focus="{{focusId=='passportCode'}}"
         />
         <view class="title">
           <view class="question">18.护照签发日期 *</view>
@@ -394,6 +434,8 @@
           class="input"
           model:value="{{passportIssue}}"
           placeholder="YYYY-MM-DD"
+          id="passportIssue"
+          focus="{{focusId=='passportIssue'}}"
         />
         <view class="title">
           <view class="question">19.护照有效日期 *</view>
@@ -404,6 +446,8 @@
           class="input"
           model:value="{{passportValidity}}"
           placeholder="YYYY-MM-DD"
+          id="passportValidity"
+          focus="{{focusId=='passportValidity'}}"
         />
       </view>
       <view wx:elif="{{pageIndex==3}}">
@@ -416,6 +460,8 @@
           class="input"
           model:value="{{BRPNumber}}"
           placeholder="提示：BRP右上角R开头"
+          id="BRPNumber"
+          focus="{{focusId=='BRPNumber'}}"
         />
         <view class="title">
           <view class="question">21.BRP签发日期 *</view>
@@ -426,6 +472,8 @@
           class="input"
           model:value="{{BRPIssue}}"
           placeholder="YYYY-MM-DD"
+          id="BRPIssue"
+          focus="{{focusId=='BRPIssue'}}"
         />
         <view class="title">
           <view class="question">22.BRP有效日期 *</view>
@@ -436,6 +484,8 @@
           class="input"
           model:value="{{BRPValidity}}"
           placeholder="YYYY-MM-DD"
+          id="BRPValidity"
+          focus="{{focusId=='BRPValidity'}}"
         />
         <view class="title">
           <view class="question">23.学校名称 *</view>
@@ -446,6 +496,8 @@
           class="input"
           model:value="{{collegeName}}"
           placeholder="请输入"
+          id="collegeName"
+          focus="{{focusId=='collegeName'}}"
         />
         <view class="title">
           <view class="question">24.学校地址 *</view>
@@ -458,6 +510,8 @@
           class="input"
           model:value="{{collegeAddress1}}"
           placeholder="请输入"
+          id="collegeAddress1"
+          focus="{{focusId=='collegeAddress1'}}"
         />
         <view class="sub-question">24.2. City</view>
         <input
@@ -465,6 +519,8 @@
           class="input"
           model:value="{{collegeAddress2}}"
           placeholder="请输入"
+          id="collegeAddress2"
+          focus="{{focusId=='collegeAddress2'}}"
         />
         <view class="sub-question">24.3. Country</view>
         <input
@@ -472,6 +528,8 @@
           class="input"
           model:value="{{collegeAddress3}}"
           placeholder="请输入"
+          id="collegeAddress3"
+          focus="{{focusId=='collegeAddress3'}}"
         />
         <view class="sub-question">24.4. Post Code</view>
         <input
@@ -479,6 +537,8 @@
           class="input"
           model:value="{{collegeAddress4}}"
           placeholder="请输入"
+          id="collegeAddress4"
+          focus="{{focusId=='collegeAddress4'}}"
         />
         <view class="title">
           <view class="question">23.学校电话 *</view>
@@ -490,6 +550,8 @@
           class="input"
           model:value="{{collegePhone}}"
           placeholder="请输入"
+          id="collegePhone"
+          focus="{{focusId=='collegePhone'}}"
         />
         <view class="title">
           <view class="question">23.学校邮箱 *</view>
@@ -501,6 +563,8 @@
           class="input"
           model:value="{{collegeEmail}}"
           placeholder="请输入"
+          id="collegeEmail"
+          focus="{{focusId=='collegeEmail'}}"
         />
       </view>
       <view wx:elif="{{pageIndex==4}}">
@@ -513,6 +577,8 @@
           class="input"
           model:value="{{subjectName}}"
           placeholder="请输入"
+          id="subjectName"
+          focus="{{focusId=='subjectName'}}"
         />
         <view class="title">
           <view class="question">28.预计出发日期 *</view>
@@ -524,6 +590,8 @@
           class="input"
           model:value="{{estDepartureTime}}"
           placeholder="YYYY-MM-DD"
+          id="estDepartureTime"
+          focus="{{focusId=='estDepartureTime'}}"
         />
         <view class="title">
           <view class="question">29.预计结束日期 *</view>
@@ -535,6 +603,8 @@
           class="input"
           model:value="{{estReturnTime}}"
           placeholder="YYYY-MM-DD"
+          id="estReturnTime"
+          focus="{{focusId=='estReturnTime'}}"
         />
         <view class="title">
           <view class="question">30.Wechat ID *</view>
@@ -545,6 +615,8 @@
           class="input"
           model:value="{{wechatId}}"
           placeholder="请输入"
+          id="wechatId"
+          focus="{{focusId=='wechatId'}}"
         />
       </view>
       <view wx:elif="{{pageIndex==5}}">
