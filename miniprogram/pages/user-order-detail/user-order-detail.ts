@@ -29,6 +29,7 @@ Page({
         const detail = (await webGet<OrderDetailInfo>(`/order/detail/${orderDetailId}`))!
         const order = (await webGet<Order>(`/order/info/${detail.orderId}`))
         this.setData({
+            userName:wx.getStorageSync('userInfo').userName,
             orderDetailId: 'EC' + orderDetailId,
             total: order?.orderTotalPrice,
             paid: order?.orderPaymentPrice,

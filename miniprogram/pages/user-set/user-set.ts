@@ -14,7 +14,22 @@ Page({
         handSignCity: wx.getStorageSync("userInfo").handSignCity
     },
 
-    inp(){},
+    onShow() {
+        this.setData({
+            userName: wx.getStorageSync("userInfo").userName,
+            phone: wx.getStorageSync("userInfo").phone,
+            email: wx.getStorageSync("userInfo").email,
+            handSignCity: wx.getStorageSync("userInfo").handSignCity
+        })
+    },
+    inp(e: { currentTarget: { id: string } }) {
+        wx.hideKeyboard()
+        setTimeout(() => {
+            this.setData({
+                focusId: e.currentTarget.id
+            })
+        }, 300)
+    },
 
     toPrivacy() {
         wx.navigateTo({ url: '/pages/user-set-privacy/privacy' })

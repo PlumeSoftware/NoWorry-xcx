@@ -1,5 +1,5 @@
 <view class="page">
-  <view class="bg" style="background-image: url('{{commodity.picLink}}');background-position-y:{{moveY}}rpx">
+  <view class="bg" style="background-image: url('{{commodity.picLink}}')">
     <view class="mova-e">
       <view class="mova" direction="vertical">
         <view>
@@ -11,7 +11,11 @@
             <view class="describe">{{commodity.commodityBrief}}</view>
           </view>
           <view class="select-city">
-            <picker bindchange="bindPickerChange" value="{{cityIndex}}" range="{{citiesArray}}">
+            <picker
+              bindchange="bindPickerChange"
+              value="{{cityIndex}}"
+              range="{{citiesArray}}"
+            >
               <view class="picker">{{citiesArray[cityIndex]}}</view>
             </picker>
           </view>
@@ -22,10 +26,20 @@
           <view class="sup-detail">
             <view class="sup-detail-item" wx:for="{{commodity.tips}}">
               <view class="item-title">
-                <van-icon class="title-img" size="11px" name="/static/profile/line.png" />
+                <van-icon
+                  class="title-img"
+                  size="11px"
+                  name="/static/profile/line.png"
+                />
                 {{item.title}}
               </view>
-              <view class="item-rule" wx:for="{{item.children}}" wx:key="index" wx:for-item="icontext" wx:for-index="i">
+              <view
+                class="item-rule"
+                wx:for="{{item.children}}"
+                wx:key="index"
+                wx:for-item="icontext"
+                wx:for-index="i"
+              >
                 {{i+1}}.{{icontext}}
               </view>
             </view>
@@ -45,3 +59,4 @@
     </view>
   </view>
 </view>
+
