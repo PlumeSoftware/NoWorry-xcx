@@ -54,7 +54,7 @@
 
 .select-city {
     height: 38px;
-    width: 293px;
+    width: 75vw;
     border-radius: 7px;
     border: 0.5px solid #F2843B;
     color: #F2843B;
