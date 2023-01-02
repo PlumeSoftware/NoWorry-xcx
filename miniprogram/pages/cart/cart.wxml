@@ -1,15 +1,34 @@
 <view class="page-cart">
   <view class="cart-title">签证</view>
   <view class="cart-list" wx:if="{{carts.length}}">
-    <view class="cart-item" wx:for="{{carts}}" wx:key="index">
-      <view wx:if="{{item.select}}" bind:tap="checkBtn" data-index="{{index}}">
+    <view
+      class="cart-item"
+      wx:for="{{carts}}"
+      wx:key="index"
+      bind:touchstart="handleVerticalDrag"
+      bind:touchend="handleVerticalDrag"
+    >
+      <view
+        wx:if="{{item.select}}"
+        bind:tap="checkBtn"
+        data-index="{{index}}"
+      >
         <van-icon size="20px" name="/static/cart/select-cart.png" />
       </view>
-      <view wx:else bind:tap="checkBtn" data-index="{{index}}">
+      <view
+        wx:else
+        bind:tap="checkBtn"
+        data-index="{{index}}"
+      >
         <van-icon size="20px" name="/static/cart/select-cart-none.png" />
       </view>
       <view class="item-image">
-        <van-image show-loading="{{false}}"  width="100%" height="40vw" src="{{item.picLink}}" />
+        <van-image
+          show-loading="{{false}}"
+          width="100%"
+          height="40vw"
+          src="{{item.picLink}}"
+        />
       </view>
       <view class="item-right">
         <view class="item-info">
@@ -18,9 +37,21 @@
         </view>
         <view class="item-pm">
           <view class="item-number">
-            <van-icon size="16px" bind:tap="add" data-index="{{index}}" data-add="{{-1}}" name="/static/cart/minus.png" />
+            <van-icon
+              size="16px"
+              bind:tap="add"
+              data-index="{{index}}"
+              data-add="{{-1}}"
+              name="/static/cart/minus.png"
+            />
             <view>{{item.quantity}}</view>
-            <van-icon size="16px" bind:tap="add" data-index="{{index}}" data-add="{{1}}" name="/static/cart/add.png" />
+            <van-icon
+              size="16px"
+              bind:tap="add"
+              data-index="{{index}}"
+              data-add="{{1}}"
+              name="/static/cart/add.png"
+            />
           </view>
           <view class="item-price">£{{item.currentPrice}}</view>
         </view>
@@ -28,16 +59,30 @@
     </view>
   </view>
   <view class="empty" wx:else>
-    <van-image show-loading="{{false}}"  fit="cover" width="198" height="222" src="https://noworry.cloud/static/profile/Frame.png" />
+    <van-image
+      show-loading="{{false}}"
+      fit="cover"
+      width="198"
+      height="222"
+      src="https://912730252.r.cdn36.com/static/profile/Frame.png"
+    />
     <view>
       <view class="empty-text">购物车为空~</view>
     </view>
   </view>
   <view class="sub">
     <view class="subtotal">
-      <view class="select-all">
-        <van-icon wx:if="{{allselect}}" size="20px" name="/static/cart/select-cart.png" />
-        <van-icon wx:else size="20px" name="/static/cart/select-cart-none.png" />
+      <view class="select-all" bind:tap="allSelect">
+        <van-icon
+          wx:if="{{allselect}}"
+          size="20px"
+          name="/static/cart/select-cart.png"
+        />
+        <van-icon
+          wx:else
+          size="20px"
+          name="/static/cart/select-cart-none.png"
+        />
         <view>全选</view>
       </view>
       <view class="subtotal-number">
@@ -49,10 +94,16 @@
           <view class="price-conver">GBP {{totalPrice}}≈CNY {{totalPrice2}}</view>
         </view>
         <view class="settle">
-          <button class="button" wx:if="{{totalPrice}}" bind:tap="settle">结算</button>
+          <button
+            class="button"
+            wx:if="{{totalPrice}}"
+            bind:tap="settle"
+          >结算
+          </button>
           <button class="button" wx:else>结算</button>
         </view>
       </view>
     </view>
   </view>
 </view>
+

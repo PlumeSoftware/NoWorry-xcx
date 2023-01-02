@@ -9,16 +9,13 @@
       <view class="title-word">联系方式</view>
     </view>
     <view class="info-list">
-      <!-- <view class="info-item">
-        <view>头像</view>
-        <view></view>
-      </view> -->
       <view class="info-item">
         <view>姓名</view>
         <view>
-          <inputa
+          <input
             bind:tap="inp"
             model:value="{{userName}}"
+            placeholder="请输入"
             id="name"
             focus="{{focusId=='name'}}"
           />
@@ -30,6 +27,7 @@
           <input
             bind:tap="inp"
             model:value="{{phone}}"
+            placeholder="请输入"
             id="phone"
             focus="{{focusId=='phone'}}"
           />
@@ -41,6 +39,7 @@
           <input
             bind:tap="inp"
             model:value="{{email}}"
+            placeholder="请输入"
             id="email"
             focus="{{focusId=='email'}}"
           />
@@ -52,6 +51,7 @@
           <input
             bind:tap="inp"
             model:value="{{liveCity}}"
+            placeholder="请输入"
             id="liveCity"
             focus="{{focusId=='liveCity'}}"
           />
