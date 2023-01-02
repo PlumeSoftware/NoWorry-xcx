@@ -60,8 +60,10 @@ Page({
                 switch (carts[i].commodityName[0]) {
                     case "美":
                         usVisaNum += carts[i].quantity; break;
-                    default:
+                    case "法":
                         sgVisaNum += carts[i].quantity; break;
+                    default:
+                        break;
                 }
 
                 if (carts[i].currentPrice >= 88) {
@@ -69,7 +71,6 @@ Page({
                 } else if (carts[i].currentPrice >= 68 && carts[i].currentPrice < 88) {
                     pr68Num += carts[i].quantity;
                 }
-
             } else {
                 carts.splice(i--, 1)
             }

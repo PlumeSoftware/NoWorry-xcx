@@ -24,6 +24,7 @@ Page({
             carts[i].currentPrice = visa?.currentPrice
         }
         this.setData({ carts: carts })
+        this.setAllSelect()
         this.culTotal()
     },
 
@@ -35,7 +36,16 @@ Page({
         this.setAllSelect()
         this.culTotal()
     },
+    handleVerticalDrag(e: { changedTouches: any }) {
+        console.log(e.changedTouches[0])
+    },
 
+    allSelect() {
+        const carts = this.data.carts;
+        carts.forEach((i: any) => i.select = !this.data.allselect)
+        this.setAllSelect()
+        this.culTotal()
+    },
     setAllSelect() {
         const carts = this.data.carts;
         if (carts && carts.findIndex((item: any) => !item.select) == -1) {
