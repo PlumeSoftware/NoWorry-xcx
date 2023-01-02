@@ -56,7 +56,7 @@
         show-loading="{{false}}"
         width="335px"
         height="150px"
-        src="https://noworry.cloud/static/home/banner.png"
+        src="https://912730252.r.cdn36.com/static/home/banner.png"
       />
     </view>
     <view class="service">
@@ -66,7 +66,7 @@
           show-loading="{{false}}"
           width="335px"
           height="121px"
-          src="https://noworry.cloud/static/home/process.png"
+          src="https://912730252.r.cdn36.com/static/home/process.png"
         />
         <view class="background"></view>
       </view>
@@ -83,7 +83,7 @@
             show-menu-by-longpress
             width="20.6vw"
             height="20.6vw"
-            src="https://noworry.cloud/static/profile/cus1.png"
+            src="https://912730252.r.cdn36.com/static/profile/cus1.png"
           />
         </view>
         <view class="cus-qr">
@@ -92,7 +92,7 @@
             show-menu-by-longpress
             width="20.6vw"
             height="20.6vw"
-            src="https://noworry.cloud/static/home/cus3.png"
+            src="https://912730252.r.cdn36.com/static/home/cus3.png"
           />
         </view>
       </view>

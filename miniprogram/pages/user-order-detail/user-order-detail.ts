@@ -29,7 +29,7 @@ Page({
         const detail = (await webGet<OrderDetailInfo>(`/order/detail/${orderDetailId}`))!
         const order = (await webGet<Order>(`/order/info/${detail.orderId}`))
         this.setData({
-            userName:wx.getStorageSync('userInfo').userName,
+            userName: wx.getStorageSync('userInfo').userName,
             orderDetailId: 'EC' + orderDetailId,
             total: order?.orderTotalPrice,
             paid: order?.orderPaymentPrice,
@@ -47,16 +47,18 @@ Page({
         this.setData({ commodityType: commodity!.commodityType || 11 })
         if (this.data.commodityType == 13) {
             wx.navigateTo({ url: `/pages/info-reg-A/info-reg-A?orderDetailId=${orderDetailId}` })
+        } else if (this.data.commodityType == 14) {
+            wx.navigateTo({ url: `/pages/info-reg-J/info-reg-J?orderDetailId=${orderDetailId}` })
         } else {
             wx.navigateTo({ url: `/pages/info-reg/info-reg?orderDetailId=${orderDetailId}` })
         }
     },
 
-    toContact(){
+    toContact() {
         wx.showModal({
-            title:"提示",
-            content:"请长按扫描首页下方二维码以联系客服",
-            showCancel:false
+            title: "提示",
+            content: "请长按扫描首页下方二维码以联系客服",
+            showCancel: false
         })
     },
 
