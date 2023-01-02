@@ -2,7 +2,7 @@
   <view class="body">
     <view class="head">
       <view class="title">Noworry用户协议条款</view>
-      <van-image show-loading="{{false}}"  width="53px" height="52px" src="https://noworry.cloud/static/profile/noworry.png"/>
+      <van-image show-loading="{{false}}"  width="53px" height="52px" src="https://912730252.r.cdn36.com/static/profile/noworry.png"/>
       <view class="info">由于签证申请为非常规实体商品，同意此用户协议代表您同意委托NoWorry签证使用您的信息全权代理为您申请双方协定的签证。</view>
     </view>
     <view class="item">

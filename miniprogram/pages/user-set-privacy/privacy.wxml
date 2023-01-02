@@ -2,7 +2,7 @@
   <view class="body">
     <view class="head">
       <view class="title">Noworry隐私协议政策</view>
-      <van-image show-loading="{{false}}"  width="53px" height="52px" margin-bottom="5px" src="https://noworry.cloud/static/profile/noworry.png" />
+      <van-image show-loading="{{false}}"  width="53px" height="52px" margin-bottom="5px" src="https://912730252.r.cdn36.com/static/profile/noworry.png" />
       <view class="info">由于签证申请为非常规实体商品，同意此隐私政策代表您同意委托NoWorry签证使用您的信息全权代理为您申请双方协定的签证。</view>
       <view class="info">
         本小程序深知个人信息对您的重要性，并会尽全力保护您的个人信息安全可靠。

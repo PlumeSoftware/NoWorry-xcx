@@ -16,6 +16,7 @@
     "pages/home-introduce/home-introduce",
     "pages/info-reg/info-reg",
     "pages/info-reg-A/info-reg-A",
+    "pages/info-reg-J/info-reg-J",
     "pages/user-set-notice/notice",
     "pages/user-set-privacy/privacy"
   ],
