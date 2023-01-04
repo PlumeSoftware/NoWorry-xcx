@@ -8,6 +8,7 @@ export interface Visa {
     initialQuantity?: number
     originPrice?: number
     picLink?: string
+    picLinkTem?:string
     remainQuantity?: number
     tips?: Array<{title:string,children:Array<string>}>
 }
