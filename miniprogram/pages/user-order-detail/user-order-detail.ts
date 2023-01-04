@@ -72,7 +72,10 @@ Page({
         let url = ''
         if (this.data.commodityType == 13) {
             url = url + `/pages/info-reg-A/info-reg-A?`
-        } else {
+        } else if (this.data.commodityType == 14) {
+            url = url + `/pages/info-reg-J/info-reg-J?`
+        }
+        else {
             url = url + `/pages/info-reg/info-reg?`
         }
         url = url + `orderDetailId = ${this.data.orderDetailId}&s=1`
