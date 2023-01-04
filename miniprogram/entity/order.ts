@@ -18,6 +18,7 @@ export interface OrderDetailInfo {
     orderDetailId?: number;
     orderId?: string;
     picLink?: string;
+    picLinkTem?: string;
 }
 
 export interface SubmitCart {
