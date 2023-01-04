@@ -21,6 +21,7 @@ Page({
         for (let i = 0; i < carts.length; i++) {
             const visa = await webGet<Visa>(`/visa/detail/${carts[i].commodityId}`, {})
             carts[i].picLink = visa?.picLink
+            carts[i].picLinkTem = visa?.picLinkTem
             carts[i].currentPrice = visa?.currentPrice
         }
         this.setData({ carts: carts })

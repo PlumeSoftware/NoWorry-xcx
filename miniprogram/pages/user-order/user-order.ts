@@ -18,7 +18,7 @@ Page({
             [],
             [],
             []
-        ],
+        ] as any,
     },
     async onShow() {
         const result: Array<Order> | null = await webGet<Array<Order>>(`/order/${wx.getStorageSync('token')}`)

@@ -19,7 +19,6 @@
               <view class="picker">{{citiesArray[cityIndex]}}</view>
             </picker>
           </view>
-          <view></view>
         </view>
         <view style="background: #F8F6EE;">
           <view class="sup-text">Support</view>
