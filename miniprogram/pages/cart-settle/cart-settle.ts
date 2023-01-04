@@ -14,7 +14,7 @@ Page({
         phone: '',
         email: '',
         liveCity: '',
-
+        wechat:'',
 
         payArray: ["微信支付", "客服辅助支付"],
         payIndex: 0,
@@ -31,6 +31,15 @@ Page({
         agree: false,
 
         allowSubmit: false
+    },
+    onShow() {
+        this.setData({
+            userName: wx.getStorageSync("userInfo").userName,
+            phone: wx.getStorageSync("userInfo").phone,
+            email: wx.getStorageSync("userInfo").email,
+            liveCity: wx.getStorageSync("userInfo").handSignCity
+        })
+        this.updateCart()
     },
     inp(e: { currentTarget: { id: string } }) {
         wx.hideKeyboard()
@@ -217,7 +226,7 @@ Page({
                 orderPaymentPrice: this.data.totalPrice - this.data.favourableTotal,
                 payWay: 1,
                 orderDetail: orderDetail,
-                contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.liveCity}`
+                contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.wechat}`
             })
 
         } else if (this.data.payIndex == 1) {//客服辅助支付
@@ -248,9 +257,4 @@ Page({
         }
         wx.setStorageSync('carts', carts);
     },
-
-
-    onShow() {
-        this.updateCart()
-    }
 });

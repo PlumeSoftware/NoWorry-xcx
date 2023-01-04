@@ -46,6 +46,18 @@
         </view>
       </view>
       <view class="info-item">
+        <view>微信号</view>
+        <view>
+          <input
+            bind:tap="inp"
+            model:value="{{wechat}}"
+            placeholder="请输入"
+            id="wxchat"
+            focus="{{focusId=='wechat'}}"
+          />
+        </view>
+      </view>
+      <!-- <view class="info-item">
         <view>所在城市</view>
         <view>
           <input
@@ -56,7 +68,7 @@
             focus="{{focusId=='liveCity'}}"
           />
         </view>
-      </view>
+      </view> -->
     </view>
   </view>
   <view>
@@ -103,7 +115,7 @@
           show-loading="{{false}}"
           width="100%"
           height="30vw"
-          src="{{item.picLink}}"
+          src="{{item.picLinkTem}}"
         />
       </view>
       <view>
