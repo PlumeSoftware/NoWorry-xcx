@@ -7,10 +7,10 @@ import { webGet } from "../../utils/http"
 Page({
     data: {
         coverUrlList: [
-            "https://912730252.r.cdn36.com/static/home/account1.png",
-            "https://912730252.r.cdn36.com/static/home/account2.png",
-            "https://912730252.r.cdn36.com/static/home/account3.png",
-            "https://912730252.r.cdn36.com/static/home/account4.png"
+            "https://noworry.goho.co/static/home/account1.png",
+            "https://noworry.goho.co/static/home/account2.png",
+            "https://noworry.goho.co/static/home/account3.png",
+            "https://noworry.goho.co/static/home/account4.png"
         ],
         coverIndex: 0,
 

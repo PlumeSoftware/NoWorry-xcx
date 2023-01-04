@@ -5,7 +5,7 @@
       show-loading="{{false}}"
       width="100vw"
       height="673px"
-      src="https://912730252.r.cdn36.com/static/introduce/{{index+1}}.jpg"
+      src="https://noworry.goho.co/static/introduce/{{index+1}}.jpg"
     />
   </view>
 </view>
