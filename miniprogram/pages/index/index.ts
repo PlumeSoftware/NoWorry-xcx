@@ -14,6 +14,15 @@ Page({
     page: [false, false, false, false]
   },
 
+  toShare() {
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage','shareTimeline']
+    })
+  },
+
+  onShareAppMessage() { },
+
   onLoad() {
     this.selectComponent('#home').start();
   },
@@ -24,8 +33,8 @@ Page({
         wx.showModal({
           title: '提示',
           content: '您还未设置个人资料',
-          showCancel:false,
-          confirmText:"前往设置",
+          showCancel: false,
+          confirmText: "前往设置",
           success: () => {
             event.detail = 3
             r()

@@ -186,7 +186,14 @@
         <view class="price-conver">GBP {{totalPriceShow}}≈CNY {{totolPriceCNY}}</view>
       </view>
       <view class="settle">
-        <button class="button {{agree&&userName&&phone&&email&&liveCity?'':'un'}}allow" bind:tap="submitOrder">
+        <button
+          wx:if="{{agree&&userName&&phone&&email}}"
+          class="button allow"
+          bind:tap="submitOrder"
+        >
+          提交订单
+        </button>
+        <button wx:else class="button unallow">
           提交订单
         </button>
       </view>

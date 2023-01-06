@@ -92,7 +92,8 @@ Page({
             3.美签2位，-10*2英镑，3位-10*3英镑，4位也是-10*3英镑
          */
 
-        //生成优惠方案
+        //生成优惠方案，清空优惠方案缓存
+        this.setData({ favourable: [] })
         if (sgVisaNum + usVisaNum < 5 && sgVisaNum && usVisaNum) {
             const favourable = this.data.favourable;
             const amount = Math.min(sgVisaNum, usVisaNum) * 10 <= 40 ? Math.min(sgVisaNum, usVisaNum) * 10 : 40
