@@ -1,11 +1,11 @@
 <view class="page-poster">
   <view>
     <van-image
-      wx:for="{{[0,1,2,3,4,5,6,7]}}"
+      wx:for="{{imgList}}"
       show-loading="{{false}}"
       width="100vw"
       height="673px"
-      src="https://noworry.goho.co/static/introduce/{{index+1}}.jpg"
+      src="{{item}}"
     />
   </view>
 </view>

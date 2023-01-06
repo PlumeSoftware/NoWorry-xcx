@@ -5,38 +5,16 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 Page({
     data: {
-        posterList: [
-            {
-                posterId: 0,
-                posterTitle: "申根签优惠活动详情",
-                posterInfo: "NoWorry 于11月推出申根签优惠，在此期间和小伙伴组队5人以上办理申根签，即可每人优惠5磅，组队刷签更是每人优惠10磅！",
-                posterImg: "https://noworry.goho.co/static/home/poster1.png"
-            },
-            {
-                posterId: 1,
-                posterTitle: "申根签+美签套餐详情",
-                posterInfo: "NoWorry 于11月推出申根签+美签套餐，在此期间办理签证套餐的同学每人立减10磅！所有优惠都可叠加，最多省40磅！",
-                posterImg: "https://noworry.goho.co/static/home/poster2.png"
-            },
-            {
-                posterId: 2,
-                posterTitle: "美签优惠活动详情",
-                posterInfo: "NoWorry 于11月推出美签优惠，2人即成团，2人成团递交美签每人优惠10磅；3人成团每人优惠20磅；4人成团每人优惠30磅！四人团为上限哟！",
-                posterImg: "https://noworry.goho.co/static/home/poster3.png"
-            },
-            {
-                posterId: 3,
-                posterTitle: "",
-                posterInfo: "",
-                posterImg: "https://noworry.goho.co/static/home/poster4.png"
-            }
+        imgList: [
+            "https://s1.imagehub.cc/images/2023/01/06/246eb962a848b8fd6975d44f08a7427d.jpeg",
+            "https://s1.imagehub.cc/images/2023/01/06/3269e5b033e0fe43de799e24a9e0b352.jpeg",
+            "https://s1.imagehub.cc/images/2023/01/06/e14fee176c11159249813214710c0edd.jpeg",
+            "https://s1.imagehub.cc/images/2023/01/06/50e5c15d54a9246906b8999a336ae637.jpeg",
+            "https://s1.imagehub.cc/images/2023/01/06/c07310a42a29b9d5762c282fe7267c7d.jpeg",
+            "https://s1.imagehub.cc/images/2023/01/06/74687cccaf5457df6911552890738491.jpeg",
+            "https://s1.imagehub.cc/images/2023/01/06/5141ad9fac3a98be75f39de0c250c273.jpeg",
+            "https://s1.imagehub.cc/images/2023/01/06/f2b7dfbf78066c8573f485dbbd6cdb31.jpeg"
         ],
         posterIndex: 0
     },
-
-    onShow() {
-        const pages = getCurrentPages();
-        const index = pages[pages.length - 1].options.posterId;
-        this.setData({ posterIndex: Number(index) })
-    }
 });

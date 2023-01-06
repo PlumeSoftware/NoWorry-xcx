@@ -7,16 +7,24 @@ import { webGet } from "../../utils/http"
 Page({
     data: {
         coverUrlList: [
-            "https://noworry.goho.co/static/home/account1.png",
-            "https://noworry.goho.co/static/home/account2.png",
-            "https://noworry.goho.co/static/home/account3.png",
-            "https://noworry.goho.co/static/home/account4.png"
+            "https://s1.imagehub.cc/images/2023/01/06/f626d816429614277cb1d8b600fe642d.png",
+            "https://s1.imagehub.cc/images/2023/01/06/163f0feb04241d50f78401ef5c245655.png",
+            "https://s1.imagehub.cc/images/2023/01/06/2840af5f963708275a4a0b9f82f3157e.png",
+            "https://s1.imagehub.cc/images/2023/01/06/38f598da5418545e37e45483056d8737.png",
         ],
         coverIndex: 0,
 
         VisaList: [] as any
-
     },
+    toShare() {
+        wx.showShareMenu({
+            withShareTicket: true,
+            menus: ['shareAppMessage']
+        })
+    },
+
+    onShareAppMessage() {},
+
     toPoster(e: any) {
         wx.navigateTo({ url: '/pages/home-poster/poster' + "?posterId=" + e.currentTarget.dataset["id"] })
     },
