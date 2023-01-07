@@ -197,6 +197,16 @@
     text-align: right;
 }
 
+.commodity-list .commodity-item .item-pm .item-remark {
+    background-color: #bdbdbd;
+    color: #696969;
+    padding: 1rpx 5rpx;
+    border-radius: 5rpx;
+    font-size: 12px;
+    font-weight: 300;
+    text-align: right;
+}
+
 .commodity-list .commodity-item .item-pm .item-price {
     font-size: 17px;
     font-weight: 500;

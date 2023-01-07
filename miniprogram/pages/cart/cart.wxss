@@ -80,7 +80,7 @@
 }
 
 .cart-list .cart-item .item-info {
-    width: 40vw;
+    width: 42vw;
 }
 
 .cart-list .cart-item .item-info view:nth-child(1) {
@@ -113,6 +113,15 @@
     align-items: center;
 }
 
+.cart-list .cart-item .item-pm .item-remark {
+    background-color: #bdbdbd;
+    color: #696969;
+    padding: 1rpx 5rpx;
+    border-radius: 5rpx;
+    font-size: 12px;
+    font-weight: 300;
+    text-align: right;
+}
 
 .cart-list .cart-item .item-pm .item-price {
     font-size: 17px;

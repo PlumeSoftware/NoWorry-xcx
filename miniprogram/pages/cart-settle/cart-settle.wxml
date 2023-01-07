@@ -125,6 +125,7 @@
         </view>
         <view class="item-pm">
           <view class="item-quantity">x{{item.quantity}}</view>
+          <view class="item-remark">{{item.remark}}</view>
           <view class="item-price">£{{item.currentPrice}}</view>
         </view>
       </view>

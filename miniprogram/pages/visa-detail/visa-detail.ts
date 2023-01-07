@@ -44,7 +44,9 @@ Page({
 
         const carts = wx.getStorageSync('carts') || [];
 
-        const targerIndex = carts.findIndex((item: any) => item.commodityId == this.data.commodity.commodityId)
+        const targerIndex = carts.findIndex(
+            (item: any) => item.commodityId == this.data.commodity.commodityId && item.remark == this.data.citiesArray[this.data.cityIndex]
+        )
         if (targerIndex != -1) {
             carts[targerIndex].quantity++;
         } else {
