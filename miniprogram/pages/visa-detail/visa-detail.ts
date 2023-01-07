@@ -13,7 +13,7 @@ Page({
         moveY: 0,
         show: true,
         showToast: false,
-        citiesArray: ['伦敦', '贝尔法斯特', '伯明翰'],
+        citiesArray: ['伦敦', '贝尔法斯特'],
         cityIndex: 0,
 
         //商品详细参数
@@ -24,6 +24,10 @@ Page({
         const pages = getCurrentPages()
         const commodityId = pages[pages.length - 1].options.commodityId
         this.setData({ commodity: (await webGet<Visa>(`/visa/detail/${commodityId}`))! })
+        switch (this.data.commodity.commodityType) {
+            case 11: this.setData({ citiesArray: ['伦敦', '贝尔法斯特'] }); break;
+            case 13: this.setData({ citiesArray: ['伦敦', '曼彻斯特', "爱丁堡"] }); break;
+        }
     },
 
     initValue: 0,
