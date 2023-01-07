@@ -72,7 +72,7 @@
 
 .info-list .info-item .favcode input {
     text-align: left;
-    margin-left: 20rpx;
+    margin-left: 4rpx;
 }
 
 
