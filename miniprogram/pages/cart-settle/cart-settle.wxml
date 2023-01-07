@@ -164,7 +164,6 @@
       <view class="info-item">
         <view class="favcode">
           <input
-            bind:tap="inp"
             bindinput="inpFav"
             model:value="{{favcode}}"
             placeholder="可空"

@@ -55,10 +55,7 @@ Page({
     },
     inpFav() {
         if (this.data.favcode.length == 8) {
-            wx.showLoading({
-                title: '检查优惠券中',
-                mask: true
-            })
+            wx.showToast({ title: '检查优惠券中...', icon: 'none', duration: 1000, })
             setTimeout(() => {
                 const result = culFav(this.data.favcode)
                 if (result) {
@@ -66,11 +63,9 @@ Page({
                     this.updateCart()
                 } else {
                     wx.showToast({ title: '该优惠券已失效~', icon: 'none', duration: 2500, })
-                    setTimeout(() => this.setData({ favcode: '', favdetail: { payway: 2, favway: 0, value: 0 } }), 1750)
+                    this.setData({ favcode: '', favdetail: { payway: 2, favway: 0, value: 0 } })
                 }
-                wx.hideLoading()
-            }, 750)
-
+            }, 1000)
         } else {
             this.setData({ favcode: this.data.favcode.slice(0, 8), favdetail: { payway: 2, favway: 0, value: 0 } })
         }
@@ -84,6 +79,7 @@ Page({
         const carts = wx.getStorageSync('carts');
         let usVisaNum = 0;//美签数量
         let sgVisaNum = 0;//申根签数量
+        let enVisaNum = 0;//申根签数量
 
         let pr88Num = 0;//88元签证数量
         let pr68Num = 0//68元签证数量
@@ -98,6 +94,10 @@ Page({
                         usVisaNum += carts[i].quantity; break;
                     case "法":
                         sgVisaNum += carts[i].quantity; break;
+                    case "西":
+                        sgVisaNum += carts[i].quantity; break;
+                    case "英":
+                        enVisaNum += carts[i].quantity; break;
                     default:
                         break;
                 }
@@ -121,12 +121,13 @@ Page({
 
         //生成优惠方案，清空优惠方案缓存
         this.setData({ favourableTotal: 0, favourable: [] })
-        if (sgVisaNum + usVisaNum < 5 && sgVisaNum && usVisaNum) {
+        if (sgVisaNum + usVisaNum + enVisaNum < 5 && sgVisaNum && usVisaNum && enVisaNum) {
             const favourable = this.data.favourable;
             const amount = Math.min(sgVisaNum, usVisaNum) * 10 <= 40 ? Math.min(sgVisaNum, usVisaNum) * 10 : 40
             favourable.push({ title: "美签+申根联合优惠", amount: amount })
             this.setData({ favourable: favourable })
         }
+
 
         if (pr88Num >= 5) {
             const favourable = this.data.favourable;
@@ -142,9 +143,39 @@ Page({
             this.setData({ favourable: favourable })
         }
 
+        if (enVisaNum) {
+            const favourable = this.data.favourable;
+            switch (enVisaNum) {
+                case 1: {
+                    break;
+                }
+                case 2: {
+                    favourable.push({ title: "PSW组队优惠", amount: 20 })
+                    break;
+                }
+                case 3: {
+                    favourable.push({ title: "PSW团购优惠", amount: 60 })
+                    break;
+                }
+                case 4: {
+                    favourable.push({ title: "PSW团购优惠", amount: 80 })
+                    break;
+                }
+                default:
+                    favourable.push({ title: "PSW超低价优惠", amount: 30 * enVisaNum })
+                    break;
+            }
+            this.setData({ favourable: favourable })
+        }
+
+
+        //美签优惠
         if (usVisaNum && pr68Num + pr88Num < 5) {
             const favourable = this.data.favourable;
             switch (usVisaNum) {
+                case 1: {
+                    break;
+                }
                 case 2:
                     favourable.push({ title: "美签组队优惠", amount: 20 })
                     break;
@@ -153,8 +184,6 @@ Page({
                     break;
                 case 4:
                     favourable.push({ title: "美签组队优惠", amount: 30 })
-                    break;
-                default:
                     break;
             }
             this.setData({ favourable: favourable })
