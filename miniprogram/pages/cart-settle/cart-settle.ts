@@ -7,6 +7,7 @@
 import { webPost } from "../../utils/http";
 import { Cart } from "../../entity/cart";
 import { CartDetail } from "../../entity/order";
+import { culFav } from "../../utils/util";
 
 Page({
     data: {
@@ -14,7 +15,7 @@ Page({
         phone: '',
         email: '',
         liveCity: '',
-        wechat:'',
+        wechat: '',
 
         payArray: ["微信支付", "客服辅助支付"],
         payIndex: 0,
@@ -29,6 +30,9 @@ Page({
         totolPriceCNY: 0,
 
         agree: false,
+
+        favcode: '',
+        favdetail: { payway: 2, favway: 0, value: 0 },
 
         allowSubmit: false
     },
@@ -47,7 +51,30 @@ Page({
             this.setData({
                 focusId: e.currentTarget.id
             })
-        }, 300)
+        }, 500)
+    },
+    inpFav() {
+        if (this.data.favcode.length == 8) {
+            wx.showLoading({
+                title: '检查优惠券中',
+                mask: true
+            })
+            setTimeout(() => {
+                const result = culFav(this.data.favcode)
+                if (result) {
+                    this.setData({ favdetail: result })
+                    this.updateCart()
+                } else {
+                    wx.showToast({ title: '该优惠券已失效~', icon: 'none', duration: 2500, })
+                    setTimeout(() => this.setData({ favcode: '', favdetail: { payway: 2, favway: 0, value: 0 } }), 1750)
+                }
+                wx.hideLoading()
+            }, 750)
+
+        } else {
+            this.setData({ favcode: this.data.favcode.slice(0, 8), favdetail: { payway: 2, favway: 0, value: 0 } })
+        }
+        this.updateCart()
     },
     updateCart() {
         let total = 0;
@@ -93,7 +120,7 @@ Page({
          */
 
         //生成优惠方案，清空优惠方案缓存
-        this.setData({ favourable: [] })
+        this.setData({ favourableTotal: 0, favourable: [] })
         if (sgVisaNum + usVisaNum < 5 && sgVisaNum && usVisaNum) {
             const favourable = this.data.favourable;
             const amount = Math.min(sgVisaNum, usVisaNum) * 10 <= 40 ? Math.min(sgVisaNum, usVisaNum) * 10 : 40
@@ -110,7 +137,7 @@ Page({
 
         if (pr68Num >= 5) {
             const favourable = this.data.favourable;
-            const amount = pr68Num * 10 < 40 ? pr68Num * 10 : 40
+            const amount = pr68Num * 5 < 40 ? pr68Num * 5 : 40
             favourable.push({ title: "组队刷签优惠", amount: amount })
             this.setData({ favourable: favourable })
         }
@@ -137,6 +164,7 @@ Page({
         this.data.favourable.forEach(i => {
             favourableTotal += i.amount
         })
+        favourableTotal += this.data.favdetail.value
 
         total = Number(total.toFixed(2))
         totalCNY = Number((8.6231 * (total - favourableTotal)).toFixed(2));
@@ -201,22 +229,30 @@ Page({
                 package: string,
                 signType: "MD5" | "HMAC-SHA256" | undefined,
                 paySign: string
+                errortag?: boolean
+                errormessage?: string
             }>('/pay', {
                 openid: wx.getStorageSync('userInfo').openid,
                 describe: paid[0].commodityName,
-                amount: this.data.totolPriceCNY * 100
-                // amount: 1
+                amount: Math.floor(this.data.totolPriceCNY * 100),
+                checkitems: {
+                    favcode: this.data.favcode
+                }
             }))!
+
 
             await new Promise<void>(r => {
                 wx.requestPayment({
-                    appId: data['appId'],
-                    timeStamp: data['timeStamp'],
-                    nonceStr: data['nonceStr'],
-                    package: data['package'],
-                    signType: data['signType'],
-                    paySign: data['paySign'],
-                    success: () => r()
+                    //服务器未返回错误，并且存在支付信息，允许支付
+                    appId: data['appId'], timeStamp: data['timeStamp'], nonceStr: data['nonceStr'],
+                    package: data['package'], signType: data['signType'], paySign: data['paySign'],
+                    success: () => r(),
+                    //服务器未返回错误，检查通过，允许支付
+                    fail: () => {
+                        wx.showToast({ title: data.errormessage || '用户取消支付', icon: 'none', duration: 2500 })
+                        if (data.errortag) { this.setData({ favcode: '', favdetail: { payway: 2, favway: 0, value: 0 } }) }
+                        this.updateCart()
+                    }
                 })
             })
 
@@ -227,21 +263,39 @@ Page({
                 orderPaymentPrice: this.data.totalPrice - this.data.favourableTotal,
                 payWay: 1,
                 orderDetail: orderDetail,
+                favcode: this.data.favcode,
                 contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.wechat}`
-            })
+            }).then(() => this.afterPayment(paid))
+
 
         } else if (this.data.payIndex == 1) {//客服辅助支付
-            webPost('/order/submit', {
-                token: wx.getStorageSync('token'),
-                orderTotalPrice: this.data.totalPrice,
-                favourablePrice: this.data.favourableTotal,
-                orderPaymentPrice: 0,
-                payWay: 0,
-                orderDetail: orderDetail,
-                contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.liveCity}`
-            })
-        }
+            const data = (await webPost<{
+                errortag?: boolean
+                errormessage?: string
+            }>('/pay', {
+                openid: wx.getStorageSync('userInfo').openid,
+                checkitems: { favcode: this.data.favcode }
+            }))!
 
+            if (data.errortag) {
+                wx.showToast({ title: data.errormessage || '用户取消支付', icon: 'none', duration: 2500 })
+                if (data.errortag) { this.setData({ favcode: '', favdetail: { payway: 2, favway: 0, value: 0 } }) }
+                this.updateCart()
+            } else {
+                webPost('/order/submit', {
+                    token: wx.getStorageSync('token'),
+                    orderTotalPrice: this.data.totalPrice,
+                    favourablePrice: this.data.favourableTotal,
+                    orderPaymentPrice: 0,
+                    payWay: 0,
+                    orderDetail: orderDetail,
+                    favcode: this.data.favcode,
+                    contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.liveCity}`
+                }).then(() => this.afterPayment(paid))
+            }
+        }
+    },
+    afterPayment(paid: []) {
         //付款结束，跳转到成功界面
         setTimeout(() => {
             wx.reLaunch({
@@ -257,5 +311,5 @@ Page({
             }
         }
         wx.setStorageSync('carts', carts);
-    },
+    }
 });

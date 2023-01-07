@@ -64,10 +64,18 @@
     text-align: left;
 }
 
-.info-list .info-item input {
+.info-list .info-item input,
+.info-list .info-item .favcode-amount {
     text-align: right;
     margin-right: 26rpx;
 }
+
+.info-list .info-item .favcode input {
+    text-align: left;
+    margin-left: 20rpx;
+}
+
+
 
 .opea-list {}
 

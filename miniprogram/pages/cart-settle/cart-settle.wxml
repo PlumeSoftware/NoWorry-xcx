@@ -130,7 +130,7 @@
       </view>
     </view>
   </view>
-  <view wx:if="{{favourableTotal>0}}">
+  <view wx:if="{{favourable.length>0}}">
     <view class="title">
       <van-icon
         class="title-img"
@@ -144,18 +144,37 @@
       <view class="info-item" wx:for="{{favourable}}">
         <view>{{item.title}}</view>
         <view>
-          <input
-            bindtap="inp"
-            bindblur="inp"
-            bindconfirm="inp"
-            bindfocus="inp"
-            model:value="- £{{item.amount}}"
-            disabled="{{true}}"
-          />
+          <input model:value="- £{{item.amount}}" disabled="{{true}}" />
         </view>
       </view>
     </view>
   </view>
+  <view>
+    <view class="title">
+      <van-icon
+        class="title-img"
+        size="20px"
+        name="/static/profile/line.png"
+      />
+      <view class="title-word">优惠券</view>
+      <view style="margin-left:60vw;line-height: 24px;"></view>
+    </view>
+
+    <view class="info-list">
+      <view class="info-item">
+        <view class="favcode">
+          <input
+            bind:tap="inp"
+            bindinput="inpFav"
+            model:value="{{favcode}}"
+            placeholder="可空"
+          />
+        </view>
+        <view wx:if="{{favdetail.value>0}}" class="favcode-amount">- £{{favdetail.value}}</view>
+      </view>
+    </view>
+  </view>
+
   <view class="slider"></view>
   <view class="protocol">
     <van-icon
