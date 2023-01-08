@@ -5,6 +5,8 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { webGet } from "../../utils/http"
 import { Visa } from "../../entity/visa";
+//@ts-ignore
+import Toast from '@vant/weapp/toast/toast';
 
 Page({
     data: {
@@ -12,8 +14,7 @@ Page({
         activeVisa: 0,
         moveY: 0,
         show: true,
-        showToast: false,
-        citiesArray: ['伦敦', '贝尔法斯特'],
+        citiesArray: [] as Array<{}>,
         cityIndex: 0,
 
         //商品详细参数
@@ -25,21 +26,19 @@ Page({
         const commodityId = pages[pages.length - 1].options.commodityId
         this.setData({ commodity: (await webGet<Visa>(`/visa/detail/${commodityId}`))! })
         switch (this.data.commodity.commodityType) {
-            case 13: this.setData({ citiesArray: ['伦敦', '贝尔法斯特'] }); break;
             case 11: this.setData({ citiesArray: ['伦敦', '曼彻斯特', "爱丁堡"] }); break;
+            case 13: this.setData({ citiesArray: ['伦敦', '贝尔法斯特'] }); break;
+            case 14: this.setData({ citiesArray: ['伦敦'] }); break;
+            case 15: this.setData({ citiesArray: ['线上办理', '线下办理'] }); break;
         }
     },
 
     initValue: 0,
-    move(e: { detail: { x: number, y: number } }) {
-        this.setData({ moveY: e.detail.y - 310 })
-    },
+    move(e: { detail: { x: number, y: number } }) { this.setData({ moveY: e.detail.y - 310 }) },
 
-    bindPickerChange(e: { detail: { value: number } }) {
-        this.setData({ cityIndex: e.detail.value })
-    },
+    bindPickerChange(e: { detail: { value: number } }) { this.setData({ cityIndex: e.detail.value }) },
     addCart() {
-        this.setData({ showToast: true })
+        Toast({ type: 'success', message: '加购成功', duration: 2000 });
         this.setData({ commodityId: Number((Math.random() * 100).toFixed(0)) })
 
         const carts = wx.getStorageSync('carts') || [];
@@ -63,8 +62,12 @@ Page({
 
         wx.setStorageSync('carts', carts)
 
-        setTimeout(() => {
-            this.setData({ showToast: false })
-        }, 1500)
+        setTimeout(() => { this.setData({ showToast: false }) }, 1500)
+    },
+
+    groupBuy(){
+        wx.navigateTo({
+            url:`/pages/visa-groupbuy/visa-groupbuy?commodityId=${this.data.commodity.commodityId}`
+        })
     }
 });

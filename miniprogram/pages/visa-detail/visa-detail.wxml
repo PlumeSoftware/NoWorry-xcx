@@ -48,14 +48,9 @@
     </view>
     <view class="add">
       <view class="add-btn" bind:tap="addCart">加入购物车</view>
+      <view class="add-btn" bind:tap="groupBuy">发起团购</view>
     </view>
-    <view class="add-cover"></view>
-    <view class="toast" style="display:{{showToast?'flex':'none'}}">
-      <view>
-        <image style="height:20vw;width:20vw" src="/static/cart/check.png"></image>
-      </view>
-      <view>添加成功，在购物车等亲～</view>
-    </view>
+    <van-toast id="van-toast" />
   </view>
 </view>
 

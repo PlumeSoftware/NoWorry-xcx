@@ -109,19 +109,10 @@
     justify-content: center;
 }
 
-/* 
-.add-cover {
-    width: 100vw;
-    position: fixed;
-    bottom: 0vw;
-    height: 30.5vw;
-    backdrop-filter: blur(10px);
-} */
-
 
 .add-btn {
     height: 12.5vw;
-    width: 78.9vw;
+    width: 38.9vw;
     border-radius: 7px;
     margin: 0 auto;
     line-height: 12.5vw;
@@ -136,23 +127,4 @@
 }
 .add-btn:nth-child(2) {
     background-color: #0386FE;
-}
-
-.toast {
-    position: fixed;
-    top: 40vh;
-    height: 20vh;
-    width: 80vw;
-    left: 10vw;
-    background-color: #353535BD;
-    border-radius: 5px;
-    z-index: 99;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: #FFFFFF;
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 24px;
 }
