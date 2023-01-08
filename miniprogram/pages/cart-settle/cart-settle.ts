@@ -8,6 +8,7 @@ import { webPost } from "../../utils/http";
 import { Cart } from "../../entity/cart";
 import { CartDetail } from "../../entity/order";
 import { culFav } from "../../utils/util";
+import { culFavFromCarts } from "../../utils/cart";
 
 Page({
     data: {
@@ -77,36 +78,11 @@ Page({
         let favourableTotal = 0;
 
         const carts = wx.getStorageSync('carts');
-        let usVisaNum = 0;//美签数量
-        let sgVisaNum = 0;//申根签数量
-        let enVisaNum = 0;//申根签数量
 
-        let pr88Num = 0;//88元签证数量
-        let pr68Num = 0//68元签证数量
-        console.log("carts",)
         //计算商品总价,统计签证类型和价格
         for (let i = 0; i < carts.length; i++) {
             if (carts[i].select) {
                 total += carts[i].currentPrice * carts[i].quantity
-
-                switch (carts[i].commodityName[0]) {
-                    case "美":
-                        usVisaNum += carts[i].quantity; break;
-                    case "法":
-                        sgVisaNum += carts[i].quantity; break;
-                    case "西":
-                        sgVisaNum += carts[i].quantity; break;
-                    case "英":
-                        enVisaNum += carts[i].quantity; break;
-                    default:
-                        break;
-                }
-
-                if (carts[i].currentPrice >= 88) {
-                    pr88Num += carts[i].quantity
-                } else if (carts[i].currentPrice >= 68 && carts[i].currentPrice < 88) {
-                    pr68Num += carts[i].quantity;
-                }
             } else {
                 carts.splice(i--, 1)
             }
@@ -119,75 +95,10 @@ Page({
             3.美签2位，-10*2英镑，3位-10*3英镑，4位也是-10*3英镑
          */
 
-        //生成优惠方案，清空优惠方案缓存
-        this.setData({ favourableTotal: 0, favourable: [] })
-        if (sgVisaNum + usVisaNum + enVisaNum < 5 && sgVisaNum && usVisaNum && enVisaNum) {
-            const favourable = this.data.favourable;
-            const amount = Math.min(sgVisaNum, usVisaNum) * 10 <= 40 ? Math.min(sgVisaNum, usVisaNum) * 10 : 40
-            favourable.push({ title: "美签+申根联合优惠", amount: amount })
-            this.setData({ favourable: favourable })
-        }
-
-
-        if (pr88Num >= 5) {
-            const favourable = this.data.favourable;
-            const amount = pr88Num * 10 < 40 ? pr88Num * 10 : 40
-            favourable.push({ title: "组队刷签优惠", amount: amount })
-            this.setData({ favourable: favourable })
-        }
-
-        if (pr68Num >= 5) {
-            const favourable = this.data.favourable;
-            const amount = pr68Num * 5 < 40 ? pr68Num * 5 : 40
-            favourable.push({ title: "组队刷签优惠", amount: amount })
-            this.setData({ favourable: favourable })
-        }
-
-        if (enVisaNum) {
-            const favourable = this.data.favourable;
-            switch (enVisaNum) {
-                case 1: {
-                    break;
-                }
-                case 2: {
-                    favourable.push({ title: "PSW组队优惠", amount: 20 })
-                    break;
-                }
-                case 3: {
-                    favourable.push({ title: "PSW团购优惠", amount: 60 })
-                    break;
-                }
-                case 4: {
-                    favourable.push({ title: "PSW团购优惠", amount: 80 })
-                    break;
-                }
-                default:
-                    favourable.push({ title: "PSW超低价优惠", amount: 30 * enVisaNum })
-                    break;
-            }
-            this.setData({ favourable: favourable })
-        }
-
-
-        //美签优惠
-        if (usVisaNum && pr68Num + pr88Num < 5) {
-            const favourable = this.data.favourable;
-            switch (usVisaNum) {
-                case 1: {
-                    break;
-                }
-                case 2:
-                    favourable.push({ title: "美签组队优惠", amount: 20 })
-                    break;
-                case 3:
-                    favourable.push({ title: "美签组队优惠", amount: 20 })
-                    break;
-                case 4:
-                    favourable.push({ title: "美签组队优惠", amount: 30 })
-                    break;
-            }
-            this.setData({ favourable: favourable })
-        }
+        //清空优惠缓存
+        //生成优惠方案
+        this.setData({ favourableTotal: 0, carts: carts })
+        this.setData({ favourable: culFavFromCarts(this.data.carts) })
 
         //计算优惠价格
         this.data.favourable.forEach(i => {
@@ -243,7 +154,7 @@ Page({
             if (cart.select) {
                 orderDetail.push({
                     boughtQuantity: cart.quantity,
-                    invPrice: cart.quantity * cart.currentPrice,
+                    invPrice: cart.quantity! * cart.currentPrice!,
                     commodityId: cart.commodityId,
                     remark: cart.remark
                 })
@@ -277,7 +188,8 @@ Page({
                     package: data['package'], signType: data['signType'], paySign: data['paySign'],
                     success: () => r(),
                     //服务器未返回错误，检查通过，允许支付
-                    fail: () => {
+                    fail: (err) => {
+                        console.log(err)
                         wx.showToast({ title: data.errormessage || '用户取消支付', icon: 'none', duration: 2500 })
                         if (data.errortag) { this.setData({ favcode: '', favdetail: { payway: 2, favway: 0, value: 0 } }) }
                         this.updateCart()
