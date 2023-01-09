@@ -88,8 +88,21 @@ Page({
             icon: 'loading',
             duration: 700
         })
+        const userInfo = wx.getStorageSync('userInfo')
         setTimeout(() => {
-            wx.navigateTo({ url: "/pages/cart-settle/cart-settle" })
+            if (userInfo.userName.length > 0 && userInfo.email.length > 3 && userInfo.phone.length > 4 && userInfo.handSignCity.length > 1) {
+                wx.navigateTo({ url: "/pages/cart-settle/cart-settle" })
+            } else {
+                wx.showModal({
+                    title: '提示',
+                    content: '您还未设置个人资料',
+                    showCancel: false,
+                    confirmText: "前往设置",
+                    success: () => {
+                        this.selectComponent('#user').login();
+                    }
+                })
+            }
         }, 800)
     }
 });

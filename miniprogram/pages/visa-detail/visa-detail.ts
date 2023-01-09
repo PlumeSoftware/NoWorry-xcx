@@ -61,13 +61,17 @@ Page({
         }
 
         wx.setStorageSync('carts', carts)
-
-        setTimeout(() => { this.setData({ showToast: false }) }, 1500)
     },
 
     groupBuy(){
-        wx.navigateTo({
-            url:`/pages/visa-groupbuy/visa-groupbuy?commodityId=${this.data.commodity.commodityId}`
-        })
+        wx.showToast({
+            title: '本期活动暂未开放',
+            icon:'none',
+            duration: 2000
+            })
+            
+        // wx.navigateTo({
+        //     url:`/pages/visa-groupbuy/visa-groupbuy?commodityId=${this.data.commodity.commodityId}`
+        // })
     }
 });
