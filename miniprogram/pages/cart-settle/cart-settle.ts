@@ -15,7 +15,6 @@ Page({
         userName: '',
         phone: '',
         email: '',
-        liveCity: '',
         wechat: '',
 
         payArray: ["微信支付", "客服辅助支付"],
@@ -42,18 +41,22 @@ Page({
             userName: wx.getStorageSync("userInfo").userName,
             phone: wx.getStorageSync("userInfo").phone,
             email: wx.getStorageSync("userInfo").email,
-            liveCity: wx.getStorageSync("userInfo").handSignCity
+            wechat: wx.getStorageSync("userInfo").handSignCity
         })
         this.updateCart()
     },
-    inp(e: { currentTarget: { id: string } }) {
-        wx.hideKeyboard()
-        setTimeout(() => {
-            this.setData({
-                focusId: e.currentTarget.id
-            })
-        }, 500)
+
+    //这里不作为focus修复了，用户要改只能去个人信息改
+    inp() {
+        // wx.hideKeyboard()
+        // setTimeout(() => { this.setData({ focusId: e.currentTarget.id }) }, 500)
+        wx.showToast({
+            title: '如果需要修改资料，请前往个人设置',
+            icon: 'none',
+            duration: 2000
+        })
     },
+
     inpFav() {
         if (this.data.favcode.length == 8) {
             wx.showToast({ title: '检查优惠券中...', icon: 'none', duration: 1000, })
@@ -77,16 +80,13 @@ Page({
         let totalCNY = 0;
         let favourableTotal = 0;
 
-        const carts = wx.getStorageSync('carts');
+        const carts = wx.getStorageSync('carts').filter((cart: Cart) => cart.select == true);
 
         //计算商品总价,统计签证类型和价格
-        for (let i = 0; i < carts.length; i++) {
-            if (carts[i].select) {
-                total += carts[i].currentPrice * carts[i].quantity
-            } else {
-                carts.splice(i--, 1)
-            }
-        }
+        carts.forEach((cart: Cart) => {
+            total += cart.currentPrice! * cart.quantity!
+
+        })
 
         /**
          * 优惠
@@ -151,14 +151,12 @@ Page({
         const orderDetail: CartDetail[] = []
         const paid = this.data.carts;
         paid.forEach((cart: Cart) => {
-            if (cart.select) {
-                orderDetail.push({
-                    boughtQuantity: cart.quantity,
-                    invPrice: cart.quantity! * cart.currentPrice!,
-                    commodityId: cart.commodityId,
-                    remark: cart.remark
-                })
-            }
+            orderDetail.push({
+                boughtQuantity: cart.quantity,
+                invPrice: cart.quantity! * cart.currentPrice!,
+                commodityId: cart.commodityId,
+                remark: cart.remark
+            })
         })
 
         if (this.data.payIndex == 0) {//微信支付
