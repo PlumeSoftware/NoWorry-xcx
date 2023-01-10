@@ -32,7 +32,7 @@ function getHour(month?: number, date?: number, hour?: number) {
     return (date - 1) * 24 + hour
 }
 
-export const culFav = (str: string): {
+export const culFav = (str: string, total?: number): {
     payway: 0 | 1 | 2,
     favway: 0 | 1,
     value: number,
@@ -42,6 +42,14 @@ export const culFav = (str: string): {
     str = str.toLocaleLowerCase()
     let hourBin = ''
     let vBin = ''
+
+    if (str.indexOf('fav')!=-1) {
+        result.payway = 0; 
+        result.favway = 0;
+        result.value = Number(str.slice(5))
+        return result;
+    }
+
 
     for (let i = 0; i < 4; i++) {
         const tg = wordArr.findIndex(it => it == str[i]);
