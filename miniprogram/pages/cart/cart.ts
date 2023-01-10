@@ -98,8 +98,8 @@ Page({
                     content: '您还未设置个人资料',
                     showCancel: false,
                     confirmText: "前往设置",
-                    success: () => {
-                        this.selectComponent('#user').login();
+                    success: (res) => {
+                        if(res.confirm) wx.navigateTo({url:"/pages/user-set/user-set"})
                     }
                 })
             }
