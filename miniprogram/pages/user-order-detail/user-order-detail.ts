@@ -10,7 +10,7 @@ import { Visa } from "../../entity/visa"
 
 Page({
     data: {
-        userName: wx.getStorageSync('userInfo').userName,
+        userName: '',
         orderDetailId: '',
         total: 0,
         paid: 0,
@@ -32,7 +32,7 @@ Page({
         const order = (await webGet<Order>(`/order/info/${detail.orderId}`))
         const createTime=order?.createTime?.replace('T',' ').replace('.000Z','')
         this.setData({
-            userName: wx.getStorageSync('userInfo').userName,
+            userName: getApp().globalData.userInfo.userName,
             orderDetailId: 'EC' + orderDetailId,
             total: order?.orderTotalPrice,
             paid: order?.orderPaymentPrice,

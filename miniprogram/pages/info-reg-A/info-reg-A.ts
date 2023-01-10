@@ -86,11 +86,11 @@ Page({
             })
         }
 
-        if (!wx.getStorageSync('token')) {
+        if (!getApp().globalData.token) {
             wx.showModal({ title: "您还未登录" })
         }
 
-        if (!wx.getStorageSync('token')) {
+        if (!getApp().globalData.token) {
             wx.login().then(async res => {
                 const data = await webGet<{ userInfo: Object, token: string }>(`/user/login/${res.code}`)
                 wx.setStorageSync('userInfo', data!.userInfo)
@@ -137,7 +137,7 @@ Page({
             // addressEngland: addressEngland
         })
 
-        webPost('/order/usvisa', { token: wx.getStorageSync('token'), sheet: this.data })
+        webPost('/order/usvisa', { token: getApp().globalData.token, sheet: this.data })
             .then(() => {
                 wx.reLaunch({ url: "/pages/user-cop-commit/user-cop-commit" })
             })

@@ -81,9 +81,10 @@ Page({
             })
         }
 
-        if (!wx.getStorageSync('token')) {
+        if (!getApp().globalData.token) {
             wx.login().then(async res => {
                 const data = await webGet<{ userInfo: Object, token: string }>(`/user/login/${res.code}`)
+                getApp()
                 wx.setStorageSync('userInfo', data!.userInfo)
                 wx.setStorageSync('token', data!.token)
             })
@@ -144,7 +145,7 @@ Page({
             addressEngland: addressEngland
         })
 
-        webPost('/order/jpvisa', { token: wx.getStorageSync('token'), sheet: this.data })
+        webPost('/order/jpvisa', { token:getApp().globalData.token, sheet: this.data })
             .then(() => {
                 wx.reLaunch({ url: "/pages/user-cop-commit/user-cop-commit" })
             })

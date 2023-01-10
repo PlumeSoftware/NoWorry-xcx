@@ -9,13 +9,17 @@ import { webPost } from "../../utils/http";
 Page({
 
     data: {
-        openid: wx.getStorageSync('userInfo').openid,
+        openid: '',
         companyName: '',
         businessDescribe: '',
         contactName: '',
         contactPhone: '',
         wechatId: '',
         email: ''
+    },
+
+    onShow(){
+        this.data.openid=getApp().globalData.userInfo.openid
     },
 
     inp(e: { currentTarget: { id: string } }) {
