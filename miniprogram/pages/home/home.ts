@@ -36,12 +36,14 @@ Page({
         wx.navigateTo({ url: '/pages/visa-detail/visa-detail' + `?commodityId=${commodityId}` })
     },
     //事件 显示时触发
-
+    remake(e:any){
+        if(e.detail.current==this.data.coverUrlList.length-1){
+            this.setData({coverIndex:0})
+        }
+    },
     //页面渲染完毕
     async start() {
         this.setData({ VisaList: await webGet(`/visa/group/hot`) })
-        setInterval(() => {
-            this.setData({ coverIndex: (this.data.coverIndex + 1) % this.data.coverUrlList.length })
-        }, 5000)
+        this.setData({ coverIndex: (this.data.coverIndex + 1) % this.data.coverUrlList.length })
     }
 });
