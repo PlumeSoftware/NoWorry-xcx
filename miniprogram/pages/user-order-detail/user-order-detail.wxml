@@ -8,13 +8,15 @@
     <view class="commodity-info">
       <view>
         <view>订单总价：</view>
-        <view>£{{total}}</view>
+        <view>£{{total}}
+          <span wx:if="{{favourablePrice}}">( -£{{favourablePrice}})</span>
+        </view>
       </view>
       <view>
         <view>实际支付：</view>
         <view>£{{paid}}</view>
       </view>
-       <view>
+      <view>
         <view>项目名称：</view>
         <view>{{orderDetailName}}</view>
       </view>
@@ -22,14 +24,34 @@
         <view>单项价格：</view>
         <view>£{{invPrice}}</view>
       </view>
+      <view>
+        <view>下单时间：</view>
+        <view>{{orderTime}}</view>
+      </view>
     </view>
   </view>
   <view class="write-btns" wx:if="{{status==0}}">
-    <view class="write-btn write-btn-write" bind:tap="toContact"><button>联系客服</button></view>
+    <view class="write-btn write-btn-write" bind:tap="toContact">
+      <button>联系客服</button>
+    </view>
   </view>
   <view class="write-btns" wx:elif="{{status==1}}">
-    <view class="write-btn" bind:tap="toWrite"><button>表单填写</button></view>
-    <view class="write-btn " bind:tap="toShare"><button open-type="share" class="write-btn-share">邀请好友</button></view>
+    <view class="write-btn" bind:tap="toWrite">
+      <button>表单填写</button>
+    </view>
+    <view class="write-btn " bind:tap="toShare">
+      <button open-type="share" class="write-btn-share">邀请好友</button>
+    </view>
+  </view>
+  <view class="write-btns" wx:elif="{{status==2}}">
+    <view class="write-btn" bind:tap="toWait">
+      <button class="write-btn-check">审核复核中</button>
+    </view>
+  </view>
+  <view class="write-btns" wx:elif="{{status==3}}">
+    <view class="write-btn" bind:tap="toWait">
+      <button class="write-btn-check">程序刷位中</button>
+    </view>
   </view>
   <!-- 空白占位 -->
   <view wx:else>
@@ -44,12 +66,12 @@
       <image style="width: 17px;height: 9px;" src="{{status>0?'/static/order/a-pot.png':'/static/order/h-pot.png'}}" />
       <image style="width: 17px;height: 27px;" src="{{status>1?'/static/order/a-line.png':'/static/order/h-line.png'}}" />
       <image style="width: 17px;height: 9px;" src="{{status>1?'/static/order/a-pot.png':'/static/order/h-pot.png'}}" />
-      <image style="width: 17px;height: 28px;" src="/static/order/h-line.png" />
-      <image style="width: 17px;height: 9px;" src="/static/order/h-pot.png" />
-      <image style="width: 17px;height: 25.5px;" src="/static/order/h-line.png" />
-      <image style="width: 17px;height: 9px;" src="/static/order/h-pot.png" />
-      <image style="width: 17px;height: 25.5px;" src="/static/order/h-line.png" />
-      <image style="width: 17px;height: 17px;" src="/static/order/h-point.png" />
+      <image style="width: 17px;height: 28px;" src="{{status>2?'/static/order/a-line.png':'/static/order/h-line.png'}}" />
+      <image style="width: 17px;height: 9px;" src="{{status>2?'/static/order/a-pot.png':'/static/order/h-pot.png'}}" />
+      <image style="width: 17px;height: 27px;" src="{{status>3?'/static/order/a-line.png':'/static/order/h-line.png'}}" />
+      <image style="width: 17px;height: 9px;" src="{{status>3?'/static/order/a-pot.png':'/static/order/h-pot.png'}}" />
+      <image style="width: 17px;height: 27px;" src="{{status>3?'/static/order/a-line.png':'/static/order/h-line.png'}}" />
+      <image style="width: 17px;height: 17px;" src="{{status>3?'/static/order/a-point.png':'/static/order/h-point.png'}}" />
     </view>
     <view class="process-text">
       <view class="process-text-item title active">下单刷签</view>
@@ -57,10 +79,47 @@
       <view class="process-text-item active">微信支付或联系客服辅助支付</view>
       <view class="process-text-item title {{status>0?'active':'holded'}}">核对行程</view>
       <view class="process-text-item {{status>0?'active':'holded'}}">填写《NoWorry申请人信息登记表》</view>
-      <view class="process-text-item {{status>1?'active':'holded'}}">客服审核</view>
-      <view class="process-text-item holded">刷签系统后台操作</view>
-      <view class="process-text-item holded">等待邮件确认递签进度</view>
-      <view class="process-text-item title holded">递签成功</view>
+      <view class="process-text-item {{status>1?'active':'holded'}}">{{status>2?'客服审核通过':'客服审核中'}}</view>
+      <view class="process-text-item {{status>2?'active':'holded'}}">刷签系统后台操作</view>
+      <view class="process-text-item {{status>3?'active':'holded'}}">等待邮件确认递签进度</view>
+      <view class="process-text-item title {{status>3?'active':'holded'}}">递签成功</view>
+    </view>
+  </view>
+  <view class="contact" wx:if="{{showQr}}">
+    <view class="cuslist">
+      <view class="cus-qr">
+        <van-image
+          show-loading="{{false}}"
+          show-menu-by-longpress
+          width="20.6vw"
+          height="20.6vw"
+          src="https://noworry.goho.co/static/profile/cus1.png"
+        />
+      </view>
+      <view class="cus-qr">
+        <van-image
+          show-loading="{{false}}"
+          show-menu-by-longpress
+          width="20.6vw"
+          height="20.6vw"
+          src="https://noworry.goho.co/static/home/cus3.png"
+        />
+      </view>
+    </view>
+    <view class="contact-tip">
+      <view class="tip-item">
+        <view>客服1号微信：</view>
+        <view>Noworry1011</view>
+      </view>
+      <view class="tip-item">
+        <view>客服2号微信：</view>
+        <view>Noworry1011-2</view>
+      </view>
+      <view class="tip-item">
+        <view>联系邮箱:</view>
+        <view>noworry.official@outlook.com</view>
+      </view>
     </view>
   </view>
 </view>
+

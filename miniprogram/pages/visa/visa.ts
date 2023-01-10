@@ -31,7 +31,8 @@ Component({
             visaList.push(await webGet(`/visa/group/11`))
             visaList.push(await webGet(`/visa/group/12`))
             visaList.push(await webGet(`/visa/group/13`))
-            visaList.push(await webGet(`/visa/group/14`))
+            visaList.push([...(await webGet<Array<{}>>(`/visa/group/14`))!,...(await webGet<Array<{}>>(`/visa/group/16`))!])
+            visaList.push(await webGet(`/visa/group/15`))
 
             // @ts-ignore
             this.setData({ visaList: visaList })

@@ -410,14 +410,14 @@
           <view class="question">16.出生日期 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input
-          bind:tap="inp"
-          class="input"
-          model:value="{{birthday}}"
-          placeholder="YYYY-MM-DD"
-          id="birthday"
-          focus="{{focusId=='birthday'}}"
-        />
+        <picker mode="date" model:value="{{birthday}}">
+          <input
+            model:value="{{birthday}}"
+            class="input"
+            placeholder="YYYY-MM-DD"
+            disabled="{{true}}"
+          />
+        </picker>
       </view>
       <view wx:elif="{{pageIndex==2}}">
         <view class="title">
@@ -480,14 +480,14 @@
           <view class="question">19.期望约到的面签时间 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input
-          bind:tap="inp"
-          class="input"
-          model:value="{{estInterviewTime}}"
-          placeholder="YYYY-MM-DD"
-          id="estInterviewTime"
-          focus="{{focusId=='estInterviewTime'}}"
-        />
+        <picker mode="date" model:value="{{estInterviewTime}}">
+          <input
+            model:value="{{estInterviewTime}}"
+            class="input"
+            placeholder="YYYY-MM-DD"
+            disabled="{{true}}"
+          />
+        </picker>
         <view class="title">
           <view class="question">20.Wechat ID *</view>
           <view class="tip">（必填）</view>
@@ -710,7 +710,11 @@
           size="15px"
           name="/static/profile/option.png"
         />
-        <view class="content">已同意《No Worry用户协议条款》和《隐私条款》</view>
+        <view class="protocol-text">已同意
+          <span bind:tap="toNotice" class="span">《No Worry用户协议条款》</span>
+          和
+          <span bind:tap="toPrivacy" class="span">《隐私条款》</span>
+        </view>
       </view>
       <view class="container">
         <view

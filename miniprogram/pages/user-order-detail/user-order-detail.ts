@@ -19,6 +19,8 @@ Page({
         commodityId: 0,
         orderDetailName: '',
         commodityType: 11,
+        orderTime: '',
+        showQr: false
     },
 
     async onShow() {
@@ -28,12 +30,15 @@ Page({
         //获取详单
         const detail = (await webGet<OrderDetailInfo>(`/order/detail/${orderDetailId}`))!
         const order = (await webGet<Order>(`/order/info/${detail.orderId}`))
+        const createTime=order?.createTime?.replace('T',' ').replace('.000Z','')
         this.setData({
             userName: wx.getStorageSync('userInfo').userName,
             orderDetailId: 'EC' + orderDetailId,
             total: order?.orderTotalPrice,
             paid: order?.orderPaymentPrice,
             orderDetailName: detail.commodityName,
+            favourablePrice:order?.favourablePrice,
+            orderTime:createTime,
             invPrice: detail.invPrice,
             status: detail.status,
             commodityId: detail.commodityId
@@ -57,8 +62,9 @@ Page({
     toContact() {
         wx.showModal({
             title: "提示",
-            content: "请长按扫描首页下方二维码以联系客服",
-            showCancel: false
+            content: "长按扫描下方二维码以联系客服",
+            showCancel: false,
+            success: () => this.setData({ showQr: true })
         })
     },
 
@@ -68,6 +74,11 @@ Page({
             menus: ['shareAppMessage']
         })
     },
+
+    toWait() {
+        wx.showToast({ title: '静候佳音~', icon: 'none' })
+    },
+
     onShareAppMessage() {
         let url = ''
         if (this.data.commodityType == 13) {

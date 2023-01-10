@@ -309,3 +309,7 @@
     margin-top: 56px;
     margin-bottom: 86px;
 }
+
+.span{
+    color: #F2843B;
+}

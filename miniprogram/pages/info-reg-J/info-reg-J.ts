@@ -113,6 +113,14 @@ Page({
         this.setData(kv)
     },
 
+    toPrivacy() {
+        wx.navigateTo({ url: '/pages/user-set-privacy/privacy' })
+    },
+
+    toNotice() {
+        wx.navigateTo({ url: '/pages/user-set-notice/notice' })
+    },
+    
     submit() {
         const collegeAddress =
             [

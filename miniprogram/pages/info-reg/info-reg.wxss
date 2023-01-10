@@ -296,6 +296,10 @@
     background: #F2843B;
 }
 
+.span{
+    color: #F2843B;
+}
+
 
 
 

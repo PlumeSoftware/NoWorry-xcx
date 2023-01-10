@@ -62,8 +62,7 @@ Page({
         const add = e.currentTarget.dataset.add
         const carts = this.data.carts;
         carts[index].quantity = carts[index].quantity + add
-        carts[index].quantity = carts[index].quantity ? carts[index].quantity : 1;
-        // carts[index].quantity = 1
+        if (carts[index].quantity < 1) carts.splice(index, 1)
         this.setData({ carts: carts })
         this.culTotal()
     },
@@ -89,8 +88,21 @@ Page({
             icon: 'loading',
             duration: 700
         })
+        const userInfo = wx.getStorageSync('userInfo')
         setTimeout(() => {
-            wx.navigateTo({ url: "/pages/cart-settle/cart-settle" })
+            if (userInfo.userName.length > 0 && userInfo.email.length > 3 && userInfo.phone.length > 4 && userInfo.handSignCity.length > 1) {
+                wx.navigateTo({ url: "/pages/cart-settle/cart-settle" })
+            } else {
+                wx.showModal({
+                    title: '提示',
+                    content: '您还未设置个人资料',
+                    showCancel: false,
+                    confirmText: "前往设置",
+                    success: (res) => {
+                        if(res.confirm) wx.navigateTo({url:"/pages/user-set/user-set"})
+                    }
+                })
+            }
         }, 800)
     }
 });

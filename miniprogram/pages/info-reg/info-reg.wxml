@@ -179,14 +179,14 @@
           <view class="question">8.出生日期 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input
-          bind:tap="inp"
-          class="input"
-          model:value="{{birthday}}"
-          placeholder="YYYY-MM-DD"
-          id="birthday"
-          focus="{{focusId=='birthday'}}"
-        />
+        <picker mode="date" model:value="{{birthday}}">
+          <input
+            model:value="{{birthday}}"
+            class="input"
+            placeholder="YYYY-MM-DD"
+            disabled="{{true}}"
+          />
+        </picker>
         <view class="title">
           <view class="question">9.性别 *</view>
           <view class="tip">（必填）</view>
@@ -238,12 +238,6 @@
             size="15px"
             name="/static/profile/option-s.png"
           />
-          <van-icon
-            wx:else
-            size="15px"
-            name="/static/profile/option.png"
-          />
-          <view class="option">保密</view>
         </view>
         <view class="title">
           <view class="question">10.婚姻状态 *</view>
@@ -429,26 +423,26 @@
           <view class="question">18.护照签发日期 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input
-          bind:tap="inp"
-          class="input"
-          model:value="{{passportIssue}}"
-          placeholder="YYYY-MM-DD"
-          id="passportIssue"
-          focus="{{focusId=='passportIssue'}}"
-        />
+        <picker mode="date" model:value="{{passportIssue}}">
+          <input
+            model:value="{{passportIssue}}"
+            class="input"
+            placeholder="YYYY-MM-DD"
+            disabled="{{true}}"
+          />
+        </picker>
         <view class="title">
           <view class="question">19.护照有效日期 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input
-          bind:tap="inp"
-          class="input"
-          model:value="{{passportValidity}}"
-          placeholder="YYYY-MM-DD"
-          id="passportValidity"
-          focus="{{focusId=='passportValidity'}}"
-        />
+        <picker mode="date" model:value="{{passportValidity}}">
+          <input
+            model:value="{{passportValidity}}"
+            class="input"
+            placeholder="YYYY-MM-DD"
+            disabled="{{true}}"
+          />
+        </picker>
       </view>
       <view wx:elif="{{pageIndex==3}}">
         <view class="title">
@@ -467,26 +461,26 @@
           <view class="question">21.BRP签发日期 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input
-          bind:tap="inp"
-          class="input"
-          model:value="{{BRPIssue}}"
-          placeholder="YYYY-MM-DD"
-          id="BRPIssue"
-          focus="{{focusId=='BRPIssue'}}"
-        />
+        <picker mode="date" model:value="{{BRPIssue}}">
+          <input
+            model:value="{{BRPIssue}}"
+            class="input"
+            placeholder="YYYY-MM-DD"
+            disabled="{{true}}"
+          />
+        </picker>
         <view class="title">
           <view class="question">22.BRP有效日期 *</view>
           <view class="tip">（必填）</view>
         </view>
-        <input
-          bind:tap="inp"
-          class="input"
-          model:value="{{BRPValidity}}"
-          placeholder="YYYY-MM-DD"
-          id="BRPValidity"
-          focus="{{focusId=='BRPValidity'}}"
-        />
+        <picker mode="date" model:value="{{BRPValidity}}">
+          <input
+            model:value="{{BRPValidity}}"
+            class="input"
+            placeholder="YYYY-MM-DD"
+            disabled="{{true}}"
+          />
+        </picker>
         <view class="title">
           <view class="question">23.学校名称 *</view>
           <view class="tip">（必填）</view>
@@ -585,27 +579,27 @@
           <view class="tip">（必填）</view>
         </view>
         <view class="sub-tip">可适当进行调整，以约签时间为主</view>
-        <input
-          bind:tap="inp"
-          class="input"
-          model:value="{{estDepartureTime}}"
-          placeholder="YYYY-MM-DD"
-          id="estDepartureTime"
-          focus="{{focusId=='estDepartureTime'}}"
-        />
+        <picker mode="date" model:value="{{estDepartureTime}}">
+          <input
+            model:value="{{estDepartureTime}}"
+            class="input"
+            placeholder="YYYY-MM-DD"
+            disabled="{{true}}"
+          />
+        </picker>
         <view class="title">
           <view class="question">29.预计结束日期 *</view>
           <view class="tip">（必填）</view>
         </view>
         <view class="sub-tip">注意：行程天数7-10天，价格会据行程单天数的增加上调</view>
-        <input
-          bind:tap="inp"
-          class="input"
-          model:value="{{estReturnTime}}"
-          placeholder="YYYY-MM-DD"
-          id="estReturnTime"
-          focus="{{focusId=='estReturnTime'}}"
-        />
+        <picker mode="date" model:value="{{estReturnTime}}">
+          <input
+            model:value="{{estReturnTime}}"
+            class="input"
+            placeholder="YYYY-MM-DD"
+            disabled="{{true}}"
+          />
+        </picker>
         <view class="title">
           <view class="question">30.Wechat ID *</view>
           <view class="tip">（必填）</view>
@@ -870,7 +864,11 @@
           size="15px"
           name="/static/profile/option.png"
         />
-        <view class="content">已同意《No Worry用户协议条款》和《隐私条款》</view>
+        <view class="protocol-text">已同意
+          <span bind:tap="toNotice" class="span">《No Worry用户协议条款》</span>
+          和
+          <span bind:tap="toPrivacy" class="span">《隐私条款》</span>
+        </view>
       </view>
       <view class="container">
         <view

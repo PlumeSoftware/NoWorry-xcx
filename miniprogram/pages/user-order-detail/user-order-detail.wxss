@@ -1,5 +1,5 @@
 .page {
-    height: 100vh;
+    min-height: 100vh;
     background-color: #F8F6EE;
     display: flex;
     flex-direction: column;
@@ -136,4 +136,56 @@ button{
 
 .write-btn-share{
     background: #8BC34A;
+}
+
+.write-btn-check{
+    background: #23A8F2;
+}
+
+.contact {
+    width: 80vw;
+    margin: 5vw auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact .contact-text {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: center;
+    margin: 100rpx auto;
+}
+
+.contact .cuslist {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.contact .cuslist .cus-qr {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #FFF;
+    border-radius: 12px;
+}
+
+.contact .contact-tip {
+    font-weight: 400;
+    line-height: 17px;
+    text-align: center;
+    color: #161415;
+    font-size: 12px;
+    margin: 4.5vw 0 0 0;
+}
+
+.contact .contact-tip .tip-item {
+    width: 60vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

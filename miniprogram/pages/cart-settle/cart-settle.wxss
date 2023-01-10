@@ -64,10 +64,18 @@
     text-align: left;
 }
 
-.info-list .info-item input {
+.info-list .info-item input,
+.info-list .info-item .favcode-amount {
     text-align: right;
     margin-right: 26rpx;
 }
+
+.info-list .info-item .favcode input {
+    text-align: left;
+    margin-left: 4rpx;
+}
+
+
 
 .opea-list {}
 
@@ -189,6 +197,16 @@
     text-align: right;
 }
 
+.commodity-list .commodity-item .item-pm .item-remark {
+    background-color: #bdbdbd;
+    color: #696969;
+    padding: 1rpx 5rpx;
+    border-radius: 5rpx;
+    font-size: 12px;
+    font-weight: 300;
+    text-align: right;
+}
+
 .commodity-list .commodity-item .item-pm .item-price {
     font-size: 17px;
     font-weight: 500;
@@ -226,6 +244,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    z-index: 99;
 }
 
 .subtotal .subtotal-number {

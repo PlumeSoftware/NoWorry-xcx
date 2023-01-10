@@ -27,7 +27,7 @@
     border-radius: 44px 44px 0px 0px;
     height: 60vh;
     padding-top: 20rpx;
-    margin-top:60vh ;
+    margin-top: 60vh;
     width: 100vw;
     background: #F8F6EE;
 }
@@ -104,46 +104,27 @@
     position: fixed;
     bottom: 10vw;
     background: rgba(248, 246, 238, 0.82);
-}
 
-/* 
-.add-cover {
-    width: 100vw;
-    position: fixed;
-    bottom: 0vw;
-    height: 30.5vw;
-    backdrop-filter: blur(10px);
-} */
+    display: flex;
+    justify-content: center;
+}
 
 
 .add-btn {
     height: 12.5vw;
-    width: 77.9vw;
+    width: 38.9vw;
     border-radius: 7px;
     margin: 0 auto;
     line-height: 12.5vw;
-    background-color: #F2843B;
     box-shadow: 0px 4px 5px rgba(242, 132, 59, 0.25);
     color: #FEFFFB;
     font-size: 17px;
     font-weight: 600;
 }
 
-.toast {
-    position: fixed;
-    top: 40vh;
-    height: 20vh;
-    width: 80vw;
-    left: 10vw;
-    background-color: #353535BD;
-    border-radius: 5px;
-    z-index: 99;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: #FFFFFF;
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 24px;
+.add-btn:nth-child(1) {
+    background-color: #F2843B;
+}
+.add-btn:nth-child(2) {
+    background-color: #0386FE;
 }

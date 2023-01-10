@@ -8,67 +8,31 @@
       />
       <view class="title-word">联系方式</view>
     </view>
-    <view class="info-list">
+    <view class="info-list" bind:tap="inp">
       <view class="info-item">
         <view>姓名</view>
         <view>
-          <input
-            bind:tap="inp"
-            model:value="{{userName}}"
-            placeholder="请输入"
-            id="name"
-            focus="{{focusId=='name'}}"
-          />
+          <input model:value="{{userName}}" disabled="{{true}}" />
         </view>
       </view>
       <view class="info-item">
         <view>手机号</view>
         <view>
-          <input
-            bind:tap="inp"
-            model:value="{{phone}}"
-            placeholder="请输入"
-            id="phone"
-            focus="{{focusId=='phone'}}"
-          />
+          <input model:value="{{phone}}" disabled="{{true}}" />
         </view>
       </view>
       <view class="info-item">
         <view>邮箱号</view>
         <view>
-          <input
-            bind:tap="inp"
-            model:value="{{email}}"
-            placeholder="请输入"
-            id="email"
-            focus="{{focusId=='email'}}"
-          />
+          <input model:value="{{email}}" disabled="{{true}}" />
         </view>
       </view>
       <view class="info-item">
         <view>微信号</view>
         <view>
-          <input
-            bind:tap="inp"
-            model:value="{{wechat}}"
-            placeholder="请输入"
-            id="wxchat"
-            focus="{{focusId=='wechat'}}"
-          />
+          <input model:value="{{wechat}}" disabled="{{true}}" />
         </view>
       </view>
-      <!-- <view class="info-item">
-        <view>所在城市</view>
-        <view>
-          <input
-            bind:tap="inp"
-            model:value="{{liveCity}}"
-            placeholder="请输入"
-            id="liveCity"
-            focus="{{focusId=='liveCity'}}"
-          />
-        </view>
-      </view> -->
     </view>
   </view>
   <view>
@@ -111,12 +75,7 @@
       wx:key="index"
     >
       <view class="item-image">
-        <van-image
-          show-loading="{{false}}"
-          width="100%"
-          height="30vw"
-          src="{{item.picLinkTem}}"
-        />
+        <view class="item-image" style="background:url('{{item.picLinkTem}}');background-size:100% auto"></view>
       </view>
       <view>
         <view class="item-info">
@@ -125,12 +84,13 @@
         </view>
         <view class="item-pm">
           <view class="item-quantity">x{{item.quantity}}</view>
+          <view class="item-remark">{{item.remark}}</view>
           <view class="item-price">£{{item.currentPrice}}</view>
         </view>
       </view>
     </view>
   </view>
-  <view wx:if="{{favourableTotal>0}}">
+  <view wx:if="{{favourable.length>0}}">
     <view class="title">
       <van-icon
         class="title-img"
@@ -144,18 +104,36 @@
       <view class="info-item" wx:for="{{favourable}}">
         <view>{{item.title}}</view>
         <view>
-          <input
-            bindtap="inp"
-            bindblur="inp"
-            bindconfirm="inp"
-            bindfocus="inp"
-            model:value="- £{{item.amount}}"
-            disabled="{{true}}"
-          />
+          <input model:value="- £{{item.amount}}" disabled="{{true}}" />
         </view>
       </view>
     </view>
   </view>
+  <view>
+    <view class="title">
+      <van-icon
+        class="title-img"
+        size="20px"
+        name="/static/profile/line.png"
+      />
+      <view class="title-word">优惠券</view>
+      <view style="margin-left:60vw;line-height: 24px;"></view>
+    </view>
+
+    <view class="info-list">
+      <view class="info-item">
+        <view class="favcode">
+          <input
+            bindinput="inpFav"
+            model:value="{{favcode}}"
+            placeholder="可空"
+          />
+        </view>
+        <view wx:if="{{favdetail.value>0}}" class="favcode-amount">- £{{favdetail.value}}</view>
+      </view>
+    </view>
+  </view>
+
   <view class="slider"></view>
   <view class="protocol">
     <van-icon
@@ -186,7 +164,14 @@
         <view class="price-conver">GBP {{totalPriceShow}}≈CNY {{totolPriceCNY}}</view>
       </view>
       <view class="settle">
-        <button class="button {{agree&&userName&&phone&&email&&liveCity?'':'un'}}allow" bind:tap="submitOrder">
+        <button
+          wx:if="{{agree&&wechat&&userName&&phone&&email}}"
+          class="button allow"
+          bind:tap="submitOrder"
+        >
+          提交订单
+        </button>
+        <button wx:else class="button unallow">
           提交订单
         </button>
       </view>

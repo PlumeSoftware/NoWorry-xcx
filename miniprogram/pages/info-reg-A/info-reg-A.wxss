@@ -311,9 +311,6 @@
 }
 
 
-
-
-
 .page-info-reg .body .copyright {
     font-size: 10px;
     font-weight: 100;
@@ -322,4 +319,8 @@
     color: #797532;
     margin-top: 56px;
     margin-bottom: 86px;
+}
+
+.span{
+    color: #F2843B;
 }

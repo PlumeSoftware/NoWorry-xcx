@@ -7,14 +7,15 @@
 import { webPost } from "../../utils/http";
 import { Cart } from "../../entity/cart";
 import { CartDetail } from "../../entity/order";
+import { culFav } from "../../utils/util";
+import { culFavFromCarts } from "../../utils/cart";
 
 Page({
     data: {
         userName: '',
         phone: '',
         email: '',
-        liveCity: '',
-        wechat:'',
+        wechat: '',
 
         payArray: ["微信支付", "客服辅助支付"],
         payIndex: 0,
@@ -29,6 +30,10 @@ Page({
         totolPriceCNY: 0,
 
         agree: false,
+        hasReadA: false,
+        hasReadB: false,
+        favcode: '',
+        favdetail: { payway: 2, favway: 0, value: 0 },
 
         allowSubmit: false
     },
@@ -37,53 +42,52 @@ Page({
             userName: wx.getStorageSync("userInfo").userName,
             phone: wx.getStorageSync("userInfo").phone,
             email: wx.getStorageSync("userInfo").email,
-            liveCity: wx.getStorageSync("userInfo").handSignCity
+            wechat: wx.getStorageSync("userInfo").handSignCity
         })
         this.updateCart()
     },
-    inp(e: { currentTarget: { id: string } }) {
-        wx.hideKeyboard()
-        setTimeout(() => {
-            this.setData({
-                focusId: e.currentTarget.id
-            })
-        }, 300)
+
+    //这里不作为focus修复了，用户要改只能去个人信息改
+    inp() {
+        // wx.hideKeyboard()
+        // setTimeout(() => { this.setData({ focusId: e.currentTarget.id }) }, 500)
+        wx.showToast({
+            title: '如果需要修改资料，请前往个人设置',
+            icon: 'none',
+            duration: 2000
+        })
     },
-    updateCart() {
+
+    inpFav() {
+        if (this.data.favcode.length == 8) {
+            wx.showToast({ title: '检查优惠券中...', icon: 'none', duration: 1000, })
+            setTimeout(() => {
+                const result = culFav(this.data.favcode)
+                if (result) {
+                    this.setData({ favdetail: result })
+                    this.updateCart()
+                } else {
+                    wx.showToast({ title: '该优惠券已失效~', icon: 'none', duration: 2500, })
+                    this.setData({ favcode: '', favdetail: { payway: 2, favway: 0, value: 0 } })
+                }
+            }, 1000)
+        } else {
+            this.setData({ favcode: this.data.favcode.slice(0, 8), favdetail: { payway: 2, favway: 0, value: 0 } })
+        }
+        this.updateCart()
+    },
+    async updateCart() {
         let total = 0;
         let totalCNY = 0;
         let favourableTotal = 0;
 
-        const carts = wx.getStorageSync('carts');
-        let usVisaNum = 0;//美签数量
-        let sgVisaNum = 0;//申根签数量
+        const carts = wx.getStorageSync('carts').filter((cart: Cart) => cart.select == true);
 
-        let pr88Num = 0;//88元签证数量
-        let pr68Num = 0//68元签证数量
-        console.log("carts",)
         //计算商品总价,统计签证类型和价格
-        for (let i = 0; i < carts.length; i++) {
-            if (carts[i].select) {
-                total += carts[i].currentPrice * carts[i].quantity
+        carts.forEach((cart: Cart) => {
+            total += cart.currentPrice! * cart.quantity!
 
-                switch (carts[i].commodityName[0]) {
-                    case "美":
-                        usVisaNum += carts[i].quantity; break;
-                    case "法":
-                        sgVisaNum += carts[i].quantity; break;
-                    default:
-                        break;
-                }
-
-                if (carts[i].currentPrice >= 88) {
-                    pr88Num += carts[i].quantity
-                } else if (carts[i].currentPrice >= 68 && carts[i].currentPrice < 88) {
-                    pr68Num += carts[i].quantity;
-                }
-            } else {
-                carts.splice(i--, 1)
-            }
-        }
+        })
 
         /**
          * 优惠
@@ -92,50 +96,19 @@ Page({
             3.美签2位，-10*2英镑，3位-10*3英镑，4位也是-10*3英镑
          */
 
+        //清空优惠缓存
         //生成优惠方案
-        if (sgVisaNum + usVisaNum < 5 && sgVisaNum && usVisaNum) {
-            const favourable = this.data.favourable;
-            const amount = Math.min(sgVisaNum, usVisaNum) * 10 <= 40 ? Math.min(sgVisaNum, usVisaNum) * 10 : 40
-            favourable.push({ title: "美签+申根联合优惠", amount: amount })
-            this.setData({ favourable: favourable })
-        }
-
-        if (pr88Num >= 5) {
-            const favourable = this.data.favourable;
-            const amount = pr88Num * 10 < 40 ? pr88Num * 10 : 40
-            favourable.push({ title: "组队刷签优惠", amount: amount })
-            this.setData({ favourable: favourable })
-        }
-
-        if (pr68Num >= 5) {
-            const favourable = this.data.favourable;
-            const amount = pr68Num * 10 < 40 ? pr68Num * 10 : 40
-            favourable.push({ title: "组队刷签优惠", amount: amount })
-            this.setData({ favourable: favourable })
-        }
-
-        if (usVisaNum && pr68Num + pr88Num < 5) {
-            const favourable = this.data.favourable;
-            switch (usVisaNum) {
-                case 2:
-                    favourable.push({ title: "美签组队优惠", amount: 20 })
-                    break;
-                case 3:
-                    favourable.push({ title: "美签组队优惠", amount: 20 })
-                    break;
-                case 4:
-                    favourable.push({ title: "美签组队优惠", amount: 30 })
-                    break;
-                default:
-                    break;
-            }
-            this.setData({ favourable: favourable })
+        this.setData({ favourableTotal: 0, carts: carts })
+        const fav = (await culFavFromCarts(this.data.carts))!;
+        if (this.data.favourable != fav) {
+            this.setData({ favourable: fav })
         }
 
         //计算优惠价格
         this.data.favourable.forEach(i => {
             favourableTotal += i.amount
         })
+        favourableTotal += this.data.favdetail.value
 
         total = Number(total.toFixed(2))
         totalCNY = Number((8.6231 * (total - favourableTotal)).toFixed(2));
@@ -157,17 +130,28 @@ Page({
     },
 
     toPrivacy() {
-        wx.navigateTo({ url: '/pages/user-set-privacy/privacy' })
+        wx.navigateTo({ url: '/pages/user-set-privacy/privacy' }).then(() => this.setData({ hasReadB: true }))
     },
 
     toNotice() {
-        wx.navigateTo({ url: '/pages/user-set-notice/notice' })
+        wx.navigateTo({ url: '/pages/user-set-notice/notice' }).then(() => this.setData({ hasReadA: true }))
     },
 
     agreeChange() {
-        this.setData({
-            agree: !this.data.agree
-        })
+        if (this.data.agree) {
+            this.setData({
+                agree: false
+            })
+        } else {
+            if (!this.data.hasReadA) {
+                wx.showToast({ title: "请先阅读用户协议", icon: 'none' })
+            }
+            else if (!this.data.hasReadB) {
+                wx.showToast({ title: "请先阅读隐私条款", icon: 'none' })
+            } else {
+                this.setData({ agree: true })
+            }
+        }
     },
 
     async submitOrder() {
@@ -182,14 +166,12 @@ Page({
         const orderDetail: CartDetail[] = []
         const paid = this.data.carts;
         paid.forEach((cart: Cart) => {
-            if (cart.select) {
-                orderDetail.push({
-                    boughtQuantity: cart.quantity,
-                    invPrice: cart.quantity * cart.currentPrice,
-                    commodityId: cart.commodityId,
-                    remark: cart.remark
-                })
-            }
+            orderDetail.push({
+                boughtQuantity: cart.quantity,
+                invPrice: cart.quantity! * cart.currentPrice!,
+                commodityId: cart.commodityId,
+                remark: cart.remark
+            })
         })
 
         if (this.data.payIndex == 0) {//微信支付
@@ -200,22 +182,31 @@ Page({
                 package: string,
                 signType: "MD5" | "HMAC-SHA256" | undefined,
                 paySign: string
+                errortag?: boolean
+                errormessage?: string
             }>('/pay', {
                 openid: wx.getStorageSync('userInfo').openid,
                 describe: paid[0].commodityName,
-                amount: this.data.totolPriceCNY * 100
-                // amount: 1
+                amount: Math.floor(this.data.totolPriceCNY * 100),
+                checkitems: {
+                    favcode: this.data.favcode
+                }
             }))!
+
 
             await new Promise<void>(r => {
                 wx.requestPayment({
-                    appId: data['appId'],
-                    timeStamp: data['timeStamp'],
-                    nonceStr: data['nonceStr'],
-                    package: data['package'],
-                    signType: data['signType'],
-                    paySign: data['paySign'],
-                    success: () => r()
+                    //服务器未返回错误，并且存在支付信息，允许支付
+                    appId: data['appId'], timeStamp: data['timeStamp'], nonceStr: data['nonceStr'],
+                    package: data['package'], signType: data['signType'], paySign: data['paySign'],
+                    success: () => r(),
+                    //服务器未返回错误，检查通过，允许支付
+                    fail: (err) => {
+                        console.log(err)
+                        wx.showToast({ title: data.errormessage || '用户取消支付', icon: 'none', duration: 2500 })
+                        if (data.errortag) { this.setData({ favcode: '', favdetail: { payway: 2, favway: 0, value: 0 } }) }
+                        this.updateCart()
+                    }
                 })
             })
 
@@ -226,21 +217,39 @@ Page({
                 orderPaymentPrice: this.data.totalPrice - this.data.favourableTotal,
                 payWay: 1,
                 orderDetail: orderDetail,
+                favcode: this.data.favcode,
                 contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.wechat}`
-            })
+            }).then(() => this.afterPayment(paid))
+
 
         } else if (this.data.payIndex == 1) {//客服辅助支付
-            webPost('/order/submit', {
-                token: wx.getStorageSync('token'),
-                orderTotalPrice: this.data.totalPrice,
-                favourablePrice: this.data.favourableTotal,
-                orderPaymentPrice: 0,
-                payWay: 0,
-                orderDetail: orderDetail,
-                contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.liveCity}`
-            })
-        }
+            const data = (await webPost<{
+                errortag?: boolean
+                errormessage?: string
+            }>('/pay', {
+                openid: wx.getStorageSync('userInfo').openid,
+                checkitems: { favcode: this.data.favcode }
+            }))!
 
+            if (data.errortag) {
+                wx.showToast({ title: data.errormessage || '用户取消支付', icon: 'none', duration: 2500 })
+                if (data.errortag) { this.setData({ favcode: '', favdetail: { payway: 2, favway: 0, value: 0 } }) }
+                this.updateCart()
+            } else {
+                webPost('/order/submit', {
+                    token: wx.getStorageSync('token'),
+                    orderTotalPrice: this.data.totalPrice,
+                    favourablePrice: this.data.favourableTotal,
+                    orderPaymentPrice: 0,
+                    payWay: 0,
+                    orderDetail: orderDetail,
+                    favcode: this.data.favcode,
+                    contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.wechat}`
+                }).then(() => this.afterPayment(paid))
+            }
+        }
+    },
+    afterPayment(paid: []) {
         //付款结束，跳转到成功界面
         setTimeout(() => {
             wx.reLaunch({
@@ -256,5 +265,5 @@ Page({
             }
         }
         wx.setStorageSync('carts', carts);
-    },
+    }
 });

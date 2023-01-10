@@ -94,7 +94,7 @@
     text-align: left;
     font-weight: 300;
     font-size: 12px;
-    line-height: 25px;
+    line-height: 20px;
 }
 
 .order-group .order-list .order-item .item-link {

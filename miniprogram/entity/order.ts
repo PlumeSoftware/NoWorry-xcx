@@ -6,6 +6,7 @@ export interface Order {
     orderPaymentPrice?: number;
     orderStatus?: number;
     orderTotalPrice?: number;
+    favourablePrice?:number;
     payTime?: string;
 }
 
@@ -18,7 +19,8 @@ export interface OrderDetailInfo {
     orderDetailId?: number;
     orderId?: string;
     picLink?: string;
-    status: number;
+    picLinkTem?: string;
+    status?: number
 }
 
 export interface SubmitCart {
@@ -38,5 +40,5 @@ export interface CartDetail {
     boughtQuantity?: number;
     commodityId?: number;
     invPrice?: number;
-    remark?:string
+    remark?: string
 }
