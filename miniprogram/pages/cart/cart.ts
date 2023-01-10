@@ -17,7 +17,7 @@ Page({
 
 
     async updateCart() {
-        const carts = wx.getStorageSync('carts')
+        const carts = getApp().globalData.carts;
         for (let i = 0; i < carts.length; i++) {
             const visa = await webGet<Visa>(`/visa/detail/${carts[i].commodityId}`, {})
             carts[i].picLink = visa?.picLink
@@ -72,14 +72,10 @@ Page({
     culTotal() {
         let total = 0;
         const carts = this.data.carts;
-        if (carts)
-            carts.forEach((item: any) => {
-                total += item.select ? item.currentPrice * item.quantity : 0
-            })
+        carts.forEach((item: any) => total += item.select ? item.currentPrice * item.quantity : 0)
 
         const total2 = Number((8.43 * total).toFixed(2));
         this.setData({ totalPrice: total, totalPrice2: total2 })
-        wx.setStorageSync('carts', carts)
     },
 
     async settle() {
@@ -88,21 +84,17 @@ Page({
             icon: 'loading',
             duration: 700
         })
-        const userInfo = wx.getStorageSync('userInfo')
+        const userInfo = getApp().globalData.userInfo
         setTimeout(() => {
-            if (userInfo.userName.length > 0 && userInfo.email.length > 3 && userInfo.phone.length > 4 && userInfo.handSignCity.length > 1) {
+            if (userInfo.userName && userInfo.email && userInfo.phone && userInfo.handSignCity) {
                 wx.navigateTo({ url: "/pages/cart-settle/cart-settle" })
-            } else {
-                wx.showModal({
+            } else wx.showModal({
                     title: '提示',
-                    content: '您还未设置个人资料',
+                    content: '您的个人资料未完善',
                     showCancel: false,
                     confirmText: "前往设置",
-                    success: (res) => {
-                        if (res.confirm) wx.navigateTo({ url: "/pages/user-set/user-set" })
-                    }
+                    success: () => wx.navigateTo({ url: "/pages/user-set/user-set" })
                 })
-            }
         }, 800)
     }
 });

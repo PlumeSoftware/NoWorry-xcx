@@ -9,7 +9,7 @@ export const webGet = async function <T>(url: string, params: any = new Object()
     if (keys.length > 0) {
         url = url.slice(0, -1)
     }
-    const token = wx.getStorageSync('token')
+    const token = getApp().globalData.token
     return await new Promise<T | null>((r) => {
         wx.request({
             url: url,
@@ -18,7 +18,11 @@ export const webGet = async function <T>(url: string, params: any = new Object()
                 token: token
             },
             success: (res) => {
-                r(res.data as T)
+                if(res.statusCode<400){
+                    r(res.data as T)
+                }else{
+                    r(null)
+                }
             },
             fail: () => {
                 r(null)
@@ -29,7 +33,7 @@ export const webGet = async function <T>(url: string, params: any = new Object()
 
 export const webPost = async function <T>(url: string, body: any = new Object()): Promise<T | null> {
     url = BASE_URL + url
-    const token = wx.getStorageSync("token");
+    const token = getApp().globalData.token;
     return await new Promise<T | null>((r) => {
         wx.request({
             url: url,

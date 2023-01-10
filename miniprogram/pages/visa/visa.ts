@@ -42,7 +42,6 @@ Component({
             //修复vant-tab渲染延时错误
             // @ts-ignore
             setTimeout(() => { this.setData({ show: true }) }, 2500)
-
         }
     }
 });

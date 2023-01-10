@@ -8,18 +8,18 @@ import { webPost } from "../../utils/http";
 
 Page({
     data: {
-        userName: wx.getStorageSync("userInfo").userName,
-        phone: wx.getStorageSync("userInfo").phone,
-        email: wx.getStorageSync("userInfo").email,
-        handSignCity: wx.getStorageSync("userInfo").handSignCity
+        userName: '',
+        phone:'',
+        email: '',
+        handSignCity: ''
     },
 
     onShow() {
         this.setData({
-            userName: wx.getStorageSync("userInfo").userName,
-            phone: wx.getStorageSync("userInfo").phone,
-            email: wx.getStorageSync("userInfo").email,
-            handSignCity: wx.getStorageSync("userInfo").handSignCity
+            userName: getApp().globalData.userInfo.userName,
+            phone: getApp().globalData.userInfo.phone,
+            email: getApp().globalData.userInfo.email,
+            handSignCity: getApp().globalData.userInfo.handSignCity
         })
     },
     inp(e: { currentTarget: { id: string } }) {
@@ -53,15 +53,14 @@ Page({
                 icon: 'success',
                 duration: 2000
             })
-            wx.setStorageSync('userInfo', {
-                userName: this.data.userName,
-                phone: this.data.phone,
-                email: this.data.email,
-                handSignCity: this.data.handSignCity,
-            })
-            setTimeout(() => {
-                wx.navigateBack()
-            }, 2200)
+
+            getApp().globalData.userInfo.userName = this.data.userName;
+            getApp().globalData.userInfo.phone = this.data.phone;
+            getApp().globalData.userInfo.email = this.data.email;
+            getApp().globalData.userInfo.handSignCity = this.data.handSignCity;
+            
+            setTimeout(() => wx.navigateBack(), 2200)
+            
         } else {
             wx.showToast({
                 title: '修改失败',

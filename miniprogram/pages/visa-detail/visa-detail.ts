@@ -24,6 +24,7 @@ Page({
     async onShow() {
         const pages = getCurrentPages()
         const commodityId = pages[pages.length - 1].options.commodityId
+        console.log(commodityId)
         this.setData({ commodity: (await webGet<Visa>(`/visa/detail/${commodityId}`))! })
         switch (this.data.commodity.commodityType) {
             case 11: this.setData({ citiesArray: ['伦敦', '曼彻斯特', "爱丁堡"] }); break;
@@ -38,10 +39,15 @@ Page({
 
     bindPickerChange(e: { detail: { value: number } }) { this.setData({ cityIndex: e.detail.value }) },
     addCart() {
+        if(!getApp().globalData.token.length){
+            wx.showToast({title:'网络错误',icon:'none',duration:1000})
+            return;
+        }
+
         Toast({ type: 'success', message: '加购成功', duration: 2000 });
         this.setData({ commodityId: Number((Math.random() * 100).toFixed(0)) })
 
-        const carts = wx.getStorageSync('carts') || [];
+        const carts = getApp().globalData.carts
 
         const targerIndex = carts.findIndex(
             (item: any) => item.commodityId == this.data.commodity.commodityId && item.remark == this.data.citiesArray[this.data.cityIndex]
@@ -60,18 +66,22 @@ Page({
             })
         }
 
+        //存于系统中用于下次加入再使用
         wx.setStorageSync('carts', carts)
     },
 
     groupBuy(){
-        // wx.showToast({
-        //     title: '本期活动暂未开放',
-        //     icon:'none',
-        //     duration: 2000
-        //     })
-            
-        wx.navigateTo({
-            url:`/pages/visa-groupbuy/visa-groupbuy?commodityId=${this.data.commodity.commodityId}`
-        })
+        if(!getApp().globalData.token.length){
+            wx.showToast({title:'网络错误',icon:'none',duration:1000})
+            return;
+        }
+        wx.showToast({
+            title: '本期活动暂未开放',
+            icon:'none',
+            duration: 2000
+            })
+        // wx.navigateTo({
+        //     url:`/pages/visa-groupbuy/visa-groupbuy?commodityId=${this.data.commodity.commodityId}`
+        // })
     }
 });

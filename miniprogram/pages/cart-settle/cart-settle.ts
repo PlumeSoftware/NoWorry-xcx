@@ -39,10 +39,10 @@ Page({
     },
     onShow() {
         this.setData({
-            userName: wx.getStorageSync("userInfo").userName,
-            phone: wx.getStorageSync("userInfo").phone,
-            email: wx.getStorageSync("userInfo").email,
-            wechat: wx.getStorageSync("userInfo").handSignCity
+            userName: getApp().globalData.userName,
+            phone: getApp().globalData.phone,
+            email: getApp().globalData.email,
+            wechat: getApp().globalData.handSignCity
         })
         this.updateCart()
     },
@@ -81,7 +81,7 @@ Page({
         let totalCNY = 0;
         let favourableTotal = 0;
 
-        const carts = wx.getStorageSync('carts').filter((cart: Cart) => cart.select == true);
+        const carts = getApp().globalData.filter((cart: Cart) => cart.select == true);
 
         //计算商品总价,统计签证类型和价格
         carts.forEach((cart: Cart) => {
@@ -196,7 +196,7 @@ Page({
                 errortag?: boolean
                 errormessage?: string
             }>('/pay', {
-                openid: wx.getStorageSync('userInfo').openid,
+                openid: getApp().globalData.userInfo.openid,
                 describe: paid[0].commodityName,
                 amount: Math.floor(this.data.totolPriceCNY * 100),
                 checkitems: {
@@ -222,7 +222,7 @@ Page({
             })
 
             await webPost('/order/submit', {
-                token: wx.getStorageSync('token'),
+                token: getApp().globalData.token,
                 orderTotalPrice: this.data.totalPrice,
                 favourablePrice: this.data.favourableTotal,
                 orderPaymentPrice: this.data.totalPrice - this.data.favourableTotal,
@@ -238,7 +238,7 @@ Page({
                 errortag?: boolean
                 errormessage?: string
             }>('/pay', {
-                openid: wx.getStorageSync('userInfo').openid,
+                openid: getApp().globalData.userInfo.openid,
                 checkitems: { favcode: this.data.favcode }
             }))!
 
@@ -248,7 +248,7 @@ Page({
                 this.updateCart()
             } else {
                 webPost('/order/submit', {
-                    token: wx.getStorageSync('token'),
+                    token: getApp().globalData.token,
                     orderTotalPrice: this.data.totalPrice,
                     favourablePrice: this.data.favourableTotal,
                     orderPaymentPrice: 0,
@@ -269,12 +269,14 @@ Page({
         }, 500)
 
         //删除购物车已支付商品
-        const carts = wx.getStorageSync('carts');
+        const carts = getApp().globalData.carts;
         for (let i = 0; i < carts.length; i++) {
             if (paid.findIndex((item: { commodityId: number }) => carts[i].commodityId == item.commodityId) != -1) {
                 carts.splice(i--, 1)
             }
         }
+
+        //删除后，存于全局用于下次启动
         wx.setStorageSync('carts', carts);
     }
 });
