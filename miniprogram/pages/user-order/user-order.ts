@@ -18,10 +18,10 @@ Page({
             [],
             [],
             []
-        ],
+        ] as Array<Array<any>>
     },
     async onShow() {
-        const result: Array<Order> | null = await webGet<Array<Order>>(`/order/${wx.getStorageSync('token')}`)
+        const result: Array<Order> | null = await webGet<Array<Order>>(`/order/${getApp().globalData.token}`)
         const orderGroup: Array<Array<OrderDetailInfo>> = [[], [], []];
         if (result) {
             result.forEach((item: Order) => {
@@ -34,9 +34,9 @@ Page({
                 }
             })
         }
-        orderGroup[0]=orderGroup[0].sort((a,b)=>Number(b.orderDetailId)-Number(a.orderDetailId))
-        orderGroup[1]=orderGroup[1].sort((a,b)=>Number(b.orderDetailId)-Number(a.orderDetailId))
-        orderGroup[2]=orderGroup[2].sort((a,b)=>Number(b.orderDetailId)-Number(a.orderDetailId))
+        orderGroup[0] = orderGroup[0].sort((a, b) => Number(b.orderDetailId) - Number(a.orderDetailId))
+        orderGroup[1] = orderGroup[1].sort((a, b) => Number(b.orderDetailId) - Number(a.orderDetailId))
+        orderGroup[2] = orderGroup[2].sort((a, b) => Number(b.orderDetailId) - Number(a.orderDetailId))
 
 
         this.setData({ orderGroup: orderGroup })

@@ -22,6 +22,9 @@ Component({
             const commodityId = e.currentTarget.dataset.commodityid
             wx.navigateTo({ url: '/pages/visa-detail/visa-detail' + `?commodityId=${commodityId}` })
         },
+        onTap(){
+           
+        }
 
     },
     lifetimes: {
@@ -39,7 +42,6 @@ Component({
             //修复vant-tab渲染延时错误
             // @ts-ignore
             setTimeout(() => { this.setData({ show: true }) }, 2500)
-
         }
     }
 });

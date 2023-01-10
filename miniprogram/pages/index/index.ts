@@ -11,7 +11,6 @@ Page({
       { item: "购物车", icon: "cart" },
       { item: "我的", icon: "user" },
     ],
-    page: [false, false, false, false]
   },
 
   toShare() {
@@ -28,15 +27,15 @@ Page({
   },
   async onChange(event: any) {
     // event.detail 的值为当前选中项的索引
-    if (!wx.getStorageSync('token') && (event.detail != 0 && event.detail != 3)) {
+    if (!getApp().globalData.token && (event.detail != 0)) {
       await new Promise<void>(r => {
         wx.showModal({
           title: '提示',
-          content: '请先登录',
+          content: '您之前可能登录未成功，请重启小程序或联系客服',
           showCancel: false,
-          confirmText: "前往",
+          confirmText: "好的",
           success: () => {
-            event.detail = 3
+            event.detail = 0
             r()
           }
         })
@@ -58,8 +57,7 @@ Page({
         break;
       }
       case 3: {
-        await this.selectComponent('#user').login();
-        this.selectComponent('#user').setByLocal()
+        await this.selectComponent('#user').updata();
         break;
       }
     }
