@@ -8,6 +8,21 @@
     padding-bottom: 10vh;
 }
 
+.page-home .banner{
+    width:100vw;
+    height:279px;
+}
+
+.page-home .banner swiper{
+    width:100vw;
+    height:279px;
+}
+
+.page-home .banner image{
+    width:100vw;
+    height:279px;
+}
+
 .page-home .title {
     font-size: 14px;
     font-weight: 600;
@@ -16,7 +31,7 @@
 }
 
 .page-home .body {
-    margin: 3px 5.33vw;
+    margin: 34rpx 5.33vw 82rpx 5.33vw;
 }
 
 .page-home .move {
@@ -32,11 +47,13 @@
 }
 
 .page-home .visa-list {
+    width: 89vw;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
     background-color: #F8F6EE;
+    z-index:10;
 }
 
 .page-home .visa-list .visa-item {
