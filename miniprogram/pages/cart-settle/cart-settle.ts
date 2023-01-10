@@ -37,13 +37,16 @@ Page({
 
         allowSubmit: false
     },
-    onShow() {
+    onLoad() {
         this.setData({
             userName: getApp().globalData.userName,
             phone: getApp().globalData.phone,
             email: getApp().globalData.email,
             wechat: getApp().globalData.handSignCity
         })
+        this.updateCart()
+    },
+    onShow(){
         this.updateCart()
     },
 
@@ -125,6 +128,16 @@ Page({
         totalCNY = Number((8.6231 * (total - favourableTotal)).toFixed(2));
 
         const totalPriceShow = Number((total - favourableTotal).toFixed(2))
+
+        if (total - favourableTotal <= 0) {
+            wx.showModal({
+                title: "提示",
+                content: "别太过分了#_#",
+                showCancel: false,
+                success:()=>wx.navigateBack()
+            })
+        }
+        
         this.setData(
             {
                 totalPrice: total,

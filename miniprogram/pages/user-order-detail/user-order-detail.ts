@@ -13,6 +13,7 @@ Page({
         userName: '',
         orderDetailId: '',
         total: 0,
+        favourablePrice: 0,
         paid: 0,
         invPrice: 0,
         status: -1,
