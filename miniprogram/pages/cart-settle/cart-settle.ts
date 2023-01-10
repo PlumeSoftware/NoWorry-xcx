@@ -100,7 +100,7 @@ Page({
         //生成优惠方案
         this.setData({ favourableTotal: 0, carts: carts })
         const fav = (await culFavFromCarts(this.data.carts))!;
-        if (this.data.favourable[0]?.amount != fav[0].amount) {
+        if (this.data.favourable != fav) {
             this.setData({ favourable: fav })
         }
 

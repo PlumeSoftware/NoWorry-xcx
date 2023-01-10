@@ -34,6 +34,10 @@ Page({
                 }
             })
         }
+        orderGroup[0]=orderGroup[0].sort((a,b)=>Number(b.orderDetailId)-Number(a.orderDetailId))
+        orderGroup[1]=orderGroup[1].sort((a,b)=>Number(b.orderDetailId)-Number(a.orderDetailId))
+        orderGroup[2]=orderGroup[2].sort((a,b)=>Number(b.orderDetailId)-Number(a.orderDetailId))
+
 
         this.setData({ orderGroup: orderGroup })
     },

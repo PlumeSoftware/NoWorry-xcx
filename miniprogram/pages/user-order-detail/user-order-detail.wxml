@@ -8,7 +8,9 @@
     <view class="commodity-info">
       <view>
         <view>订单总价：</view>
-        <view>£{{total}}</view>
+        <view>£{{total}}
+          <span wx:if="{{favourablePrice}}">( -£{{favourablePrice}})</span>
+        </view>
       </view>
       <view>
         <view>实际支付：</view>
@@ -21,6 +23,10 @@
       <view>
         <view>单项价格：</view>
         <view>£{{invPrice}}</view>
+      </view>
+      <view>
+        <view>下单时间：</view>
+        <view>{{orderTime}}</view>
       </view>
     </view>
   </view>
@@ -62,10 +68,10 @@
       <image style="width: 17px;height: 9px;" src="{{status>1?'/static/order/a-pot.png':'/static/order/h-pot.png'}}" />
       <image style="width: 17px;height: 28px;" src="{{status>2?'/static/order/a-line.png':'/static/order/h-line.png'}}" />
       <image style="width: 17px;height: 9px;" src="{{status>2?'/static/order/a-pot.png':'/static/order/h-pot.png'}}" />
-      <image style="width: 17px;height: 25.5px;" src="{{status>3?'/static/order/a-line.png':'/static/order/h-line.png'}}" />
+      <image style="width: 17px;height: 27px;" src="{{status>3?'/static/order/a-line.png':'/static/order/h-line.png'}}" />
       <image style="width: 17px;height: 9px;" src="{{status>3?'/static/order/a-pot.png':'/static/order/h-pot.png'}}" />
-      <image style="width: 17px;height: 25.5px;" src="{{status>3?'/static/order/a-line.png':'/static/order/h-line.png'}}" />
-      <image style="width: 17px;height: 17px;" src="{{status>3?'/static/order/a-pot.png':'/static/order/h-pot.png'}}" />
+      <image style="width: 17px;height: 27px;" src="{{status>3?'/static/order/a-line.png':'/static/order/h-line.png'}}" />
+      <image style="width: 17px;height: 17px;" src="{{status>3?'/static/order/a-point.png':'/static/order/h-point.png'}}" />
     </view>
     <view class="process-text">
       <view class="process-text-item title active">下单刷签</view>

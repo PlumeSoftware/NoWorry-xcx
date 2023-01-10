@@ -6,6 +6,7 @@ export interface Order {
     orderPaymentPrice?: number;
     orderStatus?: number;
     orderTotalPrice?: number;
+    favourablePrice?:number;
     payTime?: string;
 }
 
