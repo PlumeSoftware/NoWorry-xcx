@@ -35,12 +35,7 @@
     <view class="commodity-list">
       <view class="commodity-item">
         <view class="item-image">
-          <van-image
-            show-loading="{{false}}"
-            width="100%"
-            height="30vw"
-            src="{{commodity[0].picLinkTem}}"
-          />
+          <view class="item-image" style="background:url('{{commodity[0].picLinkTem}}');background-size:100% auto"></view>
         </view>
         <view>
           <view class="item-info">

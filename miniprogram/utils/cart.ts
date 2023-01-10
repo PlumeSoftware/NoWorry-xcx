@@ -1,8 +1,15 @@
 import { Cart } from "miniprogram/entity/cart";
+import { webPost } from "./http";
 
 //sign标记，0为团购，1为普通购买
-export const culFavFromCarts = (carts: Array<Cart>): Array<{ title: string, amount: number }> => {
+export const culFavFromCarts = async (carts: Array<Cart>): Promise<Array<{ title: string, amount: number }>> => {
     const favourable: Array<{ title: string, amount: number }> = [];//优惠方案
+
+    //先通过网络检查有无方案，若没有则根据旧方案计算
+    
+    
+    const result = await webPost<Array<{ title: string, amount: number }>>('/order/cartculfav', carts)
+    if (result) return result
 
     let usVisaNum = 0;//美签数量
     let sgVisaNum = 0;//申根签数量
@@ -73,7 +80,5 @@ export const culFavFromCarts = (carts: Array<Cart>): Array<{ title: string, amou
                 break;
         }
     }
-
-
     return favourable
 }
