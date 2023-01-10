@@ -20,14 +20,7 @@
             wx:for-index="groupindex"
             wx:key="groupindex"
           >
-            <view class="item-image">
-              <van-image
-                show-loading="{{false}}"
-                width="100%"
-                height="42vw"
-                src="{{item.picLinkTem}}"
-              />
-            </view>
+            <view class="item-image" style="background:url('{{item.picLinkTem}}');background-size:100% auto"></view>
             <view class="item-right">
               <view class="item-info">
                 <view>{{item.commodityName}}</view>
