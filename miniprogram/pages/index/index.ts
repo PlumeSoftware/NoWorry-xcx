@@ -11,7 +11,6 @@ Page({
       { item: "购物车", icon: "cart" },
       { item: "我的", icon: "user" },
     ],
-    page: [false, false, false, false]
   },
 
   toShare() {
@@ -59,7 +58,6 @@ Page({
       }
       case 3: {
         await this.selectComponent('#user').login();
-        this.selectComponent('#user').setByLocal()
         break;
       }
     }

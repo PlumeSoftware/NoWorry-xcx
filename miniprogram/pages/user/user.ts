@@ -14,60 +14,36 @@ Page({
             userName: '',
             phone: '',
             email: '',
-            handSignCity: ''
+            handSignCity: '',
+            avatarUrl:''
         },
         token: '',
         orderOutline: [0, 0, 0]
     },
 
-    setByLocal() {
-        this.setData({
-            userInfo: {
-                userName: wx.getStorageSync("userInfo").userName,
-                phone: wx.getStorageSync("userInfo").phone,
-                email: wx.getStorageSync("userInfo").email,
-                handSignCity: wx.getStorageSync("userInfo").handSignCity
-            }
-        })
-    },
+    async login() {
+        const data=getApp().globalData
 
-    login() {
-        if (!wx.getStorageSync('token')) {
-            setTimeout(function () {
-                wx.showLoading({
-                    title: '登录中',
-                })
-            }, 250)
+        console.log(data.userInfo)
+        
+        this.setData({ userInfo: data.userInfo, token: data.token })
 
-            setTimeout(function () {
-                wx.hideLoading()
-            }, 1000)
-        }
-        wx.login().then(async res => {
-            const data = await webGet<{ userInfo: { userName: string, phone: string, email: string, handSignCity: string }, token: string }>(`/user/login/${res.code}`)
-            if (data) {
-                this.setData({ userInfo: data.userInfo, token: data.token })
-                wx.setStorageSync('userInfo', data.userInfo)
-                wx.setStorageSync('token', data.token)
+        if (data.userInfo.userName == null) {
+            wx.navigateTo({ url: "/pages/user-set/user-set" })
+          }
 
-                if (data.userInfo.userName == null) {
-                    wx.navigateTo({ url: "/pages/user-set/user-set" })
-                }
-            }
-
-            const result: Array<Order> | null = await webGet<Array<Order>>(`/order/${wx.getStorageSync('token')}`)
-            const orderOutline: Array<number> = [0, 0, 0]
-            if (result) {
-                result.forEach((item: Order) => {
-                    if (item.orderStatus == 3) {
-                        orderOutline[0] += item.orderDetailInfoGroup!.length
-                    } else {
-                        orderOutline[item.orderStatus!] += item.orderDetailInfoGroup!.length
-                    }
-                })
-                this.setData({ orderOutline: orderOutline })
-            }
-        })
+          const result: Array<Order> | null = await webGet<Array<Order>>(`/order/${getApp().globalData.token}`)
+          const orderOutline: Array<number> = [0, 0, 0]
+          if (result) {
+            result.forEach((item: Order) => {
+              if (item.orderStatus == 3) {
+                orderOutline[0] += item.orderDetailInfoGroup!.length
+              } else {
+                orderOutline[item.orderStatus!] += item.orderDetailInfoGroup!.length
+              }
+            })
+            this.setData({ orderOutline: orderOutline })
+          }
     },
 
     toOrder() {

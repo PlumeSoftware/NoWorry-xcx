@@ -1,6 +1,10 @@
 <!-- index.wxml -->
 <view class="container">
-  <van-tabs class="show" active="{{ active }}" animated>
+  <van-tabs
+    class="show"
+    active="{{ active }}"
+    animated
+  >
     <van-tab>
       <home id="home"></home>
     </van-tab>
@@ -14,13 +18,26 @@
       <user id="user"></user>
     </van-tab>
   </van-tabs>
-  <van-tabbar active="{{ active }}" active-color="#F2843B" bind:change="onChange">
+  <van-tabbar
+    active="{{ active }}"
+    active-color="#F2843B"
+    bind:change="onChange"
+  >
     <van-tabbar-item wx:for="{{tarbar}}" wx:key="index">
       <view class="tar-item">
-        <van-icon style="display:{{active==index?'block':'none'}}" size="26px" name="/static/tarbar/{{item.icon}}-o.png" />
-        <van-icon style="display:{{active!=index?'block':'none'}}" size="26px" name="/static/tarbar/{{item.icon}}.png" />
+        <van-icon
+          style="display:{{active==index?'block':'none'}}"
+          size="26px"
+          name="/static/tarbar/{{item.icon}}-o.png"
+        />
+        <van-icon
+          style="display:{{active!=index?'block':'none'}}"
+          size="26px"
+          name="/static/tarbar/{{item.icon}}.png"
+        />
         <view>{{item.item}}</view>
       </view>
     </van-tabbar-item>
   </van-tabbar>
 </view>
+

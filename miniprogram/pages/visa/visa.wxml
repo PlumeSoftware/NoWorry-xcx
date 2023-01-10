@@ -1,10 +1,6 @@
 <view class="page-visa">
-  <input
-    bind:tap="inp"
-    class="input"
-    bindfocus="focus"
-    bindblur="blur"
-  />
+  <button class="btn" bindtap="onTap">加入团购 !</button>
+
   <van-tabs
     class="visa-group-list"
     wx:if="{{show}}"
