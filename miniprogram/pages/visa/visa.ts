@@ -22,6 +22,9 @@ Component({
             const commodityId = e.currentTarget.dataset.commodityid
             wx.navigateTo({ url: '/pages/visa-detail/visa-detail' + `?commodityId=${commodityId}` })
         },
+        onTap(){
+           
+        }
 
     },
     lifetimes: {

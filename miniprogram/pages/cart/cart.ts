@@ -99,7 +99,7 @@ Page({
                     showCancel: false,
                     confirmText: "前往设置",
                     success: (res) => {
-                        if(res.confirm) wx.navigateTo({url:"/pages/user-set/user-set"})
+                        if (res.confirm) wx.navigateTo({ url: "/pages/user-set/user-set" })
                     }
                 })
             }

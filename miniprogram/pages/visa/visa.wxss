@@ -24,7 +24,7 @@
 .visa-group-list {
     background-color: #F8F6EE;
     width: 100vw;
-    padding: 0;
+    padding: 2vh 0;
     margin: 0;
 }
 
@@ -92,4 +92,23 @@ nav-class {
     line-height: 24px;
     text-align: right;
     color: #F2843B;
+}
+
+.btn {
+    height: 41px;
+    width: 132px;
+    border: none;
+    border-radius: 7px;
+
+
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 24px;
+    line-height: 41px;
+    background-color: #0386FE;
+    color: #FFF;
+
+    position: fixed;
+    top:80vh;
+    z-index: 99;
 }
