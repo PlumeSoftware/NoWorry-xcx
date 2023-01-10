@@ -864,7 +864,11 @@
           size="15px"
           name="/static/profile/option.png"
         />
-        <view class="content">已同意《No Worry用户协议条款》和《隐私条款》</view>
+        <view class="protocol-text">已同意
+          <span bind:tap="toNotice" class="span">《No Worry用户协议条款》</span>
+          和
+          <span bind:tap="toPrivacy" class="span">《隐私条款》</span>
+        </view>
       </view>
       <view class="container">
         <view

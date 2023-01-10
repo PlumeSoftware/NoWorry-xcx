@@ -64,6 +64,14 @@ Page({
             })
         }, 300)
     },
+    toPrivacy() {
+        wx.navigateTo({ url: '/pages/user-set-privacy/privacy' })
+    },
+
+    toNotice() {
+        wx.navigateTo({ url: '/pages/user-set-notice/notice' })
+    },
+    
     onShow() {
         const pages = getCurrentPages();
         const orderDetailId = pages[pages.length - 1].options.orderDetailId!
