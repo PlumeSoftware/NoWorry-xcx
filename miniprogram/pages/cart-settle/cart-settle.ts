@@ -30,7 +30,8 @@ Page({
         totolPriceCNY: 0,
 
         agree: false,
-
+        hasReadA: false,
+        hasReadB: false,
         favcode: '',
         favdetail: { payway: 2, favway: 0, value: 0 },
 
@@ -75,7 +76,7 @@ Page({
         }
         this.updateCart()
     },
-    updateCart() {
+    async updateCart() {
         let total = 0;
         let totalCNY = 0;
         let favourableTotal = 0;
@@ -98,7 +99,10 @@ Page({
         //清空优惠缓存
         //生成优惠方案
         this.setData({ favourableTotal: 0, carts: carts })
-        this.setData({ favourable: culFavFromCarts(this.data.carts) })
+        const fav = (await culFavFromCarts(this.data.carts))!;
+        if (this.data.favourable[0]?.amount != fav[0].amount) {
+            this.setData({ favourable: fav })
+        }
 
         //计算优惠价格
         this.data.favourable.forEach(i => {
@@ -126,17 +130,28 @@ Page({
     },
 
     toPrivacy() {
-        wx.navigateTo({ url: '/pages/user-set-privacy/privacy' })
+        wx.navigateTo({ url: '/pages/user-set-privacy/privacy' }).then(() => this.setData({ hasReadB: true }))
     },
 
     toNotice() {
-        wx.navigateTo({ url: '/pages/user-set-notice/notice' })
+        wx.navigateTo({ url: '/pages/user-set-notice/notice' }).then(() => this.setData({ hasReadA: true }))
     },
 
     agreeChange() {
-        this.setData({
-            agree: !this.data.agree
-        })
+        if (this.data.agree) {
+            this.setData({
+                agree: false
+            })
+        } else {
+            if (!this.data.hasReadA) {
+                wx.showToast({ title: "请先阅读用户协议", icon: 'none' })
+            }
+            else if (!this.data.hasReadB) {
+                wx.showToast({ title: "请先阅读隐私条款", icon: 'none' })
+            } else {
+                this.setData({ agree: true })
+            }
+        }
     },
 
     async submitOrder() {
@@ -229,7 +244,7 @@ Page({
                     payWay: 0,
                     orderDetail: orderDetail,
                     favcode: this.data.favcode,
-                    contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.liveCity}`
+                    contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.wechat}`
                 }).then(() => this.afterPayment(paid))
             }
         }
