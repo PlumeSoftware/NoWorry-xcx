@@ -50,7 +50,7 @@
         </view>
       </view>
       <view class="info-item">
-        <view>城市</view>
+        <view>微信号</view>
         <view>
           <input
             bind:tap="inp"
@@ -63,7 +63,7 @@
       </view>
     </view>
   </view>
-  <view class="save-btn" bind:tap="save">保存修改</view>
+  <view class="save-btn" bind:tap="save">修改</view>
   <view>
     <view class="title">
       <van-icon

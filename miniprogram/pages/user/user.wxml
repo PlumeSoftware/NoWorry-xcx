@@ -12,8 +12,7 @@
       </view>
       <view class="user">
         <view class="user-name">
-          <span wx:if="{{userInfo.userName}}">你好，</span>
-          {{userInfo.userName}}
+          <span>你好，{{userInfo.userName||'微信用户'}}</span>
         </view>
         <view class="user-email" wx:if="{{userInfo.email!=null}}">{{userInfo.email}}</view>
         <view class="user-email" wx:else>--</view>

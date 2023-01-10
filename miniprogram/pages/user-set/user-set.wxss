@@ -58,8 +58,14 @@
     border-bottom: none;
 }
 
+.info-item view:nth-child(1){
+    width: 5rem;
+    text-align: left;
+}
+
 
 .info-list .info-item input {
+    width: 50vw;
     text-align: right;
     margin-right: 25rpx;
 }
