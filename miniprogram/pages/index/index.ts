@@ -32,9 +32,9 @@ Page({
       await new Promise<void>(r => {
         wx.showModal({
           title: '提示',
-          content: '您还未设置个人资料',
+          content: '请先登录',
           showCancel: false,
-          confirmText: "前往设置",
+          confirmText: "前往",
           success: () => {
             event.detail = 3
             r()

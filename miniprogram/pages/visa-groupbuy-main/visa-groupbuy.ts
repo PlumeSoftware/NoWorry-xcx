@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/comma-dangle */
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { webGet, webPost } from "../../utils/http"
+import { webGet } from "../../utils/http"
 //@ts-ignore
 import Toast from '@vant/weapp/toast/toast';
 import { Cart } from "../../entity/cart";
@@ -45,8 +45,7 @@ Page({
         this.setData({ favourable: fav })
         if (!fav || fav.length == 0) Toast({ type: 'fail', message: '团购量过少~', duration: 2000 });
     },
-    async genGroupBuy() {
-        const result = await webPost<number>('/order/group/create', { commodityId: 115, quantity: 57, openid: "89asdadzsfsdfdasad" });
-        wx.showModal({ title: '提示', content: String(result) })
+    genGroupBuy() {
+        wx.showModal({title:'提示',content:"你的团购码是"})
     }
 });

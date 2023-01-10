@@ -124,6 +124,7 @@
       <view class="info-item">
         <view class="favcode">
           <input
+            style="width:60vw"
             bindinput="inpFav"
             model:value="{{favcode}}"
             placeholder="可空"
