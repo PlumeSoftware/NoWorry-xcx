@@ -61,6 +61,10 @@
 }
 
 
+.info-list .info-item view{
+    width: 40vw;
+    text-align: left;
+}
 .info-list .info-item input {
     text-align: right;
     margin-right: 25rpx;
