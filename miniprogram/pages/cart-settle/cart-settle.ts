@@ -37,13 +37,16 @@ Page({
 
         allowSubmit: false
     },
-    onShow() {
+    onLoad() {
         this.setData({
             userName: wx.getStorageSync("userInfo").userName,
             phone: wx.getStorageSync("userInfo").phone,
             email: wx.getStorageSync("userInfo").email,
             wechat: wx.getStorageSync("userInfo").handSignCity
         })
+        this.updateCart()
+    },
+    onShow(){
         this.updateCart()
     },
 
@@ -100,7 +103,7 @@ Page({
         //生成优惠方案
         this.setData({ favourableTotal: 0, carts: carts })
         const fav = (await culFavFromCarts(this.data.carts))!;
-        if (this.data.favourable[0]?.amount != fav[0].amount) {
+        if (this.data.favourable == fav) {
             this.setData({ favourable: fav })
         }
 
@@ -108,12 +111,23 @@ Page({
         this.data.favourable.forEach(i => {
             favourableTotal += i.amount
         })
+        //加入优惠券
         favourableTotal += this.data.favdetail.value
 
         total = Number(total.toFixed(2))
         totalCNY = Number((8.6231 * (total - favourableTotal)).toFixed(2));
 
         const totalPriceShow = Number((total - favourableTotal).toFixed(2))
+
+        if (total - favourableTotal <= 0) {
+            wx.showModal({
+                title: "提示",
+                content: "别太过分了#_#",
+                showCancel: false,
+                success:()=>wx.navigateBack()
+            })
+        }
+        
         this.setData(
             {
                 totalPrice: total,

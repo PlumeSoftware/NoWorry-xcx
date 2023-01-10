@@ -1,6 +1,8 @@
 export interface Order {
     createTime?: string;
     openid?: string;
+    favourablePrice?: number
+
     orderDetailInfoGroup?: OrderDetailInfo[];
     orderId?: number;
     orderPaymentPrice?: number;
@@ -14,6 +16,7 @@ export interface OrderDetailInfo {
     commodityBrief?: string;
     commodityId?: number;
     commodityName?: string;
+    favourablePrice?: number
     invPrice?: number;
     orderDetailId?: number;
     orderId?: string;

@@ -34,7 +34,7 @@ Page({
           title: '提示',
           content: '您还未设置个人资料',
           showCancel: false,
-          confirmText: "前往设置",
+          confirmText: "查看",
           success: () => {
             event.detail = 3
             r()

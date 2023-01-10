@@ -8,7 +8,7 @@
     <view class="commodity-info">
       <view>
         <view>订单总价：</view>
-        <view>£{{total}}</view>
+        <view>£{{total}}(-£{{favourablePrice}})</view>
       </view>
       <view>
         <view>实际支付：</view>

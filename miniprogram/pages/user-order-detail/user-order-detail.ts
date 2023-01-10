@@ -13,13 +13,14 @@ Page({
         userName: wx.getStorageSync('userInfo').userName,
         orderDetailId: '',
         total: 0,
+        favourablePrice: 0,
         paid: 0,
         invPrice: 0,
         status: -1,
         commodityId: 0,
         orderDetailName: '',
         commodityType: 11,
-        showQr:false
+        showQr: false
     },
 
     async onShow() {
@@ -35,6 +36,7 @@ Page({
             total: order?.orderTotalPrice,
             paid: order?.orderPaymentPrice,
             orderDetailName: detail.commodityName,
+            favourablePrice: order!.favourablePrice,
             invPrice: detail.invPrice,
             status: detail.status,
             commodityId: detail.commodityId
@@ -60,7 +62,7 @@ Page({
             title: "提示",
             content: "长按扫描下方二维码以联系客服",
             showCancel: false,
-            success:()=>this.setData({showQr:true})
+            success: () => this.setData({ showQr: true })
         })
     },
 
@@ -71,8 +73,8 @@ Page({
         })
     },
 
-    toWait(){
-        wx.showToast({title:'静候佳音~',icon:'none'})
+    toWait() {
+        wx.showToast({ title: '静候佳音~', icon: 'none' })
     },
 
     onShareAppMessage() {
