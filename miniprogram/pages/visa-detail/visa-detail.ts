@@ -35,12 +35,11 @@ Page({
     },
 
     initValue: 0,
-    move(e: { detail: { x: number, y: number } }) { this.setData({ moveY: e.detail.y - 310 }) },
 
     bindPickerChange(e: { detail: { value: number } }) { this.setData({ cityIndex: e.detail.value }) },
     addCart() {
-        if(!getApp().globalData.token.length){
-            wx.showToast({title:'网络错误',icon:'none',duration:1000})
+        if (!getApp().globalData.token.length) {
+            wx.showToast({ title: '网络错误', icon: 'none', duration: 1000 })
             return;
         }
 
@@ -70,16 +69,16 @@ Page({
         wx.setStorageSync('carts', carts)
     },
 
-    groupBuy(){
-        if(!getApp().globalData.token.length){
-            wx.showToast({title:'网络错误',icon:'none',duration:1000})
+    groupBuy() {
+        if (!getApp().globalData.token.length) {
+            wx.showToast({ title: '网络错误', icon: 'none', duration: 1000 })
             return;
         }
         wx.showToast({
             title: '本期活动暂未开放',
-            icon:'none',
+            icon: 'none',
             duration: 2000
-            })
+        })
         // wx.navigateTo({
         //     url:`/pages/visa-groupbuy/visa-groupbuy?commodityId=${this.data.commodity.commodityId}`
         // })
