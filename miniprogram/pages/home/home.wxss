@@ -31,14 +31,12 @@
 }
 
 .page-home .body {
-    margin: 34rpx 5.33vw 82rpx 5.33vw;
+    margin: 34px 5.33vw 82rpx 5.33vw;
 }
 
 .page-home .move {
     height: 71vw;
     width: 89vw;
-    overflow-x: scroll;
-    overflow-y: hidden;
     margin-top: 3.7vw;
 }
 
@@ -85,6 +83,7 @@
     font-weight: 500;
     line-height: 25px;
     text-align: left;
+    background-color: #FFF;
 }
 
 .page-home .visa-list .visa-item .info .price {
@@ -93,6 +92,7 @@
     line-height: 20px;
     text-align: right;
     color: #F2843B;
+    background-color: #FFF;
 }
 
 .page-home .about {
