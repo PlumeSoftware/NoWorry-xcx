@@ -64,7 +64,11 @@
       <view class="title-word">团购优惠</view>
     </view>
     <view class="info-list" wx:if="{{favourable.length}}">
-      <view class="info-item" wx:for="{{favourable}}">
+      <view
+        class="info-item"
+        wx:for="{{favourable}}"
+        wx:key="index"
+      >
         <view>{{item.title}}</view>
         <view>
           <input model:value="- £{{item.amount}}" disabled="{{true}}" />
