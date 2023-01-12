@@ -9,8 +9,7 @@
   <view class="body">
     <view class="visum">
       <view class="title">热门推荐</view>
-      <scroll-view class="move" scroll-x="{{true}}">
-        <view class="visa-list" style="width:{{VisaList.length*44}}vw">
+        <scroll-view class="visa-list" scroll-x="{{true}}">
           <view class="visa-item" wx:for="{{VisaList}}" wx:key="index" bind:tap="toDetail" data-commodityid="{{item.commodityId}}">
             <view class="item-image" style="background:url('{{item.picLinkTem}}');background-size:100% auto"></view>
             <view class="info">
@@ -18,8 +17,7 @@
               <view class="price">£{{item.currentPrice}}</view>
             </view>
           </view>
-        </view>
-      </scroll-view>
+        </scroll-view>
     </view>
     <view class="about">
       <view class="title">关于我们</view>
