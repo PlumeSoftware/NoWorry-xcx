@@ -9,7 +9,7 @@ import { webGet} from "../../utils/http"
 Component({
     data: {
         activeVisa: 0,
-        show: false,
+        show: true,
         visaList: [
             [
             ]
