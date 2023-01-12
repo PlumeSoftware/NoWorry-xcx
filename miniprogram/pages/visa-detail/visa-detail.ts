@@ -77,17 +77,17 @@ Page({
             wx.showToast({ title: '网络错误', icon: 'none', duration: 1000 })
             return;
         }
-
-        if (getApp().globalData.userInfo.userName != "韦定彩") {
-            wx.showToast({
-                title: '本期活动暂未开放',
-                icon: 'none',
-                duration: 2000
-            })
-        } else {
-            wx.navigateTo({
-                url: `/pages/visa-groupbuy/visa-groupbuy?commodityId=${this.data.commodity.commodityId}`
-            })
-        }
+        // if (getApp().globalData.userInfo.userName != "韦定彩") {
+        //     wx.showToast({
+        //         title: '本期活动暂未开放',
+        //         icon: 'none',
+        //         duration: 2000
+        //     })
+        // } else
+        //  {
+        wx.navigateTo({
+            url: `/pages/visa-groupbuy/visa-groupbuy?commodityId=${this.data.commodity.commodityId}`
+        })
+        // }
     }
 });
