@@ -4,6 +4,7 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
+import { culFavFromCarts } from "../../utils/cart";
 import { Visa } from "../../entity/visa";
 import { webGet } from "../../utils/http"
 
@@ -12,7 +13,10 @@ Page({
         carts: [] as any,
         allselect: false,
         totalPrice: 0,
-        totalPrice2: 0
+        totalPrice2: 0,
+        favourable: [] as Array<{ title: string, amount: number }>,
+        favourableTotal: 0,
+        show: false
     },
 
 
@@ -61,12 +65,17 @@ Page({
         const index = e.currentTarget.dataset.index
         const add = e.currentTarget.dataset.add
         const carts = this.data.carts;
-        carts[index].quantity = carts[index].quantity + add
-        if (carts[index].quantity < 1) carts.splice(index, 1)
+        carts[index].quantity = carts[index].quantity + add;
+        if (carts[index].quantity < 1) carts.splice(index, 1);
         this.setData({ carts: carts })
+        getApp().globalData.carts = carts;
+        wx.setStorageSync('carts', carts)
         this.culTotal()
     },
 
+    showFav() {
+        if(this.data.favourableTotal>0)            this.setData({ show: !this.data.show })
+    },
 
     //重新计算价格
     culTotal() {
@@ -74,8 +83,21 @@ Page({
         const carts = this.data.carts;
         carts.forEach((item: any) => total += item.select ? item.currentPrice * item.quantity : 0)
 
-        const total2 = Number((8.43 * total).toFixed(2));
-        this.setData({ totalPrice: total, totalPrice2: total2 })
+        let favourableTotal = 0;
+
+        //生成优惠方案
+        culFavFromCarts(carts).then(fav => {
+            this.setData({ favourable: fav })
+            //计算优惠价格
+            fav.forEach((i: any) => {
+                favourableTotal += i.amount
+            })
+            //计算人民币
+            const total2 = Number((8.35 * (total - favourableTotal)).toFixed(2));
+            this.setData({ totalPrice: total - favourableTotal, totalPrice2: total2, favourableTotal: favourableTotal })
+        });
+
+
     },
 
     async settle() {
@@ -89,12 +111,12 @@ Page({
             if (userInfo.userName && userInfo.email && userInfo.phone && userInfo.handSignCity) {
                 wx.navigateTo({ url: "/pages/cart-settle/cart-settle" })
             } else wx.showModal({
-                    title: '提示',
-                    content: '您的个人资料未完善',
-                    showCancel: false,
-                    confirmText: "前往设置",
-                    success: () => wx.navigateTo({ url: "/pages/user-set/user-set" })
-                })
+                title: '提示',
+                content: '您的个人资料未完善',
+                showCancel: false,
+                confirmText: "前往设置",
+                success: () => wx.navigateTo({ url: "/pages/user-set/user-set" })
+            })
         }, 800)
     }
 });

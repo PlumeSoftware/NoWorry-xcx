@@ -38,7 +38,7 @@ Page({
         allowSubmit: false
     },
 
-    onShow(){
+    onShow() {
         this.setData({
             userName: getApp().globalData.userInfo.userName,
             phone: getApp().globalData.userInfo.phone,
@@ -85,30 +85,15 @@ Page({
         const carts = getApp().globalData.carts.filter((cart: Cart) => cart.select == true);
 
         //计算商品总价,统计签证类型和价格
-        carts.forEach((cart: Cart) => {
-            total += cart.currentPrice! * cart.quantity!
+        carts.forEach((cart: Cart) => total += cart.currentPrice! * cart.quantity!)
 
-        })
-
-        /**
-         * 优惠
-            1.美签+申根自动优惠 10英镑
-            2.5位以上88磅的，自动-人数*10英镑，5位以上68磅的，和88磅的，自动-5*人数英镑
-            3.美签2位，-10*2英镑，3位-10*3英镑，4位也是-10*3英镑
-         */
-
-        //清空优惠缓存
         //生成优惠方案
         this.setData({ favourableTotal: 0, carts: carts })
         const fav = (await culFavFromCarts(this.data.carts))!;
-        if (this.data.favourable != fav) {
-            this.setData({ favourable: fav })
-        }
+        if (this.data.favourable != fav) this.setData({ favourable: fav })
 
         //计算优惠价格
-        this.data.favourable.forEach(i => {
-            favourableTotal += i.amount
-        })
+        this.data.favourable.forEach(i => favourableTotal += i.amount)
 
         //加入优惠券计算
         favourableTotal += this.data.favdetail.value
@@ -118,15 +103,15 @@ Page({
                 title: '提示',
                 content: '你真的是在测试吗QAQ',
                 showCancel: false,
-                success:()=>wx.navigateBack()
+                success: () => wx.navigateBack()
             })
         }
 
         total = Number(total.toFixed(2))
-        totalCNY = Number((8.6231 * (total - favourableTotal)).toFixed(2));
+        totalCNY = Number((8.35 * (total - favourableTotal)).toFixed(2));
 
         const totalPriceShow = Number((total - favourableTotal).toFixed(2))
-        
+
         this.setData(
             {
                 totalPrice: total,
