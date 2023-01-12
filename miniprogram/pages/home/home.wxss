@@ -34,27 +34,22 @@
     margin: 34px 5.33vw 82rpx 5.33vw;
 }
 
-.page-home .move {
-    height: 71vw;
-    width: 89vw;
-    margin-top: 3.7vw;
-}
-
 .page-home .move::-webkit-scrollbar {
     display: none;
 }
 
 .page-home .visa-list {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
     justify-content: flex-start;
     background-color: #F8F6EE;
     z-index:10;
+    margin-top: 3.7vw;
+    height: 71vw;
+    white-space: nowrap;
 }
 
 .page-home .visa-list .visa-item {
-    display: block;
+    display: inline-block;
     height: 51vw;
     width: 35.9vw;
     margin: 0 6vw 0 0;

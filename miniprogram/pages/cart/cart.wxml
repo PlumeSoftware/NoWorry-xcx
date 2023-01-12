@@ -118,6 +118,7 @@
         wx:for="{{favourable}}"
         wx:key="index"
       >
+
         <view>{{item.title}}</view>
         <view>
           <input model:value="- £{{item.amount}}" disabled="{{true}}" />
