@@ -82,12 +82,16 @@
         <view>全选</view>
       </view>
       <view class="subtotal-number">
-        <view class="price-all">
+        <view class="price-all" bind:tap="showFav">
           <view class="price-origin">
             <span>合计：</span>
             <span>£{{totalPrice}}</span>
           </view>
-          <view class="price-conver">GBP {{totalPrice}}≈CNY {{totalPrice2}}</view>
+          <view class="price-conver">
+            <span wx:if="{{favourableTotal>0}}">已减 </span>
+            <span wx:if="{{favourableTotal>0}}">£{{favourableTotal}} </span>
+            <span wx:if="{{favourableTotal>0}}">查看明细</span>
+          </view>
         </view>
         <view class="settle">
           <button
@@ -101,5 +105,27 @@
       </view>
     </view>
   </view>
+  <van-dialog
+    use-slot
+    id="van-dialog"
+    bind:close="showFav"
+    show="{{ show }}"
+  >
+    <view style="margin:40rpx auto">优惠一览</view>
+    <view class="info-list">
+      <view class="info-item" wx:for="{{favourable}}">
+        <view>{{item.title}}</view>
+        <view>
+          <input model:value="- £{{item.amount}}" disabled="{{true}}" />
+        </view>
+      </view>
+      <view class="info-item">
+        <view>汇率折算减免</view>
+        <view>
+          <input model:value="-0.7%" disabled="{{true}}" />
+        </view>
+      </view>
+    </view>
+  </van-dialog>
 </view>
 
