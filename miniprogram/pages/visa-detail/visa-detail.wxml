@@ -24,7 +24,11 @@
         <view style="background: #F8F6EE;">
           <view class="sup-text">Support</view>
           <view class="sup-detail">
-            <view class="sup-detail-item" wx:for="{{commodity.tips}}">
+            <view
+              class="sup-detail-item"
+              wx:for="{{commodity.tips}}"
+              wx:key="index"
+            >
               <view class="item-title">
                 <van-icon
                   class="title-img"
