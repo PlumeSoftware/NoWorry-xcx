@@ -36,14 +36,16 @@ App<IAppOption>({
     const updateManager = wx.getUpdateManager()
     updateManager.applyUpdate()
     this.globalData.carts.push(...wx.getStorageSync('carts') || [])
-    wx.showLoading({ title: "加载中", mask: true })
+    wx.showLoading({ title: "加载中" })
+    //有可能卡死，所以设置10s后自动管不弹窗
+    setTimeout(() => wx.hideLoading(),10000)
     login().then((data) => {
       if (data?.token) {
         wx.hideLoading()
         this.globalData.userInfo = data.userInfo
         this.globalData.token = data.token
       } else {
-        wx.showLoading({ title: "重试中", mask: true })
+        wx.showLoading({ title: "重试中" })
         login().then((data) => {
           if (data?.token) {
             wx.hideLoading()

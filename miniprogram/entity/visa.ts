@@ -11,4 +11,5 @@ export interface Visa {
     picLinkTem?:string
     remainQuantity?: number
     tips?: Array<{title:string,children:Array<string>}>
+    handCity?:Array<string>
 }
