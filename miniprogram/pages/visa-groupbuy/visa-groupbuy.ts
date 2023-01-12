@@ -46,7 +46,8 @@ Page({
         if (!fav || fav.length == 0) Toast({ type: 'fail', message: '团购量过少~', duration: 2000 });
     },
     async genGroupBuy() {
-        const result = await webPost<number>('/order/group/create', { commodityId: 115, quantity: 57, openid: "89asdadzsfsdfdasad" });
-        wx.showModal({ title: '提示', content: String(result) })
+        // const result = await webPost<number>('/order/group/create', { commodityId: 115, quantity: 57, openid: "89asdadzsfsdfdasad" });
+        // wx.showModal({ title: '提示', content: String(result) })
+        wx.navigateTo({ url: '/pages/visa-groupbuy-main/visa-groupbuy-main' })
     }
 });
