@@ -25,27 +25,5 @@ Page({
     async onShow() {
         const pages = getCurrentPages()
         const commodityId = pages[pages.length - 1].options.commodityId
-        const commodity = (await webGet<Cart>(`/visa/detail/${commodityId}`))!
-        commodity.select = true
-        this.setData({ commodity: [commodity] })
-        switch (this.data.commodity[0].commodityType) {
-            case 11: this.setData({ citiesArray: ['伦敦', '曼彻斯特', "爱丁堡"] }); break;
-            case 13: this.setData({ citiesArray: ['伦敦', '贝尔法斯特'] }); break;
-            case 14: this.setData({ citiesArray: ['伦敦'] }); break;
-            case 15: this.setData({ citiesArray: ['线上办理', '线下办理'] }); break;
-        }
-    },
-
-    async bindPickerChange(e: { detail: { value: number } }) {
-        const commodityList = this.data.commodity;
-        commodityList[0].quantity = Number(e.detail.value) + 2
-        this.setData({ commodity: commodityList })
-        console.log(commodityList)
-        const fav = await culFavFromCarts(commodityList);
-        this.setData({ favourable: fav })
-        if (!fav || fav.length == 0) Toast({ type: 'fail', message: '团购量过少~', duration: 2000 });
-    },
-    genGroupBuy() {
-        wx.showModal({title:'提示',content:"你的团购码是"})
     }
 });
