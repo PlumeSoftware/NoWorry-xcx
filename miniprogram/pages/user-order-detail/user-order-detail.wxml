@@ -70,8 +70,8 @@
       <image style="width: 17px;height: 9px;" src="{{status>2?'/static/order/a-pot.png':'/static/order/h-pot.png'}}" />
       <image style="width: 17px;height: 27px;" src="{{status>3?'/static/order/a-line.png':'/static/order/h-line.png'}}" />
       <image style="width: 17px;height: 9px;" src="{{status>3?'/static/order/a-pot.png':'/static/order/h-pot.png'}}" />
-      <image style="width: 17px;height: 27px;" src="{{status>3?'/static/order/a-line.png':'/static/order/h-line.png'}}" />
-      <image style="width: 17px;height: 17px;" src="{{status>3?'/static/order/a-point.png':'/static/order/h-point.png'}}" />
+      <image style="width: 17px;height: 27px;" src="{{status>4?'/static/order/a-line.png':'/static/order/h-line.png'}}" />
+      <image style="width: 17px;height: 17px;" src="{{status>4?'/static/order/a-point.png':'/static/order/h-point.png'}}" />
     </view>
     <view class="process-text">
       <view class="process-text-item title active">下单刷签</view>
@@ -82,7 +82,7 @@
       <view class="process-text-item {{status>1?'active':'holded'}}">{{status>2?'客服审核通过':'客服审核中'}}</view>
       <view class="process-text-item {{status>2?'active':'holded'}}">刷签系统后台操作</view>
       <view class="process-text-item {{status>3?'active':'holded'}}">等待邮件确认递签进度</view>
-      <view class="process-text-item title {{status>3?'active':'holded'}}">递签成功</view>
+      <view class="process-text-item title {{status>4?'active':'holded'}}">递签成功</view>
     </view>
   </view>
   <view class="contact" wx:if="{{showQr}}">

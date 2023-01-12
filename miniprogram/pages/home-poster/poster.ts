@@ -21,7 +21,7 @@ Page({
             {
                 posterId: 2,
                 posterTitle: "美签优惠活动详情",
-                posterInfo: "NoWorry 于11月推出美签优惠，2人即成团，2人成团递交美签每人优惠10磅；3人成团每人优惠20磅；4人成团每人优惠30磅！四人团为上限哟！",
+                posterInfo: "NoWorry 于11月推出美签优惠，2人即成团，2人成团递交美签每人优惠10磅；3人成团每人优惠20磅；4人成团每人优惠30磅！",
                 posterImg: "https://s1.imagehub.cc/images/2023/01/06/dfb5f114e9c19c17283ff756ba64d1fa.png"
             },
             {

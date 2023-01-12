@@ -682,7 +682,7 @@
           </view>
           <view class="item">
             <view class="title">9.性别 *</view>
-            <view class="content">{{sex==0?'男':sex==1?'女':'保密'}}</view>
+            <view class="content">{{sex==0?'男':"女"}}</view>
           </view>
           <view class="item">
             <view class="title">10.婚姻状态 *</view>
