@@ -1,7 +1,7 @@
 <view class="page">
   <view class="page-top">
     <input
-            bind:tap="inp"
+      bind:tap="inp"
       class="input"
       placeholder="点击这里根据关键词检索"
       bindfocus="focus"
@@ -39,6 +39,7 @@
         <view
           style="margin-bottom:1vh"
           wx:for="{{item[1]}}"
+          wx:key="index"
           wx:for-item="content"
         >{{content}}
         </view>
