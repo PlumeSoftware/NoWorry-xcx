@@ -19,7 +19,7 @@ Page({
     },
 
     onShow(){
-        this.data.openid=getApp().globalData.userInfo.openid
+        this.setData({openid:getApp().globalData.userInfo.openid})
     },
 
     inp(e: { currentTarget: { id: string } }) {

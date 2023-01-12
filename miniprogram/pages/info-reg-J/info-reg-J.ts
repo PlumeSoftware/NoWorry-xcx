@@ -84,7 +84,9 @@ Page({
         if (!getApp().globalData.token) {
             wx.login().then(async res => {
                 const data = await webGet<{ userInfo: Object, token: string }>(`/user/login/${res.code}`)
-                getApp()
+                getApp().globalData.userInfo=data?.userInfo
+                getApp().globalData.token=data?.token
+
                 wx.setStorageSync('userInfo', data!.userInfo)
                 wx.setStorageSync('token', data!.token)
             })

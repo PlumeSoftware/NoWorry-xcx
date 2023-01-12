@@ -37,16 +37,14 @@ Page({
 
         allowSubmit: false
     },
-    onLoad() {
-        this.setData({
-            userName: getApp().globalData.userName,
-            phone: getApp().globalData.phone,
-            email: getApp().globalData.email,
-            wechat: getApp().globalData.handSignCity
-        })
-        this.updateCart()
-    },
+
     onShow(){
+        this.setData({
+            userName: getApp().globalData.userInfo.userName,
+            phone: getApp().globalData.userInfo.phone,
+            email: getApp().globalData.userInfo.email,
+            wechat: getApp().globalData.userInfo.handSignCity
+        })
         this.updateCart()
     },
 
@@ -84,7 +82,7 @@ Page({
         let totalCNY = 0;
         let favourableTotal = 0;
 
-        const carts = getApp().globalData.filter((cart: Cart) => cart.select == true);
+        const carts = getApp().globalData.carts.filter((cart: Cart) => cart.select == true);
 
         //计算商品总价,统计签证类型和价格
         carts.forEach((cart: Cart) => {
@@ -128,15 +126,6 @@ Page({
         totalCNY = Number((8.6231 * (total - favourableTotal)).toFixed(2));
 
         const totalPriceShow = Number((total - favourableTotal).toFixed(2))
-
-        if (total - favourableTotal <= 0) {
-            wx.showModal({
-                title: "提示",
-                content: "别太过分了#_#",
-                showCancel: false,
-                success:()=>wx.navigateBack()
-            })
-        }
         
         this.setData(
             {

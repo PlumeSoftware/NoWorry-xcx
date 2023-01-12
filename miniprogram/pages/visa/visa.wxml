@@ -1,9 +1,8 @@
 <view class="page-visa">
-  <button class="btn" bindtap="onTap">加入团购 !</button>
+  <!-- <button class="btn" bindtap="onTap">加入团购 !</button> -->
 
   <van-tabs
     class="visa-group-list"
-    wx:if="{{show}}"
     color="#797532"
     title-inactive-color="#79753270"
     title-active-color="#797532"

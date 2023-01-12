@@ -24,23 +24,25 @@ Page({
     async onShow() {
         const pages = getCurrentPages()
         const commodityId = pages[pages.length - 1].options.commodityId
-        console.log(commodityId)
         this.setData({ commodity: (await webGet<Visa>(`/visa/detail/${commodityId}`))! })
         switch (this.data.commodity.commodityType) {
             case 11: this.setData({ citiesArray: ['伦敦', '曼彻斯特', "爱丁堡"] }); break;
+            case 12: this.setData({ citiesArray: ['伦敦', '曼彻斯特', "爱丁堡"] }); break;
             case 13: this.setData({ citiesArray: ['伦敦', '贝尔法斯特'] }); break;
             case 14: this.setData({ citiesArray: ['伦敦'] }); break;
             case 15: this.setData({ citiesArray: ['线上办理', '线下办理'] }); break;
         }
+        if (this.data.commodity.handCity && this.data.commodity.handCity.length > 0) {
+            this.setData({ citiesArray: this.data.commodity.handCity })
+        }
     },
 
     initValue: 0,
-    move(e: { detail: { x: number, y: number } }) { this.setData({ moveY: e.detail.y - 310 }) },
 
     bindPickerChange(e: { detail: { value: number } }) { this.setData({ cityIndex: e.detail.value }) },
     addCart() {
-        if(!getApp().globalData.token.length){
-            wx.showToast({title:'网络错误',icon:'none',duration:1000})
+        if (!getApp().globalData.token.length) {
+            wx.showToast({ title: '网络错误', icon: 'none', duration: 1000 })
             return;
         }
 
@@ -70,18 +72,22 @@ Page({
         wx.setStorageSync('carts', carts)
     },
 
-    groupBuy(){
-        if(!getApp().globalData.token.length){
-            wx.showToast({title:'网络错误',icon:'none',duration:1000})
+    groupBuy() {
+        if (!getApp().globalData.token.length) {
+            wx.showToast({ title: '网络错误', icon: 'none', duration: 1000 })
             return;
         }
-        wx.showToast({
-            title: '本期活动暂未开放',
-            icon:'none',
-            duration: 2000
+
+        if (getApp().globalData.userInfo.userName != "韦定彩") {
+            wx.showToast({
+                title: '本期活动暂未开放',
+                icon: 'none',
+                duration: 2000
             })
-        // wx.navigateTo({
-        //     url:`/pages/visa-groupbuy/visa-groupbuy?commodityId=${this.data.commodity.commodityId}`
-        // })
+        } else {
+            wx.navigateTo({
+                url: `/pages/visa-groupbuy/visa-groupbuy?commodityId=${this.data.commodity.commodityId}`
+            })
+        }
     }
 });

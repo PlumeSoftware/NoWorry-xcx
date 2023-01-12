@@ -40,6 +40,7 @@
     "van-image": "@vant/weapp/image/index",
     "van-divider": "@vant/weapp/divider/index",
     "van-field": "@vant/weapp/field/index",
-    "van-datetime-picker": "@vant/weapp/datetime-picker/index"
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-dialog": "@vant/weapp/dialog/index"
   }
 }

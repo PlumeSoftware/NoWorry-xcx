@@ -45,7 +45,6 @@
 }
 
 .page-home .visa-list {
-    width: 89vw;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -63,6 +62,7 @@
     border-radius: 6px;
     overflow: hidden;
     filter: drop-shadow(3px 4px 10px rgba(111, 87, 71, 0.1));
+    z-index:20;
 }
 
 .page-home .visa-list .visa-item:nth-last-child(1) {

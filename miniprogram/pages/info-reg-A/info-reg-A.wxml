@@ -101,24 +101,6 @@
           />
           <view class="option">女</view>
         </view>
-        <view
-          class="choice"
-          bind:tap="choose"
-          data-keyname="sex"
-          data-value="{{2}}"
-        >
-          <van-icon
-            wx:if="{{sex==2}}"
-            size="15px"
-            name="/static/profile/option-s.png"
-          />
-          <van-icon
-            wx:else
-            size="15px"
-            name="/static/profile/option.png"
-          />
-          <view class="option">保密</view>
-        </view>
         <view class="title">
           <view class="question">5.婚姻状态 *</view>
           <view class="tip">（必填）</view>
@@ -565,7 +547,7 @@
           </view>
           <view class="item">
             <view class="title">4.性别 *</view>
-            <view class="content">{{sex==0?'男':sex==1?'女':'保密'}}</view>
+            <view class="content">{{sex==0?'男':'女'}}</view>
           </view>
           <view class="item">
             <view class="title">5.婚姻状态 *</view>
