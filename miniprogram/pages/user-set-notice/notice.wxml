@@ -2,19 +2,48 @@
   <view class="body">
     <view class="head">
       <view class="title">Noworry用户协议条款</view>
-      <van-image show-loading="{{false}}"  width="53px" height="52px" src="https://noworry.goho.co/static/profile/noworry.png"/>
+      <van-image
+        show-loading="{{false}}"
+        width="53px"
+        height="52px"
+        src="https://noworry.goho.co/static/profile/noworry.png"
+      />
       <view class="info">由于签证申请为非常规实体商品，同意此用户协议代表您同意委托NoWorry签证使用您的信息全权代理为您申请双方协定的签证。</view>
     </view>
     <view class="item">
-      <van-icon  class="img" size="11px" name="/static/profile/line_wide.png" />
+      <van-icon
+        class="img"
+        size="11px"
+        name="/static/profile/line_wide.png"
+      />
       <view class="title">退改说明</view>
     </view>
-    <view class="caption"wx:for="{{paragraph1}}">{{item}}</view>
+    <view
+      class="caption"
+      wx:for="{{paragraph1}}"
+      wx:key="index"
+    >{{item}}
+    </view>
     <view class="item">
-      <van-icon  class="img" size="11px" name="/static/profile/line_wide.png" />
+      <van-icon
+        class="img"
+        size="11px"
+        name="/static/profile/line_wide.png"
+      />
       <view class="title">拒签退款条款</view>
     </view>
-    <view class="caption" wx:for="{{paragraph2}}">{{item}}</view>
-    <view class="list" wx:for="{{paragraph3}}">{{item}}</view>
+    <view
+      class="caption"
+      wx:for="{{paragraph2}}"
+      wx:key="index"
+    >{{item}}
+    </view>
+    <view
+      class="list"
+      wx:for="{{paragraph3}}"
+      wx:key="index"
+    >{{item}}
+    </view>
   </view>
 </view>
+

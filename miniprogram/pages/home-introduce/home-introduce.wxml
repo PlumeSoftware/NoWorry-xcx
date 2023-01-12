@@ -2,6 +2,7 @@
   <view>
     <van-image
       wx:for="{{imgList}}"
+      wx:key="index"
       show-loading="{{false}}"
       width="100vw"
       height="673px"
