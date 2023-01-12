@@ -113,7 +113,12 @@
   >
     <view style="margin:40rpx auto">优惠一览</view>
     <view class="info-list">
-      <view class="info-item" wx:for="{{favourable}}">
+      <view
+        class="info-item"
+        wx:for="{{favourable}}"
+        wx:key="index"
+      >
+
         <view>{{item.title}}</view>
         <view>
           <input model:value="- £{{item.amount}}" disabled="{{true}}" />
