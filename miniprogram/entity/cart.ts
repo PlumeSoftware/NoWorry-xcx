@@ -11,6 +11,7 @@ export interface Cart {
         orderGroupId: number,//团购
         title: string,//团购的优惠信息，和显示的时候一样
         amount: number//团购的优惠金额，和显示的时候一样
-    }
+    },
+    groupsign?: boolean
 }
 
