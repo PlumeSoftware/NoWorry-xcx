@@ -169,17 +169,31 @@
     height: auto;
     width: 80vw;
     margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
 }
 
 .handCityitem .handCity{
-    height: 100rpx;
-    width: 200rpx;
+    height: 60rpx;
+    width: 160rpx;
+    border-radius: 5px;
+    margin: 17rpx;
+    flex-wrap: wrap;
+    font-size: 32rpx;
+    line-height: 56rpx;
+}
+
+.mark{
+    background-color: #F2843B;
+    border: #ee5b0c30 solid 5rpx;
+    color: white;
+}
+.unmark{
+    color:#5d5d5d;
     background-color: #ee5b0c20;
     border: #ee5b0c30 solid 5rpx;
-    border-radius: 5px;
-    margin: auto;
-    flex-wrap: wrap;
-    font-size: 64rpx;
 }
 
 .user {
@@ -233,7 +247,7 @@
     width: 500rpx;
     text-align: center;
     bottom: 15vw;
-    background: blue;
+    background: #F2843B;
     display: flex;
     justify-content: center;
     border-radius: 7px;

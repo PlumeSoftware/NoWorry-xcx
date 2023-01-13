@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/comma-dangle */
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { webGet, webPost } from "../../utils/http"
+import { webGet } from "../../utils/http"
 //@ts-ignore
 import Toast from '@vant/weapp/toast/toast';
 import { Cart } from "../../entity/cart";
@@ -18,7 +18,7 @@ Page({
         cityIndex: 0,
 
         //商品详细参数
-        commodity: [] as Cart[],
+        commodity: {} as Cart,
         favourable: [] as Array<{}>
     },
 
@@ -27,8 +27,9 @@ Page({
         const commodityId = pages[pages.length - 1].options.commodityId
         const commodity = (await webGet<Cart>(`/visa/detail/${commodityId}`))!
         commodity.select = true
-        this.setData({ commodity: [commodity] })
-        switch (this.data.commodity[0].commodityType) {
+        commodity.groupsign = true
+        this.setData({ commodity: commodity })
+        switch (this.data.commodity.commodityType) {
             case 11: this.setData({ citiesArray: ['伦敦', '曼彻斯特', "爱丁堡"] }); break;
             case 13: this.setData({ citiesArray: ['伦敦', '贝尔法斯特'] }); break;
             case 14: this.setData({ citiesArray: ['伦敦'] }); break;
@@ -37,11 +38,10 @@ Page({
     },
 
     async bindPickerChange(e: { detail: { value: number } }) {
-        const commodityList = this.data.commodity;
-        commodityList[0].quantity = Number(e.detail.value) + 2
-        this.setData({ commodity: commodityList })
-        console.log(commodityList)
-        const fav = await culFavFromCarts(commodityList);
+        const commodity = this.data.commodity;
+        commodity.quantity = Number(e.detail.value) + 2
+        this.setData({ commodity: commodity })
+        const fav = await culFavFromCarts([commodity]);
         this.setData({ favourable: fav })
         if (!fav || fav.length == 0) Toast({ type: 'fail', message: '团购量过少~', duration: 2000 });
     },

@@ -35,22 +35,22 @@
     <view class="commodity-list">
       <view class="commodity-item">
         <view class="item-image">
-          <view class="item-image" style="background:url('{{commodity[0].picLinkTem}}');background-size:100% auto"></view>
+          <view class="item-image" style="background:url('{{commodity.picLinkTem}}');background-size:100% auto"></view>
         </view>
         <view>
           <view class="item-info">
-            <view>{{commodity[0].commodityName}}</view>
-            <view>{{commodity[0].commodityBrief}}</view>
+            <view>{{commodity.commodityName}}</view>
+            <view>{{commodity.commodityBrief}}</view>
           </view>
           <view class="item-pm">
             <picker bindchange="bindPickerChange" range="{{[2,3,4,5,6]}}">
               <view class="opea-item">
-                <view class="item-quantity">目标数量 {{commodity[0].quantity||0}}</view>
+                <view class="item-quantity">目标数量 {{commodity.quantity||0}}</view>
               </view>
             </picker>
 
-            <view class="item-remark">{{commodity[0].remark}}</view>
-            <view class="item-price">£{{commodity[0].currentPrice}}</view>
+            <view class="item-remark">{{commodity.remark}}</view>
+            <view class="item-price">£{{commodity.currentPrice}}</view>
           </view>
         </view>
       </view>

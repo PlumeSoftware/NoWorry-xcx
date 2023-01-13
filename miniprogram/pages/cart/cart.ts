@@ -26,7 +26,7 @@ Page({
         carts.forEach(async (cart: any, index: number) => {
             //检查团购订单是否可用
             if (cart.group) {
-                const result = await webGet<{ status: number }>(`/order/group/info/${cart.group.orderGroupId}`)
+                const result = await webGet<{ status: number }>(`/order/group/info/${cart.group.orderGroupId}${cart.commodityId}`)
                 if (result!.status != 0) {
                     carts[index].err = true
                 }
@@ -50,7 +50,6 @@ Page({
     checkBtn(e: any) {
         const index = e.currentTarget.dataset.index
         const carts = this.data.carts;
-        let groupId = 0;
 
         if (carts[index].err) {
             wx.showToast({ title: "该商品已经失效", icon: "none" })
@@ -58,20 +57,22 @@ Page({
         }
 
         //检查此前所有被选择的商品是否含有团购商品
-
+        let groupId = 0;
         carts[index].select = !carts[index].select
         carts.filter((i: any) => i.select).forEach((cart: any) => {
             if (cart.group) {//商品存在团购字段
                 if (groupId === 0) groupId = cart.group.orderGroupId
-                else if (groupId !== cart.group.groupId) {
+                else if (groupId !== cart.group.orderGroupId) {
+                    console.log("选定的是", groupId, "当前的是", cart.group.orderGroupId)
                     carts.forEach((i: any) => i.select = false)
                     wx.showToast({ title: "不同团购订单的商品不能一起结算哦~", icon: "none" })
                 }
-            } else {
-                if (groupId !== 0) {
+            } else {//商品为普通购买
+                if (groupId !== 0 && groupId !== -1) {
                     carts.forEach((i: any) => i.select = false)
-                    wx.showToast({ title: "团购商品与非团购商品不能一起结算哦~", icon: "none" })
+                    wx.showToast({ title: "不同团购订单的商品不能一起结算哦~", icon: "none" })
                 }
+                groupId = -1;
             }
         })
 
@@ -83,6 +84,24 @@ Page({
     allSelect() {
         const carts = this.data.carts;
         carts.forEach((i: any) => i.select = !this.data.allselect)
+
+        let groupId = 0;
+        carts.filter((i: any) => i.select).forEach((cart: any) => {
+            if (cart.group) {//商品存在团购字段
+                if (groupId === 0) groupId = cart.group.orderGroupId
+                else if (groupId !== cart.group.orderGroupId) {
+                    console.log("选定的是", groupId, "当前的是", cart.group.orderGroupId)
+                    carts.forEach((i: any) => i.select = false)
+                    wx.showToast({ title: "不同团购订单的商品不能一起结算哦~", icon: "none" })
+                }
+            } else {//商品为普通购买
+                if (groupId !== 0 && groupId !== -1) {
+                    carts.forEach((i: any) => i.select = false)
+                    wx.showToast({ title: "不同团购订单的商品不能一起结算哦~", icon: "none" })
+                }
+                groupId = -1;
+            }
+        })
         this.setAllSelect()
         this.culTotal()
     },
@@ -144,8 +163,8 @@ Page({
         //触发该方法保证待结算团购商品至多有一个
         const checkGroupItem = this.data.carts.find((i: any) => i.group && i.select)
         if (checkGroupItem) {
-            const result = await webGet<{ status: number }>(`/order/group/info/${checkGroupItem.group.orderGroupId}`);
-            if (result!.status == 0) {
+            const result = await webGet<{ status: number }>(`/order/group/info/${checkGroupItem.group.orderGroupId}${checkGroupItem.commodityId}`);
+            if (result!.status != 0) {
                 setTimeout(() => { wx.showToast({ title: '该团购订单已结束', icon: 'none', duration: 2000 }) }, 700)
                 return;
             }
