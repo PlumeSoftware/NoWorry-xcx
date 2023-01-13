@@ -22,6 +22,20 @@ Page({
 
     async updateCart() {
         const carts = getApp().globalData.carts;
+
+        carts.forEach(async (cart: any, index: number) => {
+            //检查团购订单是否可用
+            if (cart.group) {
+                const result = await webGet<{ status: number }>(`/order/group/info/${cart.group.orderGroupId}`)
+                if (result!.status != 0) {
+                    carts[index].err = true
+                }
+            }
+            if (carts[index].err) {
+                carts[index].select = false
+            }
+        })
+
         for (let i = 0; i < carts.length; i++) {
             const visa = await webGet<Visa>(`/visa/detail/${carts[i].commodityId}`, {})
             carts[i].picLink = visa?.picLink
@@ -36,8 +50,15 @@ Page({
     checkBtn(e: any) {
         const index = e.currentTarget.dataset.index
         const carts = this.data.carts;
-        //检查此前所有被选择的商品是否含有团购商品
         let groupId = 0;
+
+        if (carts[index].err) {
+            wx.showToast({ title: "该商品已经失效", icon: "none" })
+            return;
+        }
+
+        //检查此前所有被选择的商品是否含有团购商品
+
         carts[index].select = !carts[index].select
         carts.filter((i: any) => i.select).forEach((cart: any) => {
             if (cart.group) {//商品存在团购字段
@@ -54,6 +75,7 @@ Page({
             }
         })
 
+        wx.setStorageSync('carts', carts);
         this.setAllSelect()
         this.culTotal()
     },
@@ -118,6 +140,17 @@ Page({
             icon: 'loading',
             duration: 700
         })
+
+        //触发该方法保证待结算团购商品至多有一个
+        const checkGroupItem = this.data.carts.find((i: any) => i.group && i.select)
+        if (checkGroupItem) {
+            const result = await webGet<{ status: number }>(`/order/group/info/${checkGroupItem.group.orderGroupId}`);
+            if (result!.status == 0) {
+                setTimeout(() => { wx.showToast({ title: '该团购订单已结束', icon: 'none', duration: 2000 }) }, 700)
+                return;
+            }
+        }
+
         const userInfo = getApp().globalData.userInfo
         setTimeout(() => {
             if (userInfo.userName && userInfo.email && userInfo.phone && userInfo.handSignCity) {
