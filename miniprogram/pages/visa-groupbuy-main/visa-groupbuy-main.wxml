@@ -1,68 +1,64 @@
 <view class="page">
   <view>
     <view class="title">
-      <van-icon
-        class="title-img"
-        size="20px"
-        name="/static/profile/line.png"
-      />
+      <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
       <view class="title-word">团购商品</view>
     </view>
     <view class="commodity-list">
       <view class="commodity-item">
         <view class="item-image">
-          <view class="item-image" style="background:url('{{commodity[0].picLinkTem}}');background-size:100% auto"></view>
+          <view class="item-image" style="background:url('{{commodity.picLinkTem}}');background-size:100% auto"></view>
         </view>
         <view>
           <view class="item-info">
-            <view>{{commodity[0].commodityName}}</view>
-            <view>{{commodity[0].commodityBrief}}</view>
+            <view>{{commodity.commodityName}}</view>
+            <view>{{commodity.commodityBrief}}</view>
           </view>
           <view class="item-pm">
             <picker bindchange="bindPickerChange" range="{{[2,3,4,5,6]}}">
               <view class="opea-item">
-                <view class="item-quantity">目标数量 {{commodity[0].quantity||0}}</view>
+                <view class="item-quantity">目标数量 {{commodity.quantity||0}}</view>
               </view>
             </picker>
-
-            <view class="item-remark">{{commodity[0].remark}}</view>
-            <view class="item-price">£{{commodity[0].currentPrice}}</view>
+            <view class="item-remark">{{commodity.remark}}</view>
+            <view class="item-price">£{{commodity.currentPrice}}</view>
           </view>
         </view>
       </view>
     </view>
     <view class="title" wx:if="{{favourable.length}}">
-      <van-icon
-        class="title-img"
-        size="20px"
-        name="/static/profile/line.png"
-      />
+      <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
+      <view class="title-word">签证城市</view>
+    </view>
+    <view class="handCityitem">
+      <view class="handCity">伦敦</view>
+    </view>
+    <view class="title" wx:if="{{favourable.length}}">
+      <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
       <view class="title-word">团购优惠</view>
     </view>
     <view class="info-list" wx:if="{{favourable.length}}">
-      <view
-        class="info-item"
-        wx:for="{{favourable}}"
-        wx:key="index"
-      >
+      <view class="info-item" wx:for="{{favourable}}" wx:key="index">
         <view>{{item.title}}</view>
         <view>
           <input model:value="- £{{item.amount}}" disabled="{{true}}" />
         </view>
       </view>
     </view>
-    <view class="add">
-      <view
-        class="add-btn allow"
-        bind:tap="genGroupBuy"
-        wx:if="{{favourable.length}}"
-      >
-        确认并发起团购
+    <view class="add">加购</view>
+    <view class="title" wx:if="{{favourable.length}}">
+      <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
+      <view class="title-word">团购成员</view>
+    </view>
+    <view class="user">
+      <view class="userItem" wx:for="{{orderGroup.parters}}">
+        <image class="avatar" src="{{item.avatarUrl}}" />
+        <view class="userInfo">
+          <view class="userName">{{item.userName}}</view>
+          <view class="userQuantity">x{{item.quantity}}</view>
+        </view>
       </view>
-      <view class="add-btn unallow" wx:else>确认并发起团购</view>
     </view>
   </view>
   <van-toast id="van-toast" />
-
 </view>
-

@@ -9,6 +9,7 @@ import Toast from '@vant/weapp/toast/toast';
 import { Cart } from "../../entity/cart";
 import { culFavFromCarts } from "../../utils/cart";
 
+
 Page({
     data: {
         //page 参数
@@ -18,17 +19,24 @@ Page({
         cityIndex: 0,
 
         //商品详细参数
-        commodity: [] as Cart[],
-        favourable: [] as Array<{}>
+        commodity: [] as Cart,
+        favourable: [] as Array<{}>,
+        orderGroup: [] as any
     },
 
     async onShow() {
         const pages = getCurrentPages()
-        const commodityId = pages[pages.length - 1].options.commodityId
-        const commodity = (await webGet<Cart>(`/visa/detail/${commodityId}`))!
-        commodity.select = true
-        this.setData({ commodity: [commodity] })
-        switch (this.data.commodity[0].commodityType) {
+        // const orderGroupId = pages[pages.length - 1].options.orderGroupId;
+        const orderGroupId = 12111
+        const orderGroup = await webGet<any>(`/order/group/info/${orderGroupId}`);
+        orderGroup.select = true;
+
+        console.log(orderGroup, orderGroup.parters)
+        // commodity.select = true
+        this.setData({ commodity: orderGroup as Cart, orderGroup: orderGroup })
+
+        this.culFav()
+        switch (this.data.commodity.commodityType) {
             case 11: this.setData({ citiesArray: ['伦敦', '曼彻斯特', "爱丁堡"] }); break;
             case 13: this.setData({ citiesArray: ['伦敦', '贝尔法斯特'] }); break;
             case 14: this.setData({ citiesArray: ['伦敦'] }); break;
@@ -36,16 +44,13 @@ Page({
         }
     },
 
-    async bindPickerChange(e: { detail: { value: number } }) {
-        const commodityList = this.data.commodity;
-        commodityList[0].quantity = Number(e.detail.value) + 2
-        this.setData({ commodity: commodityList })
-        console.log(commodityList)
-        const fav = await culFavFromCarts(commodityList);
+    async culFav() {
+        const commodity = this.data.commodity;
+        const fav = await culFavFromCarts([commodity]);
         this.setData({ favourable: fav })
         if (!fav || fav.length == 0) Toast({ type: 'fail', message: '团购量过少~', duration: 2000 });
     },
     genGroupBuy() {
-        wx.showModal({title:'提示',content:"你的团购码是"})
+        wx.showModal({ title: '提示', content: "你的团购码是" })
     }
 });
