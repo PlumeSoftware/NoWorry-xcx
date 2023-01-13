@@ -47,12 +47,16 @@ Page({
         }
 
         Toast({ type: 'success', message: '加购成功', duration: 2000 });
+
         this.setData({ commodityId: Number((Math.random() * 100).toFixed(0)) })
 
         const carts = getApp().globalData.carts
 
         const targerIndex = carts.findIndex(
-            (item: any) => item.commodityId == this.data.commodity.commodityId && item.remark == this.data.citiesArray[this.data.cityIndex]
+            (item: any) =>
+                item.commodityId == this.data.commodity.commodityId &&
+                item.remark == this.data.citiesArray[this.data.cityIndex] &&
+                !item.group //该页面加入的无法进入团购
         )
         if (targerIndex != -1) {
             carts[targerIndex].quantity++;
