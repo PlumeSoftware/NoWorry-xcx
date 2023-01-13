@@ -20,7 +20,6 @@
                 <view class="item-quantity">目标数量 {{commodity.quantity||0}}</view>
               </view>
             </picker>
-            <view class="item-remark">{{commodity.remark}}</view>
             <view class="item-price">£{{commodity.currentPrice}}</view>
           </view>
         </view>
@@ -31,7 +30,8 @@
       <view class="title-word">签证城市</view>
     </view>
     <view class="handCityitem">
-      <view class="handCity">伦敦</view>
+      <!-- ["伦敦，爱丁堡"] -->
+      <view class="handCity {{commodity.remark==item?'mark':'unmark'}}" wx:for="{{commodity.handCity}}" bind:tap="changeHandCity" data-city="{{item}}">{{item}}</view>
     </view>
     <view class="title" wx:if="{{favourable.length}}">
       <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
@@ -45,7 +45,7 @@
         </view>
       </view>
     </view>
-    <view class="add">加购</view>
+    <view class="add" bind:tap="addCart">加入购物车</view>
     <view class="title" wx:if="{{favourable.length}}">
       <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
       <view class="title-word">团购成员</view>
