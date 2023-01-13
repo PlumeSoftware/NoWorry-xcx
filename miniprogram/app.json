@@ -19,7 +19,8 @@
     "pages/info-reg-J/info-reg-J",
     "pages/user-set-notice/notice",
     "pages/user-set-privacy/privacy",
-    "pages/visa-groupbuy/visa-groupbuy"
+    "pages/visa-groupbuy/visa-groupbuy",
+    "pages/visa-groupbuy-main/visa-groupbuy-main"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -41,6 +42,7 @@
     "van-divider": "@vant/weapp/divider/index",
     "van-field": "@vant/weapp/field/index",
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",
-    "van-dialog": "@vant/weapp/dialog/index"
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-tag": "@vant/weapp/tag/index"
   }
 }

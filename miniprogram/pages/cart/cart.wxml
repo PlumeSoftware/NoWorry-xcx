@@ -5,8 +5,6 @@
       class="cart-item"
       wx:for="{{carts}}"
       wx:key="index"
-      bind:touchstart="handleVerticalDrag"
-      bind:touchend="handleVerticalDrag"
     >
       <view
         wx:if="{{item.select}}"
@@ -27,9 +25,19 @@
       </view>
       <view class="item-right">
         <view class="item-info">
-          <view>{{item.commodityName}}</view>
+          <view>{{item.commodityName}}
+            <van-tag
+              mark
+              plain
+              color="#{{item.group.orderGroupId*25%1000000}}"
+              style="line-height:10px"
+              wx:if="{{item.group}}"
+            >团购
+            </van-tag>
+          </view>
           <view>{{item.commodityBrief}}</view>
         </view>
+
         <view class="item-pm">
           <view class="item-number">
             <van-icon
