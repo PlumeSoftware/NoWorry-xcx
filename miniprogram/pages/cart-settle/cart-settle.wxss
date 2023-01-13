@@ -159,6 +159,8 @@
 }
 
 .commodity-list .commodity-item .item-info view:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
     text-align: left;
     font-size: 14px;
     font-weight: 600;

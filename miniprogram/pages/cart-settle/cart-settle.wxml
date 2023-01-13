@@ -79,7 +79,16 @@
       </view>
       <view>
         <view class="item-info">
-          <view>{{item.commodityName}}</view>
+          <view>{{item.commodityName}}
+            <van-tag
+              mark
+              plain
+              color="#{{item.group.orderGroupId*25%1000000}}"
+              style="line-height:10px"
+              wx:if="{{item.group}}"
+            >团购
+            </van-tag>
+          </view>
           <view>{{item.commodityBrief}}</view>
         </view>
         <view class="item-pm">

@@ -83,7 +83,7 @@ Page({
         let favourableTotal = 0;
 
         const carts = getApp().globalData.carts.filter((cart: Cart) => cart.select == true);
-
+        console.log(carts)
         //计算商品总价,统计签证类型和价格
         carts.forEach((cart: Cart) => total += cart.currentPrice! * cart.quantity!)
 
