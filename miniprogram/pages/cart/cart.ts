@@ -36,13 +36,26 @@ Page({
     checkBtn(e: any) {
         const index = e.currentTarget.dataset.index
         const carts = this.data.carts;
+        //检查此前所有被选择的商品是否含有团购商品
+        let groupId = 0;
         carts[index].select = !carts[index].select
+        carts.filter((i: any) => i.select).forEach((cart: any) => {
+            if (cart.group) {//商品存在团购字段
+                if (groupId === 0) groupId = cart.group.orderGroupId
+                else if (groupId !== cart.group.groupId) {
+                    carts.forEach((i: any) => i.select = false)
+                    wx.showToast({ title: "不同团购订单的商品不能一起结算哦~", icon: "none" })
+                }
+            } else {
+                if (groupId !== 0) {
+                    carts.forEach((i: any) => i.select = false)
+                    wx.showToast({ title: "团购商品与非团购商品不能一起结算哦~", icon: "none" })
+                }
+            }
+        })
 
         this.setAllSelect()
         this.culTotal()
-    },
-    handleVerticalDrag(e: { changedTouches: any }) {
-        console.log(e.changedTouches[0])
     },
 
     allSelect() {
@@ -74,18 +87,17 @@ Page({
     },
 
     showFav() {
-        if(this.data.favourableTotal>0)            this.setData({ show: !this.data.show })
+        if (this.data.favourableTotal > 0) this.setData({ show: !this.data.show })
     },
 
     //重新计算价格
     culTotal() {
         let total = 0;
         const carts = this.data.carts;
-        carts.forEach((item: any) => total += item.select ? item.currentPrice * item.quantity : 0)
+        carts.filter((item: any) => item.select).forEach((item: any) => total += item.currentPrice * item.quantity)
 
         let favourableTotal = 0;
 
-        //生成优惠方案
         culFavFromCarts(carts).then(fav => {
             this.setData({ favourable: fav })
             //计算优惠价格
