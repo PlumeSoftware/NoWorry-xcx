@@ -216,6 +216,7 @@ Page({
                 payWay: 1,
                 orderDetail: orderDetail,
                 favcode: this.data.favcode,
+                orderGroupId: paid[0].group.orderGroupId,
                 contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.wechat}`
             }).then(() => this.afterPayment(paid))
 
@@ -241,6 +242,7 @@ Page({
                     orderPaymentPrice: 0,
                     payWay: 0,
                     orderDetail: orderDetail,
+                    orderGroupId: paid[0].group.orderGroupId,
                     favcode: this.data.favcode,
                     contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.wechat}`
                 }).then(() => this.afterPayment(paid))
