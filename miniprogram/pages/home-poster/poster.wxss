@@ -1,10 +1,12 @@
 .page-poster {
     background-color: #F8F6EE;
     display: flex;
+    margin: 0;
+    padding: 0;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    height: auto;
+    min-height: 100vh;
 }
 
 .page-poster .body {
@@ -39,4 +41,61 @@
     line-height: 17px;
     color: #161415;
     padding-left: 8px;
+}
+
+.page-poster .poster {
+    background-size: 100%;
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+}
+
+.page-poster .poster .posterTable {
+    width: 680rpx;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    margin: 0 auto;
+    margin-top: 480rpx;
+}
+
+.page-poster .poster .posterTable .handCountry{
+    width: 170rpx;
+}
+
+.page-poster .poster .posterTable .handCity{
+    width: 170rpx;
+}
+
+.page-poster .poster .posterTable .cell{
+    border: rgb(239, 239, 235) solid 3rpx;
+}
+
+.page-poster .poster .posterTable .cell:nth-child(2n){
+    background-color: rgb(246, 245, 240);
+}
+
+.page-poster .poster .posterTable .cell:nth-child(2n+1){
+    background-color: rgb(255, 255, 255);
+}
+
+.page-poster .poster .posterTable .handCountry .cell{
+    width: 170rpx;
+    font-size: 24rpx;
+    font-weight: 900;
+    line-height: 60rpx;
+    height: 60rpx;
+}
+
+.page-poster .poster .posterTable .handCity .cell{
+    width: 170rpx;
+    height: 40rpx;
+    font-size: 24rpx;
+    line-height: 60rpx;
+    height: 60rpx;
+}
+.page-poster .poster .posterTable .handCity .cell:nth-child(1){
+    font-weight: 900;
 }
