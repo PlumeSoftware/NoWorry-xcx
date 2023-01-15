@@ -112,3 +112,10 @@ nav-class {
     top:80vh;
     z-index: 99;
 }
+
+.van-dialog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
