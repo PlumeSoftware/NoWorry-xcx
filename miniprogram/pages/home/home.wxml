@@ -2,7 +2,7 @@
   <view class="banner">
     <swiper autoplay="{{true}}" interval="{{3000}}" indicator-dots="{{true}}" bindchange="remake">
       <swiper-item wx:for="{{[0,1,2,3]}}" wx:key="index">
-        <image show-loading="{{false}}" width="100%" height="279px" src="{{coverUrlList[index]}}" bind:tap="toPoster" data-id="{{index}}" />
+        <image show-loading="{{false}}" width="100%" height="560rpx" src="{{coverUrlList[index]}}" bind:tap="toPoster" data-id="{{index}}" />
       </swiper-item>
     </swiper>
   </view>
@@ -28,7 +28,7 @@
         <view class="detail-info">查看详情</view>
         <van-icon size="9px" name="/static/home/return.png" />
       </view>
-      <van-image show-loading="{{false}}" width="335px" height="150px" src="https://s1.imagehub.cc/images/2023/01/06/bbc745a0341dfd3ad289c26a3c4820fe.png" />
+      <van-image show-loading="{{false}}" width="670rpx" height="300rpx" src="https://s1.imagehub.cc/images/2023/01/06/bbc745a0341dfd3ad289c26a3c4820fe.png" />
     </view>
     <view class="service">
       <view class="title">服务流程</view>
