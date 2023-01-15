@@ -181,7 +181,7 @@
     border-radius: 5px;
     margin: 17rpx;
     flex-wrap: wrap;
-    font-size: 32rpx;
+    font-size: 30rpx;
     line-height: 56rpx;
 }
 
