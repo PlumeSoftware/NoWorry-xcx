@@ -1,5 +1,5 @@
 <view class="page-visa">
-  <!-- <button class="btn" bindtap="onTap">加入团购 !</button> -->
+  <button class="btn" bindtap="showEnterGroup">团购会场</button>
 
   <van-tabs
     class="visa-group-list"
@@ -123,5 +123,20 @@
       </view>
     </van-tab>
   </van-tabs>
+
+  <van-dialog
+    use-slot
+    show-cancel-button
+    bind:close="showEnterGroup"
+    show="{{ show }}"
+  >
+    <van-field
+      class="van-dialog"
+      model:value="{{groupcode}}"
+      label="团购码"
+      placeholder="请输入团购码"
+    />
+  </van-dialog>
+
 </view>
 

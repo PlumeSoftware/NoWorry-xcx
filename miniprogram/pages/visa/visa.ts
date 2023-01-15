@@ -5,11 +5,12 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 import { Visa } from "../../entity/visa";
-import { webGet} from "../../utils/http"
+import { webGet } from "../../utils/http"
 Component({
     data: {
         activeVisa: 0,
-        show: true,
+        show: false,
+        groupcode: '',
         visaList: [
             [
             ]
@@ -23,9 +24,24 @@ Component({
             const commodityId = e.currentTarget.dataset.commodityid
             wx.navigateTo({ url: '/pages/visa-detail/visa-detail' + `?commodityId=${commodityId}` })
         },
-        onTap() {
+        showEnterGroup(e: { detail: string }) {
+            if (e.detail == 'confirm') {
+                //@ts-ignore
+                const groupcode = this.data.groupcode
+                //@ts-ignore
+                webGet<any>(`/order/group/info/${groupcode}`)
+                    .then((res) => {
+                        if (res) {
+                            wx.reLaunch({ url: `/pages/visa-groupbuy-main/visa-groupbuy-main?groupcode=${groupcode}` })
+                        } else {
+                            wx.showToast({ title: '该团购已结束', icon: 'none' })
+                        }
+                    })
+            }
+            //@ts-ignore
+            this.setData({ show: !this.data.show, groupcode: '' })
 
-        }
+        },
 
     },
     lifetimes: {
