@@ -110,7 +110,7 @@ nav-class {
 
     position: fixed;
     top:80vh;
-    z-index: 99;
+    z-index: 10;
 }
 
 .van-dialog{

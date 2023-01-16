@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/comma-dangle */
 /* eslint-disable promise/always-return */
 
-import { webGet } from "miniprogram/utils/http";
+import { webGet } from "../../utils/http";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 Page({
@@ -120,5 +120,17 @@ Page({
         const need2 = tabledata.handCity.findIndex(i => i.city == "") < 3 ? 3 : tabledata.handCity.findIndex(i => i.city == "")
         tabledata.handCity = tabledata.handCity.slice(0, need2)
         this.setData({ posterIndex: Number(index), tabledata: tabledata })
+
+        webGet<{ handCountry: string[], handCity: { city: string, date: string[] }[] }>("/visa/slotinfo").then((res) => {
+            if (res) {
+                res.handCountry.push("", "", "", "", "", "", "", "", "", "", "", "", "", "", "")
+                res.handCity.push({ city: "", date: [] }, { city: "", date: [] }, { city: "", date: [] })
+                const need1 = res.handCountry.findIndex(i => i == "") < 13 ? 13 : res.handCountry.findIndex(i => i == "")
+                res.handCountry = res.handCountry.slice(0, need1)
+                const need2 = res.handCity.findIndex(i => i.city == "") < 3 ? 3 : res.handCity.findIndex(i => i.city == "")
+                res.handCity = res.handCity.slice(0, need2)
+                this.setData({ tabledata: res })
+            }
+        })
     }
 });
