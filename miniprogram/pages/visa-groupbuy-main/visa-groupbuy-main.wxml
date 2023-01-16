@@ -1,7 +1,11 @@
 <view class="page">
   <view>
     <view class="title">
-      <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
+      <van-icon
+        class="title-img"
+        size="20px"
+        name="/static/profile/line.png"
+      />
       <view class="title-word">团购商品</view>
     </view>
     <view class="commodity-list">
@@ -15,30 +19,46 @@
             <view>{{commodity.commodityBrief}}</view>
           </view>
           <view class="item-pm">
-            <picker bindchange="bindPickerChange" range="{{[2,3,4,5,6]}}">
-              <view class="opea-item">
-                <view class="item-quantity">目标数量 {{commodity.quantity||0}}</view>
-              </view>
-            </picker>
+            <view class="opea-item">
+              <view class="item-quantity">目标数量 {{commodity.quantity||0}}</view>
+            </view>
             <view class="item-price">£{{commodity.currentPrice}}</view>
           </view>
         </view>
       </view>
     </view>
     <view class="title" wx:if="{{favourable.length}}">
-      <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
+      <van-icon
+        class="title-img"
+        size="20px"
+        name="/static/profile/line.png"
+      />
       <view class="title-word">签证城市</view>
     </view>
     <view class="handCityitem">
       <!-- ["伦敦，爱丁堡"] -->
-      <view class="handCity {{commodity.remark==item?'mark':'unmark'}}" wx:for="{{commodity.handCity}}" bind:tap="changeHandCity" data-city="{{item}}">{{item}}</view>
+      <view
+        class="handCity {{commodity.remark==item?'mark':'unmark'}}"
+        wx:for="{{commodity.handCity}}"
+        bind:tap="changeHandCity"
+        data-city="{{item}}"
+      >{{item}}
+      </view>
     </view>
     <view class="title" wx:if="{{favourable.length}}">
-      <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
+      <van-icon
+        class="title-img"
+        size="20px"
+        name="/static/profile/line.png"
+      />
       <view class="title-word">团购优惠</view>
     </view>
     <view class="info-list" wx:if="{{favourable.length}}">
-      <view class="info-item" wx:for="{{favourable}}" wx:key="index">
+      <view
+        class="info-item"
+        wx:for="{{favourable}}"
+        wx:key="index"
+      >
         <view>{{item.title}}</view>
         <view>
           <input model:value="- £{{item.amount}}" disabled="{{true}}" />
@@ -47,7 +67,11 @@
     </view>
     <view class="add" bind:tap="addCart">加入购物车</view>
     <view class="title" wx:if="{{favourable.length}}">
-      <van-icon class="title-img" size="20px" name="/static/profile/line.png" />
+      <van-icon
+        class="title-img"
+        size="20px"
+        name="/static/profile/line.png"
+      />
       <view class="title-word">团购成员</view>
     </view>
     <view class="user">
@@ -62,3 +86,4 @@
   </view>
   <van-toast id="van-toast" />
 </view>
+
