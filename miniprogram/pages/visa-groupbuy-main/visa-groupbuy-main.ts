@@ -23,9 +23,8 @@ Page({
 
     async onShow() {
         const pages = getCurrentPages()
-        // const orderGroupId = pages[pages.length - 1].options.orderGroupId;
-        const orderGroupId = 12111
-        const orderGroup = await webGet<any>(`/order/group/info/${orderGroupId}`);
+        const groupcode = pages[pages.length - 1].options.groupcode;
+        const orderGroup = await webGet<any>(`/order/group/info/${groupcode}`);
         orderGroup.select = true;
         orderGroup.remark = orderGroup.handCity[0]
 

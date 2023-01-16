@@ -4,15 +4,17 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
+import { searchWord } from "../../utils/math";
+
 Page({
     data: {
         input: false,
         keywordIndex: -1,
         keywordList: [
             "银行流水",
-            "刷签",
-            "入境国",
-            "签证时长",
+            "行程",
+            "入境",
+            "安全性",
             "面签城市",
             "NoWorry",
             "有效期",
@@ -51,15 +53,15 @@ Page({
             ["Q: 最早能刷到几号的签证？", "A: 需要您提供理想的递签时间，一般为10天以上的间，例如12月1日-12月10日，递签后一般15个工作日出签返还护照，请算好合理的递签时间。"],
             ["Q: 多久可以刷到？刷到后如何告知？", "A: 一般周期在3-10天内，最快的一晚上就能有结果。尽量把时间区间给足给长就能刷到。法签会用您的账号刷到后我们会主动发消息/发邮件通知您，请您在收到通知之后3h内上账号支付官网的预约费（32磅左右）。"],
             ["Q: 你们刷slot会锁账号吗？", ["A: 绝对不会。NoWorry的加急系统内部有2000个账号实时运行，仅在检测到您心仪的位置之后才会自动登录您的帐号并成功拿到预约位置，只要您的登录与系统不冲突，不会存在锁号的情况。登录的全过程几乎完全模拟了人类登录的过程，至今没有出现过也绝对不会出现网上说的递签时预约不被承认的状况。安全性完全保证。"]]
-
-        ]
+        ],
+        qaListFilter: [] as any,
     },
     focus() {
         this.setData({ input: true })
     },
 
     init() {
-        this.setData({ input: false, keywordIndex: -1 })
+        this.setData({ input: false, keywordIndex: -1, qaListFilter: [] })
     },
     // blur() {
     // this.setData({ input: false })
@@ -67,7 +69,22 @@ Page({
     chooseKeyword(e: any) {
         this.setData({
             keywordIndex: e.currentTarget.dataset.index,
-            input: true
+            input: true,
         })
-    }
+        const t = {
+            detail: {
+                value: e.currentTarget.dataset.word
+            }
+        }
+        this.search(t)
+    },
+    search(e: { detail: { value: string } }) {
+        if (e.detail.value.length >= 1) {
+            console.log(searchWord(e.detail.value, this.data.qaList))
+            this.setData({ qaListFilter: new Array(...searchWord(e.detail.value, this.data.qaList)) })
+        }
+        else {
+            this.setData({ qaListFilter: [] as any })
+        }
+    },
 });

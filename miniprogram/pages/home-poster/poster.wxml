@@ -6,5 +6,16 @@
     </view>
     <view class="info">{{posterList[posterIndex].posterInfo}}</view>
   </view>
-  <van-image show-loading="{{false}}"  width="100vw" height="673px" src="{{posterList[posterIndex].posterImg}}" />
+  <van-image show-loading="{{false}}" width="100vw" height="673px" wx:if="{{posterIndex<3}}" src="{{posterList[posterIndex].posterImg}}" />
+  <view class="poster" style="background-image: url({{posterList[posterIndex].posterImg}})" wx:if="{{posterIndex==3}}">
+    <view class="posterTable">
+      <view class="handCountry">
+        <view class="cell" wx:for="{{tabledata.handCountry}}">{{item}}</view>
+      </view>
+      <view class="handCity" wx:for="{{tabledata.handCity}}" wx:for-item="ite">
+        <view class="cell">{{ite.city}}</view>
+        <view class="cell" wx:for="{{tabledata.handCountry}}" wx:if="{{index!=tabledata.handCountry.length-1}}">{{ite.date[index]||''}}</view>
+      </view>
+    </view>
+  </view>
 </view>

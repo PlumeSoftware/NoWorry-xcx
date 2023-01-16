@@ -124,7 +124,7 @@
     background-color: #FEFFFB;
     border-radius: 6px;
     height: 117px;
-    width: 335px;
+    width: 670rpx;
     margin-top: -100px;
     margin-bottom: 14.4vw;
 }

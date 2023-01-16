@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/comma-dangle */
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { webGet } from "../../utils/http"
+import { webGet, webPost } from "../../utils/http"
 //@ts-ignore
 import Toast from '@vant/weapp/toast/toast';
 import { Cart } from "../../entity/cart";
@@ -29,12 +29,6 @@ Page({
         commodity.select = true
         commodity.groupsign = true
         this.setData({ commodity: commodity })
-        switch (this.data.commodity.commodityType) {
-            case 11: this.setData({ citiesArray: ['伦敦', '曼彻斯特', "爱丁堡"] }); break;
-            case 13: this.setData({ citiesArray: ['伦敦', '贝尔法斯特'] }); break;
-            case 14: this.setData({ citiesArray: ['伦敦'] }); break;
-            case 15: this.setData({ citiesArray: ['线上办理', '线下办理'] }); break;
-        }
     },
 
     async bindPickerChange(e: { detail: { value: number } }) {
@@ -46,8 +40,14 @@ Page({
         if (!fav || fav.length == 0) Toast({ type: 'fail', message: '团购量过少~', duration: 2000 });
     },
     async genGroupBuy() {
-        // const result = await webPost<number>('/order/group/create', { commodityId: 115, quantity: 57, openid: "89asdadzsfsdfdasad" });
-        // wx.showModal({ title: '提示', content: String(result) })
-        wx.navigateTo({ url: '/pages/visa-groupbuy-main/visa-groupbuy-main' })
+        const result = await webPost<number>('/order/group/create', {
+            commodityId: this.data.commodity.commodityId,
+            quantity: this.data.commodity.quantity,
+            openid: getApp().globalData.userInfo.openid
+        });
+        const handler = await wx.showModal({ title: '团购码', content: String(result) })
+        if (handler.confirm) {
+            wx.reLaunch({ url: `/pages/visa-groupbuy-main/visa-groupbuy-main?groupcode=${result}` })
+        }
     }
 });
