@@ -16,15 +16,12 @@ Page({
   toShare() {
     wx.showShareMenu({
       withShareTicket: true,
-      menus: ['shareAppMessage','shareTimeline']
+      menus: ['shareAppMessage', 'shareTimeline']
     })
   },
 
   onShareAppMessage() { },
 
-  onLoad() {
-    this.selectComponent('#home').start();
-  },
   async onChange(event: any) {
     // event.detail 的值为当前选中项的索引
     if (!getApp().globalData.token && (event.detail != 0)) {
@@ -41,30 +38,7 @@ Page({
         })
       })
     }
-
     this.setData({ active: event.detail });
-
-    switch (event.detail) {
-      case 0: {
-        this.selectComponent('#cart').setAllSelect();
-        this.selectComponent('#cart').culTotal();
-        break;
-      }
-      case 2: {
-        this.selectComponent('#cart').updateCart();
-        this.selectComponent('#cart').setAllSelect();
-        this.selectComponent('#cart').culTotal();
-        break;
-      }
-      case 3: {
-        await this.selectComponent('#user').updata();
-        break;
-      }
-    }
-
-
-    wx.setNavigationBarTitle({
-      title: this.data.tarbar[this.data.active].item
-    })
+    wx.setNavigationBarTitle({ title: this.data.tarbar[this.data.active].item })
   },
 });

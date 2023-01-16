@@ -8,7 +8,7 @@ import { Order } from "../../entity/order";
 import { webGet } from "../../utils/http";
 
 
-Page({
+Component({
   data: {
     userInfo: {
       userName: '',
@@ -22,38 +22,45 @@ Page({
     hasInterval: false //判断是否存在更新用户信息的定时器
   },
 
-  login() {
-    this.setData({ userInfo: getApp().globalData.userInfo, token: getApp().globalData.token })
-    webGet<Array<Order>>(`/order/${getApp().globalData.token}`)
-      .then(result => {
-        const orderOutline: Array<number> = [0, 0, 0]
-        if (result) {
-          result.forEach((item: Order) => {
-            if (item.orderStatus == 3) orderOutline[0] += item.orderDetailInfoGroup!.length
-            else orderOutline[item.orderStatus!] += item.orderDetailInfoGroup!.length
-          })
-          this.setData({ orderOutline: orderOutline })
-        }
-      })
-  },
+  methods: {
+    login() {
+      this.setData({ userInfo: getApp().globalData.userInfo, token: getApp().globalData.token })
+      webGet<Array<Order>>(`/order/${getApp().globalData.token}`)
+        .then(result => {
+          const orderOutline: Array<number> = [0, 0, 0]
+          if (result) {
+            result.forEach((item: Order) => {
+              if (item.orderStatus == 3) orderOutline[0] += item.orderDetailInfoGroup!.length
+              else orderOutline[item.orderStatus!] += item.orderDetailInfoGroup!.length
+            })
+            this.setData({ orderOutline: orderOutline })
+          }
+        })
+    },
 
-  updata() {
-    this.login()
-    if (!this.data.hasInterval) setInterval(() => this.login(), 2500)
-    this.setData({ hasInterval: true })
-  },
+    updata() {
+      this.login()
+      if (!this.data.hasInterval) setInterval(() => this.login(), 2500)
+      this.setData({ hasInterval: true })
+    },
 
 
-  toOrder() {
-    wx.navigateTo({ url: "/pages/user-order/user-order" })
+    toOrder() {
+      wx.navigateTo({ url: "/pages/user-order/user-order" })
+    },
+    toCus() {
+      wx.navigateTo({ url: "/pages/user-qaa/user-qaa" })
+    },
+    toCop() {
+      wx.navigateTo({ url: "/pages/user-cop/user-cop" })
+    },
+    toSet() {
+      wx.navigateTo({ url: "/pages/user-set/user-set" })
+    }
   },
-  toCus() {
-    wx.navigateTo({ url: "/pages/user-qaa/user-qaa" })
-  },
-  toCop() {
-    wx.navigateTo({ url: "/pages/user-cop/user-cop" })
-  },
-  toSet() {
-    wx.navigateTo({ url: "/pages/user-set/user-set" })
+  lifetimes: {
+    ready() {
+      this.updata();
+    }
   }
 });

@@ -4,7 +4,7 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { webGet } from "../../utils/http"
-Page({
+Component({
     data: {
         coverUrlList: [
             "https://s1.imagehub.cc/images/2023/01/06/f626d816429614277cb1d8b600fe642d.png",
@@ -16,34 +16,37 @@ Page({
 
         VisaList: [] as any
     },
-    toShare() {
-        wx.showShareMenu({
-            withShareTicket: true,
-            menus: ['shareAppMessage']
-        })
-    },
+    methods: {
+        toShare() {
+            wx.showShareMenu({
+                withShareTicket: true,
+                menus: ['shareAppMessage']
+            })
+        },
 
-    onShareAppMessage() {},
+        onShareAppMessage() { },
 
-    toPoster(e: any) {
-        wx.navigateTo({ url: '/pages/home-poster/poster' + "?posterId=" + e.currentTarget.dataset["id"] })
+        toPoster(e: any) {
+            wx.navigateTo({ url: '/pages/home-poster/poster' + "?posterId=" + e.currentTarget.dataset["id"] })
+        },
+        toIntroduce() {
+            wx.navigateTo({ url: "/pages/home-introduce/home-introduce" })
+        },
+        toDetail(e: any) {
+            const commodityId = e.currentTarget.dataset.commodityid
+            wx.navigateTo({ url: '/pages/visa-detail/visa-detail' + `?commodityId=${commodityId}` })
+        },
+        //事件 显示时触发
+        remake(e: any) {
+            if (e.detail.current == this.data.coverUrlList.length - 1) {
+                this.setData({ coverIndex: 0 })
+            }
+        },
     },
-    toIntroduce() {
-        wx.navigateTo({ url: "/pages/home-introduce/home-introduce" })
-    },
-    toDetail(e: any) {
-        const commodityId = e.currentTarget.dataset.commodityid
-        wx.navigateTo({ url: '/pages/visa-detail/visa-detail' + `?commodityId=${commodityId}` })
-    },
-    //事件 显示时触发
-    remake(e:any){
-        if(e.detail.current==this.data.coverUrlList.length-1){
-            this.setData({coverIndex:0})
+    lifetimes: {
+        async ready() {
+            this.setData({ VisaList: await webGet(`/visa/group/hot`) })
+            this.setData({ coverIndex: (this.data.coverIndex + 1) % this.data.coverUrlList.length })
         }
-    },
-    //页面渲染完毕
-    async start() {
-        this.setData({ VisaList: await webGet(`/visa/group/hot`) })
-        this.setData({ coverIndex: (this.data.coverIndex + 1) % this.data.coverUrlList.length })
     }
 });
