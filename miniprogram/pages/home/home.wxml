@@ -1,23 +1,53 @@
 <view class="page-home">
   <view class="banner">
-    <swiper autoplay="{{true}}" interval="{{3000}}" indicator-dots="{{true}}" bindchange="remake">
+    <swiper
+      autoplay="{{true}}"
+      interval="{{3000}}"
+      indicator-dots="{{true}}"
+      bindchange="remake"
+    >
       <swiper-item wx:for="{{[0,1,2,3]}}" wx:key="index">
-        <image show-loading="{{false}}" width="100%" height="560rpx" src="{{coverUrlList[index]}}" bind:tap="toPoster" data-id="{{index}}" />
+        <image
+          show-loading="{{false}}"
+          width="100%"
+          height="560rpx"
+          src="{{coverUrlList[index]}}"
+          bind:tap="toPoster"
+          data-id="{{index}}"
+        />
       </swiper-item>
     </swiper>
   </view>
   <view class="body">
     <view class="visum">
       <view class="title">热门推荐</view>
-        <scroll-view class="visa-list" scroll-x="{{true}}">
-          <view class="visa-item" wx:for="{{VisaList}}" wx:key="index" bind:tap="toDetail" data-commodityid="{{item.commodityId}}">
-            <view class="item-image" style="background:url('{{item.picLinkTem}}');background-size:100% auto"></view>
-            <view class="info">
-              <view class="title">{{item.commodityName}}</view>
-              <view class="price">£{{item.currentPrice}}</view>
-            </view>
+      <scroll-view class="visa-list" scroll-x="{{true}}">
+        <view
+          class="visa-item"
+          wx:for="{{VisaList}}"
+          wx:key="index"
+          bind:tap="toDetail"
+          data-commodityid="{{item.commodityId}}"
+        >
+          <view class="item-image" style="background:url('{{item.picLinkTem}}');background-size:100% auto"></view>
+          <view class="info">
+            <view class="title">{{item.commodityName}}</view>
+            <view class="price">£{{item.currentPrice}}</view>
           </view>
-        </scroll-view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="service">
+      <view class="title">服务流程</view>
+      <view class="process">
+        <van-image
+          show-loading="{{false}}"
+          width="335px"
+          height="121px"
+          src="https://s1.imagehub.cc/images/2023/01/06/c3028f4bd60f080ab12a15ea37f5eccd.png"
+        />
+        <view class="background"></view>
+      </view>
     </view>
     <view class="about">
       <view class="title">关于我们</view>
@@ -28,14 +58,40 @@
         <view class="detail-info">查看详情</view>
         <van-icon size="9px" name="/static/home/return.png" />
       </view>
-      <van-image show-loading="{{false}}" width="670rpx" height="300rpx" src="https://s1.imagehub.cc/images/2023/01/06/bbc745a0341dfd3ad289c26a3c4820fe.png" />
+      <van-image
+        show-loading="{{false}}"
+        width="670rpx"
+        height="300rpx"
+        src="https://s1.imagehub.cc/images/2023/01/06/bbc745a0341dfd3ad289c26a3c4820fe.png"
+      />
     </view>
-    <view class="service">
-      <view class="title">服务流程</view>
-      <view class="process">
-        <van-image show-loading="{{false}}" width="335px" height="121px" src="https://s1.imagehub.cc/images/2023/01/06/c3028f4bd60f080ab12a15ea37f5eccd.png" />
-        <view class="background"></view>
+    <view class="about">
+      <view class="title">常见问题</view>
+      <view class="qa-list qa-list-sift">
+        <view class="qa-item">
+          <view class="question">{{qaList[qaIndex][0]}}</view>
+          <view class="answer" wx:if="{{qaList[qaIndex][1].length>10}}">{{qaList[qaIndex][1]}}</view>
+          <view class="answer" wx:else>
+            <view
+              style="margin-bottom:1vh"
+              wx:for="{{qaList[qaIndex][1]}}"
+              wx:key="index"
+              wx:for-item="content"
+            >
+              {{content}}
+            </view>
+          </view>
+        </view>
       </view>
+      <view class="keyword-list">
+        <view class="keyword" bind:tap="changeQuestion">
+          换一换
+        </view>
+        <view class="keyword" bind:tap="toQuestionAnswer">
+          显示所有
+        </view>
+      </view>
+
     </view>
     <view>
       <view class="title">联系我们</view>
@@ -44,10 +100,22 @@
     <view class="contact">
       <view class="cuslist">
         <view class="cus-qr">
-          <van-image show-loading="{{false}}" show-menu-by-longpress width="20.6vw" height="20.6vw" src="https://noworry.goho.co/static/profile/cus1.png" />
+          <van-image
+            show-loading="{{false}}"
+            show-menu-by-longpress
+            width="20.6vw"
+            height="20.6vw"
+            src="https://noworry.goho.co/static/profile/cus1.png"
+          />
         </view>
         <view class="cus-qr">
-          <van-image show-loading="{{false}}" show-menu-by-longpress width="20.6vw" height="20.6vw" src="https://noworry.goho.co/static/home/cus3.png" />
+          <van-image
+            show-loading="{{false}}"
+            show-menu-by-longpress
+            width="20.6vw"
+            height="20.6vw"
+            src="https://noworry.goho.co/static/home/cus3.png"
+          />
         </view>
       </view>
       <view class="contact-tip">
@@ -68,3 +136,4 @@
     <view class="copyright">©copyright for NoWorry 2022</view>
   </view>
 </view>
+
