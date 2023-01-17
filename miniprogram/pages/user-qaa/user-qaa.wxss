@@ -37,7 +37,7 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 2vw;
+    margin:0 2vw;
 }
 
  .keyword {
