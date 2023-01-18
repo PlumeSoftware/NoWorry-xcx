@@ -1,5 +1,21 @@
 <view class="page">
   <view>
+    <van-notice-bar
+      wx:if="{{orderGroup.status==0}}"
+      color="#1989fa"
+      background="#ecf9ff"
+      left-icon="info-o"
+      style="margin:10px"
+      text="当前团购量还未达标哦~"
+    />
+    <van-notice-bar
+      wx:if="{{orderGroup.status==1}}"
+      color="#1989fa"
+      background="#ecf9ff"
+      left-icon="info-o"
+      style="margin:10px"
+      text="当前团购量已达标！"
+    />
     <view class="title">
       <van-icon
         class="title-img"
@@ -40,6 +56,7 @@
       <view
         class="handCity {{commodity.remark==item?'mark':'unmark'}}"
         wx:for="{{commodity.handCity}}"
+        wx:key="index"
         bind:tap="changeHandCity"
         data-city="{{item}}"
       >{{item}}
@@ -75,7 +92,11 @@
       <view class="title-word">团购成员</view>
     </view>
     <view class="user">
-      <view class="userItem" wx:for="{{orderGroup.parters}}">
+      <view
+        class="userItem"
+        wx:for="{{orderGroup.parters}}"
+        wx:key="index"
+      >
         <image class="avatar" src="{{item.avatarUrl}}" />
         <view class="userInfo">
           <view class="userName">{{item.userName}}</view>

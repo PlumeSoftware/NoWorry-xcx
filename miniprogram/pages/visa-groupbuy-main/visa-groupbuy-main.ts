@@ -37,7 +37,6 @@ Page({
         const commodity = this.data.commodity;
         const fav = await culFavFromCarts([commodity]);
         this.setData({ favourable: fav })
-        if (!fav || fav.length == 0) Toast({ type: 'fail', message: '团购量过少~', duration: 2000 });
     },
 
     changeHandCity(e: { currentTarget: { dataset: { city: string } } }) {
