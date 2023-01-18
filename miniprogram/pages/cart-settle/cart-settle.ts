@@ -85,7 +85,7 @@ Page({
         const carts = getApp().globalData.carts.filter((cart: Cart) => cart.select == true);
         console.log(carts)
         //计算商品总价,统计签证类型和价格
-        carts.forEach((cart: Cart) => total += cart.currentPrice! * cart.quantity!)
+        carts.forEach((cart: Cart) => total += (cart.currentPrice! + (cart.urgentsign! ? 20 : 0)) * cart.quantity!)
 
         //生成优惠方案
         this.setData({ favourableTotal: 0, carts: carts })
@@ -168,7 +168,7 @@ Page({
                 boughtQuantity: cart.quantity,
                 invPrice: cart.quantity! * cart.currentPrice!,
                 commodityId: cart.commodityId,
-                remark: cart.remark
+                remark: `${cart.remark}${cart.urgentsign ? "加急" : ""}`
             })
         })
 
@@ -216,7 +216,7 @@ Page({
                 payWay: 1,
                 orderDetail: orderDetail,
                 favcode: this.data.favcode,
-                orderGroupId: paid[0].group.orderGroupId,
+                orderGroupId: paid[0].group ? paid[0].group.orderGroupId : null,
                 contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.wechat}`
             }).then(() => this.afterPayment(paid))
 
@@ -242,7 +242,7 @@ Page({
                     orderPaymentPrice: 0,
                     payWay: 0,
                     orderDetail: orderDetail,
-                    orderGroupId: paid[0].group.orderGroupId,
+                    orderGroupId: paid[0].group ? paid[0].group.orderGroupId : null,
                     favcode: this.data.favcode,
                     contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.wechat}`
                 }).then(() => this.afterPayment(paid))

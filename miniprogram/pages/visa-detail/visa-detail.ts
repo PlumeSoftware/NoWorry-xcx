@@ -39,6 +39,11 @@ Page({
 
     initValue: 0,
 
+    setUrgent() {
+        const commodity = this.data.commodity;
+        commodity.urgentsign = !commodity.urgentsign;
+        this.setData({ commodity: commodity })
+    },
     bindPickerChange(e: { detail: { value: number } }) { this.setData({ cityIndex: e.detail.value }) },
     addCart() {
         if (!getApp().globalData.token.length) {
@@ -56,6 +61,7 @@ Page({
             (item: any) =>
                 item.commodityId == this.data.commodity.commodityId &&
                 item.remark == this.data.citiesArray[this.data.cityIndex] &&
+                item.urgentsign==this.data.commodity.urgentsign&&
                 !item.group //该页面加入的无法进入团购
         )
         if (targerIndex != -1) {
@@ -67,6 +73,7 @@ Page({
                 commodityBrief: this.data.commodity.commodityBrief,
                 currentPrice: this.data.commodity.currentPrice,
                 remark: this.data.citiesArray[this.data.cityIndex],
+                urgentsign: this.data.commodity.urgentsign,
                 quantity: 1,
                 select: false
             })
@@ -81,17 +88,8 @@ Page({
             wx.showToast({ title: '网络错误', icon: 'none', duration: 1000 })
             return;
         }
-        // if (getApp().globalData.userInfo.userName != "韦定彩") {
-        //     wx.showToast({
-        //         title: '本期活动暂未开放',
-        //         icon: 'none',
-        //         duration: 2000
-        //     })
-        // } else
-        //  {
         wx.navigateTo({
             url: `/pages/visa-groupbuy/visa-groupbuy?commodityId=${this.data.commodity.commodityId}`
         })
-        // }
     }
 });
