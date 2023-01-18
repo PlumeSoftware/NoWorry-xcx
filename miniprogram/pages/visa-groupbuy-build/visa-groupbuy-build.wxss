@@ -1,0 +1,42 @@
+.page {
+    min-height: 100vh;
+    background-color: #F9F9F9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    align-items: center;
+}
+
+.img {
+    margin: 7vh auto;
+}
+
+.btns view {
+    height: 12.5vw;
+    width: 75vw;
+    box-shadow: 0px 4px 4px rgba(242, 132, 59, 0.25);
+    border-radius: 7px;
+    margin-bottom: 20rpx;
+
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 12.5vw;
+}
+
+.btns view:nth-child(1) {
+    background: #F2843B;
+    color: #FEFFFB;
+}
+
+.btns view:nth-child(2) {
+    color: #F2843B;
+}
+
+.tit {
+    margin-bottom: 5vh;
+    font-size: 18px;
+    line-height: 17px;
+    color: #797532;
+}

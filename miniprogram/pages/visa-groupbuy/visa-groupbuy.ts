@@ -45,9 +45,6 @@ Page({
             quantity: this.data.commodity.quantity,
             openid: getApp().globalData.userInfo.openid
         });
-        const handler = await wx.showModal({ title: '团购码', content: String(result) })
-        if (handler.confirm) {
-            wx.reLaunch({ url: `/pages/visa-groupbuy-main/visa-groupbuy-main?groupcode=${result}` })
-        }
+        wx.navigateTo({ url: `/pages/visa-groupbuy-build/visa-groupbuy-build?groupcode=${result}` })
     }
 });

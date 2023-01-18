@@ -1,0 +1,16 @@
+<view class="page">
+  <view class="img">
+    <van-image
+      show-loading="{{false}}"
+      height="300px"
+      width="300px"
+      src="/static/cart/success.png"
+    ></van-image>
+  </view>
+  <view class="tit">你的团购码是 {{groupcode}}</view>
+  <view class="btns">
+    <view bind:tap="toOrderGroup">进入团购</view>
+    <view bind:tap="toHome">返回首页</view>
+  </view>
+</view>
+
