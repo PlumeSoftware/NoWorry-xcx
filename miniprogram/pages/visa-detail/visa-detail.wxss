@@ -70,6 +70,11 @@
 }
 
 .sup-text {
+    display: flex;
+    flex-direction: row;
+    width: 220rpx;
+    justify-content: space-around;
+    margin: 0 auto;
     font-size: 14px;
     font-weight: 100;
     line-height: 20px;
