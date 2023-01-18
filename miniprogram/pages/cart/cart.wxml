@@ -44,6 +44,15 @@
             >
               团购
             </van-tag>
+            <van-tag
+              mark
+              plain
+              color="#FF241A"
+              style="line-height:10px"
+              wx:elif="{{item.urgentsign}}"
+            >
+              加急
+            </van-tag>
           </view>
           <view>{{item.commodityBrief}}</view>
         </view>

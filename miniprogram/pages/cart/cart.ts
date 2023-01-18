@@ -30,6 +30,8 @@ Component({
                         carts[index].err = true
                     }
                 }
+
+                //去除不可用的
                 if (carts[index].err) {
                     carts[index].select = false
                 }
@@ -58,11 +60,12 @@ Component({
             //检查此前所有被选择的商品是否含有团购商品
             let groupId = 0;
             carts[index].select = !carts[index].select
+
+            //检查团购
             carts.filter((i: any) => i.select).forEach((cart: any) => {
                 if (cart.group) {//商品存在团购字段
                     if (groupId === 0) groupId = cart.group.orderGroupId
                     else if (groupId !== cart.group.orderGroupId) {
-                        console.log("选定的是", groupId, "当前的是", cart.group.orderGroupId)
                         carts.forEach((i: any) => i.select = false)
                         wx.showToast({ title: "不同团购订单的商品不能一起结算哦~", icon: "none" })
                     }
@@ -74,6 +77,13 @@ Component({
                     groupId = -1;
                 }
             })
+
+            //检查加急
+            if (carts.filter((i: any) => i.select && i.urgentsign).length &&
+                carts.filter((i: any) => i.select &&i.urgentsign).length < carts.filter((i: any) => i.select).length) {
+                carts.forEach((i: any) => i.select = false)
+                wx.showToast({ title: "加急商品不能和非加急商品一起结算哦~", icon: "none" })
+            }
 
             wx.setStorageSync('carts', carts);
             this.setAllSelect()
@@ -134,7 +144,11 @@ Component({
         culTotal() {
             let total = 0;
             const carts = this.data.carts;
-            carts.filter((item: any) => item.select).forEach((item: any) => total += item.currentPrice * item.quantity)
+            carts.filter((item: any) => item.select).forEach(
+                (item: any) => {
+                    total += (item.currentPrice + (item.urgentsign ? 20 : 0)) * item.quantity;
+                }
+            )
 
             let favourableTotal = 0;
 
@@ -183,8 +197,8 @@ Component({
             }, 800)
         }
     },
-    lifetimes:{
-        async ready(){
+    lifetimes: {
+        async ready() {
             await this.updateCart();
             await this.setAllSelect();
             await this.culTotal();

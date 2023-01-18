@@ -22,7 +22,19 @@
 
         </view>
         <view style="background: #F8F6EE;">
-          <view class="sup-text">Support</view>
+          <view class="sup-text" bind:tap="setUrgent">
+            <van-icon
+              wx:if="{{commodity.urgentsign}}"
+              size="15px"
+              name="/static/profile/option-s.png"
+            />
+            <van-icon
+              wx:else
+              size="15px"
+              name="/static/profile/option.png"
+            />
+            <view class="option">加急(+£20)</view>
+          </view>
           <view class="sup-detail">
             <view
               class="sup-detail-item"

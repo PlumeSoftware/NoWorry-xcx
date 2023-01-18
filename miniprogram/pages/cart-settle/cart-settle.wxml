@@ -83,10 +83,29 @@
             <van-tag
               mark
               plain
+              color="#393E46"
+              style="line-height:10px"
+              wx:if="{{item.err}}"
+            >
+              失效
+            </van-tag>
+            <van-tag
+              mark
+              plain
               color="#{{item.group.orderGroupId*25%1000000}}"
               style="line-height:10px"
-              wx:if="{{item.group}}"
-            >团购
+              wx:elif="{{item.group}}"
+            >
+              团购
+            </van-tag>
+            <van-tag
+              mark
+              plain
+              color="#FF241A"
+              style="line-height:10px"
+              wx:elif="{{item.urgentsign}}"
+            >
+              加急
             </van-tag>
           </view>
           <view>{{item.commodityBrief}}</view>
