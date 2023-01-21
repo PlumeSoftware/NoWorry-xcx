@@ -23,18 +23,37 @@
             <view class="item-image" style="background:url('{{item.picLinkTem}}');background-size:100% auto"></view>
             <view class="item-right">
               <view class="item-info">
-                <view>{{item.commodityName}}</view>
+                <view>{{item.commodityName}}
+                  <van-tag
+                    mark
+                    plain
+                    color="#CC463D"
+                    style="line-height:10px"
+                    wx:if="{{item.status==0}}"
+                  >
+                    进行中
+                  </van-tag>
+                  <van-tag
+                    mark
+                    plain
+                    color="#00B26A"
+                    style="line-height:10px"
+                    wx:else
+                  >
+                    已生效
+                  </van-tag>
+                </view>
                 <view>{{item.commodityBrief}}</view>
               </view>
               <view
                 class="item-link"
                 bind:tap="toProcess"
-                data-orderdetailid="{{item.orderDetailId}}"
+                data-groupcode="{{item.orderGroupId}}{{item.commodityId}}"
               >
                 <view>
-                  {{item.orderDetailId}}-{{item.status==0?"等待支付":item.status==1?"需要填表":"等待操作"}}
+                  团购码 {{item.orderGroupId}}{{item.commodityId}}
                 </view>
-                <view>查看进度</view>
+                <view>查看</view>
               </view>
             </view>
           </view>
@@ -47,10 +66,11 @@
             src="https://noworry.goho.co/static/profile/Frame.png"
           />
           <view>
-            <view class="empty-text">您还没有相关的订单</view>
+            <view class="empty-text">您还没有参与或发起团购</view>
             <view class="empty-describe">
-              可以去看看有哪些想办理的
-              <span>签证</span>
+              可以去商品详情页
+              <span>发起团购</span>
+              哦
             </view>
           </view>
         </view>
