@@ -40,6 +40,11 @@
       <view>我的订单</view>
       <van-icon size="15px" name="/static/profile/return.png" />
     </view>
+    <view class="opea-item" bind:tap="toGroup">
+      <van-icon size="32px" name="/static/profile/group.png" />
+      <view>我的团购</view>
+      <van-icon size="15px" name="/static/profile/return.png" />
+    </view>
     <view class="opea-item" bind:tap="toCus">
       <van-icon size="32px" name="/static/profile/cuser.png" />
       <view>常见问题</view>
