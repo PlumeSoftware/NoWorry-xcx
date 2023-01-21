@@ -174,21 +174,12 @@ Page({
 
         if (this.data.payIndex == 0) {//微信支付
             const data = (await webPost<{
-                appId: string,
-                timeStamp: string,
-                nonceStr: string,
-                package: string,
-                signType: "MD5" | "HMAC-SHA256" | undefined,
-                paySign: string
-                errortag?: boolean
-                errormessage?: string
+                appId: string, timeStamp: string, nonceStr: string, package: string, signType: "MD5" | "HMAC-SHA256" | undefined, paySign: string, outTradeNo: string, errortag?: boolean, errormessage?: string,
             }>('/pay', {
                 openid: getApp().globalData.userInfo.openid,
                 describe: paid[0].commodityName,
                 amount: Math.floor(this.data.totolPriceCNY * 100),
-                checkitems: {
-                    favcode: this.data.favcode
-                }
+                checkitems: { favcode: this.data.favcode }
             }))!
 
 
@@ -215,6 +206,7 @@ Page({
                 orderPaymentPrice: this.data.totalPrice - this.data.favourableTotal,
                 payWay: 1,
                 orderDetail: orderDetail,
+                outTradeNo: data['outTradeNo'] || null,
                 favcode: this.data.favcode,
                 orderGroupId: paid[0].group ? paid[0].group.orderGroupId : null,
                 contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.wechat}`

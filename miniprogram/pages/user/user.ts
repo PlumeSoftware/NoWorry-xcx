@@ -48,6 +48,9 @@ Component({
     toOrder() {
       wx.navigateTo({ url: "/pages/user-order/user-order" })
     },
+    toGroup() {
+      wx.navigateTo({ url: "/pages/user-group/user-group" })
+    },
     toCus() {
       wx.navigateTo({ url: "/pages/user-qaa/user-qaa" })
     },
