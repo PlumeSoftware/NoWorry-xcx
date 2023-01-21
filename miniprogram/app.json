@@ -6,6 +6,7 @@
     "pages/cart-settle/cart-settle",
     "pages/cart-settle-success/cart-settle-success",
     "pages/user-order/user-order",
+    "pages/user-group/user-group",
     "pages/user-order-detail/user-order-detail",
     "pages/user-cop/user-cop",
     "pages/user-cop-commit/user-cop-commit",
@@ -20,6 +21,7 @@
     "pages/user-set-notice/notice",
     "pages/user-set-privacy/privacy",
     "pages/visa-groupbuy/visa-groupbuy",
+    "pages/visa-groupbuy-build/visa-groupbuy-build",
     "pages/visa-groupbuy-main/visa-groupbuy-main"
   ],
   "window": {
@@ -43,6 +45,7 @@
     "van-field": "@vant/weapp/field/index",
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",
     "van-dialog": "@vant/weapp/dialog/index",
-    "van-tag": "@vant/weapp/tag/index"
+    "van-tag": "@vant/weapp/tag/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index"
   }
 }
