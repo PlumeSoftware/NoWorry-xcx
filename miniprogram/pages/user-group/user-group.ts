@@ -20,29 +20,17 @@ Page({
         ] as Array<Array<any>>
     },
     async onShow() {
-        const result: Array<Order> | null = await webGet<Array<Order>>(`/order/${getApp().globalData.token}`)
-        const orderGroup: Array<Array<OrderDetailInfo>> = [[], [], []];
+        const result: Array<Array<any>> | null = await webGet<Array<Array<any>>>(`/order/group/all/${getApp().globalData.token}`)
+        const orderGroup: Array<Array<any>> = [];
         if (result) {
-            result.forEach((item: Order) => {
-                if (item.orderStatus == 0 || item.orderStatus == 3) {
-                    orderGroup[0].push(...(item.orderDetailInfoGroup!))
-                } else if (item.orderStatus == 1) {
-                    orderGroup[1].push(...(item.orderDetailInfoGroup!))
-                } else if (item.orderStatus == 2) {
-                    orderGroup[2].push(...(item.orderDetailInfoGroup!))
-                }
-            })
+            orderGroup.push(...result)
         }
-        orderGroup[0] = orderGroup[0].sort((a, b) => Number(b.orderDetailId) - Number(a.orderDetailId))
-        orderGroup[1] = orderGroup[1].sort((a, b) => Number(b.orderDetailId) - Number(a.orderDetailId))
-        orderGroup[2] = orderGroup[2].sort((a, b) => Number(b.orderDetailId) - Number(a.orderDetailId))
-
 
         this.setData({ orderGroup: orderGroup })
     },
-    toProcess(e: { currentTarget: { dataset: { orderdetailid: number } } }) {
+    toProcess(e: { currentTarget: { dataset: { groupcode: number } } }) {
         wx.navigateTo({
-            url: '/pages/user-order-detail/user-order-detail?orderDetailId=' + e.currentTarget.dataset.orderdetailid
+            url: '/pages/visa-groupbuy-main/visa-groupbuy-main?groupcode=' + e.currentTarget.dataset.groupcode
         })
     }
 });

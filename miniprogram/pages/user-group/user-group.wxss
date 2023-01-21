@@ -88,6 +88,8 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 25px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .order-group .order-list .order-item .item-info view:nth-child(2) {
