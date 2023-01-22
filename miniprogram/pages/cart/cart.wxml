@@ -119,6 +119,11 @@
             <span wx:if="{{favourableTotal>0}}">£{{favourableTotal}} </span>
             <span wx:if="{{favourableTotal>0}}">查看明细</span>
           </view>
+          <view class="price-conver">
+            <span wx:if="{{favourableTotal>0}}">已减 </span>
+            <span wx:if="{{favourableTotal>0}}">£{{favourableTotal}} </span>
+            <span wx:if="{{favourableTotal>0}}">查看明细</span>
+          </view>
         </view>
         <view class="settle">
           <button
