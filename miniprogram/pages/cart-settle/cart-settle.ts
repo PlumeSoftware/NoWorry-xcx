@@ -98,15 +98,6 @@ Page({
         //加入优惠券计算
         favourableTotal += this.data.favdetail.value
 
-        if (total - favourableTotal < 1) {
-            wx.showModal({
-                title: '提示',
-                content: '你真的是在测试吗QAQ',
-                showCancel: false,
-                success: () => wx.navigateBack()
-            })
-        }
-
         total = Number(total.toFixed(2))
         totalCNY = Number((8.35 * (total - favourableTotal)).toFixed(2));
 
