@@ -8,25 +8,6 @@
     title-active-color="#797532"
     active="{{activeVisa}}"
   >
-    <van-tab title="热门">
-      <view class="visa-list">
-        <view
-          class="visa-item"
-          wx:for="{{visaList[0]}}"
-          wx:key="index"
-          bind:tap="toDetail"
-          data-commodityid="{{item.commodityId}}"
-        >
-          <view class="item-image">
-            <view class="item-image" style="background:url('{{item.picLinkTem}}');background-size:100% auto"></view>
-          </view>
-          <view class="info">
-            <view class="title">{{item.commodityName}}</view>
-            <view class="price">£{{item.currentPrice}}</view>
-          </view>
-        </view>
-      </view>
-    </van-tab>
     <van-tab title="申根">
       <view class="visa-list">
         <view
