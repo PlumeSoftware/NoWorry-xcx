@@ -21,7 +21,7 @@
   <view class="body">
     <view class="visum">
       <view class="title">热门推荐</view>
-      <scroll-view class="visa-list" scroll-x="{{true}}">
+      <view class="visa-list">
         <view
           class="visa-item"
           wx:for="{{VisaList}}"
@@ -35,7 +35,7 @@
             <view class="price">£{{item.currentPrice}}</view>
           </view>
         </view>
-      </scroll-view>
+      </view>
     </view>
     <view class="service">
       <view class="title">服务流程</view>
