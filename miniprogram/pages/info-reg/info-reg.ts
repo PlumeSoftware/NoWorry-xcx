@@ -166,6 +166,7 @@ Page({
 
         webPost('/order/schengen', { token: getApp().globalData.token, sheet: this.data })
             .then(() => {
+                wx.removeStorageSync('infoRegA')
                 wx.reLaunch({ url: "/pages/user-cop-commit/user-cop-commit" })
             })
             .catch(() => {

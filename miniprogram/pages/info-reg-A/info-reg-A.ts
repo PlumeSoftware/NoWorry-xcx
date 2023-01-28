@@ -64,7 +64,7 @@ Page({
             })
         }, 300)
 
-        wx.setStorageSync('infoRegS', this.data)
+        wx.setStorageSync('infoRegA', this.data)
     },
 
     toPrivacy() {
@@ -82,7 +82,7 @@ Page({
             orderDetailId: orderDetailId
         })
 
-        const storage = wx.getStorageSync('infoRegS')
+        const storage = wx.getStorageSync('infoRegA')
         if (storage) {
             const keys = Object.keys(storage)
             keys.forEach(key => this.setData(JSON.parse(`${key}:${storage[key]}`)))
@@ -148,6 +148,7 @@ Page({
 
         webPost('/order/usvisa', { token: getApp().globalData.token, sheet: this.data })
             .then(() => {
+                wx.removeStorageSync('infoRegA')
                 wx.reLaunch({ url: "/pages/user-cop-commit/user-cop-commit" })
             })
             .catch(() => {

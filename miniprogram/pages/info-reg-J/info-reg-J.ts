@@ -67,7 +67,7 @@ Page({
             })
         }, 300)
 
-        wx.setStorageSync('infoRegS', this.data)
+        wx.setStorageSync('infoRegJ', this.data)
     },
 
     toPrivacy() {
@@ -85,7 +85,7 @@ Page({
             orderDetailId: orderDetailId
         })
 
-        const storage = wx.getStorageSync('infoRegS')
+        const storage = wx.getStorageSync('infoRegJ')
         if (storage) {
             const keys = Object.keys(storage)
             keys.forEach(key => this.setData(JSON.parse(`${key}:${storage[key]}`)))
@@ -133,13 +133,6 @@ Page({
         this.setData(kv)
     },
 
-    toPrivacy() {
-        wx.navigateTo({ url: '/pages/user-set-privacy/privacy' })
-    },
-
-    toNotice() {
-        wx.navigateTo({ url: '/pages/user-set-notice/notice' })
-    },
     
     submit() {
         const collegeAddress =
@@ -166,6 +159,7 @@ Page({
 
         webPost('/order/jpvisa', { token:getApp().globalData.token, sheet: this.data })
             .then(() => {
+                wx.removeStorageSync('infoRegJ')
                 wx.reLaunch({ url: "/pages/user-cop-commit/user-cop-commit" })
             })
             .catch(() => {
