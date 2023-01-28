@@ -80,7 +80,7 @@ Component({
 
             //检查加急
             if (carts.filter((i: any) => i.select && i.urgentsign).length &&
-                carts.filter((i: any) => i.select &&i.urgentsign).length < carts.filter((i: any) => i.select).length) {
+                carts.filter((i: any) => i.select && i.urgentsign).length < carts.filter((i: any) => i.select).length) {
                 carts.forEach((i: any) => i.select = false)
                 wx.showToast({ title: "加急商品不能和非加急商品一起结算哦~", icon: "none" })
             }
@@ -185,7 +185,7 @@ Component({
 
             const userInfo = getApp().globalData.userInfo
             setTimeout(() => {
-                if (userInfo.userName && userInfo.email && userInfo.phone && userInfo.handSignCity) {
+                if (userInfo.userName && userInfo.email && userInfo.phone && userInfo.handSignCity && userInfo.userName != '微信用户') {
                     wx.navigateTo({ url: "/pages/cart-settle/cart-settle" })
                 } else wx.showModal({
                     title: '提示',
