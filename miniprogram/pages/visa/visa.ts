@@ -47,7 +47,7 @@ Component({
     lifetimes: {
         async ready() {
             const visaList = []
-            visaList.push(await webGet<Array<Visa>>(`/visa/group/hot`))
+            visaList.push([])
             visaList.push(await webGet<Array<Visa>>(`/visa/group/11`))
             visaList.push(await webGet<Array<Visa>>(`/visa/group/12`))
             visaList.push(await webGet<Array<Visa>>(`/visa/group/13`))

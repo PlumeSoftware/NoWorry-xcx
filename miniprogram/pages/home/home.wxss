@@ -39,33 +39,30 @@
 }
 
 .page-home .visa-list {
-    width: 89vw;
+    width: 90vw;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     background-color: #F8F6EE;
     z-index:10;
+    margin: 2vh auto;
     margin-top: 3.7vw;
-    height: 71vw;
-    white-space: nowrap;
+    flex-wrap: wrap;
 }
 
 .page-home .visa-list .visa-item {
     display: inline-block;
-    height: 51vw;
-    width: 35.9vw;
-    margin: 0 6vw 0 0;
+    height: 58vw;
+    width: 44vw;
     background-color: #FFF;
+    margin: 1vw 0;
     border-radius: 6px;
     overflow: hidden;
     filter: drop-shadow(3px 4px 10px rgba(111, 87, 71, 0.1));
 }
 
-.page-home .visa-list .visa-item:nth-last-child(1) {
-    margin-right: 0;
-}
 
 .page-home .visa-list .visa-item .item-image {
-    height: 35vw;
+    height: 41vw;
     overflow: hidden;
 }
 

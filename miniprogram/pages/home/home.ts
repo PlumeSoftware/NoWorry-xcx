@@ -63,7 +63,7 @@ Component({
             this.setData({ qaIndex: Math.floor(Math.random() * 1000) % this.data.qaList.length })
         },
 
-        toQuestionAnswer(){
+        toQuestionAnswer() {
             wx.navigateTo({ url: "/pages/user-qaa/user-qaa" })
         },
 
@@ -88,7 +88,8 @@ Component({
     },
     lifetimes: {
         async ready() {
-            this.setData({ VisaList: await webGet(`/visa/group/hot`) })
+            const hots = (await webGet<Array<any>>(`/visa/group/hot`))!
+            this.setData({ VisaList: hots })
             this.setData({ coverIndex: (this.data.coverIndex + 1) % this.data.coverUrlList.length })
             webGet<string[]>('/home/bannerlist').then(res => { if (res && res.length == 4) this.setData({ coverUrlList: res }) })
         }
