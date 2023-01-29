@@ -77,6 +77,8 @@ Page({
                 focusId: e.currentTarget.id
             })
         }, 300)
+
+        wx.setStorageSync('infoRegS', this.data)
     },
 
     toPrivacy() {
@@ -86,7 +88,7 @@ Page({
     toNotice() {
         wx.navigateTo({ url: '/pages/user-set-notice/notice' })
     },
-    
+
     onShow() {
         const pages = getCurrentPages();
         const orderDetailId = pages[pages.length - 1].options.orderDetailId!
@@ -94,10 +96,16 @@ Page({
             orderDetailId: orderDetailId
         })
 
-        if(pages[pages.length - 1].options['s']){
+        const storage = wx.getStorageSync('infoRegS')
+        if (storage) {
+            const keys = Object.keys(storage)
+            keys.forEach(key => this.setData(JSON.parse(`${key}:${storage[key]}`)))
+        }
+
+        if (pages[pages.length - 1].options['s']) {
             wx.showModal({
-                title:"隐私信息提醒",
-                content:"您的信息将用于Noworry刷签登记，如您不清楚该链接来源请勿填写~"
+                title: "隐私信息提醒",
+                content: "您的信息将用于Noworry刷签登记，如您不清楚该链接来源请勿填写~"
             })
         }
 
@@ -158,6 +166,7 @@ Page({
 
         webPost('/order/schengen', { token: getApp().globalData.token, sheet: this.data })
             .then(() => {
+                wx.removeStorageSync('infoRegA')
                 wx.reLaunch({ url: "/pages/user-cop-commit/user-cop-commit" })
             })
             .catch(() => {

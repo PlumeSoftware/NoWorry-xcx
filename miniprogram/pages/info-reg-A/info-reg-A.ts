@@ -63,7 +63,10 @@ Page({
                 focusId: e.currentTarget.id
             })
         }, 300)
+
+        wx.setStorageSync('infoRegA', this.data)
     },
+
     toPrivacy() {
         wx.navigateTo({ url: '/pages/user-set-privacy/privacy' })
     },
@@ -71,13 +74,19 @@ Page({
     toNotice() {
         wx.navigateTo({ url: '/pages/user-set-notice/notice' })
     },
-    
+
     onShow() {
         const pages = getCurrentPages();
         const orderDetailId = pages[pages.length - 1].options.orderDetailId!
         this.setData({
             orderDetailId: orderDetailId
         })
+
+        const storage = wx.getStorageSync('infoRegA')
+        if (storage) {
+            const keys = Object.keys(storage)
+            keys.forEach(key => this.setData(JSON.parse(`${key}:${storage[key]}`)))
+        }
 
         if(pages[pages.length - 1].options['s']){
             wx.showModal({
@@ -139,6 +148,7 @@ Page({
 
         webPost('/order/usvisa', { token: getApp().globalData.token, sheet: this.data })
             .then(() => {
+                wx.removeStorageSync('infoRegA')
                 wx.reLaunch({ url: "/pages/user-cop-commit/user-cop-commit" })
             })
             .catch(() => {

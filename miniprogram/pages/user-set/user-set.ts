@@ -9,7 +9,7 @@ import { webPost } from "../../utils/http";
 Page({
     data: {
         userName: '',
-        phone:'',
+        phone: '',
         email: '',
         handSignCity: ''
     },
@@ -21,6 +21,9 @@ Page({
             email: getApp().globalData.userInfo.email,
             handSignCity: getApp().globalData.userInfo.handSignCity
         })
+        if (this.data.userName == '微信用户') {
+            setTimeout(() => wx.showToast({ title: "用户名不能为默认值", icon: 'none', duration: 2000 }), 1000)
+        }
     },
     inp(e: { currentTarget: { id: string } }) {
         wx.hideKeyboard()
@@ -58,9 +61,9 @@ Page({
             getApp().globalData.userInfo.phone = this.data.phone;
             getApp().globalData.userInfo.email = this.data.email;
             getApp().globalData.userInfo.handSignCity = this.data.handSignCity;
-            
+
             setTimeout(() => wx.navigateBack(), 2200)
-            
+
         } else {
             wx.showToast({
                 title: '修改失败',
