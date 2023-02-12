@@ -6,7 +6,7 @@
         show-loading="{{false}}"
         width="53px"
         height="52px"
-        src="https://noworry.goho.co/static/profile/noworry.png"
+        src="https://manager.noworry.cloud/static/profile/noworry.png"
       />
       <view class="info">所有信息数据仅保存在NoWorry内网，在您出签之后将自动删除；请您务必认真填写核对相关信息，基础资料有误概不负责</view>
     </view>

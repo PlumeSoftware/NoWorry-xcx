@@ -44,7 +44,7 @@
             show-loading="{{false}}"
             width="198"
             height="222"
-            src="https://noworry.goho.co/static/profile/Frame.png"
+            src="https://manager.noworry.cloud/static/profile/Frame.png"
           />
           <view>
             <view class="empty-text">您还没有相关的订单</view>
