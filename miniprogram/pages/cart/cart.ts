@@ -26,7 +26,7 @@ Component({
                 //检查团购订单是否可用
                 if (cart.group) {
                     const result = await webGet<{ status: number }>(`/order/group/info/${cart.group.orderGroupId}${cart.commodityId}`)
-                    if (result!.status != 0) {
+                    if (result!.status > 1) {
                         carts[index].err = true
                     }
                 }

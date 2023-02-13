@@ -13,7 +13,8 @@ export interface Cart {
         amount: number//团购的优惠金额，和显示的时候一样
     },
     groupsign?: boolean
-    urgentsign?:boolean,
+    urgentsign?:boolean
     handCity?:string
+    picLinkTem?:string
 }
 

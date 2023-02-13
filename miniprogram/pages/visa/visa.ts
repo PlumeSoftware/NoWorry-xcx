@@ -31,7 +31,7 @@ Component({
                 //@ts-ignore
                 webGet<any>(`/order/group/info/${groupcode}`)
                     .then((res) => {
-                        if (res) {
+                        if (res.data.status && res.data.status <= 1) {
                             wx.reLaunch({ url: `/pages/visa-groupbuy-main/visa-groupbuy-main?groupcode=${groupcode}` })
                         } else {
                             wx.showToast({ title: '该团购已结束', icon: 'none' })
