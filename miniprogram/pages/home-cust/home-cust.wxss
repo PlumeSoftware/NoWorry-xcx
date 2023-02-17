@@ -1,0 +1,87 @@
+.page-homeCust {
+    background-color: #F8F6EE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    padding-bottom: 10vh;
+}
+
+.page-homeCust .progress {
+    width: 89vw;
+    margin-bottom: 2.1vw;
+    margin-top: 60rpx;
+    height: auto;
+}
+
+.page-homeCust .info {
+    font-weight: 600;
+    font-size: 64rpx;
+}
+
+.page-homeCust .q {
+    width: auto;
+    height: auto;
+    font-size: 48rpx;
+    margin: 30rpx auto;
+    font-weight: 550;
+}
+
+.page-homeCust .a {
+    width: 96vw;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap
+}
+
+.page-homeCust .aCell1 {
+    width: 260rpx;
+    height: 100rpx;
+    font-size: 40rpx;
+    margin: 20rpx auto;
+    background-color:rgba(232, 213, 197, 0.698);
+    box-shadow: 0 7px 0 #f1e9e6, 0 8px 3px rgba(221, 216, 244, 0.3);
+    border-color: #f9d5d5;
+    font-weight: 300;
+    border-radius: 100rpx;
+    text-align: center;
+    line-height: 100rpx;
+}
+
+.page-homeCust .aCell2 {
+    width: 260rpx;
+    height: 100rpx;
+    font-size: 40rpx;
+    margin: 20rpx auto;
+    background-color:rgba(195, 183, 173, 0.698);
+    box-shadow: 0 7px 0 #f1e9e6, 0 8px 3px rgba(221, 216, 244, 0.3);
+    border-color: #f9d5d5;
+    font-weight: 300;
+    border-radius: 100rpx;
+    text-align: center;
+    line-height: 100rpx;
+}
+
+.page-homeCust .btnForm {
+    height: auto;
+    line-height: 48px;
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.page-homeCust .btn {
+    height: 48px;
+    line-height: 48px;
+    width: 30vw;
+    border-radius: 20px;
+    margin: 30rpx auto;
+    background: #F2843B;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+    color: #FFFFEE;
+}
