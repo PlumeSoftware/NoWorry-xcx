@@ -22,7 +22,9 @@
     "pages/user-set-privacy/privacy",
     "pages/visa-groupbuy/visa-groupbuy",
     "pages/visa-groupbuy-build/visa-groupbuy-build",
-    "pages/visa-groupbuy-main/visa-groupbuy-main"
+    "pages/visa-groupbuy-main/visa-groupbuy-main",
+    "pages/home-cust/home-cust",
+    "pages/home/home"
   ],
   "window": {
     "backgroundTextStyle": "light",

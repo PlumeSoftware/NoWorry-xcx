@@ -85,10 +85,18 @@ Component({
                 this.setData({ coverIndex: 0 })
             }
         },
+        toHomeCust() {
+            wx.navigateTo({ url: '/pages/home-cust/home-cust'})
+        }
     },
     lifetimes: {
         async ready() {
+            const hot=wx.getStorageSync("hot")
+            console.log(hot)
+            let answer=""
+            hot.forEach((item:any)=>answer=answer+item.answer)
             const hots = (await webGet<Array<any>>(`/visa/group/hot`))!
+            const wdc = (await webGet<Array<any>>(`/visa/group/hot`,{answer:answer}))!
             this.setData({ VisaList: hots })
             this.setData({ coverIndex: (this.data.coverIndex + 1) % this.data.coverUrlList.length })
             webGet<string[]>('/home/bannerlist').then(res => { if (res && res.length == 4) this.setData({ coverUrlList: res }) })

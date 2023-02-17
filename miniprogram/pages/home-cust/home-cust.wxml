@@ -1,0 +1,41 @@
+<view class="page-homeCust">
+    <view class="progress">
+        <progress
+          stroke-width="8"
+          border-radius="10px"
+          background-color="rgba(217, 217, 217, 0.54);"
+          active-color="#F2843B"
+          percent="{{(pageIndex+1)*100/3}}"
+          active="{{true}}"
+          active-mode="forwards"
+          duration="{{15}}"
+        />
+    </view>
+    <view class="info">第{{pageIndex+1}}步</view>
+    <view class="body">
+        <view class="qa" wx:if="{{pageIndex==0}}" >
+            <view class="q">{{qaList[0].q}}</view>
+            <view class="a">
+                <button class="{{btnStyle==aIndex?'aCell2':'aCell1'}}" wx:for="{{qaList[0].a}}"  wx:key="Key" wx:for-index="aIndex" bind:tap="getAnswer" data-index="{{aIndex}}">{{item}}</button>
+            </view>
+        </view>
+        <view class="qa" wx:if="{{pageIndex==1}}"  >
+            <view class="q">{{qaList[1].q}}</view>
+            <view class="a">
+                <button class="{{btnStyle==aIndex?'aCell2':'aCell1'}}" wx:for="{{qaList[1].a[choice[pageIndex-1].answer]}}"  wx:key="Key" wx:for-index="aIndex" bind:tap="getAnswer" data-index="{{aIndex}}">{{item}}</button>
+            </view>
+        </view>
+        <view class="qa" wx:if="{{pageIndex==2}}"  >
+            <view class="q">{{qaList[2].q}}</view>
+            <view class="a">
+                <button class="{{btnStyle==aIndex?'aCell2':'aCell1'}}" wx:for="{{qaList[2].a}}"  wx:key="Key" wx:for-index="aIndex" bind:tap="getAnswer" data-index="{{aIndex}}">{{item}}</button>
+            </view>
+        </view>
+        <view class="btnForm">
+            <view class="btn" bind:tap="back" >上一步</view>
+            <view class="btn" bind:tap="next" wx:if="{{pageIndex!=2}}">下一步</view>
+            <view class="btn" bind:tap="save" wx:if="{{pageIndex==2}}">完成并返回</view>
+        </view>
+        
+    </view> 
+</view>

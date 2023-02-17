@@ -20,7 +20,7 @@
   </view>
   <view class="body">
     <view class="visum">
-      <view class="title">热门推荐</view>
+      <view class="title">专属推荐</view>
       <view class="visa-list">
         <view
           class="visa-item"
@@ -36,6 +36,7 @@
           </view>
         </view>
       </view>
+      <view class="customization" bind:tap="toHomeCust" wx:if="{{true}}">获取您的专属推荐</view>
     </view>
     <view class="service">
       <view class="title">服务流程</view>
