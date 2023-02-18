@@ -87,6 +87,19 @@
     background-color: #FFF;
 }
 
+.page-home .customization {
+    height: 48px;
+    line-height: 48px;
+    width: 70vw;
+    border-radius: 7px;
+    margin: 11vw auto;
+    background: #F2843B;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+    color: #FFFFEE;
+}
+
 .page-home .about {
     margin-bottom: 10.9vw;
 }

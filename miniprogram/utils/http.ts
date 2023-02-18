@@ -4,7 +4,7 @@ export const webGet = async function <T>(url: string, params: any = new Object()
     const keys: string[] = Object.keys(params);
     url = BASE_URL + url + '?'
     keys.forEach(key => {
-        url = url + params[key] + '&'
+        url = url + key + "=" + params[key] + '&'
     })
     if (keys.length > 0) {
         url = url.slice(0, -1)
