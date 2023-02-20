@@ -7,10 +7,10 @@ import { webGet } from "../../utils/http"
 Component({
     data: {
         coverUrlList: [
-            "http://122.9.107.17/static/home/17b1.jpg",
-            "http://122.9.107.17/static/home/17b2.jpg",
-            "http://122.9.107.17/static/home/17b3.jpg",
-            "http://122.9.107.17/static/home/17b4.jpg",
+            "http://manager.noworry.cloud/static/home/17b1.jpg",
+            "http://manager.noworry.cloud/static/home/17b2.jpg",
+            "http://manager.noworry.cloud/static/home/17b3.jpg",
+            "http://manager.noworry.cloud/static/home/17b4.jpg",
         ],
         coverIndex: 0,//封面
 
@@ -86,18 +86,18 @@ Component({
             }
         },
         toHomeCust() {
-            wx.navigateTo({ url: '/pages/home-cust/home-cust'})
+            wx.navigateTo({ url: '/pages/home-cust/home-cust' })
         }
     },
     lifetimes: {
         async ready() {
-            const hot=wx.getStorageSync("hot")
+            const hot = wx.getStorageSync("hot")
             console.log(hot)
-            let answer=""
-            hot.forEach((item:any)=>answer=answer+item.answer)
+            let answer = ""
+            hot.forEach((item: any) => answer = answer + item.answer)
             const hots = (await webGet<Array<any>>(`/visa/group/hot`))!
-            const wdc = (await webGet<Array<any>>(`/visa/group/hot`,{answer:answer}))!
-            this.setData({ VisaList: hots })
+            const sugs = (await webGet<Array<any>>(`/visa/group/hot`, { answer: answer }))!
+            this.setData({ VisaList: sugs || hots })
             this.setData({ coverIndex: (this.data.coverIndex + 1) % this.data.coverUrlList.length })
             webGet<string[]>('/home/bannerlist').then(res => { if (res && res.length == 4) this.setData({ coverUrlList: res }) })
         }

@@ -1,6 +1,6 @@
 <view class="page">
   <view class="image">
-    <van-image show-loading="{{false}}"  width="52.74vw" height="47.04vw" src="https://noworry.goho.co/static/profile/commit-success.png" />
+    <van-image show-loading="{{false}}"  width="52.74vw" height="47.04vw" src="https://manager.noworry.cloud/static/profile/commit-success.png" />
   </view>
   <view class="text">NoWorry it’s Recieved!</view>
 </view>
