@@ -251,7 +251,22 @@
     display: flex;
     justify-content: center;
     border-radius: 7px;
-    margin: 100rpx auto;
+    margin: 40rpx auto;
+    line-height: 12.5vw;
+    color: #FEFFFB;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.buy {
+    width: 500rpx;
+    text-align: center;
+    bottom: 15vw;
+    background: #E53E31;
+    display: flex;
+    justify-content: center;
+    border-radius: 7px;
+    margin: 40rpx auto;
     line-height: 12.5vw;
     color: #FEFFFB;
     font-size: 17px;

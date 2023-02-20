@@ -21,6 +21,13 @@ Page({
         orderGroup: [] as any,
     },
 
+    onLoad(){
+        wx.showShareMenu({
+            withShareTicket: true,
+            menus: ['shareAppMessage', 'shareTimeline']
+          })
+    },
+
     async onShow() {
         const pages = getCurrentPages()
         const groupcode = pages[pages.length - 1].options.groupcode;
@@ -31,6 +38,16 @@ Page({
         this.setData({ commodity: orderGroup as Cart, orderGroup: orderGroup })
 
         this.culFav()
+    },
+
+    onShareAppMessage(){
+        const pages = getCurrentPages()
+        const groupcode = pages[pages.length - 1].options.groupcode;
+        return {
+            title:this.data.commodity.commodityName    ,
+            path:`pages/visa-groupbuy-main/visa-groupbuy-main?groupcode=${groupcode}`,
+            imageUrl:this.data.commodity.picLinkTem
+        }
     },
 
     async culFav() {
@@ -85,6 +102,58 @@ Page({
         getApp().globalData.carts = carts
         //存于系统中用于下次加入再使用
         wx.setStorageSync('carts', carts)
+    },
+
+    buyNow() {
+        wx.showToast({
+            title: 'loading',
+            icon: 'loading',
+            duration: 700
+        })
+
+        //触发该方法保证待结算团购商品至多有一个
+        // const checkGroupItem = this.data.carts.find((i: any) => i.group && i.select)
+        // if (checkGroupItem) {
+        //     const result = await webGet<{ status: number }>(`/order/group/info/${checkGroupItem.group.orderGroupId}${checkGroupItem.commodityId}`);
+        //     if (result!.status != 0) {
+        //         setTimeout(() => { wx.showToast({ title: '该团购订单已结束', icon: 'none', duration: 2000 }) }, 700)
+        //         return;
+        //     }
+        // }
+        const carts = getApp().globalData.carts
+
+        //清空购物车的选择
+        carts.forEach((i:{select:boolean})=>i.select=false)
+
+        carts.push({
+            commodityId: this.data.commodity.commodityId,
+            commodityName: this.data.commodity.commodityName,
+            commodityBrief: this.data.commodity.commodityBrief,
+            currentPrice: this.data.commodity.currentPrice,
+            remark: this.data.commodity.remark,
+            quantity: 1,
+            picLinkTem:this.data.commodity.picLinkTem,
+            groupsign: true,
+            group: {
+                orderGroupId: this.data.orderGroup.orderGroupId,
+                title: this.data.favourable[0].title,
+                amount: this.data.favourable[0].amount
+            },
+            select: true
+        })
+
+        const userInfo = getApp().globalData.userInfo
+        setTimeout(() => {
+            if (userInfo.userName && userInfo.email && userInfo.phone && userInfo.handSignCity && userInfo.userName != '微信用户') {
+                wx.navigateTo({ url: "/pages/cart-settle/cart-settle" })
+            } else wx.showModal({
+                title: '提示',
+                content: '您的个人资料未完善',
+                showCancel: false,
+                confirmText: "前往设置",
+                success: () => wx.navigateTo({ url: "/pages/user-set/user-set" })
+            })
+        }, 800)
     },
 
     genGroupBuy() {

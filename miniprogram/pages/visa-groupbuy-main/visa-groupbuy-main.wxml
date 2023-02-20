@@ -6,7 +6,7 @@
       background="#ecf9ff"
       left-icon="info-o"
       style="margin:10px"
-      text="当前团购量还未达标哦~"
+      text="当前团购量还未达标哦，可以分享让更多人加入团购~"
     />
     <van-notice-bar
       wx:if="{{orderGroup.status==1}}"
@@ -14,7 +14,7 @@
       background="#ecf9ff"
       left-icon="info-o"
       style="margin:10px"
-      text="当前团购量已达标！"
+      text="当前团购量已达标！您的订单将会在审核后生效~"
     />
     <view class="title">
       <van-icon
@@ -83,6 +83,7 @@
       </view>
     </view>
     <view class="add" bind:tap="addCart">加入购物车</view>
+    <view class="buy" bind:tap="buyNow">直接购买</view>
     <view class="title" wx:if="{{favourable.length}}">
       <van-icon
         class="title-img"

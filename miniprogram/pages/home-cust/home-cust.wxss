@@ -17,13 +17,13 @@
 
 .page-homeCust .info {
     font-weight: 600;
-    font-size: 64rpx;
+    font-size: 28rpx;
 }
 
 .page-homeCust .q {
     width: auto;
     height: auto;
-    font-size: 48rpx;
+    font-size: 40rpx;
     margin: 30rpx auto;
     font-weight: 550;
 }
@@ -39,7 +39,7 @@
 .page-homeCust .aCell1 {
     width: 260rpx;
     height: 100rpx;
-    font-size: 40rpx;
+    font-size: 34rpx;
     margin: 20rpx auto;
     background-color:rgba(232, 213, 197, 0.698);
     box-shadow: 0 7px 0 #f1e9e6, 0 8px 3px rgba(221, 216, 244, 0.3);
@@ -53,7 +53,7 @@
 .page-homeCust .aCell2 {
     width: 260rpx;
     height: 100rpx;
-    font-size: 40rpx;
+    font-size: 34rpx;
     margin: 20rpx auto;
     background-color:rgba(195, 183, 173, 0.698);
     box-shadow: 0 7px 0 #f1e9e6, 0 8px 3px rgba(221, 216, 244, 0.3);

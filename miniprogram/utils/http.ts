@@ -31,10 +31,10 @@ export const webGet = async function <T>(url: string, params: any = new Object()
     })
 }
 
-export const webPost = async function <T>(url: string, body: any = new Object()): Promise<T | null> {
+export const webPost = async function <T>(url: string, body: any = new Object()): Promise<T> {
     url = BASE_URL + url
     const token = getApp().globalData.token;
-    return await new Promise<T | null>((r) => {
+    return await new Promise<T >((r) => {
         wx.request({
             url: url,
             header: {
@@ -47,11 +47,11 @@ export const webPost = async function <T>(url: string, body: any = new Object())
                 if(res.statusCode<400){
                     r(res.data as T)
                 }else{
-                    r(null)
+                    r({} as T)
                 }
             },
             fail: () => {
-                r(null)
+                r({} as T)
             }
         })
     })
