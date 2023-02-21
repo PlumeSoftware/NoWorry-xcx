@@ -14,8 +14,8 @@ Page({
         //page 参数
         activeVisa: 0,
         show: true,
-        citiesArray: [] as Array<{}>,
-        cityIndex: 0,
+        numArray: [2, 3, 4, 5] as Array<{}>,
+        numIndex: 0,
 
         //商品详细参数
         commodity: {} as Cart,
@@ -31,14 +31,6 @@ Page({
         this.setData({ commodity: commodity })
     },
 
-    async bindPickerChange(e: { detail: { value: number } }) {
-        const commodity = this.data.commodity;
-        commodity.quantity = Number(e.detail.value) + 2
-        this.setData({ commodity: commodity })
-        const fav = await culFavFromCarts([commodity]);
-        this.setData({ favourable: fav })
-        if (!fav || fav.length == 0) Toast({ type: 'fail', message: '团购量过少~', duration: 2000 });
-    },
     async genGroupBuy() {
         const result = await webPost<number>('/order/group/create', {
             commodityId: this.data.commodity.commodityId,
@@ -46,5 +38,16 @@ Page({
             openid: getApp().globalData.userInfo.openid
         });
         wx.navigateTo({ url: `/pages/visa-groupbuy-build/visa-groupbuy-build?groupcode=${result}` })
+    },
+
+    changeChooseNum(e: any) {
+        const commodity = this.data.commodity;
+        commodity.quantity = Number(e.currentTarget.dataset.number)
+        this.setData({ commodity: commodity, numIndex: e.currentTarget.dataset.index })
+        culFavFromCarts([commodity]).then(fav => {
+            console.log(fav)
+            this.setData({ favourable: fav })
+            if (!fav[0]?.amount) Toast({ type: 'fail', message: '团购量过少~', duration: 2000 });
+        }).catch(()=>Toast({ type: 'fail', message: '团购量过少~', duration: 2000 }));
     }
 });

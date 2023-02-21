@@ -105,9 +105,10 @@
 
 .add {
     width: 100vw;
+    height: 10vh;
     text-align: center;
     position: fixed;
-    bottom: 10vw;
+    bottom: 0vw;
     background: rgba(248, 246, 238, 0.82);
 
     display: flex;
