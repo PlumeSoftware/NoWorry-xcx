@@ -6,7 +6,11 @@
     animated
   >
     <van-tab>
-      <home wx:if="{{active==0}}" id="home"></home>
+      <home
+        bind:tovisa="tovisa"
+        wx:if="{{active==0}}"
+        id="home"
+      ></home>
     </van-tab>
     <van-tab>
       <visa wx:if="{{active==1}}"></visa>
