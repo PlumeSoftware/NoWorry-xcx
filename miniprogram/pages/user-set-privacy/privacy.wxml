@@ -7,7 +7,7 @@
         width="53px"
         height="52px"
         margin-bottom="5px"
-        src="https://noworry.goho.co/static/profile/noworry.png"
+        src="https://manager.noworry.cloud/static/profile/noworry.png"
       />
       <view class="info">由于签证申请为非常规实体商品，同意此隐私政策代表您同意委托NoWorry签证使用您的信息全权代理为您申请双方协定的签证。</view>
       <view class="info">

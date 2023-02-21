@@ -6,14 +6,14 @@
 Page({
     data: {
         imgList: [
-            "http://122.9.107.17/static/introduce/i1.jpg",
-            "http://122.9.107.17/static/introduce/i2.jpg",
-            "http://122.9.107.17/static/introduce/i3.jpg",
-            "http://122.9.107.17/static/introduce/i4.jpg",
-            "http://122.9.107.17/static/introduce/i5.jpg",
-            "http://122.9.107.17/static/introduce/i6.jpg",
-            "http://122.9.107.17/static/introduce/i7.jpg",
-            "http://122.9.107.17/static/introduce/i8.jpg",
+            "http://manager.noworry.cloud/static/introduce/i1.jpg",
+            "http://manager.noworry.cloud/static/introduce/i2.jpg",
+            "http://manager.noworry.cloud/static/introduce/i3.jpg",
+            "http://manager.noworry.cloud/static/introduce/i4.jpg",
+            "http://manager.noworry.cloud/static/introduce/i5.jpg",
+            "http://manager.noworry.cloud/static/introduce/i6.jpg",
+            "http://manager.noworry.cloud/static/introduce/i7.jpg",
+            "http://manager.noworry.cloud/static/introduce/i8.jpg",
 
         ],
         posterIndex: 0
