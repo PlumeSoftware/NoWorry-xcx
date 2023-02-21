@@ -36,7 +36,10 @@
           </view>
         </view>
       </view>
-      <view class="customization" bind:tap="toHomeCust" wx:if="{{true}}">获取您的专属推荐</view>
+      <view class="customization" bind:tap="toHomeCust">获取您的专属推荐
+      </view>
+      <view class="customization-side" bind:tap="toVisaEvent">没有想要的？查看更多签证 >
+      </view>
     </view>
     <view class="service">
       <view class="title">服务流程</view>
