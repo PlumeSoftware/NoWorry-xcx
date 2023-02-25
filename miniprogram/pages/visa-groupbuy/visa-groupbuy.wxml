@@ -11,17 +11,18 @@
     <view class="sup-detail">
       <view class="sup-detail-item">
         <view class="item-title">※团购流程</view>
-        <view class="item-rule">1. 发起人确定好目标商品与数量，创建团购单</view>
+        <view class="item-rule">1. 发起人确定好目标商品与
+          <span class="text-strong">最小数量</span>
+          ，创建团购单
+        </view>
         <view class="item-rule">2. 分享团购码，用户可通过其进入团购页面</view>
-        <view class="item-rule">3. 用户在团购页面加购，可以加购多份</view>
-        <view class="item-rule">4. 前往购物车结算支付即可直接享受团购优惠</view>
+        <view class="item-rule">3. 用户在团购页面加购，结算即可直接享受团购优惠</view>
       </view>
       <view class="sup-detail-item">
         <view class="item-title">※注意事项</view>
         <view class="item-rule">1. 实际结算量达到目标时，团购订单才会生效</view>
         <view class="item-rule">2. 客服可能会在流程中联系您，请注意查看消息</view>
-        <view class="item-rule">3. 用户加购后请及时支付，避免被抢走位置</view>
-        <view class="item-rule">4. 活动解释权归NoWorry所有</view>
+        <view class="item-rule">3. 活动解释权归NoWorry所有</view>
       </view>
     </view>
     <view class="title">
@@ -43,15 +44,30 @@
             <view>{{commodity.commodityBrief}}</view>
           </view>
           <view class="item-pm">
-            <picker bindchange="bindPickerChange" range="{{[2,3,4,5,6,7]}}">
-              <view class="opea-item">
-                <view class="item-quantity">目标数量 {{commodity.quantity||0}}</view>
-              </view>
-            </picker>
-
             <view class="item-remark">{{commodity.remark}}</view>
             <view class="item-price">£{{commodity.currentPrice}}</view>
           </view>
+        </view>
+      </view>
+    </view>
+    <view class="title">
+      <van-icon
+        class="title-img"
+        size="20px"
+        name="/static/profile/line.png"
+      />
+      <view class="title-word">目标数量</view>
+    </view>
+    <view>
+      <view class="handCityitem">
+        <view
+          wx:for="{{numArray}}"
+          wx:key="index"
+          class="handCity {{index==numIndex?'mark':'unmark'}}"
+          bind:tap="changeChooseNum"
+          data-number="{{item}}"
+          data-index="{{index}}"
+        >{{item}}
         </view>
       </view>
     </view>
