@@ -29,10 +29,9 @@ Page({
 
     async onShow() {
         const pages = getCurrentPages()
-        const commodityId = pages[pages.length - 1].options.commodityId
+        const commodityId = pages[pages.length - 1].options?.commodityId
         const commodityList = (await webGet<AnyArray>('/visa/group/hot'))!
         this.setData({ commodityList: commodityList })
-        console.log(this.data.commodityList)
 
         if (commodityId) {
             const commodity = (await webGet<Cart>(`/visa/detail/${commodityId}`))!
@@ -46,7 +45,7 @@ Page({
     },
 
     changeCommodity(e?: any) {
-        if (e.currentTarget?.dataset?.item) {
+        if (e?.currentTarget?.dataset?.item) {
             this.setData({ commodity: e.currentTarget.dataset.item })
         }
         this.setData({ showVisaList: !this.data.showVisaList })
