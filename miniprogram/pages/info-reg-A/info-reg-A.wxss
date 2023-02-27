@@ -233,10 +233,15 @@
     margin-bottom: 4.3vw;
 }
 
+.page-info-reg .btn {
+    display: flex;
+    flex-direction: row;
+}
+
 .page-info-reg .save-btn {
     height: 48px;
     line-height: 48px;
-    width: 70vw;
+    width: 30vw;
     border-radius: 7px;
     margin: 11vw auto;
     background: #F2843B;
