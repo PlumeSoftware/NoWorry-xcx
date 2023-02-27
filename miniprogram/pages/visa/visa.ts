@@ -9,6 +9,7 @@ import { webGet } from "../../utils/http"
 Component({
     data: {
         activeVisa: 0,
+        showChoose: false,
         show: false,
         groupcode: '',
         visaList: [
@@ -23,6 +24,12 @@ Component({
         toDetail(e: any) {
             const commodityId = e.currentTarget.dataset.commodityid
             wx.navigateTo({ url: '/pages/visa-detail/visa-detail' + `?commodityId=${commodityId}` })
+        },
+
+        showEnterChoose(e: any) {
+            console.log(e)
+            //@ts-ignore
+            this.setData({ showChoose: !this.data.showChoose, })
         },
         showEnterGroup(e: { detail: string }) {
             if (e.detail == 'confirm') {
@@ -42,6 +49,17 @@ Component({
             this.setData({ show: !this.data.show, groupcode: '' })
 
         },
+
+        groupBuy() {
+            console.log("sss")
+            if (!getApp().globalData.token.length) {
+                wx.showToast({ title: '网络错误', icon: 'none', duration: 1000 })
+                return;
+            }
+            wx.navigateTo({
+                url: `/pages/visa-groupbuy/visa-groupbuy`
+            })
+        }
 
     },
     lifetimes: {
