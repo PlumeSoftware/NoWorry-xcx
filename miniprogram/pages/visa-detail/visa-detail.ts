@@ -18,7 +18,9 @@ Page({
         cityIndex: 0,
 
         //商品详细参数
-        commodity: {} as Visa
+        commodity: {} as Visa,
+        favourable: [] as Array<{ title: string, amount: number }>,
+        orderGroup: [] as any,
     },
 
     async onShow() {
@@ -83,13 +85,39 @@ Page({
         wx.setStorageSync('carts', carts)
     },
 
-    groupBuy() {
-        if (!getApp().globalData.token.length) {
-            wx.showToast({ title: '网络错误', icon: 'none', duration: 1000 })
-            return;
-        }
-        wx.navigateTo({
-            url: `/pages/visa-groupbuy/visa-groupbuy?commodityId=${this.data.commodity.commodityId}`
+    buyNow() {
+        wx.showToast({
+            title: 'loading',
+            icon: 'loading',
+            duration: 700
         })
-    }
+
+        const carts = getApp().globalData.carts
+
+        //清空购物车的选择
+        carts.forEach((i:{select:boolean})=>i.select=false)
+
+        carts.push({
+            commodityId: this.data.commodity.commodityId,
+            commodityName: this.data.commodity.commodityName,
+            commodityBrief: this.data.commodity.commodityBrief,
+            currentPrice: this.data.commodity.currentPrice,
+            quantity: 1,
+            picLinkTem:this.data.commodity.picLinkTem,
+            select: true
+        })
+
+        const userInfo = getApp().globalData.userInfo
+        setTimeout(() => {
+            if (userInfo.userName && userInfo.email && userInfo.phone && userInfo.handSignCity && userInfo.userName != '微信用户') {
+                wx.navigateTo({ url: "/pages/cart-settle/cart-settle" })
+            } else wx.showModal({
+                title: '提示',
+                content: '您的个人资料未完善',
+                showCancel: false,
+                confirmText: "前往设置",
+                success: () => wx.navigateTo({ url: "/pages/user-set/user-set" })
+            })
+        }, 800)
+    },
 });
