@@ -65,7 +65,7 @@
     </view>
     <view class="add">
       <view class="add-btn" bind:tap="addCart">加入购物车</view>
-      <view class="add-btn" bind:tap="groupBuy">发起团购</view>
+      <view class="add-btn" bind:tap="buyNow">直接购买</view>
     </view>
     <van-toast id="van-toast" />
   </view>
