@@ -13,24 +13,44 @@ Page({
     data: {
         //page 参数
         activeVisa: 0,
-        show: true,
+        showVisaList: false,
         numArray: [2, 3, 4, 5] as Array<{}>,
         numIndex: 0,
 
         //商品详细参数
         commodity: {} as Cart,
-        favourable: [] as Array<{}>
+        favourable: [] as Array<{}>,
+
+        //待选商品列表
+        commodityList: [] as AnyArray,
+
     },
+
 
     async onShow() {
         const pages = getCurrentPages()
         const commodityId = pages[pages.length - 1].options.commodityId
-        const commodity = (await webGet<Cart>(`/visa/detail/${commodityId}`))!
-        commodity.select = true
-        commodity.groupsign = true
-        this.setData({ commodity: commodity })
+        const commodityList = (await webGet<AnyArray>('/visa/group/hot'))!
+        this.setData({ commodityList: commodityList })
+        console.log(this.data.commodityList)
+
+        if (commodityId) {
+            const commodity = (await webGet<Cart>(`/visa/detail/${commodityId}`))!
+            commodity.select = true
+            commodity.groupsign = true
+            this.setData({ commodity: commodity })
+        }
+        else {
+            this.changeCommodity();
+        }
     },
 
+    changeCommodity(e?: any) {
+        if (e.currentTarget?.dataset?.item) {
+            this.setData({ commodity: e.currentTarget.dataset.item })
+        }
+        this.setData({ showVisaList: !this.data.showVisaList })
+    },
     async genGroupBuy() {
         const result = await webPost<number>('/order/group/create', {
             commodityId: this.data.commodity.commodityId,
@@ -48,6 +68,6 @@ Page({
             console.log(fav)
             this.setData({ favourable: fav })
             if (!fav[0]?.amount) Toast({ type: 'fail', message: '团购量过少~', duration: 2000 });
-        }).catch(()=>Toast({ type: 'fail', message: '团购量过少~', duration: 2000 }));
+        }).catch(() => Toast({ type: 'fail', message: '团购量过少~', duration: 2000 }));
     }
 });

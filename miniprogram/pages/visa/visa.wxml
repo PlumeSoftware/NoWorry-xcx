@@ -1,5 +1,5 @@
 <view class="page-visa">
-  <button class="btn" bindtap="showEnterGroup">团购会场</button>
+  <button class="btn" bindtap="showEnterChoose">团购会场</button>
 
   <van-tabs
     class="visa-group-list"
@@ -104,6 +104,20 @@
       </view>
     </van-tab>
   </van-tabs>
+
+  <van-dialog
+    use-slot
+    showConfirmButton="{{false}}"
+    showCancelButton="{{true}}"
+    bind:close="showEnterChoose"
+    show="{{ showChoose }}"
+  >
+    <view class="btns">
+      <view class="add-btn" bind:tap="groupBuy">发起团购</view>
+      <view class="add-btn" bind:tap="showEnterGroup">加入团购</view>
+    </view>
+
+  </van-dialog>
 
   <van-dialog
     use-slot

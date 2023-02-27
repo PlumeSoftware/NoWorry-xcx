@@ -28,6 +28,13 @@
     text-align: left;
 }
 
+.title-icon{
+    font-size: 11px;
+    line-height: 24px;
+    font-weight: 200;
+    text-align: left;
+}
+
 .info-list {
     width: 80vw;
     background-color: #FFFFFF;
@@ -142,7 +149,7 @@
 
 .commodity-list .commodity-item {
     background-color: #fff;
-    width: 90vw;
+    width: 90%;
     height: 22vw;
     margin: 0 auto;
     padding: 14px 2px;

@@ -109,13 +109,41 @@ nav-class {
     color: #FFF;
 
     position: fixed;
-    top:80vh;
+    top: 80vh;
     z-index: 10;
 }
 
-.van-dialog{
+.van-dialog {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 10vh;
+}
+
+
+.btns {
+    display: flex;
+    justify-content: space-around;
+    height: 25vw;
+    align-items: center;
+}
+
+.add-btn {
+    height: 11.5vw;
+    width: 30.9vw;
+    border-radius: 7px;
+    margin: 0 auto;
+    line-height: 11.5vw;
+    box-shadow: 0px 4px 5px rgba(242, 132, 59, 0.25);
+    color: #FEFFFB;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.add-btn:nth-child(1) {
+    background-color: #F2843B;
+}
+
+.add-btn:nth-child(2) {
+    background-color: #0386FE;
 }
