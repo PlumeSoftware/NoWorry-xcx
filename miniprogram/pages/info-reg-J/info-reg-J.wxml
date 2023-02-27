@@ -784,11 +784,19 @@
       <view class="item-page" wx:if="{{pageIndex!==4}}">{{pageIndex+1}}/4</view>
       <view class="edging"></view>
     </view>
-    <view
-      class="save-btn"
-      bind:tap="change"
-      wx:if="{{pageIndex!==4}}"
-    >保存并继续
+    <view class="btn">
+      <view
+        class="save-btn"
+        bind:tap="back"
+        wx:if="{{pageIndex!==4}}"
+      >上一步
+      </view>
+      <view
+        class="save-btn"
+        bind:tap="change"
+        wx:if="{{pageIndex!==4}}"
+      >保存并继续
+      </view>
     </view>
     <view class="over-btn" wx:if="{{pageIndex==4}}">
       <view class="agreement">
