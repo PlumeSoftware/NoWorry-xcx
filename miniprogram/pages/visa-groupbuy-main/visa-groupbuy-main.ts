@@ -111,15 +111,6 @@ Page({
             duration: 700
         })
 
-        //触发该方法保证待结算团购商品至多有一个
-        // const checkGroupItem = this.data.carts.find((i: any) => i.group && i.select)
-        // if (checkGroupItem) {
-        //     const result = await webGet<{ status: number }>(`/order/group/info/${checkGroupItem.group.orderGroupId}${checkGroupItem.commodityId}`);
-        //     if (result!.status != 0) {
-        //         setTimeout(() => { wx.showToast({ title: '该团购订单已结束', icon: 'none', duration: 2000 }) }, 700)
-        //         return;
-        //     }
-        // }
         const carts = getApp().globalData.carts
 
         //清空购物车的选择
