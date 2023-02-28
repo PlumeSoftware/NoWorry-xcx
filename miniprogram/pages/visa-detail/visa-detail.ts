@@ -63,7 +63,7 @@ Page({
             (item: any) =>
                 item.commodityId == this.data.commodity.commodityId &&
                 item.remark == this.data.citiesArray[this.data.cityIndex] &&
-                item.urgentsign==this.data.commodity.urgentsign&&
+                item.urgentsign == this.data.commodity.urgentsign &&
                 !item.group //该页面加入的无法进入团购
         )
         if (targerIndex != -1) {
@@ -95,15 +95,17 @@ Page({
         const carts = getApp().globalData.carts
 
         //清空购物车的选择
-        carts.forEach((i:{select:boolean})=>i.select=false)
+        carts.forEach((i: { select: boolean }) => i.select = false)
 
         carts.push({
             commodityId: this.data.commodity.commodityId,
             commodityName: this.data.commodity.commodityName,
             commodityBrief: this.data.commodity.commodityBrief,
             currentPrice: this.data.commodity.currentPrice,
+            remark: this.data.citiesArray[this.data.cityIndex],
+            urgentsign: this.data.commodity.urgentsign,
             quantity: 1,
-            picLinkTem:this.data.commodity.picLinkTem,
+            picLinkTem: this.data.commodity.picLinkTem,
             select: true
         })
 
