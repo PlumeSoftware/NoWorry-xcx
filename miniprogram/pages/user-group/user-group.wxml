@@ -63,7 +63,7 @@
             show-loading="{{false}}"
             width="198"
             height="222"
-            src="https://manager.noworry.cloud/static/profile/Frame.png"
+            src="http://pic.plumend.cn/noworry/profile/Frame.png"
           />
           <view>
             <view class="empty-text">您还没有参与或发起团购</view>

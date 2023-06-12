@@ -7,10 +7,10 @@ import { webGet } from "../../utils/http"
 Component({
     data: {
         coverUrlList: [
-            "http://manager.noworry.cloud/static/home/17b1.jpg",
-            "http://manager.noworry.cloud/static/home/17b2.jpg",
-            "http://manager.noworry.cloud/static/home/17b3.jpg",
-            "http://manager.noworry.cloud/static/home/17b4.jpg",
+            "http://pic.plumend.cn/noworry/home/17b1.jpg",
+            "http://pic.plumend.cn/noworry/home/17b2.jpg",
+            "http://pic.plumend.cn/noworry/home/17b3.jpg",
+            "http://pic.plumend.cn/noworry/home/17b4.jpg",
         ],
         coverIndex: 0,//封面
 

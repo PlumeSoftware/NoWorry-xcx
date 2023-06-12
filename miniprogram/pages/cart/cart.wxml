@@ -87,7 +87,7 @@
       fit="cover"
       width="198"
       height="222"
-      src="https://manager.noworry.cloud/static/profile/Frame.png"
+      src="http://pic.plumend.cn/noworry/profile/Frame.png"
     />
     <view>
       <view class="empty-text">购物车为空~</view>

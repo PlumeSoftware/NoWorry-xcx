@@ -2,7 +2,7 @@
   <scroll-view>
     <view class="cover">
       <view class="cover-image">
-        <van-image show-loading="{{false}}"  width="76vw" height="100vw" src="https://manager.noworry.cloud/static/profile/cop-cover.png" />
+        <van-image show-loading="{{false}}"  width="76vw" height="100vw" src="http://pic.plumend.cn/noworry/profile/cop-cover.png" />
       </view>
       <view class="cover-text">
         <view>您是大学学联，需要资助？或者您有客户，需要我们的刷位系统的帮助？您的旅游团的客户缺少申根签证？合作才是共赢。</view>
@@ -81,10 +81,10 @@
       <view class="contact-text">联系我们</view>
       <view class="cuslist">
         <view class="cus-qr">
-          <van-image show-loading="{{false}}"  show-menu-by-longpress width="120px" height="120px" src="https://manager.noworry.cloud/static/profile/cus1.png" />
+          <van-image show-loading="{{false}}"  show-menu-by-longpress width="120px" height="120px" src="http://pic.plumend.cn/noworry/profile/cus1.png" />
         </view>
         <view class="cus-qr">
-          <van-image show-loading="{{false}}"  show-menu-by-longpress width="120px" height="120px" src="https://manager.noworry.cloud/static/profile/cus2.png" />
+          <van-image show-loading="{{false}}"  show-menu-by-longpress width="120px" height="120px" src="http://pic.plumend.cn/noworry/profile/cus2.png" />
         </view>
       </view>
       <view class="contact-tip">

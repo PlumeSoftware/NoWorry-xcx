@@ -40,7 +40,7 @@ Component({
 
     updata() {
       this.login()
-      if (!this.data.hasInterval) setInterval(() => this.login(), 2500)
+      if (!this.data.hasInterval) setInterval(() => this.login(), 30 * 1000)
       this.setData({ hasInterval: true })
     },
 

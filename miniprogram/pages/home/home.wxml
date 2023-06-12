@@ -109,7 +109,7 @@
             show-menu-by-longpress
             width="20.6vw"
             height="20.6vw"
-            src="https://manager.noworry.cloud/static/profile/cus1.png"
+            src="http://pic.plumend.cn/noworry/profile/cus1.png"
           />
         </view>
         <view class="cus-qr">
@@ -118,7 +118,7 @@
             show-menu-by-longpress
             width="20.6vw"
             height="20.6vw"
-            src="https://manager.noworry.cloud/static/home/cus3.png"
+            src="http://pic.plumend.cn/noworry/home/cus3.png"
           />
         </view>
       </view>
