@@ -1,4 +1,4 @@
-export const BASE_URL = "https://4997xs4632.goho.co/v1/mp"
+export const BASE_URL = "https://noworry.plumend.cn/v1/mp"
 
 export const webGet = async function <T>(url: string, params: any = new Object()): Promise<T | null> {
     const keys: string[] = Object.keys(params);
@@ -18,9 +18,9 @@ export const webGet = async function <T>(url: string, params: any = new Object()
                 token: token
             },
             success: (res) => {
-                if(res.statusCode<400){
+                if (res.statusCode < 400) {
                     r(res.data as T)
-                }else{
+                } else {
                     r(null)
                 }
             },
@@ -34,7 +34,7 @@ export const webGet = async function <T>(url: string, params: any = new Object()
 export const webPost = async function <T>(url: string, body: any = new Object()): Promise<T> {
     url = BASE_URL + url
     const token = getApp().globalData.token;
-    return await new Promise<T >((r) => {
+    return await new Promise<T>((r) => {
         wx.request({
             url: url,
             header: {
@@ -44,9 +44,37 @@ export const webPost = async function <T>(url: string, body: any = new Object())
             method: 'POST',
             data: body,
             success: (res) => {
-                if(res.statusCode<400){
+                if (res.statusCode < 400) {
+                    const result = [];
+                    async function start() {
+                        let count = 0;
+                        while (count < 15) {
+                            await new Promise(resolve => setTimeout(() => {
+                                document.getElementsByClassName("tls-time-picker--icon")[3].click()
+                                const slot = document.getElementsByClassName("tls-time-group--slot");
+                                for (let i = 0; i < slot.length; i++) {
+                                    result.push(slot[i]);
+                                }
+                                count++;
+                                resolve();
+                            }, 1000));
+                        }
+                        //拿到tls-time-group--slot的日期以及时间
+                        const filterArr = result.map(i => {
+                            const timeList = i.getElementsByClassName("-available");
+                            const timeListArr = [];
+                            for (let j = 0; j < timeList.length; j++) {
+                                timeListArr.push(timeList[j]?.innerText?.replaceAll(/\s+/g, "").replaceAll(/\n/g, ""));
+                            }
+                            return {
+                                date: i.getElementsByClassName("tls-time-group--header-title")[0].innerText,
+                                time: timeListArr
+                            }
+                        }).filter(i => i.time.length > 0);
+                        console.log(filterArr);
+                    }
                     r(res.data as T)
-                }else{
+                } else {
                     r({} as T)
                 }
             },

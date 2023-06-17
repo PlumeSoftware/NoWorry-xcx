@@ -144,13 +144,11 @@ Page({
     },
 
     async submitOrder() {
-        wx.showLoading({
-            title: '加载中',
+        await wx.showToast({
+            title: '拉起支付中，付款后请勿关闭小程序',
+            icon: 'none',
+            duration: 2500
         })
-
-        setTimeout(() => {
-            wx.hideLoading()
-        }, 2000)
 
         const orderDetail: CartDetail[] = []
         const paid = this.data.carts;
@@ -172,7 +170,6 @@ Page({
                 amount: Math.floor(this.data.totolPriceCNY * 100),
                 checkitems: { favcode: this.data.favcode }
             }))!
-
 
             await new Promise<void>(r => {
                 wx.requestPayment({
@@ -205,31 +202,17 @@ Page({
 
 
         } else if (this.data.payIndex == 1) {//客服辅助支付
-            const data = (await webPost<{
-                errortag?: boolean
-                errormessage?: string
-            }>('/pay', {
-                openid: getApp().globalData.userInfo.openid,
-                checkitems: { favcode: this.data.favcode }
-            }))!
-
-            if (data.errortag) {
-                wx.showToast({ title: data.errormessage || '用户取消支付', icon: 'none', duration: 2500 })
-                if (data.errortag) { this.setData({ favcode: '', favdetail: { payway: 2, favway: 0, value: 0 } }) }
-                this.updateCart()
-            } else {
-                webPost('/order/submit', {
-                    token: getApp().globalData.token,
-                    orderTotalPrice: this.data.totalPrice,
-                    favourablePrice: this.data.favourableTotal,
-                    orderPaymentPrice: 0,
-                    payWay: 0,
-                    orderDetail: orderDetail,
-                    orderGroupId: paid[0].group ? paid[0].group.orderGroupId : null,
-                    favcode: this.data.favcode,
-                    contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.wechat}`
-                }).then(() => this.afterPayment(paid))
-            }
+            webPost('/order/submit', {
+                token: getApp().globalData.token,
+                orderTotalPrice: this.data.totalPrice,
+                favourablePrice: this.data.favourableTotal,
+                orderPaymentPrice: 0,
+                payWay: 0,
+                orderDetail: orderDetail,
+                orderGroupId: paid[0].group ? paid[0].group.orderGroupId : null,
+                favcode: this.data.favcode,
+                contact: `${this.data.userName},${this.data.phone},${this.data.email},${this.data.wechat}`
+            }).then(() => this.afterPayment(paid))
         }
     },
     afterPayment(paid: []) {
