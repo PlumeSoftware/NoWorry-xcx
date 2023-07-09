@@ -110,6 +110,23 @@ Page({
         }
     },
 
+    back(e: { currentTarget: { dataset: { pageindex?: number } } }) {
+        if (e.currentTarget.dataset.pageindex !== undefined) {
+            this.setData({
+                pageIndex: e.currentTarget.dataset.pageindex
+            })
+        } else if (this.data.pageIndex > 0) {
+            this.setData({
+                pageIndex: this.data.pageIndex - 1
+            })
+        }
+
+        wx.pageScrollTo({
+            scrollTop: 0,
+            duration: 200
+        })
+    },
+
     change(e: { currentTarget: { dataset: { pageindex?: number } } }) {
         if (e.currentTarget.dataset.pageindex !== undefined) {
             this.setData({
