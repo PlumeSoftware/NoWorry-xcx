@@ -54,12 +54,18 @@ Component({
     toCus() {
       wx.navigateTo({ url: "/pages/user-qaa/user-qaa" })
     },
-    toCop() {
-      wx.navigateTo({ url: "/pages/user-cop/user-cop" })
-    },
     toSet() {
       wx.navigateTo({ url: "/pages/user-set/user-set" })
-    }
+    },
+    toOrderManage() {
+      wx.navigateTo({ url: "/pages/user-manager-order/order" })
+    },
+    toFav() {
+      wx.navigateTo({ url: "/pages/user-manager-fav/favarable" })
+    },
+    toPro() {
+      wx.navigateTo({ url: "/pages/user-manager-product/product" })
+    },
   },
   lifetimes: {
     ready() {

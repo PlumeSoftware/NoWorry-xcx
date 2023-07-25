@@ -1,0 +1,108 @@
+.page {
+    height: 100vh;
+    background-color: #F8F6EE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.order-group {
+    background-color: #F8F6EE;
+    width: 100vw;
+    padding-top: 1.6vh;
+}
+
+.van-ellipsis {
+    background-color: #F8F6EE;
+}
+
+.order-group .order-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 5vh;
+}
+
+
+.order-group .order-list .empty {
+    margin-top: 12vh;
+}
+
+.order-group .order-list .empty .empty-text {
+    margin-top: 3vh;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+}
+
+.order-group .order-list .empty .empty-describe {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 20px;
+    text-align: center;
+}
+
+.order-group .order-list .empty .empty-describe span {
+    color: #F2843B;
+    border-bottom: 1px solid #F2843B;
+
+}
+
+.order-group .order-list .order-item {
+    background-color: #fff;
+    width: 84.3vw;
+    height: 27.4vw;
+    margin: 0 auto;
+    margin-top: 6vw;
+    padding: 6px 8px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.order-group .order-list .order-item .item-image {
+    width: 90px;
+    height: 90px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.order-group .order-list .order-item .item-right{
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.order-group .order-list .order-item .item-info {
+    width: 50vw;
+}
+
+.order-group .order-list .order-item .item-info view:nth-child(1) {
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 25px;
+}
+
+.order-group .order-list .order-item .item-info view:nth-child(2) {
+    text-align: left;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.order-group .order-list .order-item .item-link {
+    display: flex;
+    width: 50vw;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 17px;
+    color: #797532;
+}
