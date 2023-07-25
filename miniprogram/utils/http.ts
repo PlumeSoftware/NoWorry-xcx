@@ -1,4 +1,4 @@
-export const BASE_URL = "https://noworry.plumend.cn/v1/mp"
+export const BASE_URL = "https://noworry.plumend.cn/mp"
 
 export const webGet = async function <T>(url: string, params: any = new Object()): Promise<T | null> {
     const keys: string[] = Object.keys(params);

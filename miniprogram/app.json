@@ -8,8 +8,6 @@
     "pages/user-order/user-order",
     "pages/user-group/user-group",
     "pages/user-order-detail/user-order-detail",
-    "pages/user-cop/user-cop",
-    "pages/user-cop-commit/user-cop-commit",
     "pages/user-qaa/user-qaa",
     "pages/user-set/user-set",
     "pages/visa-detail/visa-detail",
@@ -24,7 +22,10 @@
     "pages/visa-groupbuy-build/visa-groupbuy-build",
     "pages/visa-groupbuy-main/visa-groupbuy-main",
     "pages/home-cust/home-cust",
-    "pages/home/home"
+    "pages/home/home",
+    "pages/user-manager-fav/favorable",
+    "pages/user-manager-product/product",
+    "pages/user-manager-order/order"
   ],
   "window": {
     "backgroundTextStyle": "light",
