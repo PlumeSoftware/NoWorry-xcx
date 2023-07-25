@@ -1,0 +1,13 @@
+<view class="page">
+    <view class="fav-btn" bind:tap="newFav">生成新的优惠券</view>
+    <view wx:if="{{favorable.length}}">
+        <view class="bag-title">已生成优惠券</view>
+        <view class="fav-bag">
+            <view class="fav" wx:for="{{favorable}}">
+                {{item}}
+                <image src="../../static/cart/copy.png" class="copy" data-fav="{{item}}" bind:tap="copy" />
+            </view>
+        </view>
+        <view class="all" bind:tap="copyAll">一键复制全部</view>
+    </view>
+</view>
